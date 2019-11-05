@@ -44,24 +44,7 @@ by utilizing [the GSP library](http://www.sqlparser.com), then calculate the dat
 3. Return a JSON snippet including the data lineage and diagram model to the frontend.
 
 
-### Install SQLFlow on your server
-sqlfow was comprised of two parts: frontend and backend. The frontend and backend
-can be installed on the same server, or they can be installed seperated on two different servers.
-
-#### Prerequisites
-1. A linux server with 4GB memory.
-2. Java 8
-3. Nginx or other web server.
-
-### frontend
-The SQLFlow frontend is written in Typescript and the distribution
-files include some obfuscated javascript files along with some css and html files.
-
-Just copy those files into the directory under web root and modify the config file to set environment accordingly.
-
-### backend
-The SQLFlow backend is written in Java. The distribution files include some jar files and scripts 
-that help you start SQLFlow.
+### [Install SQLFlow on your server](install_sqlflow.md)
 
 ### Get a license to install SQLFlow
 In order to setup SQLFlow on your own server, you need to obtain a commerical license to get all those distribution files.
