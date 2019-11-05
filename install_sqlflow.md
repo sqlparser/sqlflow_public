@@ -1,37 +1,38 @@
 ## Instructions on how to install SQLFlow on your own server.
 
 SQLFow was comprised of two parts: frontend and backend. 
-The frontend and backend can be installed on the same server, or they can be installed seperated on two different servers.
+The frontend and backend can be installed on the same server, or they can be installed on two different servers seperately.
 
 ### Prerequisites
-- A linux server with 4GB memory.
+- A linux server with at least 4GB memory.
 - Java 8
 - Nginx web server.
 
-### frontend
+### Frontend
 The SQLFlow frontend is written in Typescript and the distribution files include some obfuscated javascript files along with some css and html files.
 
 #### Files
-sqlflow/*.js
-sqlflow/index.html
-sqlflow/index.css
-sqlflow/config.private.json
-sqlflow/font
-sqlflow/images
+- sqlflow/*.js
+- sqlflow/index.html
+- sqlflow/index.css
+- sqlflow/config.private.json
+- sqlflow/font
+- sqlflow/images
+
 
 Just copy those files into the directory under web root(such as `/var/www/html`) and modify the config file to set environment accordingly.
 
 #### Modify the config file
 
-- "ApiPrefix": "http://106.54.134.160:8081"
+- "ApiPrefix": "http://127.0.0.1:8081"
 
 	set your own IP address and keep port 8081 if it's unchanged during the installation of backend.
 
 - "base64token": ""  
 
-	This token value must be the same as the token in backend(user/username.json) 
+	This token value must be the same as the token in backend(`user/username.json`) 
 
-### backend
+### Backend
 The SQLFlow backend is written in Java. The distribution files include some jar files and scripts that help you start SQLFlow.
 
 
@@ -49,7 +50,7 @@ The SQLFlow backend is written in Java. The distribution files include some jar 
   - user/username.json, including the authorization token which is used in the RESTFul APIs
   
 
-Create a directory for backend files:
+Create a directory for backend files and then,
 
 `sudo mkdir -p wings/sqlflow/backend`
 
@@ -63,19 +64,30 @@ chmod  744  sqlservice.sh
 chmod  744  gspLive.sh
 ```
 
-### Modify the shell script
-The default install path for the SQLFlow backend is: /wings/sqlflow/backend
-Please modify the path accordingly in the shell script if you change this default install directory.
+#### Modify the shell script
+The default installation path for the SQLFlow backend is: `/wings/sqlflow/backend`.
+Please modify the path accordingly in the shell script if you change this path of directory.
 
-### Change the service port
+#### Change the service port
 You may change the service port by adding the following parameter in shell script when starting the service.
 ```
 --server.port=<port>
 ```
 
-#### start the service
+#### Starting the backend service
 
 `./backend.sh`
 
 Please allow 1-2 minutes to start the service.
+
+Use `ps -ef|grep java` to check those 3 processing are running.
+
+```
+ubuntu   11047     1  0 Nov02 ?        00:04:44 java -server -jar eureka.jar
+ubuntu   11076     1  0 Nov02 ?        00:04:11 java -server -Xmn512m -Xms2g -Xmx2g -Djavax.accessibility.assistive_technologies=  -jar sqlservice.jar
+ubuntu   11114     1  0 Nov02 ?        00:05:17 java -server -jar gspLive.jar
+```
+
+### Use the SQLFlow
+Just open a browser and enter `http://ip-of-your-server/sqlflow`
 
