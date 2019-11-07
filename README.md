@@ -47,7 +47,7 @@ by utilizing [the GSP library](http://www.sqlparser.com), then calculate the dat
 ### [Install SQLFlow on your own server](install_sqlflow.md)
 
 ### Get a license to install SQLFlow
-In order to setup SQLFlow on your own server, Please contact us (info@gudusoft.com) to obtain a commerical license to get all those distribution files.
+In order to setup SQLFlow on your own server, Please contact us (support@gudusoft.com) to obtain a commerical license to get all those distribution files.
 Please note that the distribution files doesn’t include the source code of the SQLFlow except the `FlowAnalyzer` which is [open source here](https://github.com/sqlparser/gsp_demo_java/tree/master/src/main/java/demos/dlineage).
 
 ### SQLFlow RESTful API
@@ -57,7 +57,7 @@ for further processing in your own program.
 
 [SQLFlow RESTful API](https://api.gudusoft.com/gspLive_backend/swagger-ui.html#!/sqlflow-controller/generateSqlflowUsingPOST)
 
-In order to use this service, please contact us (info@gudusoft.com) for an authorization token.
+In order to use this service, please contact us (support@gudusoft.com) for an authorization token.
 
 
 ### [sqlflow relations](dbobjects_relationship.md)
