@@ -55,6 +55,12 @@ SQLFlow also provides RESTful API, so your program can communicate with the SQLF
 Sending the SQL to SQLFlow backend and receive a JSON snippet including the data lineage and diagram model
 for further processing in your own program.
 
+Please put the following authorization code in your request header when calling the RESTful API.
+
+```json
+Authorization: token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM
+```
+
 [SQLFlow RESTful API](https://api.gudusoft.com/gspLive_backend/swagger-ui.html#!/sqlflow-controller/generateSqlflowUsingPOST)
 
 In order to use this service, please contact us (support@gudusoft.com) for an authorization token.
