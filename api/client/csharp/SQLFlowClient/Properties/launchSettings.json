@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SQLFlowClient": {
+      "commandName": "Project",
+      "commandLineArgs": "test.sql  -r fdd,fdr1"
+    }
+  }
+}

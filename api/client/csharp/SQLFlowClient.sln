@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLFlowClient", "SQLFlowClient\SQLFlowClient.csproj", "{8F80B6E9-F33B-4936-8111-48A9BCA9AEDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F80B6E9-F33B-4936-8111-48A9BCA9AEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F80B6E9-F33B-4936-8111-48A9BCA9AEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F80B6E9-F33B-4936-8111-48A9BCA9AEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F80B6E9-F33B-4936-8111-48A9BCA9AEDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C9B0DCD-4A60-4E0C-9A35-7211C074B0D1}
+	EndGlobalSection
+EndGlobal
