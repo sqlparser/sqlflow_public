@@ -14,10 +14,16 @@ For mac:
 ```
 cd sqlflow_public/api/client/csharp/SQLFlowClient/dist/osx
 ```
+```
+chmod +x SQLFlowClient
+```
 
 For linux:
 ```
 cd sqlflow_public/api/client/csharp/SQLFlowClient/dist/linux
+```
+```
+chmod +x SQLFlowClient
 ```
 
 ### Create a simple sql file for testing
