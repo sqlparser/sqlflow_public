@@ -19,11 +19,11 @@ You may view, download for caching purposes only, and print pages or any other c
 subject to the restrictions set out in these terms and conditions.  
  
 You must not:
-	- republish material from this website (including republication on another website);
-	- sell, rent or sub-license material from the website;
-	- reproduce, duplicate, copy or otherwise exploit material on this website for a commercial purpose;
-	- edit or otherwise modify any material on the website;
-	- redistribute material from this website, except for content specifically and expressly made available for redistribution.
+- republish material from this website (including republication on another website);
+- sell, rent or sub-license material from the website;
+- reproduce, duplicate, copy or otherwise exploit material on this website for a commercial purpose;
+- edit or otherwise modify any material on the website;
+- redistribute material from this website, except for content specifically and expressly made available for redistribution.
 	
 	
 #### Acceptable use
@@ -50,17 +50,17 @@ The Licensor reserves the right to edit or remove any material submitted to this
 This website is provided “as is” without any representations or warranties, express or implied.  The Licensor makes no representations or warranties in relation to this website or the information and materials provided on this website.  
  
 Without prejudice to the generality of the foregoing paragraph, the Licensor does not warrant that:
-	- this website will be constantly available, or available at all; or
-	- the information on this website is complete, true, accurate or non-misleading.
+- this website will be constantly available, or available at all; or
+- the information on this website is complete, true, accurate or non-misleading.
 	
 Nothing on this website constitutes, or is meant to constitute, advice of any kind.
 
 #### Limitations of liability
  
 The Licensor will not be liable to you in any way in relation to the contents of, or use of, or otherwise in connection with this website:
-	- to the extent that the website is provided free-of-charge, for any direct loss;
-	- for any indirect, special or consequential loss; or
-	- for any business losses, loss of revenue, income, profits or anticipated savings, loss of contracts or business relationships, loss of reputation or goodwill, or loss or corruption of information or data.
+- to the extent that the website is provided free-of-charge, for any direct loss;
+- for any indirect, special or consequential loss; or
+- for any business losses, loss of revenue, income, profits or anticipated savings, loss of contracts or business relationships, loss of reputation or goodwill, or loss or corruption of information or data.
 	
 These limitations of liability apply even if the Licensor has been expressly advised of the potential loss.
 

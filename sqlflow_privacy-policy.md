@@ -24,12 +24,12 @@ Most browsers allow you to reject all cookies, while some browsers allow you to 
 Personal information submitted to us via this website will be used for the purposes specified in this privacy policy or in relevant parts of the website.
  
 We may use your personal information to:
-    - improve your browsing experience by personalizing the website;
-    - enable your use of the services available on the website;
-    - send you email notifications which you have specifically requested;
-    - send you marketing materials related to our business by email (you can inform us at any time if you no longer wish to receive marketing email);
-    - provide third parties with statistical information about our users – but this information will not be used to identify any individual user;
-    - pass on to third parties with whom we have signed a Reseller Agreement/Support Provider Agreement solely for the purposes of negotiating a business deal with you or providing you with support and/or maintenance for our product(s)
+- improve your browsing experience by personalizing the website;
+- enable your use of the services available on the website;
+- send you email notifications which you have specifically requested;
+- send you marketing materials related to our business by email (you can inform us at any time if you no longer wish to receive marketing email);
+- provide third parties with statistical information about our users – but this information will not be used to identify any individual user;
+- pass on to third parties with whom we have signed a Reseller Agreement/Support Provider Agreement solely for the purposes of negotiating a business deal with you or providing you with support and/or maintenance for our product(s)
 
 If you submit personal information for publication on our website, we will publish and otherwise use that information in accordance with the license you grant us. We will not provide your personal information to any third parties for the purpose of direct marketing
 
@@ -39,9 +39,9 @@ If you submit personal information for publication on our website, we will publi
 We may disclose information about you to our employees, officers, agents, suppliers and subcontractors insofar as is reasonably necessary for the purposes as set forth in this privacy policy.
  
 In addition, we may disclose your personal information: 
-    - to the extent that we are required to do so by law;
-    - in connection with any legal proceedings or prospective legal proceedings;
-    - in order to establish, exercise or defend our legal rights (including providing information to others for the purposes of fraud prevention and reducing credit risk).
+- to the extent that we are required to do so by law;
+- in connection with any legal proceedings or prospective legal proceedings;
+- in order to establish, exercise or defend our legal rights (including providing information to others for the purposes of fraud prevention and reducing credit risk).
 
 Except as provided for in this privacy policy, we will not provide your information to third parties.
 
