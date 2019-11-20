@@ -1,6 +1,6 @@
 ### PRIVACY POLICY & COOKIES
 
-1. What information do we collect?
+#### 1. What information do we collect?
  
 We may collect, store and use the following kinds of personal information:
 	- Information about your computer and about your visits to and use of this website (including your IP address, geographical location, browser type and version, operating system, referral source, length of visit, page views and website navigation).
@@ -8,7 +8,7 @@ We may collect, store and use the following kinds of personal information:
 	- Any other information that you choose to send us. 
 	
 	
-2. Cookies
+#### 2. Cookies
 
 A cookie consists of information sent by a web server to a web browser, and it is stored by the browser. The information is then sent back to the server each time the browser requests a page from the server. This enables the web server to identify and track the web browser. 
  
@@ -19,7 +19,7 @@ We use Google Analytics to analyze the use of this website. Google Analytics gen
 Most browsers allow you to reject all cookies, while some browsers allow you to reject just third party cookies. Blocking all cookies will, however, have a negative impact on the usability of many websites, and we cannot guarantee you the best website performance possible.  	
 
 
-3. Using your personal information 
+#### 3. Using your personal information 
  
 Personal information submitted to us via this website will be used for the purposes specified in this privacy policy or in relevant parts of the website.
  
@@ -34,7 +34,7 @@ We may use your personal information to:
 If you submit personal information for publication on our website, we will publish and otherwise use that information in accordance with the license you grant us. We will not provide your personal information to any third parties for the purpose of direct marketing
 
 
-4. Disclosures
+#### 4. Disclosures
  
 We may disclose information about you to our employees, officers, agents, suppliers and subcontractors insofar as is reasonably necessary for the purposes as set forth in this privacy policy.
  
@@ -45,27 +45,27 @@ In addition, we may disclose your personal information:
 
 Except as provided for in this privacy policy, we will not provide your information to third parties.
 
-5. Security of your personal information
+#### 5. Security of your personal information
  
 We will take reasonable technical to prevent the loss, misuse or alteration of your personal information. All electronic transactions made to or from us will be encrypted using SSL technology. Of course, data transmission over the internet is inherently insecure, and we cannot guarantee the security of data sent over the internet. 
  
 You are responsible for keeping your password and user details confidential. We will not ask you for your password (except when you log in to the website).
 
-6. Policy amendments
+#### 6. Policy amendments
  
 We may update this privacy policy from time to time by posting a new version on our website. You should check this page occasionally to ensure you are happy with any changes. We may also notify you of changes to our privacy policy by email.
 
-7. Your rights
+#### 7. Your rights
  
 You may instruct us to provide you with any personal information we hold about you. We may withhold such personal information to the extent permitted by law.
  
 You may instruct us not to process your personal information for marketing purposes by email at any time. In practice, we will provide you with an opportunity to opt-out of the use of your personal information for marketing purposes.
  
-8. Third party websites
+#### 8. Third party websites
  
 The website contains links to other websites. We are not responsible for the privacy policies or practices of third party websites. 
 
-9. Updating information
+#### 9. Updating information
  
 Please let us know if the personal information which we hold about you needs to be corrected or updated.
  
