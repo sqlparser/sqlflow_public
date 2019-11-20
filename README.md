@@ -43,6 +43,7 @@ by utilizing [the GSP library](http://www.sqlparser.com), then calculate the dat
 
 3. Return a JSON snippet including the data lineage and diagram model to the frontend.
 
+### [Use SQLFlow in your flavor ways](use_sqlflow_in_your_flavor_ways.md)
 
 ### [Install SQLFlow on your own server](install_sqlflow.md)
 
@@ -65,6 +66,7 @@ Authorization: token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZX
 
 In order to use this service, please contact us (support@gudusoft.com) for an authorization token.
 
+#### [Demo](https://github.com/sqlparser/sqlflow_public/tree/master/api/client/csharp)
 
 ### [sqlflow relations](dbobjects_relationship.md)
 The relationship between column and column, column and table/view.
