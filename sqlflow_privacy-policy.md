@@ -3,10 +3,9 @@
 #### 1. What information do we collect?
  
 We may collect, store and use the following kinds of personal information:
-    
-	- Information about your computer and about your visits to and use of this website (including your IP address, geographical location, browser type and version, operating system, referral source, length of visit, page views and website navigation).
-    - Information that you provide us for the purpose of subscribing to our website services, email notifications and/or newsletters.
-    - Any other information that you choose to send us. 
+- Information about your computer and about your visits to and use of this website (including your IP address, geographical location, browser type and version, operating system, referral source, length of visit, page views and website navigation).
+- Information that you provide us for the purpose of subscribing to our website services, email notifications and/or newsletters.
+- Any other information that you choose to send us. 
     
     
 #### 2. Cookies
