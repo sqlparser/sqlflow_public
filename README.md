@@ -46,40 +46,39 @@ by utilizing [the GSP library](http://www.sqlparser.com), then calculate the dat
 3. Return a JSON snippet including the data lineage and diagram model to the frontend.
 
 
+
 ### Use SQLFlow in your flavor ways
 
 #### 1. Visit gudusoft.com website using browser
-You may paste your SQL script into the SQLFlow web page, or upload the SQL file to the site.
-select the correct database and then click the visualize button.
+	You may paste your SQL script into the SQLFlow web page, or upload the SQL file to the site.
+	select the correct database and then click the visualize button.
 
 #### 2. Use RESTFul APIs
-SQLFlow provides RESTful API, so your program can communicate with the SQLFlow backend directly.
-Sending the SQL to SQLFlow backend and receive a JSON snippet including the data lineage and diagram model
-for further processing in your own program.
+	SQLFlow provides RESTful API, so your program can communicate with the SQLFlow backend directly.
+	Sending the SQL to SQLFlow backend and receive a JSON snippet including the data lineage and diagram model
+	for further processing in your own program.
 
-[SQLFlow RESTful API Online](https://api.gudusoft.com/gspLive_backend/swagger-ui.html#!/sqlflow-controller/generateSqlflowUsingPOST)
+	[SQLFlow RESTful API Online](https://api.gudusoft.com/gspLive_backend/swagger-ui.html#!/sqlflow-controller/generateSqlflowUsingPOST) [C# Demo](https://github.com/sqlparser/sqlflow_public/tree/master/api/client/csharp)
 
-Please put the following authorization code in your request header when calling the RESTful API.
+	Please put the following authorization code in your request header when calling the RESTful API.
 
-```json
-Authorization: token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM
-```
-
-[C# Demo](https://github.com/sqlparser/sqlflow_public/tree/master/api/client/csharp)
+	```json
+	Authorization: token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM
+	```
 
 #### 3. Add visualize feature in your own application/website
-The SQLFlow consists of the frontend and backend. Please [check here](https://github.com/sqlparser/sqlflow_public#sqlflow-components) for further information.
-You may setup the frontend on you own web server, or include the frontend in your application to add visualize feature.
+	The SQLFlow consists of the frontend and backend. 
+	You may setup the frontend on you own web server, or include the frontend in your application to add visualize feature.
 
-Your application still need connect to the SQLFlow backend in order to process the SQL code to get data lineage.
+	Your application still need connect to the SQLFlow backend in order to process the SQL code to get data lineage.
 
 #### 4. Install both frontend and backend on your own application/server
-Setup both the frontend and backend of SQLFlow on our server. 
+	Setup both the frontend and backend of SQLFlow on our server. 
 
-Please check the [setup manual](install_sqlflow.md).
+	Please check the [setup manual](install_sqlflow.md).
 
-In order to setup SQLFlow on your own server, Please contact us (support@gudusoft.com) to obtain a commerical license to get all those distribution files.
-Please note that the distribution files doesn’t include the source code of the SQLFlow except the `FlowAnalyzer` which is [open source here](https://github.com/sqlparser/gsp_demo_java/tree/master/src/main/java/demos/dlineage).
+	In order to setup SQLFlow on your own server, Please contact us (support@gudusoft.com) to obtain a commerical license to get all those distribution files.
+	Please note that the distribution files doesn’t include the source code of the SQLFlow except the `FlowAnalyzer` which is [open source here](https://github.com/sqlparser/gsp_demo_java/tree/master/src/main/java/demos/dlineage).
 
 
 ### [sqlflow relations](dbobjects_relationship.md)
