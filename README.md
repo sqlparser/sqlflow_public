@@ -50,10 +50,12 @@ by utilizing [the GSP library](http://www.sqlparser.com), then calculate the dat
 ### Use SQLFlow in your flavor ways
 
 #### 1. Visit gudusoft.com website using browser
+
 	You may paste your SQL script into the SQLFlow web page, or upload the SQL file to the site.
 	select the correct database and then click the visualize button.
 
 #### 2. Use RESTFul APIs
+
 	SQLFlow provides RESTful API, so your program can communicate with the SQLFlow backend directly.
 	Sending the SQL to SQLFlow backend and receive a JSON snippet including the data lineage and diagram model
 	for further processing in your own program.
@@ -67,12 +69,14 @@ by utilizing [the GSP library](http://www.sqlparser.com), then calculate the dat
 	```
 
 #### 3. Add visualize feature in your own application/website
+
 	The SQLFlow consists of the frontend and backend. 
 	You may setup the frontend on you own web server, or include the frontend in your application to add visualize feature.
 
 	Your application still need connect to the SQLFlow backend in order to process the SQL code to get data lineage.
 
 #### 4. Install both frontend and backend on your own application/server
+
 	Setup both the frontend and backend of SQLFlow on our server. 
 
 	Please check the [setup manual](install_sqlflow.md).
