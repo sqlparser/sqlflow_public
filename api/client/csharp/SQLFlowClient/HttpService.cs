@@ -13,11 +13,27 @@ namespace SQLFlowClient
 {
     public static class HttpService
     {
-        static readonly string location = "http://106.54.134.160:8081";
-        static readonly string token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM";
-
         public static async Task Request(Options options)
         {
+            Config config;
+            try
+            {
+                var json = JObject.Parse(File.ReadAllText("./config.json"));
+                if (json["Host"] == null || json["Host"].ToString() == "")
+                {
+                    throw new Exception("Invalid host.");
+                }
+                if (json["Token"] == null || json["Token"].ToString() == "")
+                {
+                    throw new Exception("Invalid token.");
+                }
+                config = json.ToObject<Config>();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Invalid config.json :\n{e.Message}");
+                return;
+            }
             StreamContent sqlfile;
             try
             {
@@ -53,9 +69,9 @@ namespace SQLFlowClient
             };
             try
             {
-                string url = $"{location}/gspLive_backend/sqlflow/generation/sqlflow/" + (options.IsGraph ? "graph" : "");
+                string url = $"{config.Host}/gspLive_backend/sqlflow/generation/sqlflow/" + (options.IsGraph ? "graph" : "");
                 using var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", config.Token);
                 using var response = await client.PostAsync(url, form);
                 var text = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(text);
@@ -75,7 +91,7 @@ namespace SQLFlowClient
             }
             catch (Exception e)
             {
-                Console.WriteLine($"An unknonwn exeception occurs :\n{e.ToString()}");
+                Console.WriteLine($"An unknonwn exeception occurs :\n{e.Message}");
             }
         }
     }
