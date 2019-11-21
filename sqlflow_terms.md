@@ -10,7 +10,35 @@ The Licensor may revise these terms and conditions from time-to-time. Revised te
 will apply to the use of this website from the date of the revised terms and conditions’ publication on this website. 
 Please check this page regularly to ensure you are familiar with the current version.
 
-#### License to use the website
+#### Description of Service
+
+SQLFlow is a cloud service which generates data-lineage and an interactive diagram showing data flows and dependencies 
+of SQL code from their existing data warehouses and relational databases. 
+
+Data professionals benefit from transformation of SQL code into data-lineage maps as it replaces the need to perform manual code analysis.
+
+The SQLFlow service can be accessed via web browser or REST API. The user submits existing SQL code to SQLFlow,
+SQLFlow processes the SQL code and layout an interactive diagram of data flows with added productivity features.
+
+#### License to use the website/Service
+
+SQLFlow is the intellectual property of the Service provider, accessible as a cloud service for the duration of the license provided to 
+the Customer on a subscription basis. The license to use SQLFlow is non-transferable, and non-exclusive. 
+The license is for named users only, and the sharing of accounts is forbidden.
+
+Code submitted by the Customer must be the property of the Customer. If the Customer wishes to submit code owned by a third party, 
+a further agreement must be made with the Service provider to allow this. 
+
+By uploading code to the Service provider, the customer retains full rights and ownership of that code (or does not defer it, in the case of a third party), 
+and gives the Service provider license to securely process that code in order to provide the Service.
+
+The Service provider has the ownership of computed metadata but hereby grants exclusive rights to Customer:
+
+- to freely access, modify or otherwise manipulate such metadata. Metadata can be exported at any given time through the REST API and further processed without any limitations.
+
+- to link to or incorporate aspects of the visualization page into any information system belonging to the Customer (internal wiki, etc.) for internal purposes only. e.g. 
+The Customer is entitled to use or integrate the product of the SQLdep service into their own infrastructure.
+
 
 Unless otherwise stated, the Licensor owns the intellectual property rights to the website and all material on the website. 
 Subject to the license below, all these intellectual property rights are reserved.
@@ -25,6 +53,22 @@ You must not:
 - edit or otherwise modify any material on the website;
 - redistribute material from this website, except for content specifically and expressly made available for redistribution.
 	
+#### Accessing SQLFlow
+To use SQLFlow, the Customer must agree to these terms. It's free to use the SQLFlow service via web browser.
+
+The cusotmer need to pay subscription fee in order to use RESTFul API of SQLFlow Service.
+The Customer must specify the amount of users and intended duration of use. Gudu software will provide an invoice, and upon payment, 
+the Service will be available to the Customer for the specified period. 
+For the purposes of a free trial, the same conditions apply, with the exception that the Customer will not receive an invoice unless a paid service is explicitly requested.
+
+To continue subscription to SQLFlow, the Customer must inform the Service provider no later than 10 days before the end of the current subscription. 
+Access to the Service will continue following the end of the initial subscription period, providing that the subscription fee for the following period is paid. 
+If the Customer wishes to upgrade subscription tier, the difference in subscription costs must be paid in advance.
+
+The Customer has the right to cancel the Service if the service provider breaks any of these terms. 
+In such a case, the equivalent fee for the remaining duration of subscription will be refunded. 
+Otherwise cancellation of the service will not entitle the Customer to a refund for the subscribed period.
+
 	
 #### Acceptable use
  
