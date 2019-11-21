@@ -37,7 +37,7 @@ The Service provider has the ownership of computed metadata but hereby grants ex
 - to freely access, modify or otherwise manipulate such metadata. Metadata can be exported at any given time through the REST API and further processed without any limitations.
 
 - to link to or incorporate aspects of the visualization page into any information system belonging to the Customer (internal wiki, etc.) for internal purposes only. e.g. 
-The Customer is entitled to use or integrate the product of the SQLdep service into their own infrastructure.
+The Customer is entitled to use or integrate the product of the SQLFlow service into their own infrastructure.
 
 
 Unless otherwise stated, the Licensor owns the intellectual property rights to the website and all material on the website. 
