@@ -39,6 +39,18 @@ Run the program from command line:
 ```
 ./SQLFlowClient test.sql -g
 ```
+
+### Use your  configuration 
+
+Open the config.json, input your `host` and `token`, for example:
+
+```json
+{
+	"Host": "http://106.54.134.160:8081",
+	"Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM"
+}
+```
+
 # Usage
 
 SQLFlowClient filepath -parameters
