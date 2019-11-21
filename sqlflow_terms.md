@@ -1,9 +1,9 @@
 ### TERMS & CONDITIONS
 
 This document outlines the terms and conditions under which Gudu Software (“Licensor”), provides license to access its website to visitors (“you”). 
-For the purposes of this Terms & Conditions, “website” is a set of pages located under domain names gudusoft.com” and its subdomains.
+For the purposes of this Terms & Conditions, “website” is a set of pages located under domain names "gudusoft.com" and its subdomains.
  
-These terms and conditions govern your use of this website; by using this website, you accept these terms and conditions in full. 
+These terms and conditions govern your use of this website/service, by using this website/service, you accept these terms and conditions in full. 
 If you disagree with these terms and conditions or any part of these terms and conditions, you must not use this website. 
  
 The Licensor may revise these terms and conditions from time-to-time. Revised terms and conditions 
@@ -29,7 +29,7 @@ The license is for named users only, and the sharing of accounts is forbidden.
 Code submitted by the Customer must be the property of the Customer. If the Customer wishes to submit code owned by a third party, 
 a further agreement must be made with the Service provider to allow this. 
 
-By uploading code to the Service provider, the customer retains full rights and ownership of that code (or does not defer it, in the case of a third party), 
+By uploading code to the Service provider, the customer retains full rights and ownership of that code, 
 and gives the Service provider license to securely process that code in order to provide the Service.
 
 The Service provider has the ownership of computed metadata but hereby grants exclusive rights to Customer:
