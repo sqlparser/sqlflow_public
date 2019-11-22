@@ -1,8 +1,4 @@
 # Get Started
-### Dowload source code and program
-```
-git clone https://github.com/sqlparser/sqlflow_public.git
-```
 ### Download the executable program depends on your operating system.
 
 - [windows](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/win/SQLFlowClient.exe)
