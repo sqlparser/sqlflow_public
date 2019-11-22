@@ -15,19 +15,25 @@ namespace SQLFlowClient
     {
         public static async Task Request(Options options)
         {
-            Config config;
+            var config = new Config
+            {
+                Host = "http://106.54.134.160:8081",
+                Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM"
+            };
             try
             {
-                var json = JObject.Parse(File.ReadAllText("./config.json"));
-                if (json["Host"] == null || json["Host"].ToString() == "")
+                if (File.Exists("./config.json"))
                 {
-                    throw new Exception("Invalid host.");
+                    var json = JObject.Parse(File.ReadAllText("./config.json"));
+                    if (json["Host"] != null && json["Host"].ToString() != "")
+                    {
+                        config.Host = json["Host"].ToString();
+                    }
+                    if (json["Token"] != null && json["Token"].ToString() != "")
+                    {
+                        config.Token = json["Token"].ToString();
+                    }
                 }
-                if (json["Token"] == null || json["Token"].ToString() == "")
-                {
-                    throw new Exception("Invalid token.");
-                }
-                config = json.ToObject<Config>();
             }
             catch (Exception e)
             {
