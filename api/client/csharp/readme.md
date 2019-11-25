@@ -1,5 +1,5 @@
 # Get Started
-### Download the executable program depends on your operating system.
+### [Download](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/) the executable program depends on your operating system.
 
 - [windows](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/win/SQLFlowClient.exe)
 - [mac](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/osx/SQLFlowClient)
@@ -52,7 +52,7 @@ SQLFlowClient filepath -parameter value
 | parameter          | short | value type                                                   | default |                                   |
 | ------------------ | ----- | ------------------------------------------------------------ | ------- | --------------------------------- |
 | --graph            | -g    | boolean                                                      | false   | Get the graph from sql.           |
-| --dbvendor         | -v    | one of the following list :<br /> bigquery, couchbase, db2, greenplum, hana ,<br /> hive, impala , informix, mdx, mysql, netezza,<br /> openedge, oracle, postgresql, redshift,<br /> snowflake, mssql, sybase, teradata, vertica | oracle  | Set the database of the sqlfile.  |
+| --dbvendor         | -v    | one of the following list :<br />bigquery, couchbase, db2, greenplum, <br />hana , hive, impala , informix, <br />mdx, mysql, netezza, openedge, <br />oracle, postgresql, redshift, snowflake, <br />mssql, sybase, teradata, vertica | oracle  | Set the database of the sqlfile.  |
 | --showRelationType | -r    | one or more from the following list :<br /> fdd, fdr, frd, fddi, join | fdd     | Set the relation type.            |
 | --simpleOutput     | -s    | boolean                                                      | false   | Set whether to get simple output. |
 | --help             |       |                                                              |         | Display this help screen.         |
@@ -87,5 +87,5 @@ dotnet publish -c Release /p:PublishProfile=Properties\PublishProfiles\osx.pubxm
 dotnet publish -c Release /p:PublishProfile=Properties\PublishProfiles\win.pubxml
 ```
 
-
+### [Download executable programs](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/)
 
