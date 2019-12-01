@@ -20,6 +20,9 @@ namespace SQLFlowClient
 
         [Option('s', "simpleOutput", Required = false, Default = false, HelpText = "Set whether to get simple output.")]
         public bool SimpleOutput { get; set; }
+
+        [Option('o', "output", Required = false, Default = "", HelpText = "Save output as a file.")]
+        public string Output { get; set; }
     }
 
     class Program

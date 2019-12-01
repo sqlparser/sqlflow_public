@@ -89,6 +89,18 @@ namespace SQLFlowClient
                 else if (data != null)
                 {
                     Console.WriteLine(data ?? "");
+                    if (options.Output != "")
+                    {
+                        try
+                        {
+                            File.WriteAllText(Path.GetFullPath(options.Output), data);
+                            Console.WriteLine($"\nOutput has been saved to {options.Output}");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"\nSave File failed.{e.Message}");
+                        }
+                    }
                 }
                 else
                 {
