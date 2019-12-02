@@ -84,11 +84,8 @@ namespace SQLFlowClient
                     var text = await response.Content.ReadAsStringAsync();
                     var json = JObject.Parse(text);
                     var data = json["data"]?.ToString();
-                    if (json["error"]?.ToString() != null)
-                    {
-                        Console.WriteLine($"{json["message"]?.ToString() ?? ""}");
-                    }
-                    else if (data != null)
+                    var dbobjs = json.SelectToken("data.dbobjs");
+                    if (data != null && dbobjs != null)
                     {
                         Console.WriteLine(data ?? "");
                         if (options.Output != "")
@@ -103,6 +100,10 @@ namespace SQLFlowClient
                                 Console.WriteLine($"\nSave File failed.{e.Message}");
                             }
                         }
+                    }
+                    if (json["error"]?.ToString() != null)
+                    {
+                        Console.WriteLine($"Success with some errors.");
                     }
                 }
                 else
