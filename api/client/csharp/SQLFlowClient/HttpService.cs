@@ -79,26 +79,29 @@ namespace SQLFlowClient
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", config.Token);
                 using var response = await client.PostAsync(url, form);
-                var text = await response.Content.ReadAsStringAsync();
-                var json = JObject.Parse(text);
-                var data = json["data"]?.ToString();
-                if (json["error"]?.ToString() != null)
+                if (response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine($"{json["message"]?.ToString() ?? ""}");
-                }
-                else if (data != null)
-                {
-                    Console.WriteLine(data ?? "");
-                    if (options.Output != "")
+                    var text = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(text);
+                    var data = json["data"]?.ToString();
+                    if (json["error"]?.ToString() != null)
                     {
-                        try
+                        Console.WriteLine($"{json["message"]?.ToString() ?? ""}");
+                    }
+                    else if (data != null)
+                    {
+                        Console.WriteLine(data ?? "");
+                        if (options.Output != "")
                         {
-                            File.WriteAllText(Path.GetFullPath(options.Output), data);
-                            Console.WriteLine($"\nOutput has been saved to {options.Output}");
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine($"\nSave File failed.{e.Message}");
+                            try
+                            {
+                                File.WriteAllText(Path.GetFullPath(options.Output), data);
+                                Console.WriteLine($"\nOutput has been saved to {options.Output}");
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine($"\nSave File failed.{e.Message}");
+                            }
                         }
                     }
                 }
