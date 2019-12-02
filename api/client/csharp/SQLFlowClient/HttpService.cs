@@ -17,7 +17,7 @@ namespace SQLFlowClient
         {
             var config = new Config
             {
-                Host = "http://106.54.134.160:8081",
+                Host = "https://api.gudusoft.com",
                 Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM"
             };
             try
@@ -84,11 +84,8 @@ namespace SQLFlowClient
                     var text = await response.Content.ReadAsStringAsync();
                     var json = JObject.Parse(text);
                     var data = json["data"]?.ToString();
-                    if (json["error"]?.ToString() != null)
-                    {
-                        Console.WriteLine($"{json["message"]?.ToString() ?? ""}");
-                    }
-                    else if (data != null)
+                    var dbobjs = json.SelectToken("data.dbobjs");
+                    if (data != null && dbobjs != null)
                     {
                         Console.WriteLine(data ?? "");
                         if (options.Output != "")
@@ -96,13 +93,17 @@ namespace SQLFlowClient
                             try
                             {
                                 File.WriteAllText(Path.GetFullPath(options.Output), data);
-                                Console.WriteLine($"\nOutput has been saved to {options.Output}");
+                                Console.WriteLine($"Output has been saved to {options.Output}.");
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine($"\nSave File failed.{e.Message}");
+                                Console.WriteLine($"Save File failed.{e.Message}");
                             }
                         }
+                    }
+                    if (json["error"]?.ToString() != null)
+                    {
+                        Console.WriteLine($"Success with some errors.");
                     }
                 }
                 else
