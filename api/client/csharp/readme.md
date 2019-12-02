@@ -34,11 +34,11 @@ Run the program from command line:
 
 ### Use your  own configuration 
 
-If you want to use your own server and token, create the a file named config.json in directory where executable exists, and then input your `host` and `token`, for example:
+If you want to use your own server and token, create the a file named `config.json` in directory where executable exists, and then input your `host` and `token`, for example:
 
 ```json
 {
-	"Host": "http://106.54.134.160:8081",
+	"Host": "https://api.gudusoft.com",
 	"Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM"
 }
 ```
