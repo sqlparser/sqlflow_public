@@ -72,6 +72,7 @@ namespace SQLFlowClient
                 { new StringContent("dbv"+dbvendor)                      , "dbvendor"         },
                 { new StringContent(options.ShowRelationType)            , "showRelationType" },
                 { new StringContent(options.SimpleOutput.ToString())     , "simpleOutput"     },
+                { new StringContent(options.IgnoreRecordSet.ToString())  , "ignoreRecordSet"  },
             };
             try
             {
