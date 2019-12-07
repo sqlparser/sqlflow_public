@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using System.Diagnostics;
 
 namespace SQLFlowClient
 {
@@ -15,6 +16,7 @@ namespace SQLFlowClient
     {
         public static async Task Request(Options options)
         {
+            var stopWatch = Stopwatch.StartNew();
             var config = new Config
             {
                 Host = "https://api.gudusoft.com",
@@ -82,13 +84,13 @@ namespace SQLFlowClient
                 using var response = await client.PostAsync(url, form);
                 if (response.IsSuccessStatusCode)
                 {
+                    stopWatch.Stop();
                     var text = await response.Content.ReadAsStringAsync();
                     var json = JObject.Parse(text);
                     var data = json["data"]?.ToString();
                     var dbobjs = json.SelectToken("data.dbobjs");
                     if (data != null && dbobjs != null)
                     {
-                        Console.WriteLine(data ?? "");
                         if (options.Output != "")
                         {
                             try
@@ -101,10 +103,18 @@ namespace SQLFlowClient
                                 Console.WriteLine($"Save File failed.{e.Message}");
                             }
                         }
+                        else
+                        {
+                            Console.WriteLine(data ?? "");
+                        }
                     }
                     if (json["error"]?.ToString() != null)
                     {
-                        Console.WriteLine($"Success with some errors.");
+                        Console.WriteLine($"Success with some errors.Executed in {stopWatch.Elapsed.TotalSeconds.ToString("0.00")} seconds by host {config.Host}.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Success.Executed in {stopWatch.Elapsed.TotalSeconds.ToString("0.00")} seconds by host {config.Host}.");
                     }
                 }
                 else
