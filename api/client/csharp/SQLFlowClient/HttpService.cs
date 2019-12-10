@@ -89,7 +89,9 @@ namespace SQLFlowClient
                     var json = JObject.Parse(text);
                     var data = json["data"]?.ToString();
                     var dbobjs = json.SelectToken("data.dbobjs");
-                    if (data != null && dbobjs != null)
+                    var sqlflow = json.SelectToken("data.sqlflow");
+                    var graph = json.SelectToken("data.graph");
+                    if (data != null && dbobjs != null || data != null && sqlflow != null && graph != null)
                     {
                         if (options.Output != "")
                         {
