@@ -8,6 +8,12 @@ The frontend and backend can be installed on the same server, or they can be ins
 - Java 8
 - Nginx web server.
 
+### setup Environment (Ubuntu for example)
+	sudo apt-get update
+	sudo apt-get install nginx
+		(web root: /var/www/nginx-default)
+	sudo apt-get install default-jre	
+
 ### Frontend
 The SQLFlow frontend is written in Typescript and the distribution files include some obfuscated javascript files along with some css and html files.
 
@@ -26,7 +32,8 @@ Just copy those files into the directory under web root(such as `/var/www/html`)
 
 - "ApiPrefix": "http://127.0.0.1:8081"
 
-	set your own IP address and keep port 8081 if it's unchanged during the installation of backend.
+	Default is empty and no need to change it if the frontend is installed on the same server as the backend.
+	Otherwise, set your own IP and port like above.  The default port is 8081.
 
 - "base64token": ""  
 
