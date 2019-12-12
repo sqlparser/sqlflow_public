@@ -1,6 +1,6 @@
 ### TERMS & CONDITIONS
 
-This document outlines the terms and conditions under which Gudu Software (“Licensor”), provides license to access its website to visitors (“you”). 
+This document outlines the terms and conditions under which Gudu Software (“Licensor”), provides license to access its website/service to visitors (“you”). 
 For the purposes of this Terms & Conditions, “website” is a set of pages located under domain names "gudusoft.com" and its subdomains.
  
 These terms and conditions govern your use of this website/service, by using this website/service, you accept these terms and conditions in full. 
@@ -17,7 +17,7 @@ of SQL code from their existing data warehouses and relational databases.
 
 Data professionals benefit from transformation of SQL code into data-lineage maps as it replaces the need to perform manual code analysis.
 
-The SQLFlow service can be accessed via web browser or REST API. The user submits existing SQL code to SQLFlow,
+The SQLFlow service can be accessed via web browser or REST API or setup on your own server. The user submits existing SQL code to SQLFlow,
 SQLFlow processes the SQL code and layout an interactive diagram of data flows with added productivity features.
 
 #### License to use the website/Service
@@ -68,6 +68,11 @@ If the Customer wishes to upgrade subscription tier, the difference in subscript
 The Customer has the right to cancel the Service if the service provider breaks any of these terms. 
 In such a case, the equivalent fee for the remaining duration of subscription will be refunded. 
 Otherwise cancellation of the service will not entitle the Customer to a refund for the subscribed period.
+
+#### Setup SQLFlow on your own server
+The cusotmer need to pay a one time license fee in order to setup SQLFlow on their own server.
+Customer may install the SQLFlow only on one server. 
+No more than ten IP address allowed to access the RESTFul API.
 
 	
 #### Acceptable use
