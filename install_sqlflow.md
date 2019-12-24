@@ -78,9 +78,11 @@ Please modify the path accordingly in the shell script if you change this path o
 Add `-Xms -Xmx` option in `sqlserver.sh` and `gspLive.sh` if 8G memory is available on the server.
 
 gspLive.sh
+
 	nohup java -server -Xms2048m -Xmx2048m -jar gspLive.jar >> gspLive.out 2>&1 & 
 	
-sqlserver.sh	
+sqlserver.sh
+	
 	nohup java -server -Xmn512m -Xms4096m -Xmx4096m -Djavax.accessibility.assistive_technologies=" " -jar sqlservice.jar  >> sqlservice.out 2>&1 & 
 
 #### Change the service port
