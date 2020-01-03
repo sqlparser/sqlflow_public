@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
 using CommandLine;
+using CommandLine.Text;
 
 namespace SQLFlowClient
 {
     public class Options
     {
-        [Value(0, MetaName = "sqlfile", Required = true, HelpText = "Input sqlfile to be processed.")]
+        [Value(0, MetaName = "sqlfile", Required = false, HelpText = "Input sqlfile to be processed.")]
         public string SQLFile { get; set; }
 
         [Option('g', "graph", Required = false, Default = false, HelpText = "Get the graph from sql.")]
@@ -26,16 +27,36 @@ namespace SQLFlowClient
 
         [Option('o', "output", Required = false, Default = "", HelpText = "Save output as a file.")]
         public string Output { get; set; }
+
+        [Option("version", Required = false, Default = false, HelpText = "Show version.")]
+        public bool Version { get; set; }
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Parser.Default.ParseArguments<Options>(args).WithParsed(options =>
-           {
-               HttpService.Request(options).Wait();
-           });
+            var parser = new Parser(with =>
+            {
+                with.AutoVersion = false;
+                with.AutoHelp = true;
+            });
+            var parserResult = parser.ParseArguments<Options>(args); ;
+            parserResult
+            .WithParsed(options =>
+            {
+                HttpService.Request(options).Wait();
+            })
+            .WithNotParsed(errs =>
+            {
+                var helpText = HelpText.AutoBuild(parserResult, h =>
+                {
+                    h.AutoHelp = true;
+                    h.AutoVersion = false;
+                    return h;
+                }, e => e);
+                Console.WriteLine(helpText);
+            });
         }
     }
 }

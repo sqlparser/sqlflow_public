@@ -14,10 +14,11 @@ namespace SQLFlowClient
 {
     public static class HttpService
     {
+        private static Config config;
+
         public static async Task Request(Options options)
         {
-            var stopWatch = Stopwatch.StartNew();
-            var config = new Config
+            config = new Config
             {
                 Host = "https://api.gudusoft.com",
                 Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM"
@@ -42,7 +43,26 @@ namespace SQLFlowClient
                 Console.WriteLine($"Invalid config.json :\n{e.Message}");
                 return;
             }
+            if (options.Version)
+            {
+                await Version();
+            }
+            else
+            {
+                await SQLFlow(options);
+            }
+
+        }
+
+        public static async Task SQLFlow(Options options)
+        {
+            var stopWatch = Stopwatch.StartNew();
             StreamContent sqlfile;
+            if (options.SQLFile == null)
+            {
+                Console.WriteLine($"Please specify an input file. (e.g. SQLFlowClient test.sql)");
+                return;
+            }
             try
             {
                 string path = Path.GetFullPath(options.SQLFile);
@@ -122,6 +142,44 @@ namespace SQLFlowClient
                 else
                 {
                     Console.WriteLine($"Wrong response code {(int)response.StatusCode} {response.StatusCode}.");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"An unknonwn exeception occurs :\n{e.Message}");
+            }
+        }
+
+        public static async Task Version()
+        {
+            try
+            {
+                string url = $"{config.Host}/gspLive_backend/version";
+                using var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", config.Token);
+                using var response = await client.PostAsync(url, new StringContent(""));
+                if (response.IsSuccessStatusCode)
+                {
+                    var text = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(text);
+                    var gsp = new
+                    {
+                        ReleaseDate = json.SelectToken("version.gsp.['release.date']")?.ToString(),
+                        version = json.SelectToken("version.gsp.version")?.ToString(),
+                    };
+                    var backend = new
+                    {
+                        ReleaseDate = json.SelectToken("version.backend.['release.date']")?.ToString(),
+                        version = json.SelectToken("version.backend.version")?.ToString(),
+                    };
+                    Console.WriteLine("                 version        relase date");
+                    Console.WriteLine("SQLFlowClient    1.0.8          2020/1/3");
+                    Console.WriteLine($"gsp              {gsp.version}        {gsp.ReleaseDate}");
+                    Console.WriteLine($"backend          {backend.version}          {backend.ReleaseDate}");
+                }
+                else
+                {
+                    Console.WriteLine($"Not connected.Wrong response code {(int)response.StatusCode} {response.StatusCode}.");
                 }
             }
             catch (Exception e)
