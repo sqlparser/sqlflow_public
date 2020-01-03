@@ -1,5 +1,5 @@
 # Get Started
-### [Download](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/) the executable program depends on your operating system.
+### [Download](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/) the executable program according to your operating system.
 
 - [windows](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/win/SQLFlowClient.exe)
 - [mac](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/osx/SQLFlowClient)
