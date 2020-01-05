@@ -56,7 +56,6 @@ namespace SQLFlowClient
 
         public static async Task SQLFlow(Options options)
         {
-            var stopWatch = Stopwatch.StartNew();
             StreamContent sqlfile;
             if (options.SQLFile == null)
             {
@@ -98,6 +97,7 @@ namespace SQLFlowClient
             };
             try
             {
+                var stopWatch = Stopwatch.StartNew();
                 string url = $"{config.Host}/gspLive_backend/sqlflow/generation/sqlflow/" + (options.IsGraph ? "graph" : "");
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", config.Token);
@@ -106,18 +106,14 @@ namespace SQLFlowClient
                 {
                     stopWatch.Stop();
                     var text = await response.Content.ReadAsStringAsync();
-                    var json = JObject.Parse(text);
-                    var data = json["data"]?.ToString();
-                    var dbobjs = json.SelectToken("data.dbobjs");
-                    var sqlflow = json.SelectToken("data.sqlflow");
-                    var graph = json.SelectToken("data.graph");
-                    if (data != null && dbobjs != null || data != null && sqlflow != null && graph != null)
+                    var result = new SQLFlowResult(text);
+                    if (result.data && result.dbobjs || result.data && result.sqlflow && result.graph)
                     {
                         if (options.Output != "")
                         {
                             try
                             {
-                                File.WriteAllText(Path.GetFullPath(options.Output), data);
+                                File.WriteAllText(Path.GetFullPath(options.Output), result.json);
                                 Console.WriteLine($"Output has been saved to {options.Output}.");
                             }
                             catch (Exception e)
@@ -127,10 +123,10 @@ namespace SQLFlowClient
                         }
                         else
                         {
-                            Console.WriteLine(data ?? "");
+                            Console.WriteLine(result.json ?? "");
                         }
                     }
-                    if (json["error"]?.ToString() != null)
+                    if (result.error)
                     {
                         Console.WriteLine($"Success with some errors.Executed in {stopWatch.Elapsed.TotalSeconds.ToString("0.00")} seconds by host {config.Host}.");
                     }
@@ -173,7 +169,7 @@ namespace SQLFlowClient
                         version = json.SelectToken("version.backend.version")?.ToString(),
                     };
                     Console.WriteLine("                 version        relase date");
-                    Console.WriteLine("SQLFlowClient    1.0.8          2020/1/3");
+                    Console.WriteLine("SQLFlowClient    1.0.9          2020/1/5");
                     Console.WriteLine($"gsp              {gsp.version}        {gsp.ReleaseDate}");
                     Console.WriteLine($"backend          {backend.version}          {backend.ReleaseDate}");
                 }
