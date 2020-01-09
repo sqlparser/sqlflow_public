@@ -15,6 +15,7 @@ The frontend and backend can be installed on the same server, or they can be ins
 	sudo apt-get install default-jre	
 
 CentOS
+
 	- [How To Install Nginx on CentOS](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7)
 	- [How To Install Java on CentOS ](https://www.digitalocean.com/community/tutorials/how-to-install-java-on-centos-and-fedora)
 	
