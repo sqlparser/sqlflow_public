@@ -164,21 +164,33 @@ alter table t2 swap with t3;
 create table t4 as select * from t3;
 ```
 
-We introduce two table-table type relation, `fttr` stands for Table to Table Rename, and `ftts` stands for Table to Table Swap.
+We also use `fdd` to reprenst those 2 relations.
 
-**fttr**
 ```sql
 alter table t2 rename to t3;
 ```
 This relation should be built in the dataflow output.
-`t2` -> fttr -> `t3`
+`t2` -> fdd -> `t3`
 
-**ftts**
+```xml
+<relation id="1" type="fdd" effectType="renameTable">
+  <target id="5" target_name="t3" coordinate="x,y"/>
+  <source source_id="1" source_name="t2" coordinate="x,y"/>
+</relation>
+```
+
+
 ```sql
 alter table t2 swap with t3;
 ```
 This relation should be built in the dataflow output.
-`t2` -> ftts -> `t3`
+`t2` -> fdd -> `t3`
 
+```xml
+<relation id="1" type="fdd" effectType="swapTable">
+  <target id="5" target_name="t2" coordinate="x,y"/>
+  <source source_id="1" source_name="t3" coordinate="x,y"/>
+</relation>
+```
 
 
