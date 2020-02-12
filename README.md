@@ -64,7 +64,7 @@ by utilizing [the GSP library](http://www.sqlparser.com), then calculate the dat
 	Please put the following authorization code in your request header when calling the RESTful API.
 
 	```json
-	Authorization: token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM
+	Authorization: token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU
 	```
 
 3. Add visualize feature in your own application/website
