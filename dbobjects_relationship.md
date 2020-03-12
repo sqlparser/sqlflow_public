@@ -2,8 +2,8 @@
 
 ### the main relation type in dataflow 
 1. column to column dataflow, the data of target column is coming from the source column(fdd). 
-2. column to resultset(mainly select list), the row number of the resultset is impacted by the source column(fdr).
-3. resultset to resultset, the row number of a source table in the from clause impact the row number of the target select list.(fdr)
+2. column to resultset(mainly select list), the number of row in the resultset is impacted by the source column(fdr).
+3. resultset to resultset, the number of row in a source table in the from clause impact the number of row in the target select list.(fdr)
 
 ### analyze dataflow in the different SQL elements -  part 1
 1. select list
@@ -35,7 +35,7 @@ The total row number of the select list is impacted by the value of column `sal`
 sal -> fdr -> resultset.pseudoRows
 ```
 
-As you can see, we introduced a new pseudo column: `pseudoRows` here to represents the row number of the resultset.
+As you can see, we introduced a new pseudo column: `pseudoRows` here to represents the number of row in the resultset.
 
 #### 3. function
 In the dataflow analyzing, `function` plays a key role. It accepts arguments which usually is column and generate resultset which maybe a scalar value or a set value. 
@@ -144,7 +144,7 @@ TT.teur -> fdd -> teur
 
 #### 2. join condition
 
-Columns in the join condition also effect the row number of resultset of the select list just like column in the where clause do. So, the following relation will be discoverd in the above SQL.
+Columns in the join condition also effect the number of row of resultset of the select list just like column in the where clause do. So, the following relation will be discoverd in the above SQL.
 ```
 tbl.key -> fdr -> resultset.PseudoRows
 TT.key -> fdr -> resultset.PseudoRows
