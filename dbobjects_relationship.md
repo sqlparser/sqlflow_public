@@ -1,11 +1,11 @@
 ## The basic concept of the dataflow
 
-### the main relation type in dataflow 
+### The main relation type in dataflow 
 1. column to column dataflow, the data of target column is coming from the source column(fdd). 
 2. column to resultset(mainly select list), the number of row in the resultset is impacted by the source column(fdr).
 3. resultset to resultset, the number of row in a source table in the from clause impact the number of row in the target select list.(fdr)
 
-### analyze dataflow in the different SQL elements -  part 1
+### Analyze dataflow in the different SQL elements -  part 1
 1. select list
 2. where clause
 3. function (case expression)
@@ -75,7 +75,7 @@ scott.emp.pseudoRows -> fdr -> SUM(SAL) -> fdd -> sal_sum
 The above rules apply to all aggregation functions, such as the `count()` function in the SQL.
 
 #### 5. From clause
-If the resultset of a subquery or CTE is used in the from clause of the upper-level statement, then the impact of the lower level resultset  will be transferred to the uplevel. 
+If the resultset of a subquery or CTE is used in the from clause of the upper-level statement, then the impact of the lower level resultset  will be transferred to the upper-level. 
 ```sql
 WITH
   cteReports (EmpID, FirstName, LastName, MgrID, EmpLevel)
@@ -105,12 +105,13 @@ Employees.ManagerID -> fdr -> resultset2.pseudoRows
 ```
 
 
-### handle the dataflow chain
-every relation in the SQL is picked up by the tool, and connected together to show the whole dataflow chain. Sometimes, we need to see only the end to end relation and ignore all the intermediate relation.
+### Handle the dataflow chain
+Every relation in the SQL is picked up by the tool, and connected together to show the whole dataflow chain. 
+Sometimes, we only need to see the end to end relation and ignore all the intermediate relations.
 
-If we need to convert a fully chained dataflow to an `end to end ` dataflow, we may consider the following rules:
+If we need to convert a fully chained dataflow to an `end to end` dataflow, we may consider the following rules:
 
-1. A single dataflow chain with mixed relation type: fdd and fdr. 
+1. A single dataflow chain with the mixed relation types: fdd and fdr. 
     ```
     A -> fdd -> B -> fdr -> C -> fdd -> D
     ```
@@ -137,7 +138,8 @@ If we need to convert a fully chained dataflow to an `end to end ` dataflow, we 
  	end teur
  from tbl a left join TT b on (a.key=b.key)
 ```
-During the analyzing of dataflow, case expression is treated as a function. The column used inside the case expression will be analyzed like the arguments of a function. So for the above SQL, the following relation is discovered:
+During the analyzing of dataflow, case expression is treated as a function. The column used inside the case expression will be treated like the arguments of a function. 
+So for the above SQL, the following relation is discovered:
 ```
 tbl.kamut -> fdd -> teur
 TT.teur -> fdd -> teur
@@ -145,7 +147,8 @@ TT.teur -> fdd -> teur
 
 #### 2. join condition
 
-Columns in the join condition also effect the number of row of resultset of the select list just like column in the where clause do. So, the following relation will be discoverd in the above SQL.
+Columns in the join condition also effect the number of row in the resultset of the select list just like column in the where clause do. 
+So, the following relation will be discoverd in the above SQL.
 ```
 tbl.key -> fdr -> resultset.PseudoRows
 TT.key -> fdr -> resultset.PseudoRows
@@ -158,7 +161,7 @@ SELECT a.empName "eName"
 FROM scott.emp a
 Where sal > 1000
 ```
-From this query, you will see how the column `sal` in where clause impact the number of rows in the view `vEmp`.
+From this query, you will see how the column `sal` in where clause impact the number of rows in the top level view `vEmp`.
 ```
 scott.emp.sal -> fdr -> resultset1.PseudoRows -> fdr -> vEmp.PseudoRows
 ```
@@ -172,7 +175,7 @@ scott.emp.sal -> fdr -> vEmp.PseudoRows
 ```sql
 alter table t2 rename to t3;
 ```
-We also use `PseudoRows` to represent the relation when rename table, the relation type is `fdd`.
+We also use `PseudoRows` to represent the relation when rename a table, the relation type is `fdd`.
 ```
 t2.PseudoRows -> fdd -> t3.PseudoRows
 ```
