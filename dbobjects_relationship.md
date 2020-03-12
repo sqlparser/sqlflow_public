@@ -32,10 +32,10 @@ Where sal > 1000
 ```
 The total number of row in the select list is impacted by the value of column `sal` in the where clause. So we have a dataflow relation like this:
 ```
-sal -> fdr -> resultset.pseudoRows
+sal -> fdr -> resultset.PseudoRows
 ```
 
-As you can see, we introduced a new pseudo column: `pseudoRows` here to represents the number of row in the resultset.
+As you can see, we introduced a new pseudo column: `PseudoRows` to represents the number of rows in the resultset.
 
 #### 3. function
 In the dataflow analyzing, `function` plays a key role. It accepts arguments which usually is column and generate resultset which maybe a scalar value or a set value. 
