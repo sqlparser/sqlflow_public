@@ -38,7 +38,7 @@ sal -> fdr -> resultset.PseudoRows
 As you can see, we introduced a new pseudo column: `PseudoRows` to represents the number of rows in the resultset.
 
 #### 3. function
-In the dataflow analyzing, `function` plays a key role. It accepts arguments which usually is column and generate resultset which maybe a scalar value or a set value. 
+During the dataflow analyzing, `function` plays a key role. It accepts arguments which usually is column and generate resultset which maybe a scalar value or a set value. 
 ```sql
 select round(salary) as sal from scott.emp
 ```
@@ -58,12 +58,13 @@ GROUP BY deptno
 
 ##### 4.1 
 
-since `SUM()` is an aggregate function, so `deptno` column in the group by clause will be treated as an implict argument of the `SUM()` function. However, `deptno` column doesn't directly contribute the value to the `SUM()` function as column `SAL` does, So, we have this relation:
+since `SUM()` is an aggregate function, so `deptno` column in the group by clause will be treated as an implict argument of the `SUM()` function. 
+However, `deptno` column doesn't directly contribute the value to the `SUM()` function as column `SAL` does, So, the relation type is `fdr`:
 ```
 scott.emp.deptno -> fdr -> SUM(SAL) -> fdd -> sal_sum
 ```
 
-Columns in the having clause have the same relation as mentioned above.
+the columns in the having clause have the same relation as the columns in the group by clause as mentioned above.
 
 ##### 4.2  
 The value of `SUM()` function also effected by the total rows of the table `scott.emp`, so, there is a relation like this:
