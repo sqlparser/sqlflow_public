@@ -1,7 +1,4 @@
-========================================================================================================================================================================================================
-SQLFlow API Python Client Documentation
-========================================================================================================================================================================================================
-
+## SQLFlow API Python Client Documentation
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DESCRIPTION
@@ -79,39 +76,34 @@ Please note that this method will only execute the exporting of API results of s
 CODE EXAMPLES
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Initialize API client
+## Initialize API client
 
 client = SQLFlowClient()
 
-# =============================================================================
 
-# Configure the API parameters
+### Configure the API parameters
 
 client.configure('dbvmssql', 'fddi', 'false', 'false')
 
-# Check config values after setting the parameters
+### Check config values after setting the parameters
 
 print(client.config)
 
-# =============================================================================
-
-# Execute the analysis of a single script file
+### Execute the analysis of a single script file
 
 client.analyze_script('C:/Users/TESTUSER/Desktop/EXAMPLESCRIPT.sql')
 
-# Check stored API response of the previous step
+### Check stored API response of the previous step
 
 print(client.results)
 
-# =============================================================================
 
-# Export the stored response
+### Export the stored response
 
 client.export_results('C:/Users/TESTUSER/Desktop/EXPORTFOLDER')
 
-# =============================================================================
 
-# Execute mass processing of SQL scripts in a folder with an export folder specified
+### Execute mass processing of SQL scripts in a folder with an export folder specified
 
 client.mass_process_scripts('C:/Users/TESTUSER/Desktop/SOURCEFOLDER', 'C:/Users/TESTUSER/Desktop/EXPORTFOLDER')
 
