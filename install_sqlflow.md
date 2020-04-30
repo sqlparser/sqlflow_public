@@ -7,7 +7,7 @@ The frontend and backend can be installed on the same server, or they can be ins
 - A linux server with at least 8GB memory.
 - Java 8
 - Nginx web server. 
-- Port need to be opened. (80, 8761,8081,8083)
+- Port needs to be opened. (80, 8761,8081,8083)
 
 ### setup Environment (Ubuntu for example)
 	sudo apt-get update
