@@ -15,8 +15,8 @@ Secondly, create a new file, insert sqlflow.js and sqlflow.css in the head.
     <!-- use jquery, this is optional -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" integrity="sha256-spTpc4lvj4dOkKjrGokIrHkJgNA0xMS98Pw9N7ir9oI=" crossorigin="anonymous"></script>
     <!-- insert sqlflow.js and sqlflow.css in the head -->
-	<script type="text/javascript" src="sqlflow.js"></script>
-	<link href="sqlflow.css" rel="stylesheet">
+    <script type="text/javascript" src="sqlflow.js"></script>
+    <link href="sqlflow.css" rel="stylesheet">
 </head>
 <body>
 </body>
@@ -35,8 +35,8 @@ Lastly, create a root element, and create a SQLFlow instance on that element.
     <!-- use jquery, this is optional -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" integrity="sha256-spTpc4lvj4dOkKjrGokIrHkJgNA0xMS98Pw9N7ir9oI=" crossorigin="anonymous"></script>
     <!-- insert sqlflow.js and sqlflow.css in the head -->
-	<script type="text/javascript" src="sqlflow.js"></script>
-	<link href="sqlflow.css" rel="stylesheet">
+    <script type="text/javascript" src="sqlflow.js"></script>
+    <link href="sqlflow.css" rel="stylesheet">
 </head>
 <body>
     <!-- create a root element -->
@@ -46,50 +46,50 @@ Lastly, create a root element, and create a SQLFlow instance on that element.
 <script>
 	$(function () {
         // create an instance
-		var sqlflow = new SQLFlow({
-			el: document.getElementById("app"),
-		});
+	var sqlflow = new SQLFlow({
+		el: document.getElementById("app"),
+	});
 
         // set a dbvendor
-		sqlflow.setDbvendor("oracle");
+	sqlflow.setDbvendor("oracle");
 
         // set sql text
-		sqlflow.setSQLText("CREATE VIEW vsal \n" +
-				"AS \n" +
-				"  SELECT a.deptno                  \"Department\", \n" +
-				"         a.num_emp / b.total_count \"Employees\", \n" +
-				"         a.sal_sum / b.total_sal   \"Salary\" \n" +
-				"  FROM   (SELECT deptno, \n" +
-				"                 Count()  num_emp, \n" +
-				"                 SUM(sal) sal_sum \n" +
-				"          FROM   scott.emp \n" +
-				"          WHERE  city = 'NYC' \n" +
-				"          GROUP  BY deptno) a, \n" +
-				"         (SELECT Count()  total_count, \n" +
-				"                 SUM(sal) total_sal \n" +
-				"          FROM   scott.emp \n" +
-				"          WHERE  city = 'NYC') b \n" +
-				";\n" +
-				"\n" +
-				"INSERT ALL\n" +
-				"\tWHEN ottl < 100000 THEN\n" +
-				"\t\tINTO small_orders\n" +
-				"\t\t\tVALUES(oid, ottl, sid, cid)\n" +
-				"\tWHEN ottl > 100000 and ottl < 200000 THEN\n" +
-				"\t\tINTO medium_orders\n" +
-				"\t\t\tVALUES(oid, ottl, sid, cid)\n" +
-				"\tWHEN ottl > 200000 THEN\n" +
-				"\t\tinto large_orders\n" +
-				"\t\t\tVALUES(oid, ottl, sid, cid)\n" +
-				"\tWHEN ottl > 290000 THEN\n" +
-				"\t\tINTO special_orders\n" +
-				"SELECT o.order_id oid, o.customer_id cid, o.order_total ottl,\n" +
-				"o.sales_rep_id sid, c.credit_limit cl, c.cust_email cem\n" +
-				"FROM orders o, customers c\n" +
-				"WHERE o.customer_id = c.customer_id;");
+	sqlflow.setSQLText("CREATE VIEW vsal \n" +
+			"AS \n" +
+			"  SELECT a.deptno                  \"Department\", \n" +
+			"         a.num_emp / b.total_count \"Employees\", \n" +
+			"         a.sal_sum / b.total_sal   \"Salary\" \n" +
+			"  FROM   (SELECT deptno, \n" +
+			"                 Count()  num_emp, \n" +
+			"                 SUM(sal) sal_sum \n" +
+			"          FROM   scott.emp \n" +
+			"          WHERE  city = 'NYC' \n" +
+			"          GROUP  BY deptno) a, \n" +
+			"         (SELECT Count()  total_count, \n" +
+			"                 SUM(sal) total_sal \n" +
+			"          FROM   scott.emp \n" +
+			"          WHERE  city = 'NYC') b \n" +
+			";\n" +
+			"\n" +
+			"INSERT ALL\n" +
+			"\tWHEN ottl < 100000 THEN\n" +
+			"\t\tINTO small_orders\n" +
+			"\t\t\tVALUES(oid, ottl, sid, cid)\n" +
+			"\tWHEN ottl > 100000 and ottl < 200000 THEN\n" +
+			"\t\tINTO medium_orders\n" +
+			"\t\t\tVALUES(oid, ottl, sid, cid)\n" +
+			"\tWHEN ottl > 200000 THEN\n" +
+			"\t\tinto large_orders\n" +
+			"\t\t\tVALUES(oid, ottl, sid, cid)\n" +
+			"\tWHEN ottl > 290000 THEN\n" +
+			"\t\tINTO special_orders\n" +
+			"SELECT o.order_id oid, o.customer_id cid, o.order_total ottl,\n" +
+			"o.sales_rep_id sid, c.credit_limit cl, c.cust_email cem\n" +
+			"FROM orders o, customers c\n" +
+			"WHERE o.customer_id = c.customer_id;");
 
-         // visualize it
-		sqlflow.visualize();
+	// visualize it
+	sqlflow.visualize();
 	});
 </script>
 </html>
