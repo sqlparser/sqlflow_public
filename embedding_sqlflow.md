@@ -1,334 +1,159 @@
 Embed the SQLFlow UI into your application
 
-# 实现方式
+# Get started
 
-技术上，需要把现有的部分代码抽取出来，打包成一个js文件（sqlflow.js），这个sqlflow.js对外提供一个类（SQLFlow），客户可以实例化这个类，嵌入自己的网页，获取各种数据，进行各种操作。
+Firstly, [download](https://github.com/sqlparser/sqlflow_public/tree/master/sqlflowjs) the sqlflow.js, css and font.
 
-例如，假如客户有一个html文件：
-
-
+Secondly, create a new file, insert sqlflow.js and sqlflow.css in the head.
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- use jquery, this is optional -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" integrity="sha256-spTpc4lvj4dOkKjrGokIrHkJgNA0xMS98Pw9N7ir9oI=" crossorigin="anonymous"></script>
+    <!-- insert sqlflow.js and sqlflow.css in the head -->
+    <script type="text/javascript" src="sqlflow.js"></script>
+    <link href="sqlflow.css" rel="stylesheet">
 </head>
 <body>
-<div class="customer">customer's content</div>
-<div id="SQLFlow"></div>
 </body>
 </html>
 
 ```
 
-现在客户想在自己网页中id等于SQLFlow的标签内展示sql graph，那么客户可以：
-
-1. 导入我提供的sqlflow.js
-2. 传入参数（参数和与config.json类似,el="#SQLFlow"），实例化SQLFlow
-3. 在合适的时机调用SQLFlow.render方法初始化SQLFlow
-
-例如：
+Lastly, create a root element, and create a SQLFlow instance on that element.
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-
-  <!--1. 导入我提供的sqlflow.js，传入参数，实例化SQLFlow-->
-  <script src="sqlflow.js"></script>
-
-  <script>
-
-    // 2. 传入参数（参数和与config.json类似,el="#SQLFlow"），实例化SQLFlow
-    const sqlflow = new SQLFlow({
-      el:"#SQLFlow",
-      ApiPrefix:"",
-      Authorization:""
-    })
-
-    // 3. 在合适的时机调用SQLFlow.render方法初始化SQLFlow
-    sqlflow.render();
-
-  </script>
+    <meta charset="UTF-8">
+    <!-- use jquery, this is optional -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" integrity="sha256-spTpc4lvj4dOkKjrGokIrHkJgNA0xMS98Pw9N7ir9oI=" crossorigin="anonymous"></script>
+    <!-- insert sqlflow.js and sqlflow.css in the head -->
+    <script type="text/javascript" src="sqlflow.js"></script>
+    <link href="sqlflow.css" rel="stylesheet">
 </head>
 <body>
-<div class="customer">customer's content</div>
-<div id="SQLFlow"></div>
+    <!-- create a root element -->
+    <div id="app"></div>
 </body>
+
+<script>
+    $(function () {
+     // create an instance
+    var sqlflow = new SQLFlow({
+        el: document.getElementById("app"),
+    });
+
+     // set a dbvendor
+    sqlflow.setDbvendor("oracle");
+
+     // set sql text
+    sqlflow.setSQLText("CREATE VIEW vsal \n" +
+            "AS \n" +
+            "  SELECT a.deptno                  \"Department\", \n" +
+            "         a.num_emp / b.total_count \"Employees\", \n" +
+            "         a.sal_sum / b.total_sal   \"Salary\" \n" +
+            "  FROM   (SELECT deptno, \n" +
+            "                 Count()  num_emp, \n" +
+            "                 SUM(sal) sal_sum \n" +
+            "          FROM   scott.emp \n" +
+            "          WHERE  city = 'NYC' \n" +
+            "          GROUP  BY deptno) a, \n" +
+            "         (SELECT Count()  total_count, \n" +
+            "                 SUM(sal) total_sal \n" +
+            "          FROM   scott.emp \n" +
+            "          WHERE  city = 'NYC') b \n" +
+            ";\n" +
+            "\n" +
+            "INSERT ALL\n" +
+            "\tWHEN ottl < 100000 THEN\n" +
+            "\t\tINTO small_orders\n" +
+            "\t\t\tVALUES(oid, ottl, sid, cid)\n" +
+            "\tWHEN ottl > 100000 and ottl < 200000 THEN\n" +
+            "\t\tINTO medium_orders\n" +
+            "\t\t\tVALUES(oid, ottl, sid, cid)\n" +
+            "\tWHEN ottl > 200000 THEN\n" +
+            "\t\tinto large_orders\n" +
+            "\t\t\tVALUES(oid, ottl, sid, cid)\n" +
+            "\tWHEN ottl > 290000 THEN\n" +
+            "\t\tINTO special_orders\n" +
+            "SELECT o.order_id oid, o.customer_id cid, o.order_total ottl,\n" +
+            "o.sales_rep_id sid, c.credit_limit cl, c.cust_email cem\n" +
+            "FROM orders o, customers c\n" +
+            "WHERE o.customer_id = c.customer_id;");
+
+    // visualize it
+    sqlflow.visualize();
+    });
+</script>
 </html>
 
 ```
 
-操作完成后就可以得到目前的图形展示效果。
+you can [open this simple demo](http://111.229.12.71/sqlflowjs/sqlflow.js_get_start.html) in browser.
 
-此外，为满足客户嵌入自己网页，编程操纵的需求，sqlflow.js还可以对外提供更多的方法（api）。这些方法一般分为三类：
+## SQLFlow.js api
 
-1. 操作设置
-2. 获取数据
-3. 事件监听
+you can [open the complete demo](http://111.229.12.71/sqlflowjs/) in browser.
 
-例如：
+### SQLFlow(options)
 
-## 操作设置
+create a new instance
 
-### SQLFlow.render()
+options:
 
-挂载sqlflow到html，只能初始化的时候调用一次。
+```json
+{
+	el: HTMLElement,
+}
+```
 
-### SQLFlow.setSQLText(sqltext:string)
+### SQLFlow.setDbvendor( dbvendor : string )
 
-设置当前的sql文本
+set dbvendor of sql
 
-### SQLFlow.setSQLFlie(sqlfile: FileList | Blob)
+dbvendor : "bigquery" | "couchbase" | "db2" | "greenplum" | "hana" | "hive" | "impala" | "informix" | "mysql" | "netezza" | "openedge" | "oracle" | "postgresql" | "redshift" | "snowflake" | "mssql" | "sybase" | "teradata" | "vertica"
 
-设置当前的sql文件
+default : "oracle"
 
-### SQLFlow.setDbvendor(dbvendor:string)
+### SQLFlow.setSQLText( sqltext : string )
 
-设置dbvendor
+set sql
 
 ### SQLFlow.visualize()
 
-效果和目前点击visualize按钮一致
+visualize relations
 
-### SQLFlow.highlightColumnById(columnId:string)
+### SQLFlow.visualizeJoin()
 
-高亮graph中的某个column，columnId来源于SQLFlow.getColumnList()中的graph column
+visualize join relations
 
-### SQLFlow.highlightColumnAndRelationById(columnId:string)
+### SQLFlow.setting
 
-高亮graph中的某个column和与它相关的relation，columnId来源于SQLFlow.getColumnList()中的graph column
+get current setting of sqlflow instance
 
-### SQLFlow.lineColumnById(columnId:string)
+### SQLFlow.setHideAllColumns( value : boolean)
 
-效果等同于目前的column lineage，columnId来源于SQLFlow.getColumnList()中的graph column
+change sqlflow instance setting
 
-## 获取数据
+### SQLFlow.setDataflow( value : boolean)
 
-注意：这里获取到的数据结构和dbojs不一样
+change sqlflow instance setting
 
-### SQLFlow.getTableList()
+### SQLFlow.setImpact( value : boolean)
 
-获取dbojs中的table，部分返回结果如下：
+change sqlflow instance setting
 
-```json
-{
-	"1": {
-		"id": "1",
-		"name": "RESULT_OF_a",
-		"type": "select_list",
-		"database": "unknown",
-		"schema": "DEFAULT",
-		"coordinates": [{"x": 11,"y": 29}, {"x": 11,"y": 30}],
-		"columns": {
-			"logicIds": ["7", "8", "9"],
-			"graphIds": ["33", "34", "35"]
-		},
-		"graphId": "n8"
-	},
-	"10": {
-		"id": "10",
-		"name": "RESULT_OF_b",
-		"type": "select_list",
-		"database": "unknown",
-		"schema": "DEFAULT",
-		"coordinates": [{"x": 15,"y": 32}, {"x": 15,"y": 33}],
-		"columns": {"logicIds": ["14", "15"],"graphIds": ["36", "37"]},
-		"graphId": "n9"
-	}
-}
-```
+### SQLFlow.setShowIntermediateRecordset( value : boolean)
 
-columns.graphIds表示是graph columnId，使用这个columnId到SQLFlow.getColumnList()结果中的graph中查表，可以获得这个column的graph信息。
+change sqlflow instance setting
 
-columns.logicIds表示是logic columnId，使用这个columnId到SQLFlow.getColumnList()结果中的logic中查表，可以获得这个column的logic信息。
+### SQLFlow.setShowFunction( value : boolean)
 
-### SQLFlow.getColumnList()
-
-获取dbojs中的column，column分为logic和graph类型，部分返回结果如下：
-
-```json
-{
-
-	"graph": {
-		"33": {
-			"id": "33",
-			"uuid": "V0Am-IR7zCUYzQ4398Lxi",
-			"tableId": "1",
-			"name": "deptno",
-			"coordinates": [[{"x": 6,"y": 18}, {"x": 6,"y": 24}]],
-			"sources": {"relationIds": ["1"]},"targets": {"relationIds": ["4"]},
-			"logicIds": ["7"],
-			"midY": 50,
-			"highlight": false,
-			"mouseover": false
-		}
-	},
-	"logic": {
-		"7": {
-			"id": "7",
-			"tableId": "1",
-			"name": "deptno",
-			"coordinates": [[{"x": 6,"y": 18}, {"x": 6,"y": 24}]],
-			"sources": [{"relationId": "1","logicId": "3","tableId": "63"}],
-			"targets": [{"relationId": "4","logicId": "17","tableId": "16"}],
-			"graphId": "33"
-		}
-	}
-}
-```
-
-
-
-### SQLFlow.getRelationList()
-
-获取dbojs中的relation，部分返回结果如下：
-
-```json
-{
-	"1": {
-		"id": "1",
-		"oringinalId": "1",
-		"type": "fdd",
-		"source": {"column": {"logicId": "3","graphId": "26","tableId": "63"}},
-		"target": {"column": {"logicId": "7","graphId": "33","tableId": "1"}
-		},
-		"show": true,
-		"lineage": false,
-		"highlight": false,
-		"svg": {
-			"text": {"x": "","y": "","value": "","title": ""},
-			"path": "M 197 76.492 C 232 76.492 232 50 257 50",
-			"arrow": "267,50 257,46.5 257,53.5",
-			"isDash": false,
-			"isJoin": false,
-			"isSelfJoin": false
-		}
-	},
-	"4": {
-		"id": "4",
-		"oringinalId": "16",
-		"type": "fdd",
-		"source": {"column": {"logicId": "7","graphId": "33","tableId": "1"}},
-		"target": {"column": {"logicId": "17","graphId": "38","tableId": "16"}},
-		"show": true,
-		"lineage": false,
-		"highlight": false,
-		"svg": {
-			"text": {"x": "","y": "","value": "","title": ""},
-			"path": "M 429 50 C 504 50 504 74.656 569 74.656",
-			"arrow": "579,74.656 569,71.156 569,78.156",
-			"isDash": false,
-			"isJoin": false,
-			"isSelfJoin": false
-		}
-	}
-}
-```
-
-使用tableId到SQLFlow.getTableList()的结果中查表，可以获得这个table的信息。
-
-使用graphId到SQLFlow.getColumnList()结果中的graph中查表，可以获得这个column的graph信息。
-
-使用logicId到SQLFlow.getColumnList()结果中的logic中查表，可以获得这个column的logic信息。
-
-### SQLFlow.getSchemaList()
-
-获取schema，部分返回结果如下：
-
-```json
-{
-	"table": {
-		"unknown": {
-			"DEFAULT": {
-				"24": ["1", "2", "3", "4"],
-				"29": ["5", "6", "7", "8"],
-				"34": ["9", "10", "11", "12"],
-				"39": ["13", "14", "15", "16", "17", "18"],
-				"40": ["19", "20", "22", "23"],
-				"46": ["24", "25"]
-			},
-			"scott": {
-				"63": ["26", "28"]
-			}
-		}
-	},
-	"view": {
-		"unknown": {
-			"DEFAULT": {
-				"20": ["30", "31", "32"]
-			}
-		}
-	},
-	"procedure": {
-		"unknown": {
-			"DEFAULT": {}
-		}
-	},
-	"function": {
-		"unknown": {
-			"DEFAULT": {}
-		}
-	},
-	"trigger": {
-		"unknown": {
-			"DEFAULT": {}
-		}
-	},
-	"synonym": {
-		"unknown": {
-			"DEFAULT": {}
-		}
-	},
-	"select_list": {
-		"unknown": {
-			"DEFAULT": {
-				"1": ["33", "34", "35"],
-				"10": ["36", "37"],
-				"16": ["38", "39", "40"]
-			}
-		}
-	},
-	"temp_result": {
-		"unknown": {
-			"DEFAULT": {
-				"50": ["41", "42", "43", "44", "45", "46"]
-			}
-		}
-	}
-}
-```
-
-table.unknown.DEFAULT表示数据库名称为unknown，schema为DEFAULT，DEFAULT下的"24"、"29"、"34"表示tableId，使用这个tableId到SQLFlow.getTableList()的结果中查表，可以获得这个table的信息。"24"下的"1", "2", "3", "4"表示是graph columnId，使用这个columnId到SQLFlow.getColumnList()结果中的graph中查表，可以获得这个column的graph信息。
-
-## 事件监听
-
-### SQLFlow.addEventListener(name:string,handler:function)
-
-增加一个事件监听器，当sqlflow的graph中发生这个事件时，会触发客户提供的函数handler。
-
-例如，name可以为
-
-1. onMouseoverColumn ：当客户鼠标滑过某一个column时触发
-2. onLineColumn： 当客户点击column lineage时触发
-3. 其他事件
-
-### SQLFlow.removeEventListener(name:string,handler:function)
-
-移除一个事件监听器。
-
-# 应用
-
-综合运用以上api，可以实现流程图中的需求：
-
-1. 客户自建一个sql列表，
-2. 客户引入sqlflow.js，初始化SQLFlow，将SQLFlow程序嵌入自己的网页
-3. 点击sql列表上的某个sql
-4. 从点击事件中获得这个sql,调用SQLFlow.setSQLText(sql)
-5. 调用SQLFlow.visualize获取图形结果
-
-还可以根据需要实现更多复杂的编程控制。
+change sqlflow instance setting
