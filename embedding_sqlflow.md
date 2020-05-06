@@ -96,6 +96,7 @@ Lastly, create a root element, and create a SQLFlow instance on that element.
 
 ```
 
+## Connect to your own SQLFlow backend server
 Please modify `config.private.json`, so this sqlflowjs will connect to your own SQLFlow backend server.
 
 Let's say the IP of your SQLFlow backend server is `192.168.100.50`, set `ApiPrefix` like this:
