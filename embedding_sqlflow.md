@@ -96,6 +96,9 @@ Lastly, create a root element, and create a SQLFlow instance on that element.
 
 ```
 
+you can [open this simple demo](http://111.229.12.71/sqlflowjs/sqlflow.js_get_start.html) in browser.
+
+
 ## Connect to your own SQLFlow backend server
 Please modify `config.private.json`, so this sqlflowjs will connect to your own SQLFlow backend server.
 
@@ -112,8 +115,6 @@ Please also change the token. You can find this token in the SQLFlow backend ser
         "base64token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU"
     },
 ```
-
-you can [open this simple demo](http://111.229.12.71/sqlflowjs/sqlflow.js_get_start.html) in browser.
 
 ## SQLFlow.js api
 
