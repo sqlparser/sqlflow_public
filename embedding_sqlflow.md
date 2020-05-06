@@ -96,6 +96,22 @@ Lastly, create a root element, and create a SQLFlow instance on that element.
 
 ```
 
+Please modify `config.private.json`, so this sqlflowjs will connect to your own SQLFlow backend server.
+
+Let's say the IP of your SQLFlow backend server is `192.168.100.50`, set `ApiPrefix` like this:
+
+```
+    "ApiPrefix": "http://192.168.100.50:8083",
+```
+	
+Please also change the token. You can find this token in the SQLFlow backend server, usually it is located under `/wings/sqlflow/backend/user/yourname.json`
+
+```	
+    "Authorization": {
+        "base64token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU"
+    },
+```
+
 you can [open this simple demo](http://111.229.12.71/sqlflowjs/sqlflow.js_get_start.html) in browser.
 
 ## SQLFlow.js api
