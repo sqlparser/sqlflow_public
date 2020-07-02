@@ -59,6 +59,7 @@ by utilizing [the GSP library](http://www.sqlparser.com), then calculate the dat
 	for further processing in your own program.
 	
 	Please note that you need to setup the SQLFlow on your own server in order to use the API.
+	
 	SQLFlow on the www.gudusoft.com *DOES NOT* provides the RESTFul API for public use.
 
 	- [SQLFlow API document](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)
