@@ -57,15 +57,13 @@ by utilizing [the GSP library](http://www.sqlparser.com), then calculate the dat
 	SQLFlow provides RESTful API, so your program can communicate with the SQLFlow backend directly.
 	Sending the SQL to SQLFlow backend and receive a JSON snippet including the data lineage and diagram model
 	for further processing in your own program.
+	
+	Please note that you need to setup the SQLFlow on your own server in order to use the API.
+	SQLFlow on the www.gudusoft.com *DOES NOT* provides the RESTFul API for public use.
 
-	- [SQLFlow RESTful API Online](https://api.gudusoft.com/gspLive_backend/swagger-ui.html#!/sqlflow-controller/generateSqlflowUsingPOST)
+	- [SQLFlow API document](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)
 	- [C# Demo](https://github.com/sqlparser/sqlflow_public/tree/master/api/client/csharp)
 
-	Please put the following authorization code in your request header when calling the RESTful API.
-
-	```json
-	Authorization: token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU
-	```
 
 3. Add visualize feature in your own application/website
 
