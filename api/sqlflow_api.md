@@ -46,7 +46,7 @@
     
 * **/sqlflow/generation/sqlflow/selectedgraph**          
   * Description: generate sqlflow model and selected dbobject graph
-  * HTTP Method: **GET POST**
+  * HTTP Method: **POST**
   * Parameters: 
     * **sessionId**: request sessionId, the value is from api **/sqlflow/generation/sqlflow/graph**, required **true**
     * database: selected database, required false
@@ -139,4 +139,4 @@
 ## Swagger 
 More information, please check the test environment swagger document:
 
-http://111.229.12.71:8081/gspLive_backend/swagger-ui.html#
+http://111.229.12.71:8081/gspLive_backend/doc.html?lang=en
