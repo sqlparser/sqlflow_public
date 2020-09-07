@@ -132,7 +132,8 @@
     * ignoreFunction: whether ignore the function relations, required false, default value is false 
   * Return code:
     * 200: successful
-    * other: failed, check the error field to get error message.  
+    * other: failed, check the error field to get error message.
+  * Sample:    
     * test sql:
     ```sql
       select name from user
