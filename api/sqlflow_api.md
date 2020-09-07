@@ -133,7 +133,46 @@
   * Return code:
     * 200: successful
     * other: failed, check the error field to get error message.  
+    * test sql:
+    ```sql
+      select name from user
+    ```
+    * session id: `6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051`
+    * curl command:
+    ```bash
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow/selectedgraph" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU" -H "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "dbvendor=dbvoracle" -d "ignoreFunction=true" -d "ignoreRecordSet=true" -d "isReturnModel=false" -d "sessionId=6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051" -d "table=user"
 
+    ```
+    * response: 
+    ```json
+     {
+       "code": 200,
+       "data": {
+         "mode": "global",
+         "summary": {
+           ...
+         },
+         "graph": {
+           "elements": {
+             "tables": [
+               ...
+             ],
+             "edges": [
+               ...
+             ]
+           },
+           "tooltip": {},
+           "relationIdMap": {
+             ...
+           },
+           "listIdMap": {
+             ...
+           }
+         }
+       },
+       "sessionId": "6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051"
+     }
+    ``` 
 ### Sqlflow User Job Interface
 * **/sqlflow/job/submitUserJob**
   * Description: submit user job for multiple sql files, support zip file.
