@@ -25,7 +25,32 @@
     * ignoreRecordSet: whether ignore the record set, required false, default value is false
   * Return code:
     * 200: successful
-    * other: failed, check the error field to get error message.  
+    * other: failed, check the error field to get error message. 
+  * Sample:
+    * test sql:
+    ```sql
+      select name from user
+    ```
+    * curl command:
+    ```bash
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow" -H  "accept:application/json;charset=utf-8" -H  "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU"  -F "dbvendor=dbvoracle" -F "ignoreRecordSet=true" -F "sqltext=select name from user"
+    ```
+    * response: 
+    ```json
+      {
+        "code": 200,
+        "data": {
+          "dbvendor": "dbvoracle",
+          "dbobjs": [
+            ...
+          ],
+          "relations": [
+            ...
+          ]
+        },
+        "sessionId": "6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501108040"
+      }
+    ```
     
 * **/sqlflow/generation/sqlflow/graph**
   * Description: generate sqlflow model and graph
@@ -43,6 +68,51 @@
   * Return code:
     * 200: successful
     * other: failed, check the error field to get error message.  
+  * Sample:
+    * test sql:
+    ```sql
+      select name from user
+    ```
+    * curl command:
+    ```bash
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow/graph" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU" -F "dbvendor=dbvoracle" -F "ignoreFunction=true" -F "ignoreRecordSet=true" -F "sqltext=select name from user"
+    ```
+    * response: 
+    ```json
+     {
+       "code": 200,
+       "data": {
+         "mode": "global",
+         "summary": {
+           ...
+         },
+         "sqlflow": {
+           "dbvendor": "dbvoracle",
+           "dbobjs": [
+               ...
+           ]
+         },
+         "graph": {
+           "elements": {
+             "tables": [
+               ...
+             ],
+             "edges": [
+               ...
+             ]
+           },
+           "tooltip": {},
+           "relationIdMap": {
+             ...
+           },
+           "listIdMap": {
+             ...
+           }
+         }
+       },
+       "sessionId": "6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051"
+     }
+    ```    
     
 * **/sqlflow/generation/sqlflow/selectedgraph**          
   * Description: generate sqlflow model and selected dbobject graph
