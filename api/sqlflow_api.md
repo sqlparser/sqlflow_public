@@ -466,3 +466,5 @@
 More information, please check the test environment swagger document:
 
 http://111.229.12.71:8081/gspLive_backend/doc.html?lang=en
+
+Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU
