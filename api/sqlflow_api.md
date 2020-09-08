@@ -174,6 +174,49 @@
        "sessionId": "6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051"
      }
     ``` 
+* **/sqlflow/generation/sqlflow/getSelectedDbObjectInfo**          
+  * Description: get the selected dbobject information, such as file information, sql index, dbobject positions, sql which contains selected dbobject.
+  * HTTP Method: **POST**
+  * Parameters: 
+    * **sessionId**: request sessionId, the value is from api **/sqlflow/generation/sqlflow/graph**, required **true**
+    * **coordinates**: the select dbobject positions, it's a json array string, the value is from api **/sqlflow/generation/sqlflow/graph**, required **true**
+  * Return code:
+    * 200: successful
+    * other: failed, check the error field to get error message.
+  * Sample:    
+    * test sql:
+    ```sql
+      select name from user
+    ```
+    * session id: `6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051`
+    * coordinates: `[{'x':1,'y':8,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'},{'x':1,'y':12,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'}]`
+    * curl command:
+    ```bash
+      curl -X POST "http://111.229.12.71:8081/gspLive_backend/sqlflow/generation/sqlflow/getSelectedDbObjectInfo" -H "Request-Origion:SwaggerBootstrapUi" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU" -H "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "coordinates=[{'x':1,'y':8,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'},{'x':1,'y':12,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'}]" -d "sessionId=6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051"
+    ```
+    * response: 
+    ```json
+      {
+        "code": 200,
+        "data": [
+          {
+            "index": 0,
+            "positions": [
+              {
+                "x": 1,
+                "y": 8
+              },
+              {
+                "x": 1,
+                "y": 12
+              }
+            ],
+            "sql": "select name from user"
+          }
+        ]
+      }
+    ```    
+    
 ### Sqlflow User Job Interface
 * **/sqlflow/job/submitUserJob**
   * Description: submit user job for multiple sql files, support zip file.
