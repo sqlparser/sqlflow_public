@@ -33,7 +33,7 @@
     ```
     * curl command:
     ```bash
-      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow" -H  "accept:application/json;charset=utf-8" -H  "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU"  -F "dbvendor=dbvoracle" -F "ignoreRecordSet=true" -F "sqltext=select name from user"
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow" -H  "accept:application/json;charset=utf-8" -H  "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE"  -F "dbvendor=dbvoracle" -F "ignoreRecordSet=true" -F "sqltext=select name from user"
     ```
     * response: 
     ```json
@@ -75,7 +75,7 @@
     ```
     * curl command:
     ```bash
-      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow/graph" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU" -F "dbvendor=dbvoracle" -F "ignoreFunction=true" -F "ignoreRecordSet=true" -F "sqltext=select name from user"
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow/graph" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE" -F "dbvendor=dbvoracle" -F "ignoreFunction=true" -F "ignoreRecordSet=true" -F "sqltext=select name from user"
     ```
     * response: 
     ```json
@@ -141,7 +141,7 @@
     * session id: `6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051`
     * curl command:
     ```bash
-      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow/selectedgraph" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU" -H "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "dbvendor=dbvoracle" -d "ignoreFunction=true" -d "ignoreRecordSet=true" -d "isReturnModel=false" -d "sessionId=6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051" -d "table=user"
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow/selectedgraph" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE" -H "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "dbvendor=dbvoracle" -d "ignoreFunction=true" -d "ignoreRecordSet=true" -d "isReturnModel=false" -d "sessionId=6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051" -d "table=user"
 
     ```
     * response: 
@@ -192,7 +192,7 @@
     * coordinates: `[{'x':1,'y':8,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'},{'x':1,'y':12,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'}]`
     * curl command:
     ```bash
-      curl -X POST "http://111.229.12.71:8081/gspLive_backend/sqlflow/generation/sqlflow/getSelectedDbObjectInfo" -H "Request-Origion:SwaggerBootstrapUi" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU" -H "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "coordinates=[{'x':1,'y':8,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'},{'x':1,'y':12,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'}]" -d "sessionId=6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051"
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow/getSelectedDbObjectInfo" -H "Request-Origion:SwaggerBootstrapUi" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE" -H "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "coordinates=[{'x':1,'y':8,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'},{'x':1,'y':12,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'}]" -d "sessionId=6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051"
     ```
     * response: 
     ```json
