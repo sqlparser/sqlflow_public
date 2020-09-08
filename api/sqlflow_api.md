@@ -188,9 +188,6 @@
     * other: failed, check the error field to get error message.  
   * Sample:
     * test sql file: D:\sql.txt
-    ```sql
-      select name from user
-    ```
     * curl command:  **Note: please add **@** before the sql file path**
     ```bash
       curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/job/submitUserJob" -H  "accept:application/json;charset=utf-8" -H  "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE" -H  "Content-Type:multipart/form-data" -F "sqlfiles=@D:/sql.txt" -F "dbvendor=dbvoracle" -F "jobName=job_test" -F "userId=user_test"
@@ -225,9 +222,6 @@
     * other: failed, check the error field to get error message. 
   * Sample:
     * test sql file: D:\sql.txt
-    ```sql
-      select name from user
-    ```
     * curl command: 
     ```bash
       curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/job/displayUserJobsSummary" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE" -H "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "userId=user_test"
@@ -273,9 +267,6 @@
     * other: failed, check the error field to get error message.  
   * Sample:
     * test sql file: D:\sql.txt
-    ```sql
-      select name from user
-    ```
     * job id: bb996c1ee5b741c5b4ff6c2c66c371dd
     * curl command: 
     ```bash
@@ -342,9 +333,6 @@
     * other: failed, check the error field to get error message.   
   * Sample:
     * test sql file: D:\sql.txt
-    ```sql
-      select name from user
-    ```
     * job id: bb996c1ee5b741c5b4ff6c2c66c371dd
     * curl command: 
     ```bash
@@ -392,9 +380,6 @@
     * other: failed, check the error field to get error message.            
   * Sample:
     * test sql file: D:\sql.txt
-    ```sql
-      select name from user
-    ```
     * job id: bb996c1ee5b741c5b4ff6c2c66c371dd
     * curl command: 
     ```bash
