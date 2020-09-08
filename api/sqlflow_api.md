@@ -186,16 +186,34 @@
   * Return code:
     * 200: successful
     * other: failed, check the error field to get error message.  
-    
-* **/sqlflow/job/deleteUserJob**
-  * Description: delete the user job by job id.
-  * HTTP Method: **POST**
-  * Parameters: 
-    * **userId**: request user id, required **true**
-    * **jobId**: job id, the value is from user job detail, required **true**
-  * Return code:
-    * 200: successful
-    * other: failed, check the error field to get error message.  
+  * Sample:
+    * test sql file: D:\sql.txt
+    ```sql
+      select name from user
+    ```
+    * curl command:  **Note: please add **@** before the sql file path**
+    ```bash
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/job/submitUserJob" -H  "accept:application/json;charset=utf-8" -H  "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE" -H  "Content-Type:multipart/form-data" -F "sqlfiles=@D:/sql.txt" -F "dbvendor=dbvoracle" -F "jobName=job_test" -F "userId=user_test"
+    ```
+    * response: 
+    ```json
+      {
+        "code": 200,
+        "data": {
+          "jobId": "6218721f092540c5a771ca8f82986be7",
+          "jobName": "job_test",
+          "userId": "user_test",
+          "dbVendor": "dbvoracle",
+          "defaultDatabase": "",
+          "defaultSchema": "",
+          "fileNames": [
+            "sql.txt"
+          ],
+          "createTime": "2020-09-08 10:11:28",
+          "status": "create"
+        }
+      }
+    ```    
     
 * **/sqlflow/job/displayUserJobsSummary**        
   * Description: get the user jobs summary information.
@@ -205,6 +223,44 @@
   * Return code:
     * 200: successful
     * other: failed, check the error field to get error message. 
+  * Sample:
+    * test sql file: D:\sql.txt
+    ```sql
+      select name from user
+    ```
+    * curl command: 
+    ```bash
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/job/displayUserJobsSummary" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE" -H "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "userId=user_test"
+    ```
+    * response: 
+    ```json
+      {
+        "code": 200,
+        "data": {
+          "total": 1,
+          "success": 1,
+          "partialSuccess": 0,
+          "fail": 0,
+          "jobIds": [
+            "bb996c1ee5b741c5b4ff6c2c66c371dd"
+          ],
+          "jobDetails": [
+            {
+              "jobId": "bb996c1ee5b741c5b4ff6c2c66c371dd",
+              "jobName": "job_test",
+              "userId": "user_test",
+              "dbVendor": "dbvoracle",
+              "fileNames": [
+                "sql.txt"
+              ],
+              "createTime": "2020-09-08 10:16:11",
+              "status": "success",
+              "sessionId": "a9f751281f8ef6936c554432e169359190d392565208931f201523e08036109d_1599531372233"
+            }
+          ]
+        }
+      }
+    ```       
     
 * **/sqlflow/job/displayUserJobSummary**        
   * Description: get the specify user job information.
@@ -215,7 +271,56 @@
   * Return code:
     * 200: successful
     * other: failed, check the error field to get error message.  
+  * Sample:
+    * test sql file: D:\sql.txt
+    ```sql
+      select name from user
+    ```
+    * job id: bb996c1ee5b741c5b4ff6c2c66c371dd
+    * curl command: 
+    ```bash
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/job/displayUserJobSummary" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE" -H "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "jobId=bb996c1ee5b741c5b4ff6c2c66c371dd" -d "userId=user_test"
+    ```
+    * response: 
+    ```json
+      {
+        "code": 200,
+        "data": {
+          "total": 1,
+          "success": 1,
+          "partialSuccess": 0,
+          "fail": 0,
+          "jobIds": [
+            "bb996c1ee5b741c5b4ff6c2c66c371dd"
+          ],
+          "jobDetails": [
+            {
+              "jobId": "bb996c1ee5b741c5b4ff6c2c66c371dd",
+              "jobName": "job_test",
+              "userId": "user_test",
+              "dbVendor": "dbvoracle",
+              "fileNames": [
+                "sql.txt"
+              ],
+              "createTime": "2020-09-08 10:16:11",
+              "status": "success",
+              "sessionId": "a9f751281f8ef6936c554432e169359190d392565208931f201523e08036109d_1599531372233"
+            }
+          ]
+        }
+      }
+    ```      
     
+* **/sqlflow/job/deleteUserJob**
+  * Description: delete the user job by job id.
+  * HTTP Method: **POST**
+  * Parameters: 
+    * **userId**: request user id, required **true**
+    * **jobId**: job id, the value is from user job detail, required **true**
+  * Return code:
+    * 200: successful
+    * other: failed, check the error field to get error message.     
+   
 * **/sqlflow/job/displayUserJobGraph** 
   * Description: get the sqlflow job's model and graph
   * HTTP Method: **POST**
