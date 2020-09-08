@@ -310,7 +310,32 @@
     * **jobId**: job id, the value is from user job detail, required **true**
   * Return code:
     * 200: successful
-    * other: failed, check the error field to get error message.     
+    * other: failed, check the error field to get error message. 
+  * Sample:
+    * test sql file: D:\sql.txt
+    * job id: bb996c1ee5b741c5b4ff6c2c66c371dd
+    * curl command: 
+    ```bash
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/job/deleteUserJob" -H "accept:application/json;charset=utf-8" -H "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE" -H "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "jobId=bb996c1ee5b741c5b4ff6c2c66c371dd" -d "userId=user_test"
+    ```
+    * response: 
+    ```json
+      {
+        "code": 200,
+        "data": {
+          "jobId": "bb996c1ee5b741c5b4ff6c2c66c371dd",
+          "jobName": "job_test",
+          "userId": "user_test",
+          "dbVendor": "dbvoracle",
+          "fileNames": [
+            "sql.txt"
+          ],
+          "createTime": "2020-09-08 10:16:11",
+          "status": "delete",
+          "sessionId": "a9f751281f8ef6936c554432e169359190d392565208931f201523e08036109d_1599531372233"
+        }
+      }
+    ```        
    
 * **/sqlflow/job/displayUserJobGraph** 
   * Description: get the sqlflow job's model and graph
