@@ -14,7 +14,8 @@
 
 
 1. shared cloud, SQLFlow is installed on a shared cloud server.
-2. dedicated private cloud, SQLFlow is installed on a dedicted private cloud which is used by you only.
+2. dedicated private cloud, SQLFlow is installed on a dedicted private cloud which is used by you only, the price already including the hosting fee.
 3. on-premise, SQLFlow is installed on your company's own servers.
 4. By default, there will be one selected database installed for each plan, you can include more database with the price +$50 each.
+
 Supported database: bigquery, couchbase, dax, db2, greenplum, hana, hive, impala, informix, mdx, mysql, netezza, openedge, oracle, postgresql, redshift, snowflake, sqlserver, sybase, teradata, vertica
