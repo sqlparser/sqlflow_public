@@ -4,7 +4,7 @@ SQLFow was comprised of two parts: frontend and backend.
 The frontend and backend can be installed on the same server, or they can be installed on two different servers seperately.
 
 ### Prerequisites
-- A linux server with at least 8GB memory.
+- A linux server with at least 8GB memory (ubuntu 20.04 is recommended).
 - Java 8
 - Nginx web server. 
 - Port needs to be opened. (80, 8761,8081,8083)
@@ -19,7 +19,6 @@ CentOS
 - [How To Install Nginx on CentOS](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7)
 - [How To Install Java on CentOS ](https://www.digitalocean.com/community/tutorials/how-to-install-java-on-centos-and-fedora)
 
-we recommend ubuntu 20.04.
 
 ### Upload Files
 
