@@ -63,7 +63,7 @@ upload your backend and frontend file to `sqlflow` folder, like this :
         └── index.html
 ```
 
-### Set permissions
+set folder permissions :
 
 ```bash
 sudo chmod -R 777 /wings/sqlflow
