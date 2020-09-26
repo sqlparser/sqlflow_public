@@ -12,7 +12,6 @@ The frontend and backend can be installed on the same server, or they can be ins
 ### Setup Environment (Ubuntu for example)
 	sudo apt-get update
 	sudo apt-get install nginx -y
-		(web root: /var/www/nginx-default)
 	sudo apt-get install default-jre -y	
 
 CentOS
