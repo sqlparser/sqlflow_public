@@ -1,7 +1,7 @@
 ## SQLFlow Introduce
 
 The SQLFlow is a tool helps you collect data lineage information by analying the SQL scripts
-in a governed data environment. It scan SQL code to understand all the logic and reverse engineer it, 
+in a governed data environment. It scans SQL code to understand all the logic and reverse engineer it, 
 to build an understanding of how data changes and which data serves as input for calculating other data. 
 
 Once the metadata of the data lineage is ready, SQLFlow presents a nice clean graph to you that tells
@@ -18,8 +18,8 @@ and what other data items are derived from this data value.
 - Able to process SQL script from more than 20 major database vendors.
 
 ### How to use SQLFlow
-- Open the official website of the SQLFlow and paste your SQL script or metadata to get a nice clean lineage diagram.
-- Call the Restful API of the SQLFlow to get data lineage metadata decoded by the SQLFlow from the SQL script.
+- Open [the official website](https://gudusoft.com/sqlflow/#/) of the SQLFlow and paste your SQL script or metadata to get a nice clean lineage diagram.
+- Call the Restful API of the SQLFlow in your own code to get data lineage metadata decoded by the SQLFlow from the SQL script.
 - The on-premise version of SQLflow enables you to use it on your own server to keep the data safer.
 
 
