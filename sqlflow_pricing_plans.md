@@ -3,7 +3,7 @@
 |Pricing Plans   |  Starter <br> $0/per month| Corporate <br> $199/per month |
 |:-:|:-:|:-:|
 |  Users |  1 |  unlimited  |
-|  SQL queries |  1,00/day | unlimited  |
+|  SQL queries |  100/day | unlimited  |
 |  Supported DB Vendor | All  |  1  |
 |  + Additional DB Vendor | N/A  |  +$50  |
 |  Restful API |  N/A | unlimited |
