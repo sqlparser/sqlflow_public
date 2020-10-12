@@ -21,7 +21,7 @@ namespace SQLFlowClient
             config = new Config
             {
                 Host = "https://api.gudusoft.com",
-                Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM"
+                Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU"
             };
             try
             {
@@ -94,6 +94,7 @@ namespace SQLFlowClient
                 { new StringContent(options.ShowRelationType)            , "showRelationType" },
                 { new StringContent(options.SimpleOutput.ToString())     , "simpleOutput"     },
                 { new StringContent(options.IgnoreRecordSet.ToString())  , "ignoreRecordSet"  },
+                { new StringContent(options.ignoreFunction.ToString())   , "ignoreFunction"   },
             };
             try
             {
@@ -169,9 +170,9 @@ namespace SQLFlowClient
                         version = json.SelectToken("version.backend.version")?.ToString(),
                     };
                     Console.WriteLine("                 version        relase date");
-                    Console.WriteLine("SQLFlowClient    1.0.9          2020/1/5");
+                    Console.WriteLine("SQLFlowClient    1.1.0          2020/10/12");
                     Console.WriteLine($"gsp              {gsp.version}        {gsp.ReleaseDate}");
-                    Console.WriteLine($"backend          {backend.version}          {backend.ReleaseDate}");
+                    Console.WriteLine($"backend         {backend.version}         {backend.ReleaseDate}");
                 }
                 else
                 {

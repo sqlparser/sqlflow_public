@@ -39,7 +39,7 @@ If you want to use your own server and token, create the a file named `config.js
 ```json
 {
 	"Host": "https://api.gudusoft.com",
-	"Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWVzdFVzZXIiLCJleHAiOjE1ODEyMDY0MDAsImlhdCI6MTU3MzQzMDQwMH0.-lvxaPlXmHbtgSFgW7ycu8KUczRiFZy5A1aNRGY-tKM"
+	"Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU"
 }
 ```
 
@@ -55,7 +55,8 @@ SQLFlowClient filepath -parameter value
 | --dbvendor         | -v    | one of the following list :<br />bigquery, couchbase, db2, greenplum, <br />hana , hive, impala , informix, <br />mdx, mysql, netezza, openedge, <br />oracle, postgresql, redshift, snowflake, <br />mssql, sybase, teradata, vertica | oracle  | Set the database of the sqlfile.  |
 | --showRelationType | -r    | one or more from the following list :<br /> fdd, fdr, frd, fddi, join | fdd     | Set the relation type.            |
 | --simpleOutput     | -s    | boolean                                                      | false   | Set whether to get simple output. |
-| --ignoreRecordSet  | -i    | boolean                                                      | false   | Set whether to ignore record set. |
+| --ignoreRecordSet  |       | boolean                                                      | false   | Set whether to ignore record set. |
+| --ignoreFunction   |       | boolean                                                      | false   | Set whether to ignore function.   |
 | --output           | -o    | string                                                       | ""      | Save output as a file.            |
 | --help             |       |                                                              |         | Display this help screen.         |
 | --version          |       |                                                              |         | Display version information.      |
@@ -63,12 +64,12 @@ SQLFlowClient filepath -parameter value
 ### examples
 1. SQLFlowClient test.sql
 2. SQLFlowClient test.sql -g
-3. SQLFlowClient test.sql -g -v db2
-4. SQLFlowClient test.sql -g -v db2 -r fdr
-5. SQLFlowClient test.sql -g -v db2 -r fdr,join
-6. SQLFlowClient test.sql -g -v db2 -r fdr,join -s
-7. SQLFlowClient test.sql -g -v db2 -r fdr,join -s -i
-8. SQLFlowClient test.sql -g -v db2 -r fdr,join -s -i -o result.txt
+3. SQLFlowClient test.sql -g -v oracle
+4. SQLFlowClient test.sql -g -v oracle -r fdr
+5. SQLFlowClient test.sql -g -v oracle -r fdr,join
+6. SQLFlowClient test.sql -g -v oracle -r fdr,join -s
+7. SQLFlowClient test.sql -g -v oracle -r fdr,join -s --ignoreRecordSet
+8. SQLFlowClient test.sql -g -v oracle -r fdr,join -s --ignoreFunction -o result.txt
 
 # Compile and build on windows
 
