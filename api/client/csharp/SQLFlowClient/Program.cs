@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using CommandLine;
 using CommandLine.Text;
 
@@ -22,8 +21,11 @@ namespace SQLFlowClient
         [Option('s', "simpleOutput", Required = false, Default = false, HelpText = "Set whether to get simple output.")]
         public bool SimpleOutput { get; set; }
 
-        [Option('i', "ignoreRecordSet", Required = false, Default = false, HelpText = "Set whether to ignore record set.")]
+        [Option("ignoreRecordSet", Required = false, Default = false, HelpText = "Set whether to ignore record set.")]
         public bool IgnoreRecordSet { get; set; }
+
+        [Option("ignoreFunction", Required = false, Default = false, HelpText = "Set whether to ignore function.")]
+        public bool ignoreFunction { get; set; }
 
         [Option('o', "output", Required = false, Default = "", HelpText = "Save output as a file.")]
         public string Output { get; set; }
