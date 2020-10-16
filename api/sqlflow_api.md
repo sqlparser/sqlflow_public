@@ -21,7 +21,7 @@
     * sqlfile: sql file, required false
     * **dbvendor**: database vendor, required **true**, available values: 
       * dbvbigquery, dbvcouchbase,dbvdb2,dbvgreenplum,dbvhana,dbvhive,dbvimpala,dbvinformix,dbvmdx,dbvmysql,dbvnetezza,dbvopenedge,dbvoracle,dbvpostgresql,dbvredshift,dbvsnowflake,dbvmssql,dbvsybase,dbvteradata,dbvvertica
-    * showRelationType: show relation type, required false, default value is **fdd**, available values: 
+    * showRelationType: show relation type, required false, default value is **fdd**, multiple values seperated by comma like fdd,frd,fdr. Available values: 
       * **fdd**: value of target column from source column
       * **frd**: the recordset count of target column which is affect by value of source column
       * **fdr**: value of target column which is affected by the recordset count of source column
@@ -65,7 +65,7 @@
     * sqlfile: sql file, required false
     * **dbvendor**: database vendor, required **true**, available values: 
       * dbvbigquery, dbvcouchbase,dbvdb2,dbvgreenplum,dbvhana,dbvhive,dbvimpala,dbvinformix,dbvmdx,dbvmysql,dbvnetezza,dbvopenedge,dbvoracle,dbvpostgresql,dbvredshift,dbvsnowflake,dbvmssql,dbvsybase,dbvteradata,dbvvertica
-    * showRelationType: show relation type, required false, default value is **fdd**, available values: 
+    * showRelationType: show relation type, required false, default value is **fdd**, multiple values seperated by comma like fdd,frd,fdr. Available values:
       * **fdd**: value of target column from source column
       * **frd**: the recordset count of target column which is affect by value of source column
       * **fdr**: value of target column which is affected by the recordset count of source column
@@ -135,7 +135,7 @@
     * isReturnModel: whether return the sqlflow model, required false, default value is true
     * **dbvendor**: database vendor, required **true**, available values: 
       * dbvbigquery, dbvcouchbase,dbvdb2,dbvgreenplum,dbvhana,dbvhive,dbvimpala,dbvinformix,dbvmdx,dbvmysql,dbvnetezza,dbvopenedge,dbvoracle,dbvpostgresql,dbvredshift,dbvsnowflake,dbvmssql,dbvsybase,dbvteradata,dbvvertica
-    * showRelationType: show relation type, required false, default value is **fdd**, available values: 
+    * showRelationType: show relation type, required false, default value is **fdd**, multiple values seperated by comma like fdd,frd,fdr. Available values: 
       * **fdd**: value of target column from source column
       * **frd**: the recordset count of target column which is affect by value of source column
       * **fdr**: value of target column which is affected by the recordset count of source column
@@ -406,7 +406,7 @@
     * schema: selected schema, required false
     * table: selected table, required false
     * isReturnModel: whether return the sqlflow model, required false, default value is true
-    * showRelationType: show relation type, required false, default value is **fdd**, available values: 
+    * showRelationType: show relation type, required false, default value is **fdd**, multiple values seperated by comma like fdd,frd,fdr. Available values:
       * **fdd**: value of target column from source column
       * **frd**: the recordset count of target column which is affect by value of source column
       * **fdr**: value of target column which is affected by the recordset count of source column
