@@ -34,15 +34,41 @@ upload your backend and frontend file to `sqlflow` folder, like this :
 /wings/
 └── sqlflow
     ├── backend
-    │   ├── backend.sh
-    │   ├── eureka.jar
-    │   ├── eureka.sh
-    │   ├── gspLive.jar
-    │   ├── gspLive.sh
-    │   ├── gudu_sqlflow_license.txt
-    │   ├── monitor.sh
-    │   ├── sqlservice.jar
-    │   └── sqlservice.sh
+    │   ├── bin
+    │   │   ├── backend.sh
+    │   │   ├── stop.sh
+    │   │   ├── monitor.sh 
+    │   │   ├── sqlservice.sh 
+    │   │   ├── gspLive.sh  
+    │   │   ├── eureka.sh
+    │   │   ├── backend.bat
+    │   │   ├── stop.bat
+    │   │   ├── monitor.bat
+    │   │   ├── sqlservice.bat
+    │   │   ├── gspLive.bat
+    │   │   ├── eureka.bat
+    │   │   ├── sqlservice.vbs
+    │   │   ├── gspLive.vbs  
+    │   │   ├── eureka.vbs
+    │   ├── lib
+    │   │   ├── sqlservice.jar  
+    │   │   ├── gspLive.jar  
+    │   │   ├── eureka.jar
+    │   ├── conf
+    │   │   ├── gudu_sqlflow_license.txt     
+    │   ├── data
+    │   │   ├── job  
+    │   │   │   ├── task     
+    │   │   │   ├── {userid}   
+    │   │   ├── session     
+    │   ├── log
+    │   │   ├── sqlservice.log 
+    │   │   ├── gspLive.log  
+    │   │   ├── eureka.log 
+    │   │   ├── slow                   (slow query records)
+    │   │   ├── sqlflow                (sqlflow access records)
+    │   ├── tmp
+    │   │   └── cache  
     └── frontend
         ├── 1.app.b95fd285b4e8a1af563a.js
         ├── 1.index.b95fd285b4e8a1af563a.css
@@ -64,7 +90,7 @@ upload your backend and frontend file to `sqlflow` folder, like this :
 set folder permissions :
 
 ```bash
-sudo chmod -R 777 /wings/sqlflow
+sudo chmod -R 755 /wings/sqlflow
 ```
 
 ### Start Backend Services
@@ -78,7 +104,7 @@ cd /wings/sqlflow/backend/
 start service in background : 
 
 ```bash
-./monitor.sh &
+./backend.sh
 ```
 
 please allow 1-2 minutes to start the service.
