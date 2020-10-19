@@ -95,16 +95,10 @@ sudo chmod -R 755 /wings/sqlflow
 
 ### Start Backend Services
 
-enter directory :
+start service in background: 
 
 ```bash
-cd /wings/sqlflow/backend/
-```
-
-start service in background : 
-
-```bash
-./backend.sh
+  /wings/sqlflow/backend/bin/backend.sh
 ```
 
 please allow 1-2 minutes to start the service.
