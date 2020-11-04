@@ -34,4 +34,4 @@ and what other data items are derived from this data value.
 - [Architecture document](sqlflow_architecture.md)
 
 ### User manual
-- [Working in progress]()
+- [User guide](sqlflow_guide.md)
