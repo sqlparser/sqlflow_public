@@ -1,95 +1,119 @@
 # SQLFlow frontend guide
 
-## 原理
+### How it works
 
-SQLFlow frontend 最主要依赖的接口是 [**/sqlflow/generation/sqlflow/graph**](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)。从这个接口获得数据后，分析其中的graph和sqlflow字段，绘制对应的图形，并进行相关的交互。在 SQLFlow frontend 中点击不同的按钮，或者在setting区域做不同的设置，实质上是给这个接口传递了不同的参数，从而获得了对应的图形结果。
+SQLFlow frontend communicate with the backend using the RESTFul API [**/sqlflow/generation/sqlflow/graph**](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)。
+Once it fetchs data from the backend, the frontend will analyze the graph and sqlflow and draw an interactive diagram according.
 
-参考：[SQLFlow api 文档](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)
+Click the button or change the value in the setting resulting in calling different API or call the same API with the different parameters,
+and get the different data from the backend consequence.
+
+
+Reference：[SQLFlow api doc](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)
 
 ![1](https://user-images.githubusercontent.com/6293752/95873864-e2734400-0da2-11eb-85a9-e46ea43ff5c3.png)
 
-## editor
+### 1. editor
 
-在代码编辑框输入sql代码，点击dbvendor菜单选择数据库，点击visualize按钮或者visualize join按钮，可以绘制对应的图像。
+Enter the sql into the input box, and then choose the database accordingly from the dbvendor menu,
+then click visualize or visualize join button to get a clear nice data lineage diagram.
 
-点击visualize按钮实际上是请求了[graph接口](#graph)，并传入了下面的参数：
 
-| 参数             | 值                                        |
+#### 1.1 dbvendor
+Select the corresponding database.
+
+#### 1.2 sample sql
+
+Click sample sql button will load the sample SQL for the current selected database 
+to the input box.
+
+#### 1.3 upload
+
+upload a single SQL file, or a zip file includes multiple SQL files for processing.
+A job will be created for the uploaded file.
+
+#### 1.4 visualize
+
+click visualize button will call [graph interface](#graph), and pass the following parameters：
+API used when click the  button.
+
+| name             | value                                     |
 | ---------------- | ----------------------------------------- |
-| sqltext          | 代码编辑框中的代码，例如 select * from a; |
-| dbvendor         | dbvendor菜单选择的数据库，例如 dbvoracle  |
+| sqltext          | SQL query in the input box                |
+| dbvendor         | database from the dbvendor menu           |
 | showRelationType | fdd                                       |
 | ignoreFunction   | true                                      |
 
-点击visualize join按钮实际上是请求了[graph接口](#graph)，并传入了下面的参数：
+#### 1.5 visualize join
 
-| 参数             | 值                                        |
+click visualize join button will call [graph interface](#graph), and pass the following parameters:
+API used when click the visualize join button.
+
+| name             | value                                     |
 | ---------------- | ----------------------------------------- |
-| sqltext          | 代码编辑框中的代码，例如 select * from a; |
-| dbvendor         | dbvendor菜单选择的数据库，例如 dbvoracle  |
+| sqltext          | SQL query in the input box                |
+| dbvendor         | database from the dbvendor menu           |
 | showRelationType | join                                      |
 | ignoreFunction   | true                                      |
 
-### sample sql
+#### 1.6 login
 
-点击dbvendor菜单选择数据库后，点击 sample sql 可以在代码编辑框中获得这个 dbvendor对应的示例sql。
+You have to login in order to upload a SQL or zip file for processing.
 
-### upload
+### 2. schema
 
-上传一个文件，在后台创建一个job，当job处理成功后可以获得对应的结果。
-
-### login
-
-登录按钮。登录后可以上传文件，保存图像结果。目前登录功能仅支持 https://gudusoft.com/sqlflow/ 。
-
-## schema
-
-显示sql的schema结构。在schema、database、table上点击鼠标右键，可以visualize。
+show the schema objects returned by the backend.
+you can select a schema/database/table and click the right mouse button to visualize the data lineage of the selected schema object.
 
 ![3](https://user-images.githubusercontent.com/6293752/95968181-b8bc2a80-0e3f-11eb-8fc4-1501778fdc74.gif)
 
-global、summay、ignore record表示的是[graph接口](#graph)返回的的三个模式（json 中的 mode 字段），分别用三种不同的颜色表示。
+
+- global, green color, means all data lineage information is returned for this object.
+- summary, black color, means summary information returned for this object.
+- ignore record, orange color, means data lineage is returned without intermediate result.
 
 ![image](https://user-images.githubusercontent.com/6293752/95972556-2a4aa780-0e45-11eb-8b61-2126ae9f3e0d.png)
 
-DATAMART、DBO前的图标为橙色，表示mode为ignore record set；LOAN前为绿色，表示mode为global；其他节点前为灰色，表示当前节点还没有被visualize。
+the color of `DATAMART、DBO` is orange, means the returned data linege doesn't include the intermediate result.
+the color of `LOAN` is greeen, means all data lineage informaiton is returned.
+node in gray means it's not visualized yet.
 
-## setting
+### 3. setting
 
 ![image](https://user-images.githubusercontent.com/6293752/95977385-6da81480-0e4b-11eb-8ec0-cc0de5466701.png)
 
-设置当前[graph接口](#graph)接口的参数：
+set the [graph interface](#graph)：
 
-| 参数             | 值                                                           |
+| name             | value                                                           |
 | ---------------- | ------------------------------------------------------------ |
-| hideColumn       | false 或者 true，取决于hide all columns                      |
-| showRelationType | 如果 dataflow=true  impact=false，为fdd；<br />如果 dataflow=true  impact=true ，为fdd,ddi,fdr,frd；<br />如果 dataflow=false impact=true ，为fddi,fdr,frd； |
-| ignoreRecordSet  | false 或者 true，取决于show intermediate recordset           |
-| ignoreFunction   | false 或者 true，取决于show function                         |
+| hideColumn       | false/true，hide all columns                      |
+| showRelationType | dataflow=true, impact=false, then value is fdd.<br /> dataflow=true, impact=true, the value is fdd,ddi,fdr,frd；<br /> if dataflow=false, impact=true, the value is: fddi,fdr,frd； |
+| ignoreRecordSet  | false/true，show intermediate recordset           |
+| ignoreFunction   | false/true，show function                         |
 
-## job
+### 4. job
 
 ![image](https://user-images.githubusercontent.com/6293752/95977128-0b4f1400-0e4b-11eb-8c68-62657380e853.png)
 
-点击upload按钮，可以上传文件，创建一个job。当job处理完成后，可以点击view lineage，打开处理结果。
+click upload button to create a job by submit SQL text file or zip file including multiple SQL files.
 
-## download
+### 5. download
 
-导出处理结果为json或者png。
+export result to json or png file for download.
 
-## sqlflow
+### 6. sqlflow diagram panel
 
-鼠标左键点击某一列可以固定关联关系，点击cancel可以取消。
+select a column to highlight the data flow, click cancel button to cancel the highlight.
 
 ![3](https://user-images.githubusercontent.com/6293752/95986233-3ee46b00-0e58-11eb-8ee4-85a7ca5ee0f4.gif)
 
-鼠标右键点击 table lineage、column lineage可以显示表或列的关联关系，点击cancel可以取消。
+right mouse click the menu item table lineage or column lineage to show the table or column relation, click cancel to back to the previous state.
 
 ![3](https://user-images.githubusercontent.com/6293752/95986541-c336ee00-0e58-11eb-8a45-ad2d904d89ca.gif)
 
-## 接口
+## Restful API
 
-参考：[SQLFlow api 文档](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)
+Reference：[SQLFlow api doc](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)
 
-<span id="graph">graph接口：</span> post /sqlflow/generation/sqlflow/graph
+<span id="graph">graph interfact：</span> post /sqlflow/generation/sqlflow/graph
 
