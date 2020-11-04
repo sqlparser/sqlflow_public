@@ -1,18 +1,5 @@
 # SQLFlow frontend guide
 
-### How it works
-
-SQLFlow frontend communicate with the backend using the RESTFul API [**/sqlflow/generation/sqlflow/graph**](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)。
-Once it fetchs data from the backend, the frontend will analyze the graph and sqlflow and draw an interactive diagram according.
-
-Click the button or change the value in the setting resulting in calling different API or call the same API with the different parameters,
-and get the different data from the backend consequence.
-
-
-Reference：[SQLFlow api doc](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)
-
-![1](https://user-images.githubusercontent.com/6293752/95873864-e2734400-0da2-11eb-85a9-e46ea43ff5c3.png)
-
 ### 1. editor
 
 Enter the sql into the input box, and then choose the database accordingly from the dbvendor menu,
@@ -111,7 +98,20 @@ right mouse click the menu item table lineage or column lineage to show the tabl
 
 ![3](https://user-images.githubusercontent.com/6293752/95986541-c336ee00-0e58-11eb-8a45-ad2d904d89ca.gif)
 
-## Restful API
+### How it works
+
+SQLFlow frontend communicates with the backend using the RESTFul API [**/sqlflow/generation/sqlflow/graph**](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)。
+Once it fetchs data from the backend, the frontend will analyze the graph and sqlflow and draw an interactive diagram accordingly.
+
+Click the button or change the value in the setting panel will result in calling different API or call the same API with the different parameters,
+and get the different data from the backend consequence.
+
+
+Reference：[SQLFlow api doc](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)
+
+![1](https://user-images.githubusercontent.com/6293752/95873864-e2734400-0da2-11eb-85a9-e46ea43ff5c3.png)
+
+### Restful API
 
 Reference：[SQLFlow api doc](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)
 
