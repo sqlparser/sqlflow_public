@@ -2,8 +2,8 @@
 - install JDK1.8 or higher  
    SET JAVA_HOME variable, and then add %JAVA_HOME%\bin to the path variable
 
-- install nginx for windows
-  Download the nginx windows version here: http://nginx.org/en/docs/windows.html
+- install Nginx for windows
+	Download the Nginx Windows version here: http://nginx.org/en/docs/windows.html
 
 ### unzip SQLFlow file
 - create a dirctory: c:\wings\sqlflow
@@ -16,11 +16,11 @@
 - Open a dos command windows
 - cd c:\wings\sqlflow\backend\bin
 - run monitor.bat
-- please wait 3-5 minutes to allow the SQLFlow service start completedly.
+- please wait 3-5 minutes to allow the SQLFlow service to start completely.
 
-### config nginx
-- enter conf directory where nginx is installed such as : nginx-1.19.4\conf
-- modify the nginx.conf, replace server section in nginx.conf with the following code:
+### config Nginx
+- enter conf directory where Nginx is installed such as Nginx-1.19.4\conf
+- modify the Nginx.conf, replace the server section in nginx.conf with the following code:
 ```
 	server {
 
@@ -52,13 +52,13 @@
 
 Please make sure `C:\wings\sqlflow\frontend` is where the SQLFlow frontend is installed.
 
-### start nginx
-- Open a dos command windows
-- cd the directory where nginx is installed
+### start Nginx
+- Open a dos command window
+- cd the directory where Nginx is installed
 - run just nginx.exe
 
 ### SQLFlow is ready
-Just Open the browse and enter the localhost or IP where the SQLFlow is installed.
+Just Open the browser and enter the localhost or IP where the SQLFlow is installed.
 
 ### stop the SQLFlow
 - close the window where the monitor.sh is running.
