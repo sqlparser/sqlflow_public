@@ -18,6 +18,8 @@ CentOS
 - [How To Install Nginx on CentOS](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7)
 - [How To Install Java on CentOS ](https://www.digitalocean.com/community/tutorials/how-to-install-java-on-centos-and-fedora)
 
+Windows
+- [Install SQLFlow on Windows](install_sqlflow_on_windows.md)
 
 ### Upload Files
 
