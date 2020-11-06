@@ -64,3 +64,7 @@ Just Open the browser and enter the localhost or IP where the SQLFlow is install
 - close the window where the monitor.sh is running.
 - cd c:\wings\sqlflow\backend\bin
 - run stop.bat
+
+### troubleshooting
+- make sure the window hostname doesn't include the underscore symbol (_), otherwise, the service will not work properly.
+	please change it to minus symbol (-)
