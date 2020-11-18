@@ -14,7 +14,7 @@
 
 * How to get JWT Token
   1. Login on the sqlflow web
-  2. Move mouse on the login user image, click the generate token menu item, you can get the user secret key and token, the ttl of token is 24 hours.
+  2. Move mouse on the login user image, click the "generate token" menu item, you can get the user secret key and token, the ttl of token is 24 hours.
   3. When you get the user secret key, you can call **/gspLive_backend/user/generateToken** api to refresh token, the ttl of new token is 24 hours.
   4. **/gspLive_backend/user/generateToken**
        * **userId**: the user id of sqlflow web or client, required **true** 
