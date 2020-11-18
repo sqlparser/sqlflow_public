@@ -9,7 +9,7 @@
      Value:    Token <token>
   ```
   
-## JWT Client API Authorization (for sqlflow client api calling)
+## JWT Client API Authorization (for sqlflow client api call)
 * All of the restful requests are based on JWT authorization. Before accessing the sqlflow WebAPI, client user needs to obtain the corresponding JWT token for legal access.
 
 * How to get JWT Token
