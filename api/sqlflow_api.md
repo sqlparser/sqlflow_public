@@ -18,7 +18,7 @@
   3. When you get the user secret key, you can call **/gspLive_backend/user/generateToken** api to refresh token, the ttl of new token is 24 hours.
   4. **/gspLive_backend/user/generateToken**
        * **userId**: the user id of sqlflow web or client, required **true** 
-       * **secretKey**: the secret key of sqlflow user for webapi request.
+       * **secretKey**: the secret key of sqlflow user for webapi request, required **true** 
 
 * How to use JWT Token for security authentication?
   * Each webapi contains two parameters, named userId and token.
