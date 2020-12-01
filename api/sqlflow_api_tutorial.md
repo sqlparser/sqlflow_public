@@ -32,7 +32,7 @@ curl -X POST "https://api.gudusoft.com/gspLive_backend/user/generateToken" -H  "
 
 #### 2. Generate the data lineage
 
-Call this API by sending the SQL query and get the result including the data lineage.
+Call this API by sending the SQL query and get the result includes the data lineage.
 
 ```
 /gspLive_backend/sqlflow/generation/sqlflow
@@ -42,6 +42,9 @@ Example in `Curl`
 ```
 curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow?showRelationType=fdd" -H  "Request-Origion:SwaggerBootstrapUi" -H  "accept:application/json;charset=utf-8" -H  "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ0ZXN0IiwiZXhwIjoxNjMwOTQ0MDAwLCJpYXQiOjE1OTkzMjE2MDB9._2kef0EnD-ASoDsolmoV0BcPIjr9pREHsn4n01XdKaE" -H  "Content-Type:multipart/form-data" -F "sqlfile=" -F "dbvendor=dbvoracle" -F "userId=YOUR USER ID HERE" -F "ignoreRecordSet=false" -F "simpleOutput=false" -F "sqltext=CREATE VIEW vsal  as select * from emp" -F "token=YOUR TOKEN HERE"
 ```
+
+#### 3.  Other features
+You can also use the rest api to submit a zip file which includes a bunch of SQL files, or generate a map of the columns in join condition.
 
 ### The full reference to the Rest APIs
 
