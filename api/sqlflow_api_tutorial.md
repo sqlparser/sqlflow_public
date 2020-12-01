@@ -1,14 +1,14 @@
 ## How to use Rest API of SQLFlow
 
-Thiis article describles how to use the Rest API provided by the SQLFlow to 
-communicate with the SQLFlow server and get the genereated metadata and data lineage.
+This article describes how to use the Rest API provided by the SQLFlow to 
+communicate with the SQLFlow server and get the generated metadata and data lineage.
 
 In this article, we use `Curl` to demonstrate the usage of the Rest API, 
 you can use any preferred programming language as you like.
 
 ### Prerequisites
-In order to use the Rest API of the SQLFlow, you need to <a href="https://gudusoft.com">obtain a premium account</a>. 
-After that, you will get the `userid` and `secret key` which will be used in the API.
+To use the Rest API of the SQLFlow, you need to <a href="https://gudusoft.com">obtain a premium account</a>. 
+After that, you will get the `userid` and `secret key`, which will be used in the API.
 
 - User ID
 - Secrete Key
@@ -44,7 +44,7 @@ curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflo
 ```
 
 #### 3.  Other features
-You can also use the rest api to submit a zip file which includes a bunch of SQL files, or generate a map of the columns in join condition.
+You can also use the rest API to submit a zip file that includes many SQL files or generate a map of the columns in the join condition.
 
 ### The full reference to the Rest APIs
 
