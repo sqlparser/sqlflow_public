@@ -24,7 +24,7 @@ and what other data items are derived from this data value.
 
 
 ### The price plan
-- [SQLFlow price plan](sqlflow_pricing_plans.md)
+- [SQLFlow price plan](https://gudusoft.com)
 
 ### Restful APIs
 - [SQLFlow API document](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)
