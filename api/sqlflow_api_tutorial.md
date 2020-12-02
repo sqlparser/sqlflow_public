@@ -26,7 +26,7 @@ Once you have the `userid` and `secret key`, the first API need to call is:
 This API will return a temporary token that needs to be used in the API call thereafter.
 
 ```
-curl -X POST "https://api.gudusoft.com/gspLive_backend/user/generateToken" -H  "Request-Origion:testClientDemo" -H  "accept:application/json;charset=utf-8" -H  "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ0ZXN0IiwiZXhwIjoxNjMwOTQ0MDAwLCJpYXQiOjE1OTkzMjE2MDB9._2kef0EnD-ASoDsolmoV0BcPIjr9pREHsn4n01XdKaE" -H  "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "secretKey=YOUR SECRET KEY" -d "userId=YOUR USER ID HERE"
+curl -X POST "https://api.gudusoft.com/gspLive_backend/user/generateToken" -H  "Request-Origion:testClientDemo" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "secretKey=YOUR SECRET KEY" -d "userId=YOUR USER ID HERE"
 ```
 
 
@@ -40,7 +40,7 @@ Call this API by sending the SQL query and get the result includes the data line
 
 Example in `Curl`
 ```
-curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow?showRelationType=fdd" -H  "Request-Origion:SwaggerBootstrapUi" -H  "accept:application/json;charset=utf-8" -H  "Authorization:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ0ZXN0IiwiZXhwIjoxNjMwOTQ0MDAwLCJpYXQiOjE1OTkzMjE2MDB9._2kef0EnD-ASoDsolmoV0BcPIjr9pREHsn4n01XdKaE" -H  "Content-Type:multipart/form-data" -F "sqlfile=" -F "dbvendor=dbvoracle" -F "userId=YOUR USER ID HERE" -F "ignoreRecordSet=false" -F "simpleOutput=false" -F "sqltext=CREATE VIEW vsal  as select * from emp" -F "token=YOUR TOKEN HERE"
+curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow?showRelationType=fdd" -H  "Request-Origion:testClientDemo" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:multipart/form-data" -F "sqlfile=" -F "dbvendor=dbvoracle" -F "ignoreRecordSet=false" -F "simpleOutput=false" -F "sqltext=CREATE VIEW vsal  as select * from emp" -F "userId=YOUR USER ID HERE"  -F "token=YOUR TOKEN HERE"
 ```
 
 #### 3.  Other features
