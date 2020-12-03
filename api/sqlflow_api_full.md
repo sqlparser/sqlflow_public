@@ -1,13 +1,21 @@
 # SQLFlow WebAPI
 
+## JWT WEB Authorization (Only for sqlflow web)
+* All of the restful requests are based on JWT authorization. Before accessing the sqlflow WebAPI, web user needs to obtain the corresponding JWT token for legal access.
+* How to use JWT Token for security authentication?
+  * In the header of the HTTP request, please pass the parameters:
+   ```
+     Key:      Authorization
+     Value:    Token <token>
+  ```
   
 ## JWT Client API Authorization (for sqlflow client api call)
 * All of the restful requests are based on JWT authorization. Before accessing the sqlflow WebAPI, client user needs to obtain the corresponding JWT token for legal access.
 
 * How to get JWT Token
-  1. Login on [the sqlflow web](https://sqlflow.gudusoft.com), upgrade to premium account.
-  2. Move mouse on the login user image, select Account menu item,  click the "generate" button to generate the user secret key.
-  3. When you get the user secret key, you can call **/gspLive_backend/user/generateToken** api to obtain a token, the ttl of new token is 24 hours.
+  1. Login on the sqlflow web
+  2. Move mouse on the login user image, click the "generate token" menu item, you can get the user secret key and token, the ttl of token is 24 hours.
+  3. When you get the user secret key, you can call **/gspLive_backend/user/generateToken** api to refresh token, the ttl of new token is 24 hours.
   4. **/gspLive_backend/user/generateToken**
        * **userId**: the user id of sqlflow web or client, required **true** 
        * **secretKey**: the secret key of sqlflow user for webapi request, required **true** 
