@@ -43,7 +43,27 @@ Example in `Curl`
 curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow?showRelationType=fdd" -H  "Request-Origion:testClientDemo" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:multipart/form-data" -F "sqlfile=" -F "dbvendor=dbvoracle" -F "ignoreRecordSet=false" -F "simpleOutput=false" -F "sqltext=CREATE VIEW vsal  as select * from emp" -F "userId=YOUR USER ID HERE"  -F "token=YOUR TOKEN HERE"
 ```
 
-#### 3.  Other features
+#### 3. Generate the data lineage csv result
+
+Call this API by sending the SQL file and get the csv result includes the data lineage.
+
+```
+/gspLive_backend/sqlflow/generation/sqlflow/download/metadata_lineage
+```
+
+```
+curl -X POST https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow/download/metadata_lineage" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:multipart/form-data" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE" -F "dbvendor=dbvoracle" -F "showRelationType=fdd" -F "ignoreFunction=true" -F "ignoreRecordSet=true" -F "showLinkOnly=true" -F "sqlfile=@YOUR UPLOAD FILE PATH HERE" --output YOUR DOWNLOAD FILE PATH HERE
+```
+
+**Note:**
+ * -F "ignoreFunction=true" is must required.
+ * -F "ignoreRecordSet=true" is must required.
+ * -H  "Content-Type:multipart/form-data" is must required.
+ * Add **'@'** before the upload file path 
+ * --output is must required, and the download file is a **zip** file.
+
+
+#### 4.  Other features
 You can also use the rest API to submit a zip file that includes many SQL files or generate a map of the columns in the join condition.
 
 ### The full reference to the Rest APIs
