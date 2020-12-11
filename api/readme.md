@@ -59,7 +59,7 @@ curl -X POST https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow
  * -F "ignoreFunction=true" is must required.
  * -F "ignoreRecordSet=true" is must required.
  * -H  "Content-Type:multipart/form-data" is must required.
- * Add **'@'** before the upload file path 
+ * Add **@** before the upload file path 
  * --output is must required, and the download file is a **zip** file.
 
 
