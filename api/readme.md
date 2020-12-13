@@ -43,7 +43,7 @@ Example in `Curl`
 curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow?showRelationType=fdd" -H  "Request-Origion:testClientDemo" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:multipart/form-data" -F "sqlfile=" -F "dbvendor=dbvoracle" -F "ignoreRecordSet=false" -F "simpleOutput=false" -F "sqltext=CREATE VIEW vsal  as select * from emp" -F "userId=YOUR USER ID HERE"  -F "token=YOUR TOKEN HERE"
 ```
 
-#### 3. Generate the data lineage csv result
+#### 3. Export the data lineage csv result
 
 Call this API by sending the SQL file and get the csv result includes the data lineage.
 
