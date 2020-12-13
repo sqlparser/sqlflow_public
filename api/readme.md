@@ -58,7 +58,7 @@ curl -X POST https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow
 **Note:**
  * -H  "Content-Type:multipart/form-data" is must required.
  * Add **@** before the upload file path 
- * --output is must required, and the download file is a **zip** file.
+ * --output is must required.
 
 
 #### 4.  Other features
