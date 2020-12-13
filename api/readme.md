@@ -48,16 +48,14 @@ curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflo
 Call this API by sending the SQL file and get the csv result includes the data lineage.
 
 ```
-/gspLive_backend/sqlflow/generation/sqlflow/download/metadata_lineage
+/gspLive_backend/sqlflow/generation/sqlflow/exportLineageAsCsv
 ```
 
 ```
-curl -X POST https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow/download/metadata_lineage" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:multipart/form-data" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE" -F "dbvendor=dbvoracle" -F "showRelationType=fdd" -F "ignoreFunction=true" -F "ignoreRecordSet=true" -F "showLinkOnly=true" -F "sqlfile=@YOUR UPLOAD FILE PATH HERE" --output YOUR DOWNLOAD FILE PATH HERE
+curl -X POST https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow/exportLineageAsCsv" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:multipart/form-data" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE" -F "dbvendor=dbvoracle" -F "showRelationType=fdd" -F "sqlfile=@YOUR UPLOAD FILE PATH HERE" --output YOUR DOWNLOAD FILE PATH HERE
 ```
 
 **Note:**
- * -F "ignoreFunction=true" is must required.
- * -F "ignoreRecordSet=true" is must required.
  * -H  "Content-Type:multipart/form-data" is must required.
  * Add **@** before the upload file path 
  * --output is must required, and the download file is a **zip** file.
