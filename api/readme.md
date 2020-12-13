@@ -59,6 +59,7 @@ curl -X POST https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow
  * -H  "Content-Type:multipart/form-data" is must required.
  * Add **@** before the upload file path 
  * --output is must required.
+ * Optional, if you just want to fetch table to table relations, please add **-F "tableToTable=true"**
 
 
 #### 4.  Other features
