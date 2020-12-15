@@ -101,6 +101,8 @@ Please records the jobId field.
  
 
 ### 3. Export data lineage
+ 
+ When the job status is **success**, you can export the data lineage in json, csv, graphml formats
 
  * Export data lineage in json format
   
