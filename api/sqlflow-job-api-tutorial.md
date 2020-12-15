@@ -27,9 +27,9 @@ Example in `Curl`
 curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/job/submitUserJob" -H "accept:application/json;charset=utf-8" -H "Content-Type:multipart/form-data" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE" -F "sqlfiles=@FIRST FILE PATH" -F "sqlfiles=@SECOND FILE PATH" -F "dbvendor=dbvmssql" -F "jobName=job"
 ```
 
-**Note**
+**Note:**
  * **-H "Content-Type:multipart/form-data"** is required
- * Add **'@'** before the file path
+ * Add **@** before the file path
 
 ### 2. Get job status
 
