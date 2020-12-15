@@ -55,14 +55,30 @@ Please records the jobId field.
 ### 2. Get job status
 
  * Get the specify user job status and summary
+  
   ```
   /gspLive_backend/sqlflow/job/displayUserJobSummary
   ```
   
+  Example in `Curl`
+  
+  ```json
+  curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/job/displayUserJobSummary" -F "jobId=c359aef4bd9641d697732422debd8055" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE"
+  ```
+  
  * Get all jobs (include history jobs) status and summary
- ```
- /gspLive_backend/sqlflow/job/displayUserJobsSummary
- ```
+ 
+  ```
+  /gspLive_backend/sqlflow/job/displayUserJobsSummary
+  ```
+ 
+  Example in `Curl`
+  
+  ```json
+  curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/job/displayUserJobsSummary" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE"
+  ```
+  
+ 
 
 ### 3. Export data lineage
 
