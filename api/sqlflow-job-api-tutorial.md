@@ -29,7 +29,7 @@ Call this API by sending the SQL files and get the result includes the data line
   /gspLive_backend/sqlflow/job/displayUserJobSummary
   ```
   
- * Get all jobs status and summary
+ * Get all jobs (include history jobs) status and summary
  ```
  /gspLive_backend/sqlflow/job/displayUserJobsSummary
  ```
