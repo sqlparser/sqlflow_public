@@ -66,6 +66,26 @@ Please records the jobId field.
   curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/job/displayUserJobSummary" -F "jobId=c359aef4bd9641d697732422debd8055" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE"
   ```
   
+  Return data:
+  ```json
+  {
+	"code":200,
+	"data":{
+		"jobId":"c359aef4bd9641d697732422debd8055",
+		"jobName":"job1",
+		"userId":"google-oauth2|104002923119102769706",
+		"dbVendor":"dbvmssql",
+		"dataSource":{
+			
+		},
+		"fileNames":["1.sql","1.zip"],
+		"createTime":"2020-12-15 15:14:39",
+		"status":"success",
+		"sessionId":"fe5898d4e1b1a7782352b50a8203ca24c04f5513446e9fb059fc4d584fab4dbf_1608045280033"
+	}
+  }
+  ```
+  
  * Get all jobs (include history jobs) status and summary
  
   ```
