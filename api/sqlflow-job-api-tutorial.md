@@ -37,16 +37,19 @@ Call this API by sending the SQL files and get the result includes the data line
 ### 3. Export data lineage
 
  * Export data lineage in json format
-   ```
+  
+  ```
   /gspLive_backend/sqlflow/job/exportLineageAsJson
   ```
  
  * Export data lineage in csv format
-   ```
+  
+  ```
   /gspLive_backend/sqlflow/job/exportLineageAsCsv
   ```
  
  * Export data lineage in graphml format, you can view the lineage graph at yEd Graph Editor
-   ```
-   /gspLive_backend/sqlflow/job/exportLineageAsGraphml
+   
+  ```
+  /gspLive_backend/sqlflow/job/exportLineageAsGraphml
   ``` 
