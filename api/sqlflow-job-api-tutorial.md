@@ -10,7 +10,21 @@ After that, you will get the `userid` and `secret key`, which will be used in th
 - User ID
 - Secrete Key
 
-More detail, please see https://github.com/sqlparser/sqlflow_public/edit/master/api/sqlflow_api_tutorial.md
+#### Generate a token
+
+Once you have the `userid` and `secret key`, the first API need to call is:
+
+```
+/gspLive_backend/user/generateToken
+```
+
+This API will return a temporary token that needs to be used in the API call thereafter.
+
+```
+curl -X POST "https://api.gudusoft.com/gspLive_backend/user/generateToken" -H  "Request-Origion:testClientDemo" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:application/x-www-form-urlencoded;charset=UTF-8" -d "secretKey=YOUR SECRET KEY" -d "userId=YOUR USER ID HERE"
+```
+
+More detail, please see https://github.com/sqlparser/sqlflow_public/edit/master/api/readme.md
 
 ### Call Rest API
 
@@ -104,7 +118,7 @@ Please records the jobId field.
  
  When the job status is **success**, you can export the data lineage in json, csv, graphml formats
 
- * Export data lineage in json format
+ * 3.1 Export data lineage in json format
   
   ```
   /gspLive_backend/sqlflow/job/exportLineageAsJson
@@ -118,7 +132,7 @@ Please records the jobId field.
   **Note:**
    * If you want to get table to table relation, please add option -F "tableToTable=true"
  
- * Export data lineage in csv format
+ * 3.2 Export data lineage in csv format
   
   ```
   /gspLive_backend/sqlflow/job/exportLineageAsCsv
@@ -134,7 +148,7 @@ Please records the jobId field.
    * If you want to get table to table relation, please add option -F "tableToTable=true"
   
  
- * Export data lineage in graphml format, you can view the lineage graph at yEd Graph Editor
+ * 3.3 Export data lineage in graphml format, you can view the lineage graph at yEd Graph Editor
    
   ```
   /gspLive_backend/sqlflow/job/exportLineageAsGraphml
