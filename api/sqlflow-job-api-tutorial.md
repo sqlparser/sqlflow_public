@@ -130,7 +130,7 @@ Please records the jobId field.
   curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/job/exportLineageAsJson" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE" -F "jobId=c359aef4bd9641d697732422debd8055" --output lineage.json
   ```
   **Note:**
-   * If you want to get table to table relation, please add option -F "tableToTable=true"
+   > If you want to get table to table relation, please add option -F "tableToTable=true"
  
  * 3.2 Export data lineage in csv format
   
@@ -145,7 +145,7 @@ Please records the jobId field.
   ```
   
   **Note:**
-   * If you want to get table to table relation, please add option -F "tableToTable=true"
+   > If you want to get table to table relation, please add option -F "tableToTable=true"
   
  
  * 3.3 Export data lineage in graphml format, you can view the lineage graph at yEd Graph Editor
@@ -161,4 +161,4 @@ Please records the jobId field.
   ```
   
   **Note:**
-   * If you want to get table to table relation, please add option -F "tableToTable=true"
+   > If you want to get table to table relation, please add option -F "tableToTable=true"
