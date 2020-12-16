@@ -68,3 +68,7 @@ curl -X POST https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow
 ### The full reference to the Rest APIs
 
 [SQLFlow rest API reference](sqlflow_api.md)
+
+### Troubleshooting
+
+- Under windows, you may need to add option `--ssl-no-revoke` to avoid some security issues, `curl --ssl-no-revoke`
