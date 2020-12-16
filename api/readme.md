@@ -62,8 +62,8 @@ curl -X POST https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow
  * Optional, if you just want to fetch table to table relations, please add **-F "tableToTable=true"**
 
 
-#### 4.  Other features
-You can also use the rest API to submit a zip file that includes many SQL files or generate a map of the columns in the join condition.
+#### 5.  Submit multiple SQL files and get the data lineage in CSV, JSON, graphml format.
+<a href="sqlflow-job-api-tutorial.md">Rest APIs: Job</a>
 
 ### The full reference to the Rest APIs
 
