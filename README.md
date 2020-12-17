@@ -26,11 +26,11 @@ AS
 ```
 
 The output is the metadata of the table/column representing the changes and hops during the transition of the data.
-```
-source_db	source_schema	source_table	source_column	target_db	target_schema	target_table	target_column	relation_type	effectType
-scott	scott.emp	sal			vsal	"Salary"	fdd	create_view
-scott	scott.emp	deptno			vsal	"Department"	fdd	create_view
-```
+
+|source_db|source_schema|source_table|source_column	|target_db|target_schema|target_table|target_column|relation_type|effectType  |
+|---------|-------------|------------| -------------| --------| ------------|------------|-------------|-------------| -----------|
+|         |scott        |scott.emp	 |sal			|         |             |vsal	     |"Salary"	   |fdd	         |create_view|
+|         |scott        |scott.emp	 |deptno		|         |             |vsal	     |"Department" |fdd	         |create_view|
 
 Once the metadata of the data lineage is ready, SQLFlow presents a nice clean graph to you that tells
 where the data came from, what transformations it underwent along the way, 
