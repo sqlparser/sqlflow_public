@@ -31,6 +31,8 @@ The output is the metadata of the table/column representing the changes and hops
 |---------|-------------|------------| -------------| --------| ------------|------------|-------------|-------------| -----------|
 |         |scott        |scott.emp	 |sal			|         |             |vsal	     |"Salary"	   |fdd	         |create_view|
 |         |scott        |scott.emp	 |deptno		|         |             |vsal	     |"Department" |fdd	         |create_view|
+|         |scott	    |scott.emp	 |PseudoRows	|         |         	|vsal	     |"Employees"  |frd          |create_view|
+
 
 Once the metadata of the data lineage is ready, SQLFlow presents a nice clean graph to you that tells
 where the data came from, what transformations it underwent along the way, 
