@@ -2,7 +2,35 @@
 
 The SQLFlow is a tool helps you collect data lineage information by analying the SQL scripts
 in a governed data environment. It scans SQL code to understand all the logic and reverse engineer it, 
+to discover the data flow/movement from its source to destination via various changes and hops on its way, 
 to build an understanding of how data changes and which data serves as input for calculating other data. 
+
+The input of the SQLFlow is SQL statement or file that includes the SQL statement.
+```sql
+CREATE VIEW vsal 
+AS 
+  SELECT a.deptno                  "Department", 
+         a.num_emp / b.total_count "Employees", 
+         a.sal_sum / b.total_sal   "Salary" 
+  FROM   (SELECT deptno, 
+                 Count()  num_emp, 
+                 SUM(sal) sal_sum 
+          FROM   scott.emp 
+          WHERE  city = 'NYC' 
+          GROUP  BY deptno) a, 
+         (SELECT Count()  total_count, 
+                 SUM(sal) total_sal 
+          FROM   scott.emp 
+          WHERE  city = 'NYC') b 
+;
+```
+
+The output is the metadata of the table/column representing the changes and hops during the transition of the data.
+```
+source_db	source_schema	source_table	source_column	target_db	target_schema	target_table	target_column	relation_type	effectType
+scott	scott.emp	sal			vsal	"Salary"	fdd	create_view
+scott	scott.emp	deptno			vsal	"Department"	fdd	create_view
+```
 
 Once the metadata of the data lineage is ready, SQLFlow presents a nice clean graph to you that tells
 where the data came from, what transformations it underwent along the way, 
