@@ -50,7 +50,9 @@
 	
 ```
 
-Please make sure `C:\wings\sqlflow\frontend` is where the SQLFlow frontend is installed.
+Please make sure `C:\wings\sqlflow\frontend` is where the SQLFlow frontend is installed, 
+otherwise, please change `C:\wings\sqlflow\frontend` to the path where the SQLFlow frontend is located.
+
 
 ### start Nginx
 - Open a dos command window
