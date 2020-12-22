@@ -58,6 +58,7 @@ upload your backend and frontend file to `sqlflow` folder, like this :
     │   │   ├── eureka.jar
     │   ├── conf
     │   │   ├── gudu_sqlflow_license.txt     
+    │   │   ├── gudu_sqlflow.conf     
     │   ├── data
     │   │   ├── job  
     │   │   │   ├── task     
