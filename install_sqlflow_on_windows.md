@@ -31,22 +31,27 @@
 		root C:\wings\sqlflow\frontend;
 
 		index index.html;
-
+		
 		location ~* ^/index.html {
-
-			​ add_header X-Frame-Options deny;
-
-			​ add_header Cache-Control no-store;
-
-			}
+			add_header X-Frame-Options deny;
+			add_header Cache-Control no-store;
+		}
 
 		location / {
-
-		​ 	try_files uriuri/ =404;
-
-			}
-	
+			try_files $uri $uri/ =404;
 		}
+	
+		location /api/ {
+			proxy_pass http://127.0.0.1:8081/;
+			proxy_connect_timeout 600s ;
+			proxy_read_timeout 600s;
+			proxy_send_timeout 600s;
+		
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header User-Agent $http_user_agent;  
+	}
 	
 ```
 
@@ -61,6 +66,10 @@ otherwise, please change `C:\wings\sqlflow\frontend` to the path where the SQLFl
 
 ### SQLFlow is ready
 Just Open the browser and enter the localhost or IP where the SQLFlow is installed.
+
+open http://yourIp/ to see the SQLFlow.
+
+open http://yourIp/api/gspLive_backend/doc.html?lang=en to see the Restful API documention.
 
 ### stop the SQLFlow
 - close the window where the monitor.sh is running.
