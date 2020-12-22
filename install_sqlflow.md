@@ -114,7 +114,7 @@ ubuntu   11076     1  0 Nov02 ?        00:04:11 java -server -Xmn512m -Xms2g -Xm
 ubuntu   11114     1  0 Nov02 ?        00:05:17 java -server -jar gspLive.jar
 ```
 
-#### default port
+#### Java service port
 
 | File           | Port |
 | -------------- | ---- |
