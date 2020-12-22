@@ -141,6 +141,18 @@ server {
 	location / {
 		try_files $uri $uri/ =404;
 	}
+	
+	location /api/ {
+		proxy_pass http://127.0.0.1:8081/;
+		proxy_connect_timeout 600s ;
+		proxy_read_timeout 600s;
+		proxy_send_timeout 600s;
+		
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header User-Agent $http_user_agent;  
+	}
 }
 ```
 
@@ -158,4 +170,4 @@ sudo nginx -s reload
 
 open http://yourdomain.com/ to see the SQLFlow.
 
-open http://yourdomain.com:8081/gspLive_backend/doc.html?lang=en to see the Restful API documention.
+open http://yourdomain.com/api/gspLive_backend/doc.html?lang=en to see the Restful API documention.
