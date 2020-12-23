@@ -122,7 +122,11 @@ ubuntu   11114     1  0 Nov02 ?        00:05:17 java -server -jar gspLive.jar
 | gspLive.jar    | 8081 |
 | sqlservice.jar | 8083 |
 
-### Start Frontend Services
+### Nginx Reverse Proxy
+
+If we set the reverse proxy path of gspLive restful service to /api
+
+**1. Config Nginx**
 
 open your nginx configuration file ( at `/etc/nginx/sites-available/default` under ubuntu ), add a server :
 
@@ -156,6 +160,16 @@ server {
 	}
 }
 ```
+
+**2. modify frontend configuration file config.private.json**
+
+- Open the configration file "/wings/sqlflow/frontend/config.private.json"
+- Modify the **ApiPrefix** attribute
+```
+  "ApiPrefix": "/api"
+```
+
+### Start Frontend Services
 
 start your nginx : 
 
