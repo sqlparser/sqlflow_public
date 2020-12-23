@@ -18,7 +18,11 @@
 - run monitor.bat
 - please wait 3-5 minutes to allow the SQLFlow service to start completely.
 
-### config Nginx
+### Nginx Reverse Proxy
+
+If we set the reverse proxy path to /api
+
+**1. config Nginx**
 - enter conf directory where Nginx is installed such as Nginx-1.19.4\conf
 - modify the Nginx.conf, replace the server section in nginx.conf with the following code:
 ```
@@ -59,6 +63,13 @@
 Please make sure `C:\wings\sqlflow\frontend` is where the SQLFlow frontend is installed, 
 otherwise, please change `C:\wings\sqlflow\frontend` to the path where the SQLFlow frontend is located.
 
+**2. modify frontend configuration file config.private.json**
+
+- Open the configration file "C:\wings\sqlflow\frontend\config.private.json"
+- Modify the **ApiPrefix** attribute
+```
+  "ApiPrefix": "/api"
+```
 
 ### start Nginx
 - Open a dos command window
