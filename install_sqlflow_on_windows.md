@@ -20,7 +20,7 @@
 
 ### Nginx Reverse Proxy
 
-If we set the reverse proxy path to /api
+If we set the reverse proxy path of gspLive restful service to /api
 
 **1. config Nginx**
 - enter conf directory where Nginx is installed such as Nginx-1.19.4\conf
