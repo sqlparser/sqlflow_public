@@ -197,14 +197,20 @@ See [sqlflow client api call][1]
   ```bash
     anonymous_user_id=xxx
   ```
+  - **Note:** on-promise mode, webapi call doesn't need the token parameter
+  
 2. Test webapi by curl
+    
     * test sql:
     ```sql
       select name from user
     ```
+    
     * curl command:
     ```bash
       curl -X POST "http://yourdomain.com/api/gspLive_backend/sqlflow/generation/sqlflow" -H "accept:application/json;charset=utf-8" -F "userId=YOUR USER ID HERE" -F  "dbvendor=dbvoracle" -F "sqltext=select name from user"
+      ```
+      
     * response: 
     ```json
       {
