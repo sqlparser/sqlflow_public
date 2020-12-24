@@ -88,6 +88,50 @@ open http://yourIp/api/gspLive_backend/doc.html?lang=en to see the Restful API d
 - cd c:\wings\sqlflow\backend\bin
 - run stop.bat
 
+### Sqlflow client api call
+
+See [sqlflow client api call][1]
+
+1. Get userId from gudu_sqlflow.conf
+  - Open the configration file "c:\wings\sqlflow\backend\conf\gudu_sqlflow.conf"
+  - The value of anonymous_user_id field is webapi userId
+  ```bash
+    anonymous_user_id=xxx
+  ```
+  - **Note:** on-promise mode, webapi call doesn't need the token parameter
+  
+2. Test webapi by curl
+    
+    * test sql:
+    ```sql
+      select name from user
+    ```
+    
+    * curl command:
+    ```bash
+      curl -X POST "http://yourIp/api/gspLive_backend/sqlflow/generation/sqlflow" -H "accept:application/json;charset=utf-8" -F "userId=YOUR USER ID HERE" -F  "dbvendor=dbvoracle" -F "sqltext=select name from user"
+      ```
+      
+    * response: 
+    ```json
+      {
+        "code": 200,
+        "data": {
+          "dbvendor": "dbvoracle",
+          "dbobjs": [
+            ...
+          ],
+          "relations": [
+            ...
+          ]
+        },
+        "sessionId": ...
+      }
+    ```
+    * If the code returns **401**, please check the userId is set or the userId is valid.
+
 ### troubleshooting
 - make sure the window hostname doesn't include the underscore symbol (_), otherwise, the service will not work properly.
 	please change it to minus symbol (-)
+
+[1]: https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api_full.md#webapi
