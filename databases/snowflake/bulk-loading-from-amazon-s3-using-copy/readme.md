@@ -1,4 +1,4 @@
-## Snowflake data lineage captureed from the script used in bulk Loading from Amazon S3 Using COPY
+## Snowflake data lineage captured from the script used in bulk Loading from Amazon S3 Using COPY
 
 ### Script for Creating Required  Objects
 ```sql
@@ -61,9 +61,10 @@ create materialized view exttable_csv_mv
   select ID , LAST_NAME , FIRST_NAME ,COMPANY,EMAIL  from mycsvtable;
 ```
 
-my_csv_stage('s3://snowflake-docs',CSV) -> fdd -> mycsvtable -> fdd -> exttable_csv_mv(ID , LAST_NAME , FIRST_NAME ,COMPANY,EMAIL)
-
 
 ## Data lineage build for the above SQL script 
+
+my_csv_stage('s3://snowflake-docs',CSV) -> fdd -> mycsvtable -> fdd -> exttable_csv_mv(ID , LAST_NAME , FIRST_NAME ,COMPANY,EMAIL)
+> CSV used in mycsvformat is attached to my_csv_stage
 
 [Tutorial: Bulk Loading from Amazon S3 Using COPY](https://docs.snowflake.com/en/user-guide/data-load-external-tutorial.html)
