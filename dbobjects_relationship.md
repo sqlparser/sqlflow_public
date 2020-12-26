@@ -180,6 +180,31 @@ We also use `PseudoRows` to represent the relation when rename a table, the rela
 t2.PseudoRows -> fdd -> t3.PseudoRows
 ```
 
+#### 5. create external table (snowflake)
+```sql
+create or replace stage exttable_part_stage
+  url='s3://load/encrypted_files/'
+  credentials=(aws_key_id='1a2b3c' aws_secret_key='4x5y6z')
+  encryption=(type='AWS_SSE_KMS' kms_key_id = 'aws/key');
+
+create external table exttable_part(
+ date_part date as to_date(split_part(metadata$filename, '/', 3)
+   || '/' || split_part(metadata$filename, '/', 4)
+   || '/' || split_part(metadata$filename, '/', 5), 'YYYY/MM/DD'),
+ timestamp bigint as (value:timestamp::bigint),
+ col2 varchar as (value:col2::varchar))
+ partition by (date_part)
+ location=@exttable_part_stage/logs/
+ auto_refresh = true
+ file_format = (type = parquet);
+```
+
+The data of the external table `exttable_part` comes from the stage: `exttable_part_stage`
+```
+exttable_part(date_part,timestamp,col2) -> fdd -> exttable_part_stage (url='s3://load/encrypted_files/')
+```
+
+
 ### The meaning of the letter in fdd, fdr
 
 The meaning of the letter in fdd, fdr. f: dataflow, d: data value, r: record set.
