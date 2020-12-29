@@ -101,7 +101,7 @@ chmod +x /wings/sqlflow/backend/bin
 
 If your computer has more than 8G of memory, you can change the boot parameters to recommended
 
-Please use the gspLive.sh, eureka.sh and sqlservice.sh shipped under [mac](mac) directory instead of the original one.
+Please use the gspLive.sh, eureka.sh and sqlservice.sh under [mac](mac) directory instead of the original one.
 
 * /wings/sqlflow/backend/bin/gspLive.sh
 
