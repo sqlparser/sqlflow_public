@@ -23,5 +23,5 @@ copy into house_sales
 
 create materialized view extjson_mv
   as
-  select ID , LAST_NAME , FIRST_NAME ,COMPANY,EMAIL  from house_sales;  
+  select * from house_sales;  
   
