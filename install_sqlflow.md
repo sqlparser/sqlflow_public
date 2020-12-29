@@ -7,7 +7,7 @@ The frontend and backend can be installed on the same server, or they can be ins
 - A linux server with at least 8GB memory (ubuntu 20.04 is recommended).
 - Java 8
 - Nginx web server. 
-- Port needs to be opened. (80, 8761,8081,8083)
+- Port needs to be opened. (80, 8761,8081,8083. Only 80 port need to be opened if you setup the nginx reverse proxy as mentioned in the below)
 
 ### Setup Environment (Ubuntu for example)
 	sudo apt-get update
