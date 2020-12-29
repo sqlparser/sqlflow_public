@@ -4,4 +4,4 @@ create materialized view exttable_csv_mv
   
 create materialized view exttable_json_mv
   as
-  select ID , LAST_NAME , FIRST_NAME ,COMPANY,EMAIL  from myjsontable;  
+  select * from myjsontable;  
