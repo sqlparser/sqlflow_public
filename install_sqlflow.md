@@ -139,7 +139,7 @@ server {
 	index index.html;
 
 	location ~* ^/index.html {
-		add_header X-Frame-Options deny;
+		add_header X-Frame-Options deny; # remove this line if you want embed sqlflow in iframe
 		add_header Cache-Control no-store;
 	}
 
