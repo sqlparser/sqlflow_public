@@ -100,7 +100,7 @@ sudo chmod -R 755 /wings/sqlflow
 
 sqlflow provides several optioins to control the service analysis logic. Open the sqlservice configuration file(conf/gudu_sqlflow.conf)
 
-* **relation_limit**:  default value is 2000. When relations of the selected object are greater than relation_limit, sqlflow will fallback to the simple mode which ignores all the record sets. If the relations of simple mode are still greater than relation_limit, sqlflow will only show the summary information.
+* **relation_limit**:  default value is 2000. When the count of selected object relations is greater than relation_limit, sqlflow will fallback to the simple mode, ignores all the record sets. If the relations of simple mode are still greater than relation_limit, sqlflow will only show the summary information.
 * **big_sql_size**: default value is 4096. If the sql length is greater than big_sql_size, sqlflow submit the sql in the work queue and execute it. If the work queue is full, sqlflow throws an exception and return error message "Sorry, the service is busy. Please try again later."
 
 ### Start Backend Services
