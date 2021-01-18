@@ -42,7 +42,7 @@ Sqlflow provides a tool class gudusoft.gsqlparser.dlineage.util.SqlInfoHelper, w
     public static Coordinate[][] parseCoordinateString(String coordinate);
   ```
   * Method parseCoordinateString support both of xml output coordinate string and json output coordinate string, like these:
-  ```json
+  ```
       //xml output coordinate string
       [56,36,64e5c5241fd1311e41b2182e40f77f1e],[56,62,64e5c5241fd1311e41b2182e40f77f1e]
 
