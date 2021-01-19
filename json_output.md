@@ -82,7 +82,7 @@ public class DbObjectPosition {
    * Other case, the value of index field is 0.
 * positions, locations of database object, they are matched the sql field. Position x and y **base 1** but not 0.    
 
-### Example 1
+### Example 1 (getSelectedDbObjectInfo)
 ```java
   String sql = "Select\n a\nfrom\n b;";
   DataFlowAnalyzer dataflow = new DataFlowAnalyzer(sql, EDbVendor.dbvmssql, false);
@@ -106,7 +106,7 @@ from
 table b position is [[4,2], [4,3]]
 ```
 
-### Example 2
+### Example 2 (getSelectedDbObjectStatementInfo)
 ```java
   String sql = "Select\n a\nfrom\n b;\n     Select c from d;";
   DataFlowAnalyzer dataflow = new DataFlowAnalyzer(sql, EDbVendor.dbvmssql, false);
