@@ -50,11 +50,21 @@ Sqlflow provides a tool class gudusoft.gsqlparser.dlineage.util.SqlInfoHelper, w
       [{"x":31,"y":36,"hashCode":"64e5c5241fd1311e41b2182e40f77f1e"},{"x":31,"y":38,"hashCode":"64e5c5241fd1311e41b2182e40f77f1e"}]     
   ``` 
 
-4. Fourth step, get the DbObjectPosition by api getSelectedDbObjectInfo
+4. Fourth step, get the DbObjectPosition by api `getSelectedDbObjectInfo`
 ```java
-    public DbObjectPosition[] getSelectedDbObjectInfo(Coordinate start, Coordinate end)
+    public DbObjectPosition getSelectedDbObjectInfo(Coordinate start, Coordinate end);
 ```
-  * Each position has two coordinates, start coordinate and end coordinate. If the result of DBObject.getCoordinates() has 10 items, it match 5 positions. 
+  * Each position has two coordinates, start coordinate and end coordinate. If the result of DBObject.getCoordinates() has 10 items, it matches 5 positions. 
+  * The position is based on the entire file, but not one statement.
+  * The sql field of DbObjectPosition return all sqls of the file.
+
+5. If you just want to get the specific statement information, please call the api `getSelectedDbObjectStatementInfo`
+```java
+    public DbObjectPosition getSelectedDbObjectStatementInfo(EDbVendor vendor, Coordinate start, Coordinate end);
+```
+  * The position is based on the statement.
+  * Return the statement index of sqls, index **bases 0**.
+  * Return a statement, but not all sqls of the file. 
   
 ### How to use DbObjectPosition
 ```java
@@ -72,7 +82,7 @@ public class DbObjectPosition {
    * Other case, the value of index field is 0.
 * positions, locations of database object, they are matched the sql field. Position x and y **base 1** but not 0.    
 
-### Example
+### Example 1
 ```java
   String sql = "Select\n a\nfrom\n b;";
   DataFlowAnalyzer dataflow = new DataFlowAnalyzer(sql, EDbVendor.dbvmssql, false);
@@ -81,9 +91,9 @@ public class DbObjectPosition {
   String coordinate = flow.getTables().get(0).getCoordinate();
   Coordinate[][] coordinates = SqlInfoHelper.parseCoordinateString(coordinate);
   SqlInfoHelper helper = new SqlInfoHelper(SqlInfoHelper.getSqlInfoJson(dataflow));
-  DbObjectPosition[] postion = helper.getSelectedDbObjectInfo(coordinates[0][0], coordinates[0][1]);
-  System.out.println(postion[0].getSql());
-  System.out.println("table " + flow.getTables().get(0).getName() + " position is " + Arrays.toString(postion[0].getPositions().toArray()));
+  DbObjectPosition position = helper.getSelectedDbObjectInfo(coordinates[0][0], coordinates[0][1]);
+  System.out.println(position.getSql());
+  System.out.println("table " + flow.getTables().get(0).getName() + " position is " + Arrays.toString(position.getPositions().toArray()));
 ``` 
 
 Return:
@@ -94,6 +104,30 @@ from
  b;
 
 table b position is [[4,2], [4,3]]
+```
+
+### Example 2
+```java
+  String sql = "Select\n a\nfrom\n b;\n     Select c from d;";
+  DataFlowAnalyzer dataflow = new DataFlowAnalyzer(sql, EDbVendor.dbvmssql, false);
+  dataflow.generateDataFlow(new StringBuffer());
+  gudusoft.gsqlparser.dlineage.dataflow.model.xml.dataflow flow = dataflow.getDataFlow();
+  String coordinate = flow.getTables().get(1).getCoordinate();
+  Coordinate[][] coordinates = SqlInfoHelper.parseCoordinateString(coordinate);
+  SqlInfoHelper helper = new SqlInfoHelper(SqlInfoHelper.getSqlInfoJson(dataflow));
+  DbObjectPosition position = helper.getSelectedDbObjectStatementInfo(EDbVendor.dbvmssql, coordinates[0][0], coordinates[0][1]);
+  System.out.println(position.getSql());
+  System.out.println(
+          "table " + flow.getTables().get(1).getName() + " position is " + Arrays.toString(position.getPositions().toArray()));
+  System.out.println(
+          "stmt index is " + position.getIndex());
+``` 
+
+Return:
+```java
+     Select c from d;
+table d position is [[1,20], [1,21]]
+stmt index is 1
 ```
 
 
