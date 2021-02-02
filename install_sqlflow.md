@@ -96,6 +96,13 @@ set folder permissions :
 sudo chmod -R 755 /wings/sqlflow
 ```
 
+### Backend Services Configuration
+
+sqlflow provides several optioins to control the service analysis logic. Open the sqlservice configuration file(conf/gudu_sqlflow.conf)
+
+* **relation_limit**:  default value is 2000. When the count of selected object relations is greater than relation_limit, sqlflow will fallback to the simple mode, ignore all the record sets. If the relations of simple mode are still greater than relation_limit, sqlflow will only show the summary information.
+* **big_sql_size**: default value is 4096. If the sql length is greater than big_sql_size, sqlflow submit the sql in the work queue and execute it. If the work queue is full, sqlflow throws an exception and return error message "Sorry, the service is busy. Please try again later."
+
 ### Start Backend Services
 
 start service in background: 
@@ -139,7 +146,7 @@ server {
 	index index.html;
 
 	location ~* ^/index.html {
-		add_header X-Frame-Options deny;
+		add_header X-Frame-Options deny; # remove this line if you want embed sqlflow in iframe
 		add_header Cache-Control no-store;
 	}
 

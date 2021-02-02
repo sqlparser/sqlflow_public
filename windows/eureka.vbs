@@ -1,0 +1,1 @@
+createobject("wscript.shell").run "eureka.bat" , 0
