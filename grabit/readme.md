@@ -109,10 +109,9 @@ SQLFlowServer: connection information to connect to SQLFlow
         backend/conf/gudu_sqlflow.conf anonymous_user_id conf file access, default is gudu | 0123456789, userSecret don't have to fill out        
 
 databaseType: the database type of all connections, the types currently supported：
-    mysql,
-    oracle,
-    snowflake,
-    sqlserver
+	access,bigquery,couchbase,dax,db2,greenplum,hana,hive,impala,informix,mdx,mssql,
+	sqlserver,mysql,netezza,odbc,openedge,oracle,postgresql,postgres,redshift,snowflake,
+	sybase,teradata,soql,vertica
 
 resultType: output result type (Integer)
     1: json
