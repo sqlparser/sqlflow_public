@@ -5,7 +5,7 @@
 
 The `type` of a `table` element can be the value of `table`, `pseudoTable` 
 
-#### type = "table"
+#### 1. type = "table"
 This means a base table found in the SQL query.
 
 ```sql
@@ -16,7 +16,7 @@ create view v123 as select a,b from employee a, name b where employee.id = name.
 <table id="2" name="employee" alias="a" type="table">
 ```
 
-#### type = "pseudoTable"
+#### 2. type = "pseudoTable"
 Due to the lack of metadata information, some columns can't be linked to a table correctly.
 Those columns will be assigned to a pseudo table with name: `pseudo_table_include_orphan_column`.
 The type of this table is `pseudoTable`.
@@ -37,14 +37,14 @@ create view v123 as select a,b from employee a, name b where employee.id = name.
 
 #### tableType
 In the most case of SQL query, the table used is a base table.
-However, derived tables are also used as well. 
+However, derived tables are also used in the from clause or other places. 
 
-The `tableType` property in the `table` element tells you what kind of the derived table is this table.
+The `tableType` property in the `table` element tells you what kind of the derived table this table is.
 
 Take the following sql for example, `ArtisanWarehouseReporting.dbo.fnListToTable` is a function that 
 used as a derived table. So, the value of `tableType` is `function`.
 
-Currently(GSP 2.2.0.6), `function` is the only value of `tableType`. More value will be added in the later version
+Currently(GSP 2.2.0.6), `function` is the only value of `tableType`. More value of `tableType` will be added in the later version
 such as `JSON_TABLE` for JSON_TABLE.
 
 ```sql
