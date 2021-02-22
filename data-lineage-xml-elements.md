@@ -41,18 +41,18 @@ However, derived tables are also used in the from clause or other places.
 
 The `tableType` property in the `table` element tells you what kind of the derived table this table is.
 
-Take the following sql for example, `ArtisanWarehouseReporting.dbo.fnListToTable` is a function that 
+Take the following sql for example, `WarehouseReporting.dbo.fnListToTable` is a function that 
 used as a derived table. So, the value of `tableType` is `function`.
 
 Currently(GSP 2.2.0.6), `function` is the only value of `tableType`. More value of `tableType` will be added in the later version
 such as `JSON_TABLE` for JSON_TABLE.
 
 ```sql
-select entry as Account FROM ArtisanWarehouseReporting.dbo.fnListToTable(@AccountList)
+select entry as Account FROM WarehouseReporting.dbo.fnListToTable(@AccountList)
 ```
 
 ```xml
-<table id="2" database="ArtisanWarehouseReporting" schema="dbo" name="ArtisanWarehouseReporting.dbo.fnListToTable" type="table" tableType="function" coordinate="[1,30,15c3ec5e6df0919bb570c4d8cdd66651],[1,87,15c3ec5e6df0919bb570c4d8cdd66651]">
+<table id="2" database="ArtisanWarehouseReporting" schema="dbo" name="WarehouseReporting.dbo.fnListToTable" type="table" tableType="function" coordinate="[1,30,15c3ec5e6df0919bb570c4d8cdd66651],[1,87,15c3ec5e6df0919bb570c4d8cdd66651]">
 	<column id="3" name="entry" coordinate="[1,8,15c3ec5e6df0919bb570c4d8cdd66651],[1,13,15c3ec5e6df0919bb570c4d8cdd66651]"/>
 </table>
 ```	
