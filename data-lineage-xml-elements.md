@@ -52,7 +52,7 @@ select entry as Account FROM WarehouseReporting.dbo.fnListToTable(@AccountList)
 ```
 
 ```xml
-<table id="2" database="ArtisanWarehouseReporting" schema="dbo" name="WarehouseReporting.dbo.fnListToTable" type="table" tableType="function" coordinate="[1,30,15c3ec5e6df0919bb570c4d8cdd66651],[1,87,15c3ec5e6df0919bb570c4d8cdd66651]">
+<table id="2" database="WarehouseReporting" schema="dbo" name="WarehouseReporting.dbo.fnListToTable" type="table" tableType="function" coordinate="[1,30,15c3ec5e6df0919bb570c4d8cdd66651],[1,87,15c3ec5e6df0919bb570c4d8cdd66651]">
 	<column id="3" name="entry" coordinate="[1,8,15c3ec5e6df0919bb570c4d8cdd66651],[1,13,15c3ec5e6df0919bb570c4d8cdd66651]"/>
 </table>
 ```	
