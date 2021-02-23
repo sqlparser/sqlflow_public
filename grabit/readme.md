@@ -6,7 +6,7 @@ Grabit is a supporting tool for SQLFlow, which collects SQL scripts from various
 ## How to use Grabit
 
 ### Prerequisites
-- Java 8 or higher version must be installed and confiured correctly.
+- Java 8 or higher version must be installed and configured correctly.
 
 setup the PATH like this: (Please change the JAVA_HOME according to your own environment)
 ```
@@ -55,7 +55,7 @@ in the `server`.
 - **userId, userSecret**
 
 This is the user id that used to connect to the SQLFlow server.
-Always set this value to `gudu|0123456789` if you are using the SQLFlow on-premise version.
+Always set this value to `gudu|0123456789` and keep `userSecret` empty if you are using the SQLFlow on-premise version.
 
 If you want to connect to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com), you may [request a 30 days premium account](https://www.gudusoft.com/request-a-premium-account/) to 
 [get the necessary userId and secret code](/sqlflow-userid-secret.md).
@@ -97,6 +97,63 @@ This configuration means the SQL script is collected from a database.
 "optionType":1
 ```	
 
+#### 3. resultType
+When you submit SQL script to the SQLFlow server, A job is created on the SQLFlow server
+and you can always see the graphic data lineage result in the frontend of the SQLFlow 
+by using the browser.
+
+Even better, grabit will fetch the data lineage back to the directory where the grabit is running.
+This parameter specify which kind of format is used to store the data lineage result.
+
+Avaiable values for this parameter:
+- 1: json, data lineage result in json.
+- 2: csv, data lineage result in CSV format.
+- 3: diagram, in graphml format that can be viewed by yEd.
+	
+#### 4. databaseType
+This parameter specify the database dialect those SQL scripts comply to.
+
+```txt
+	access,bigquery,couchbase,dax,db2,greenplum,hana,hive,impala,informix,mdx,mssql,
+	sqlserver,mysql,netezza,odbc,openedge,oracle,postgresql,postgres,redshift,snowflake,
+	sybase,teradata,soql,vertica
+```
+	
+#### 5. databaseServer
+If the `optionType` is set to '1' which means the SQL script is collected from a database instance, 
+then, this parameter specify the detailed information of a database instance.
+
+- **hostname**
+
+The IP of the datbase server that connect to.
+
+- **port**
+
+The port number of the datbase server that connect to.
+
+- **username**
+- **password**
+- **sid**
+- **extractSchema**
+- **excludedSchema**
+- **enableQueryHistory**
+- **queryHistoryBlockOfTimeInMinutes**
+
+
+Sample configuration of a SQL Server database:
+```
+"hostname":"127.0.0.1",
+"port":"1433",
+"username":"sa",
+"password":"PASSWORD",
+"sid":"",
+"extractSchema":"AdventureWorksDW2019/dbo",
+"excludedSchema":"",
+"enableQueryHistory":false,
+"queryHistoryBlockOfTimeInMinutes":30
+```
+
+	
 ### grabit ui launch
 ##### mac & linux
 `
@@ -112,17 +169,6 @@ start.bat
 **Configuration file template:** 
 ````
 {
-    "databaseServer":{
-        "hostname":"",
-        "port":"",
-        "username":"",
-        "password":"",
-        "sid":"",
-        "extractSchema":"",
-        "excludedSchema":"",
-        "enableQueryHistory":false,
-        "queryHistoryBlockOfTimeInMinutes":30
-    },
     "githubRepo":{
         "url":"",
         "username":"",
@@ -152,9 +198,6 @@ start.bat
         "username":"",
         "password":""
     },
-    "optionType":1,
-    "resultType":1,
-    "databaseType":"",
     "isUploadNeo4j":0
 }
 ````
@@ -183,28 +226,6 @@ githubRepo&bitbucketRepo: connection information for operation type GitHub or Bi
 SQLInSingleFile: path to a file with operation type Single File
 
 SQLInDirectory: path to a file with operation type Multiple SQL Files Under A Directory
-
-SQLFlowServer: connection information to connect to SQLFlow
-    server: sqlflow server address
-    serverPort: sqlflow server port
-    userId: sqlflow user id
-    userSecret: sqlflow user secret
-    note：
-        1，When sqlflow server is connected to the Cloud SQLFlow（server is https://sqlflow.gudusoft.com）, official as the default domain name server, 
-        don't need to fill in the port, please login on https://sqlflow.gudusoft.com platform, and then obtain userId in the personal account information, 
-        and generate the corresponding userSecret
-        2，When sqlflow server is connected to a local SQLFlow, the server is local IP, the port is 8081, userId in the backend of sqlflow 
-        backend/conf/gudu_sqlflow.conf anonymous_user_id conf file access, default is gudu | 0123456789, userSecret don't have to fill out        
-
-databaseType: the database type of all connections, the types currently supported：
-	access,bigquery,couchbase,dax,db2,greenplum,hana,hive,impala,informix,mdx,mssql,
-	sqlserver,mysql,netezza,odbc,openedge,oracle,postgresql,postgres,redshift,snowflake,
-	sybase,teradata,soql,vertica
-
-resultType: output result type (Integer)
-    1: json
-    2: csv
-    3: diagram
 
 isUploadNeo4j: whether to upload to neo4j (Integer)
     1: yes
