@@ -4,6 +4,10 @@
 Grabit is a supporting tool for SQLFlow, which collects SQL scripts from various data sources for SQLFlow, and then uploading them to SQLFlow for data lineage analysis of these SQL scripts. The analysis results can be viewed in the Web front end of SQLFlow. Meanwhile, the analysis results can also be exported from SQLFlow to local area through Grabit, and the JSON results can be uploaded to Neo4j database.
 
 ## How to use Grabit
+
+### Prerequisites
+- Java 8 or higher version
+
 ### grabit ui launch
 ##### mac & linux
 `
