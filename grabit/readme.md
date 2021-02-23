@@ -18,7 +18,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 ### Configuration
 Modify the configure file to set all parameters correctly according to your own environment.
 
-#### SQLFlow Server
+#### 1. SQLFlow Server
 This is the SQLFlow server that the grabit send the SQL script to.
 
 - **server**
@@ -58,7 +58,7 @@ This is the user id that used to connect to the SQLFlow server.
 Always set this value to `gudu|0123456789` if you are using the SQLFlow on-premise version.
 
 If you want to connect to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com), you may [request a 30 days premium account](https://www.gudusoft.com/request-a-premium-account/) to 
-get the necessary userId and secret code.
+[get the necessary userId and secret code](/sqlflow-userid-secret.md).
 
 
 Example configuration for on-premise version:

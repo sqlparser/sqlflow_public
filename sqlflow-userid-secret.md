@@ -6,14 +6,17 @@ You need sign-up to the https://sqlflow.gudusoft.com and
 [request a 30 days premium account](https://www.gudusoft.com/request-a-premium-account/) to 
 get the necessary userId and secret code.
 
-Once you login, please click the icon at the right top of the screen:
+- Once you login, please click the icon at the right top of the screen:
+
 <img src="/images/sqlflow_userid_secret_step1.png">
 
-and then click the `Account` menu item to see:
+- Click the `Account` menu item to see:
+
 <img src="/images/sqlflow_userid_secret_step2.png">
 
 Here you can 
 - Copy the userId
-- By default, the Secret key field is empty, please click the `generate` button to create a new secret key.
+- By default, the Secret key field is empty, please click the `generate` button to create 
+a new secret key and copy this code.
 
 
