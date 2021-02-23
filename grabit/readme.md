@@ -8,6 +8,79 @@ Grabit is a supporting tool for SQLFlow, which collects SQL scripts from various
 ### Prerequisites
 - Java 8 or higher version
 
+setup the PATH like this: (Please change the JAVA_HOME according to your own environment)
+```
+export JAVA_HOME=/usr/lib/jvm/default-java
+
+export PATH=$JAVA_HOME/bin:$PATH
+```
+
+### Configuration
+Modify the configure file to set all the setting value 
+correctly according to your own environment.
+
+#### SQLFlow Server
+This is the SQLFlow server that the grabit send the SQL script to.
+
+
+- server
+Usually, it is the IP address of [the SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/) 
+installed on your owner server such as `127.0.0.1` or `http://127.0.0.1`
+
+You may set the value to `https://api.gudusoft.com` if you like to send your SQL script to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com) to get the data lineage result.
+
+
+- serverPort
+Default value is `8081` if you connect to your SQLFlow on-premise server.
+
+However, if you use setup the nginx reverse proxy in the nginx configuration file like this:
+```
+	location /api/ {
+		proxy_pass http://127.0.0.1:8081/;
+		proxy_connect_timeout 600s ;
+		proxy_read_timeout 600s;
+		proxy_send_timeout 600s;
+		
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header User-Agent $http_user_agent;  
+	}
+```
+Then, just keep the value of `serverPort` empty and set `server` to the value like this: `http://127.0.0.1/api`.
+
+>Please just leave this value empty if you connect to the SQLFlow Cloud Server by specifing the `https://api.gudusoft.com` 
+in the `server`.
+
+- userId
+This is the user id that used to connect to the SQLFlow server.
+Always set this value to `gudu|0123456789` if you are using the SQLFlow on-premise version.
+
+If you want to connect to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com), you may [request a 30 days premium account](https://www.gudusoft.com/request-a-premium-account/) to 
+get the necessary userId and secret code.
+
+
+Example for on-premise version:
+```json
+	"SQLFlowServer":{
+		"server":"127.0.0.1",
+		"serverPort":"8081",
+		"userId":"gudu|0123456789",
+		"userSecret":"" 
+	}
+```	
+
+Example for Cloud version:
+```json
+	"SQLFlowServer":{
+		"server":"https://api.gudusoft.com",
+		"serverPort":"",
+		"userId":"your own user id here",
+		"userSecret":"your own secret key here" 
+	}
+```	
+
+
 ### grabit ui launch
 ##### mac & linux
 `
