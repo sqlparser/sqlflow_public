@@ -81,6 +81,21 @@ Example configuration for Cloud version:
 	}
 ```	
 
+#### 2. optionType
+You may collect SQL script from various source such as database, github repo, file system.
+This parameter tells grabit where the SQL scripts comes from.
+
+Avaiable values for this parameter:
+- 1: database 
+- 2: github 
+- 3: bitbucket 
+- 4: single file 
+- 5: Multiple SQL Files Under A Directory
+
+This configuration means the SQL script is collected from a database.
+```json
+"optionType":1
+```	
 
 ### grabit ui launch
 ##### mac & linux
@@ -146,12 +161,7 @@ start.bat
 
 **Configuration file template details explain:** 
 ````
-optionType: data source type (Integer)
-    1: database 
-    2: github 
-    3: bitbucket 
-    4: single file 
-    5: Multiple SQL Files Under A Directory
+
 
 databaseServer: the operation type is connection information for the database
     hostname: server host name
