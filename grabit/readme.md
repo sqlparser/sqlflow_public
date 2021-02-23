@@ -6,7 +6,7 @@ Grabit is a supporting tool for SQLFlow, which collects SQL scripts from various
 ## How to use Grabit
 
 ### Prerequisites
-- Java 8 or higher version
+- Java 8 or higher version must be installed and confiured correctly.
 
 setup the PATH like this: (Please change the JAVA_HOME according to your own environment)
 ```
@@ -16,21 +16,21 @@ export PATH=$JAVA_HOME/bin:$PATH
 ```
 
 ### Configuration
-Modify the configure file to set all the setting value 
-correctly according to your own environment.
+Modify the configure file to set all parameters correctly according to your own environment.
 
 #### SQLFlow Server
 This is the SQLFlow server that the grabit send the SQL script to.
 
+- **server**
 
-- server
 Usually, it is the IP address of [the SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/) 
 installed on your owner server such as `127.0.0.1` or `http://127.0.0.1`
 
 You may set the value to `https://api.gudusoft.com` if you like to send your SQL script to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com) to get the data lineage result.
 
 
-- serverPort
+- **serverPort**
+
 Default value is `8081` if you connect to your SQLFlow on-premise server.
 
 However, if you use setup the nginx reverse proxy in the nginx configuration file like this:
@@ -49,10 +49,11 @@ However, if you use setup the nginx reverse proxy in the nginx configuration fil
 ```
 Then, just keep the value of `serverPort` empty and set `server` to the value like this: `http://127.0.0.1/api`.
 
->Please just leave this value empty if you connect to the SQLFlow Cloud Server by specifing the `https://api.gudusoft.com` 
+>Please just keep this value empty if you connect to the SQLFlow Cloud Server by specifing the `https://api.gudusoft.com` 
 in the `server`.
 
-- userId
+- **userId, userSecret**
+
 This is the user id that used to connect to the SQLFlow server.
 Always set this value to `gudu|0123456789` if you are using the SQLFlow on-premise version.
 
@@ -60,7 +61,7 @@ If you want to connect to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.co
 get the necessary userId and secret code.
 
 
-Example for on-premise version:
+Example configuration for on-premise version:
 ```json
 	"SQLFlowServer":{
 		"server":"127.0.0.1",
@@ -70,7 +71,7 @@ Example for on-premise version:
 	}
 ```	
 
-Example for Cloud version:
+Example configuration for Cloud version:
 ```json
 	"SQLFlowServer":{
 		"server":"https://api.gudusoft.com",
