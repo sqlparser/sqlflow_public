@@ -15,6 +15,19 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 export PATH=$JAVA_HOME/bin:$PATH
 ```
 
+### Install
+
+````
+unzip grabit-x.x.x.zip
+
+cd grabit-x.x.x
+````
+- **linux & mac open permissions** 
+````
+chmod 777 *.sh
+````
+After the installation is complete, you can execute the command **./start.sh /f conf-temp** or **./start.bat /f conf-temp**. If the logs directory appears and the **start grabit command** is printed in the log file, the installation is successful.
+
 ### Configuration
 Modify the configure file to set all parameters correctly according to your own environment.
 
@@ -26,8 +39,7 @@ This is the SQLFlow server that the grabit send the SQL script to.
 Usually, it is the IP address of [the SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/) 
 installed on your owner server such as `127.0.0.1` or `http://127.0.0.1`
 
-You may set the value to `https://api.gudusoft.com` if you like to send your SQL script to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com) to get the data lineage result.
-
+You may set the value to `https://api.gudusoft.com` if you like to send your SQL script to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com) to get the data lineage result, so you don't have to set it `serverPort`.
 
 - **serverPort**
 
@@ -79,7 +91,7 @@ Example configuration for Cloud version:
 		"userId":"your own user id here",
 		"userSecret":"your own secret key here" 
 	}
-```	
+```		
 
 #### 2. optionType
 You may collect SQL script from various source such as database, github repo, file system.
@@ -109,7 +121,12 @@ Avaiable values for this parameter:
 - 1: json, data lineage result in json.
 - 2: csv, data lineage result in CSV format.
 - 3: diagram, in graphml format that can be viewed by yEd.
-	
+
+This configuration means the data lineage result in json from SQLFlow.
+```json
+"resultType":1
+```	
+
 #### 4. databaseType
 This parameter specify the database dialect those SQL scripts comply to.
 
@@ -118,7 +135,12 @@ This parameter specify the database dialect those SQL scripts comply to.
 	sqlserver,mysql,netezza,odbc,openedge,oracle,postgresql,postgres,redshift,snowflake,
 	sybase,teradata,soql,vertica
 ```
-	
+
+This configuration means the database type from these SQL scripts is mysql. 
+```json
+"databaseType":"mysql"
+```	
+
 #### 5. databaseServer
 If the `optionType` is set to '1' which means the SQL script is collected from a database instance, 
 then, this parameter specify the detailed information of a database instance.
@@ -132,20 +154,39 @@ The IP of the datbase server that connect to.
 The port number of the datbase server that connect to.
 
 - **username**
+
+The user name of the datbase server that connect to.
+
 - **password**
+
+The password of the datbase server that connect to.
+
 - **sid**
+
+The datbase of the datbase server that connect to.
+
 - **extractSchema**
+
+Gets the SQL script after excluding the schema from the connected database.
+
 - **excludedSchema**
+
+Get the SQL script from the schema contained in the connected database.
+
 - **enableQueryHistory**
+
+Whether to retrieve the SQL script that has been historically executed from the database to which it is connected, avaiable values for this parameter is true or false.
+
 - **queryHistoryBlockOfTimeInMinutes**
 
+Query the SQL executed during the historical period, if `enableQueryHistory` value is true, `queryHistoryBlockOfTimeInMinutes` take effect, the default is 30.
 
-Sample configuration of a SQL Server database:
-```
+This means the SQL script that is obtained after excluding the script of a schema from the database service :
+```json
 "hostname":"127.0.0.1",
 "port":"1433",
-"username":"sa",
-"password":"PASSWORD",
+"username":"your server username here",
+"password":"your server passowrd here",
 "sid":"",
 "extractSchema":"AdventureWorksDW2019/dbo",
 "excludedSchema":"",
@@ -153,24 +194,140 @@ Sample configuration of a SQL Server database:
 "queryHistoryBlockOfTimeInMinutes":30
 ```
 
-	
-### grabit ui launch
-##### mac & linux
-`
-./start.sh
-`
-##### windows
-`
-start.bat
-`
-### grabit cmd launch
-#### step 1. set config file
+This means getting SQL scripts for all schemas in a database from the database service and enabling collection of historical SQL :
+```json
+"hostname":"127.0.0.1",
+"port":"1433",
+"username":"your server username here",
+"password":"your server passowrd here",
+"sid":"AdventureWorksDW2019",
+"extractSchema":"",
+"excludedSchema":"",
+"enableQueryHistory":true,
+"queryHistoryBlockOfTimeInMinutes":30
+```
 
-**Configuration file template:** 
-````
+#### 6. githubRepo & bitbucketRepo
+If `optionType` is set to '2', this means that the SQL script was collected from GitHub, and if set to '3', this means that the SQL script was collected from BitBucket,
+then, this parameter then specifies the details of the GitHub or BitBucket instance.	
+
+- **url**
+
+Pull the repository address of the SQL script from GitHub or BitBucket.
+
+- **username**
+
+Pull the user name to which the SQL script is connected from GitHub or BitBucket.
+
+- **password**
+
+Pull the password to which the SQL script is connected from GitHub or BitBucket.
+
+- **sshKeyPath**
+
+Extract the path to the SSH private key file for the SQL script connection from GitHub or BitBucket, sshkey and account password two authentication methods can be filled in either.
+
+Sample configuration of the GitHub or BitBucket public repository servers :
+```json
+"url":"your public repository address here",
+"username":"",
+"password":"",
+"sshKeyPath":""
+```
+
+Sample configuration of the GitHub or BitBucket private repository servers:
+```json
+"url":"your private library address here",
+"username":"your private repository  username here",
+"password":"your private repository  password here",
+"sshKeyPath":""
+```
+or
+```json
+"url":"your private repository address here",
+"username":"",
+"password":"",
+"sshKeyPath":"your private repository ssh key address here"
+```
+
+#### 7. SQLInSingleFile
+
+If `optionType` is set to '4', this means that the SQL script was collected from the local file,
+then, this parameter then specifies the details of the local file instance.
+
+- **filePath**
+
+The local file path of the collected SQL script.
+
+Sample configuration of a local file path:
+```json
+"filePath":"/root/test.sql"
+```
+
+#### 8. SQLInDirectory
+
+If `optionType` is set to '5', this means that the SQL script was collected from the local directory,
+then, this parameter then specifies the details of the local directory instance.
+
+- **filePath**
+
+The local directory path of the collected SQL script.
+
+Sample configuration of a local directory path:
+```json
+"filePath":"/root/test/"
+```
+
+#### 9. isUploadNeo4j
+
+Whether to upload the JSON analysis results obtained from SQLFlow to the Neo4j database, avaiable values for this parameter is 1 or 0, enable this function if the value is 1, disable it if the value is 0, the default is 0.
+
+Sample configuration of a Whether to upload neo4j:
+```json
+"isUploadNeo4j":1
+```
+
+#### 10. neo4jConnection
+
+If `IsuploadNeo4j` is set to '1', this means that uploading JSON analysis results obtained in SQLFlow to Neo4j database is enabled,
+then, this parameter then specifies the details of the neo4j server.
+
+- **url**
+
+The IP of the neo4j server that connect to.
+
+- **username**
+
+The user name of the neo4j server that connect to.
+
+- **password**
+
+The password of the neo4j server that connect to.
+
+Sample configuration of a local directory path:
+```json
+"url":"127.0.0.1:7687",
+"username":"your server username here",
+"password":"your server password here"
+```
+
+
+**eg configuration file:**
+````json
 {
+    "databaseServer":{
+        "hostname":"",
+        "port":"",
+        "username":"",
+        "password":"",
+        "sid":"",
+        "extractSchema":"",
+        "excludedSchema":"",
+        "enableQueryHistory":false,
+        "queryHistoryBlockOfTimeInMinutes":30
+    },
     "githubRepo":{
-        "url":"",
+        "url":"https://github.com/sqlparser/snowflake-data-lineage",
         "username":"",
         "password":"",
         "sshkeyPath":""
@@ -188,8 +345,8 @@ start.bat
         "filePath":""
     },
     "SQLFlowServer":{
-        "server":"https://api.gudusoft.com",
-        "serverPort":"",
+        "server":"http:127.0.0.1",
+        "serverPort":"8081",
         "userId":"gudu|0123456789",
         "userSecret":""
     },
@@ -198,47 +355,29 @@ start.bat
         "username":"",
         "password":""
     },
+    "optionType":2,
+    "resultType":1,
+    "databaseType":"snowflake",
     "isUploadNeo4j":0
 }
 ````
 
-**Configuration file template details explain:** 
-````
+### Launch 
+#### grabit ui launch
+Graphic interface mode to start Grabit.
 
+- **mac & linux**
+`
+./start.sh
+`
+- **windows**
+`
+start.bat
+`
+#### grabit cmd launch
+Grabit is started command-line.
 
-databaseServer: the operation type is connection information for the database
-    hostname: server host name
-    port: port
-    username: account
-    password: password
-    sid: database
-    extractSchema: exporting JSON data to extract Schema
-    excludedSchema: exporting JSON data to excluded Schema
-    enableQueryHistory: whether to enable query history execution SQL (Boolean)
-    queryHistoryBlockOfTimeInMinutes: query how long (in minutes) the history of the execution of SQL functionality (Integer)
-
-githubRepo&bitbucketRepo: connection information for operation type GitHub or BitBucket
-    url: GitHub or BitBucket reop url
-    username: account
-    password: password
-    sshkeyPath: ssh key file path,sshkey and account password two authentication methods can be filled in either
-
-SQLInSingleFile: path to a file with operation type Single File
-
-SQLInDirectory: path to a file with operation type Multiple SQL Files Under A Directory
-
-isUploadNeo4j: whether to upload to neo4j (Integer)
-    1: yes
-    0: no (default)
-
-neo4jConnection: connection information to connect to neo4j database
-    url: neo4j database connection url
-    username: account
-    password: password
-````
-
-#### step 2. Usage
-##### mac & linux
+- **mac & linux**
 ````
 ./start.sh /f <path_to_config_file>  
 
@@ -248,7 +387,7 @@ note:
 eg: 
     ./start.sh /f config.txt
 ````
-##### windows
+- **windows**
 ````
 ./start.bat /f <path_to_config_file>  
 
@@ -258,8 +397,13 @@ note:
 eg: 
     start.bat /f config.txt
 ````
-### grabit job 
-#### use mac & linux crontab
+
+After execution, view the **/logs/log.log** file. If the log prints a **submit job to sqlflow successful**. Then it is proved that the upload to SQLFlow has been successful. Log in the SQLFlow website to view the newly analyzed results. In the **Task List**, you can view the analysis results of the currently submitted tasks.If the download analysis result is set, **export json result successful** will appear in the log.
+
+#### grabit job 
+Timed tasks start grabit.
+
+- **use mac & linux crontab**
 ````
 cron ./start_job.sh /f <path_to_config_file> <lib_path>
 
