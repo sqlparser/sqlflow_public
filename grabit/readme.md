@@ -130,8 +130,11 @@ This sample configuration means the SQL dialect is SQL Server database.
 ```	
 	
 #### 5. databaseServer
-If the `optionType` is set to '1' which means the SQL script is collected from a database instance, 
-then, this parameter specify the detailed information of a database instance that grabit connect to.
+Specify a database instance that grabit will connect to fetch the metadata that helps SQLFlow 
+make a more precise analysis and get a more accurate result of data lineage. 
+
+This parameter must be specified if you set `optionType=1` which means the source of SQL script
+comes from a database. Otherwise, it can be leave empty.
 
 - **hostname**
 
@@ -167,6 +170,7 @@ If left blank, no schemas will be excluded.
 `Schema1,Schema2`
 
 - **extractedDbsSchemas**
+
 List of databases and schemas to extract, separated by
 commas, which are to be provided in the format database/schema;
 , or blank to extract all databases.
@@ -174,14 +178,17 @@ commas, which are to be provided in the format database/schema;
 
 
 - **excludedDbsSchemas**
+
 List of databases and schemas to exclude from extraction,
 separated by commas
 `database1/schema1,database2`
 
 - **enableQueryHistory**
+
 Fetch SQL queries from the query history if set to `true`, default is false.
 
 - **queryHistoryBlockOfTimeInMinutes**
+
 Time interval to extract SQL query from query history if `enableQueryHistory=true`, 
 default is `30` minutes.
 
@@ -198,6 +205,41 @@ Sample configuration of a SQL Server database:
 "enableQueryHistory":false,
 "queryHistoryBlockOfTimeInMinutes":30
 ```
+
+
+#### 6. SQLInSingleFile
+When `optionType=4`, this is a single SQL file need to be analyzed. 
+
+- **filePath**
+
+The name of the SQL file with full path.
+
+#### 7. SQLInDirectory
+When `optionType=5`, SQL files under this directory including sub-directory will be analyzed. 
+
+- **filePath**
+
+The directory which includes the SQL files.
+
+#### 8. githubRepo, bitbucketRepo
+When `optionType=2`, grabit will fetch SQL files from a specified github repo,
+When `optionType=3`, grabit will fetch SQL files from a specified bitbucket repo 
+
+Both sshkey and account password authentication methods are supported.
+
+- **url**
+
+GitHub or BitBucket reop url
+	
+- **username**
+
+- **password**
+
+- **sshkeyPath**
+
+ssh key file path
+
+
 
 	
 ### grabit ui launch
@@ -252,22 +294,10 @@ start.bat
 ````
 
 
-databaseServer: the operation type is connection information for the database
-    hostname: server host name
-    port: port
-    username: account
-    password: password
-    sid: database
-    extractSchema: exporting JSON data to extract Schema
-    excludedSchema: exporting JSON data to excluded Schema
-    enableQueryHistory: whether to enable query history execution SQL (Boolean)
-    queryHistoryBlockOfTimeInMinutes: query how long (in minutes) the history of the execution of SQL functionality (Integer)
+
 
 githubRepo&bitbucketRepo: connection information for operation type GitHub or BitBucket
-    url: GitHub or BitBucket reop url
-    username: account
-    password: password
-    sshkeyPath: ssh key file path,sshkey and account password two authentication methods can be filled in either
+
 
 SQLInSingleFile: path to a file with operation type Single File
 
