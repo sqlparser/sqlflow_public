@@ -110,8 +110,13 @@ Avaiable values for this parameter:
 - 2: csv, data lineage result in CSV format.
 - 3: diagram, in graphml format that can be viewed by yEd.
 	
+This sample configuration means the output format is json
+```json
+"resultType":1
+```	
+	
 #### 4. databaseType
-This parameter specify the database dialect those SQL scripts comply to.
+This parameter specify the database dialect of the SQL scripts that been analyzed by the SQLFlow.
 
 ```txt
 	access,bigquery,couchbase,dax,db2,greenplum,hana,hive,impala,informix,mdx,mssql,
@@ -119,9 +124,14 @@ This parameter specify the database dialect those SQL scripts comply to.
 	sybase,teradata,soql,vertica
 ```
 	
+This sample configuration means the SQL dialect is SQL Server database.
+```json
+"databaseType":"sqlserver"
+```	
+	
 #### 5. databaseServer
 If the `optionType` is set to '1' which means the SQL script is collected from a database instance, 
-then, this parameter specify the detailed information of a database instance.
+then, this parameter specify the detailed information of a database instance that grabit connect to.
 
 - **hostname**
 
@@ -132,12 +142,48 @@ The IP of the datbase server that connect to.
 The port number of the datbase server that connect to.
 
 - **username**
+
+The database user used to login to the database.
+
 - **password**
+
+The password of the database user.
+
 - **sid**
-- **extractSchema**
-- **excludedSchema**
+
+Name of the Oracle instance. Used for Oracle only.
+
+- **extractedSchemas**
+This option is used for Oracle only. 
+
+Comma separated list of schemas to extract, or blank to extract all schemas.
+`Schema1,Schema2,Schema3`
+
+- **excludedSchemas**
+This option is used for Oracle only. 
+
+Comma separated list of schemas to exclude from processing.
+If left blank, no schemas will be excluded.
+`Schema1,Schema2`
+
+- **extractedDbsSchemas**
+List of databases and schemas to extract, separated by
+commas, which are to be provided in the format database/schema;
+, or blank to extract all databases.
+`database1/schema1,database2/schema2,database3`
+
+
+- **excludedDbsSchemas**
+List of databases and schemas to exclude from extraction,
+separated by commas
+`database1/schema1,database2`
+
 - **enableQueryHistory**
+Fetch SQL queries from the query history if set to `true`, default is false.
+
 - **queryHistoryBlockOfTimeInMinutes**
+Time interval to extract SQL query from query history if `enableQueryHistory=true`, 
+default is `30` minutes.
 
 
 Sample configuration of a SQL Server database:
