@@ -15,6 +15,19 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 export PATH=$JAVA_HOME/bin:$PATH
 ```
 
+### Install
+
+````
+unzip grabit-x.x.x.zip
+
+cd grabit-x.x.x
+````
+- **linux & mac open permissions** 
+````
+chmod 777 *.sh
+````
+After the installation is complete, you can execute the command **./start.sh /f conf-temp** or **./start.bat /f conf-temp**. If the logs directory appears and the **start grabit command** is printed in the log file, the installation is successful.
+
 ### Configuration
 Modify the configure file to set all parameters correctly according to your own environment.
 
@@ -27,7 +40,6 @@ Usually, it is the IP address of [the SQLFlow on-premise version](https://www.gu
 installed on your owner server such as `127.0.0.1` or `http://127.0.0.1`
 
 You may set the value to `https://api.gudusoft.com` if you like to send your SQL script to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com) to get the data lineage result.
-
 
 - **serverPort**
 
@@ -79,7 +91,7 @@ Example configuration for Cloud version:
 		"userId":"your own user id here",
 		"userSecret":"your own secret key here" 
 	}
-```	
+```		
 
 #### 2. optionType
 You may collect SQL script from various source such as database, github repo, file system.
@@ -109,12 +121,12 @@ Avaiable values for this parameter:
 - 1: json, data lineage result in json.
 - 2: csv, data lineage result in CSV format.
 - 3: diagram, in graphml format that can be viewed by yEd.
-	
-This sample configuration means the output format is json
+
+This sample configuration means the output format is json.
 ```json
 "resultType":1
-```	
-	
+```
+
 #### 4. databaseType
 This parameter specify the database dialect of the SQL scripts that been analyzed by the SQLFlow.
 
@@ -123,12 +135,12 @@ This parameter specify the database dialect of the SQL scripts that been analyze
 	sqlserver,mysql,netezza,odbc,openedge,oracle,postgresql,postgres,redshift,snowflake,
 	sybase,teradata,soql,vertica
 ```
-	
+
 This sample configuration means the SQL dialect is SQL Server database.
 ```json
 "databaseType":"sqlserver"
-```	
-	
+```
+
 #### 5. databaseServer
 Specify a database instance that grabit will connect to fetch the metadata that helps SQLFlow 
 make a more precise analysis and get a more accurate result of data lineage. 
@@ -194,7 +206,7 @@ default is `30` minutes.
 
 
 Sample configuration of a SQL Server database:
-```
+```json
 "hostname":"127.0.0.1",
 "port":"1433",
 "username":"sa",
@@ -202,63 +214,132 @@ Sample configuration of a SQL Server database:
 "sid":"",
 "extractSchema":"AdventureWorksDW2019/dbo",
 "excludedSchema":"",
+"extractedDbsSchemas":"",
+"excludedDbsSchemas":"",
 "enableQueryHistory":false,
 "queryHistoryBlockOfTimeInMinutes":30
 ```
 
-
-#### 6. SQLInSingleFile
-When `optionType=4`, this is a single SQL file need to be analyzed. 
-
-- **filePath**
-
-The name of the SQL file with full path.
-
-#### 7. SQLInDirectory
-When `optionType=5`, SQL files under this directory including sub-directory will be analyzed. 
-
-- **filePath**
-
-The directory which includes the SQL files.
-
-#### 8. githubRepo, bitbucketRepo
-When `optionType=2`, grabit will fetch SQL files from a specified github repo,
-When `optionType=3`, grabit will fetch SQL files from a specified bitbucket repo 
+#### 6. githubRepo & bitbucketRepo
+When `optionType`=2, grabit will fetch SQL files from a specified github repo, When `optionType`=3, grabit will fetch SQL files from a specified bitbucket repo
 
 Both sshkey and account password authentication methods are supported.
 
 - **url**
 
-GitHub or BitBucket reop url
-	
+Pull the repository address of the SQL script from GitHub or BitBucket.
+
 - **username**
+
+Pull the user name to which the SQL script is connected from GitHub or BitBucket.
 
 - **password**
 
-- **sshkeyPath**
+Pull the password to which the SQL script is connected from GitHub or BitBucket.
 
-ssh key file path
+- **sshKeyPath**
 
+Extract the path to the SSH private key file for the SQL script connection from GitHub or BitBucket, sshkey and account password two authentication methods can be filled in either.
 
+Sample configuration of the GitHub or BitBucket public repository servers :
+```json
+"url":"your public repository address here",
+"username":"",
+"password":"",
+"sshKeyPath":""
+```
 
-	
-### grabit ui launch
-##### mac & linux
-`
-./start.sh
-`
-##### windows
-`
-start.bat
-`
-### grabit cmd launch
-#### step 1. set config file
+Sample configuration of the GitHub or BitBucket private repository servers:
+```json
+"url":"your private library address here",
+"username":"your private repository  username here",
+"password":"your private repository  password here",
+"sshKeyPath":""
+```
+or
+```json
+"url":"your private repository address here",
+"username":"",
+"password":"",
+"sshKeyPath":"your private repository ssh key address here"
+```
 
-**Configuration file template:** 
-````
+#### 7. SQLInSingleFile
+
+When `optionType=4`, this is a single SQL file need to be analyzed.
+
+- **filePath**
+
+The name of the SQL file with full path.
+
+#### 8. SQLInDirectory
+
+When `optionType=5`, SQL files under this directory including sub-directory will be analyzed. 
+
+- **directoryPath**
+
+The directory which includes the SQL files.
+
+#### 9. isUploadNeo4j
+
+Whether to upload the JSON analysis results obtained from SQLFlow to the Neo4j database, avaiable values for this parameter is 1 or 0, enable this function if the value is 1, disable it if the value is 0, the default is 0.
+
+Sample configuration of a Whether to upload neo4j:
+```json
+"isUploadNeo4j":1
+```
+
+#### 10. neo4jConnection
+
+If `IsuploadNeo4j` is set to '1', this means that uploading JSON analysis results obtained in SQLFlow to Neo4j database is enabled,
+then, this parameter then specifies the details of the neo4j server.
+
+- **url**
+
+The IP of the neo4j server that connect to.
+
+- **username**
+
+The user name of the neo4j server that connect to.
+
+- **password**
+
+The password of the neo4j server that connect to.
+
+Sample configuration of a local directory path:
+```json
+"url":"127.0.0.1:7687",
+"username":"your server username here",
+"password":"your server password here"
+```
+
+#### 11. enableGetMetadataInJSONFromDatabase
+
+Whether to enable fetching metadata in json from the database, If the value is 1, it must be set `databaseServer`.
+
+Sample configuration of enable fetching metadata in json from the database:
+```json
+"enableGetMetadataInJSONFromDatabase":1
+```
+
+**eg configuration file:**
+````json
 {
+    "databaseServer":{
+        "hostname":"127.0.0.1",
+        "port":"1433",
+        "username":"sa",
+        "password":"PASSWORD",
+        "sid":"",
+        "extractSchema":"AdventureWorksDW2019/dbo",
+        "excludedSchema":"",	
+        "extractedDbsSchemas":"",
+        "excludedDbsSchemas":"",
+        "enableQueryHistory":false,
+        "queryHistoryBlockOfTimeInMinutes":30
+    },
     "githubRepo":{
-        "url":"",
+        "url":"https://github.com/sqlparser/snowflake-data-lineage",
         "username":"",
         "password":"",
         "sshkeyPath":""
@@ -276,8 +357,8 @@ start.bat
         "filePath":""
     },
     "SQLFlowServer":{
-        "server":"https://api.gudusoft.com",
-        "serverPort":"",
+        "server":"http:127.0.0.1",
+        "serverPort":"8081",
         "userId":"gudu|0123456789",
         "userSecret":""
     },
@@ -286,35 +367,30 @@ start.bat
         "username":"",
         "password":""
     },
-    "isUploadNeo4j":0
+    "optionType":2,
+    "resultType":1,
+    "databaseType":"snowflake",
+    "isUploadNeo4j":0,
+    "enableGetMetadataInJSONFromDatabase":1
 }
 ````
 
-**Configuration file template details explain:** 
-````
+### Launch 
+#### grabit ui launch
+Graphic interface mode to start Grabit.
 
+- **mac & linux**
+`
+./start.sh
+`
+- **windows**
+`
+start.bat
+`
+#### grabit cmd launch
+Grabit is started command-line.
 
-
-
-githubRepo&bitbucketRepo: connection information for operation type GitHub or BitBucket
-
-
-SQLInSingleFile: path to a file with operation type Single File
-
-SQLInDirectory: path to a file with operation type Multiple SQL Files Under A Directory
-
-isUploadNeo4j: whether to upload to neo4j (Integer)
-    1: yes
-    0: no (default)
-
-neo4jConnection: connection information to connect to neo4j database
-    url: neo4j database connection url
-    username: account
-    password: password
-````
-
-#### step 2. Usage
-##### mac & linux
+- **mac & linux**
 ````
 ./start.sh /f <path_to_config_file>  
 
@@ -324,7 +400,7 @@ note:
 eg: 
     ./start.sh /f config.txt
 ````
-##### windows
+- **windows**
 ````
 ./start.bat /f <path_to_config_file>  
 
@@ -334,8 +410,13 @@ note:
 eg: 
     start.bat /f config.txt
 ````
-### grabit job 
-#### use mac & linux crontab
+
+After execution, view the `logs/log.log` file. If the log prints a **submit job to sqlflow successful**. Then it is proved that the upload to SQLFlow has been successful. Log in the SQLFlow website to view the newly analyzed results. In the `Task List`, you can view the analysis results of the currently submitted tasks.If the download analysis result is set, **export json result successful** will appear in the log.
+
+#### grabit job 
+Timed tasks start grabit.
+
+- **use mac & linux crontab**
 ````
 cron ./start_job.sh /f <path_to_config_file> <lib_path>
 
