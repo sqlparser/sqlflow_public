@@ -35,7 +35,7 @@ cd grabit-x.x.x
 ````
 chmod 777 *.sh
 ````
-After the installation is complete, you can execute the command **./start.sh /f conf-temp** or **./start.bat /f conf-temp**. If the logs directory appears and the **start grabit command** is printed in the log file, the installation is successful.
+After the installation is complete, you can execute the command `./start.sh /f conf-temp` or `./start.bat /f conf-temp`. If the logs directory appears and the **start grabit command** is printed in the log file, the installation is successful.
 
 ### Step 3: Set up configuration file
 
@@ -149,6 +149,95 @@ note：1，When sqlflow server is connected to the Cloud SQLFlow（server is htt
 }
 ````
 
+#### 7. enableGetMetadataInJSONFromDatabase
+
+Whether to enable fetching metadata in json from the database, If the value is 1, it must be set `databaseServer`.
+
+Sample configuration of enable fetching metadata in json from the database:
+```json
+"enableGetMetadataInJSONFromDatabase":1
+```
+
+
+#### 8. databaseServer
+Specify a database instance that grabit will connect to fetch the metadata that helps SQLFlow 
+make a more precise analysis and get a more accurate result of data lineage. 
+
+This parameter must be specified if you set `optionType=1` which means the source of SQL script
+comes from a database. Otherwise, it can be leave empty.
+
+- **hostname**
+
+The IP of the datbase server that connect to.
+
+- **port**
+
+The port number of the datbase server that connect to.
+
+- **username**
+
+The database user used to login to the database.
+
+- **password**
+
+The password of the database user.
+
+- **sid**
+
+Name of the Oracle instance. Used for Oracle only.
+
+- **extractedSchemas**
+This option is used for Oracle only. 
+
+Comma separated list of schemas to extract, or blank to extract all schemas.
+`Schema1,Schema2,Schema3`
+
+- **excludedSchemas**
+This option is used for Oracle only. 
+
+Comma separated list of schemas to exclude from processing.
+If left blank, no schemas will be excluded.
+`Schema1,Schema2`
+
+- **extractedDbsSchemas**
+
+List of databases and schemas to extract, separated by
+commas, which are to be provided in the format database/schema;
+, or blank to extract all databases.
+`database1/schema1,database2/schema2,database3`
+
+
+- **excludedDbsSchemas**
+
+List of databases and schemas to exclude from extraction,
+separated by commas
+`database1/schema1,database2`
+
+- **enableQueryHistory**
+
+Fetch SQL queries from the query history if set to `true`, default is false.
+
+- **queryHistoryBlockOfTimeInMinutes**
+
+Time interval to extract SQL query from query history if `enableQueryHistory=true`, 
+default is `30` minutes.
+
+
+Sample configuration of a SQL Server database:
+```json
+"hostname":"127.0.0.1",
+"port":"1433",
+"username":"sa",
+"password":"PASSWORD",
+"sid":"",
+"extractSchema":"AdventureWorksDW2019/dbo",
+"excludedSchema":"",
+"extractedDbsSchemas":"",
+"excludedDbsSchemas":"",
+"enableQueryHistory":false,
+"queryHistoryBlockOfTimeInMinutes":30
+```
+
 **eg configuration file:**
 ````json
 {
@@ -160,6 +249,8 @@ note：1，When sqlflow server is connected to the Cloud SQLFlow（server is htt
         "sid":"",
         "extractSchema":"",
         "excludedSchema":"",
+        "extractedDbsSchemas":"",
+        "excludedDbsSchemas":"",
         "enableQueryHistory":false,
         "queryHistoryBlockOfTimeInMinutes":30
     },
@@ -195,7 +286,8 @@ note：1，When sqlflow server is connected to the Cloud SQLFlow（server is htt
     "optionType":2,
     "resultType":1,
     "databaseType":"snowflake",
-    "isUploadNeo4j":0
+    "isUploadNeo4j":0,
+    "enableGetMetadataInJSONFromDatabase":0
 }
 ````
 
@@ -220,7 +312,7 @@ note:
 eg: 
     ./start.bat /f config.txt
 ````
-After execution, view the **/logs/log.log** file. If the log prints a **submit job to sqlflow successful**. Then it is proved that the upload to SQLFlow has been successful. Log in the SQLFlow website to view the newly analyzed results. In the **Task List**, you can view the analysis results of the currently submitted tasks.If the download analysis result is set, **export json result successful** will appear in the log.
+After execution, view the `logs/log.log` file. If the log prints a **submit job to sqlflow successful**. Then it is proved that the upload to SQLFlow has been successful. Log in the SQLFlow website to view the newly analyzed results. In the `Task List`, you can view the analysis results of the currently submitted tasks.If the download analysis result is set, **export json result successful** will appear in the log.
 
 ### Grabit detailed usage documentation
 [the grabit documentation](https://github.com/sqlparser/sqlflow_public/blob/master/grabit/readme.md)
