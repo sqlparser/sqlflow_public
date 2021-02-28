@@ -117,7 +117,7 @@ This configuration means the SQL script is collected from a database.
 #### 2.1. enableGetMetadataInJSONFromDatabase
 
 If the source of the SQL scripts is not the database, we may specify a database by
-setting `databaseServer` parameter and fetch metadata from this database instance 
+setting `databaseServer` parameter in order to fetch metadata from the database instance 
 to help SQLFlow get a more accurate result during the analysis.
 
 If `enableGetMetadataInJSONFromDatabase=1`, You must set all necessary information in `databaseServer`.
@@ -139,9 +139,9 @@ and you can always see the graphic data lineage result in the frontend of the SQ
 Even better, grabit will fetch the data lineage back to the directory where the grabit is running.
 those data lineage result are stored in the `data/datalineage/` directory. 
 
-This parameter specify which kind of format is used to store the data lineage result.
+This parameter specify which kind of format is used to save the data lineage result.
 
-Avaiable values for this parameter:
+Available values for this parameter:
 - 1: json, data lineage result in json.
 - 2: csv, data lineage result in CSV format.
 - 3: diagram, in graphml format that can be viewed by yEd.
@@ -245,7 +245,10 @@ Sample configuration of a SQL Server database:
 ```
 
 #### 6. githubRepo & bitbucketRepo
-When `optionType`=2, grabit will fetch SQL files from a specified github repo, When `optionType`=3, grabit will fetch SQL files from a specified bitbucket repository, the SQL script files are stored in `data/github/` or `data/bitbucket/` directory.
+When `optionType`=2, grabit will fetch SQL files from a specified github repo, 
+When `optionType`=3, grabit will fetch SQL files from a specified bitbucket repository, 
+the SQL script files are stored in `data/github/` or `data/bitbucket/` directory temporary
+before submitting to the SQLFlow server.
 
 Both sshkey and account password authentication methods are supported.
 
@@ -263,7 +266,8 @@ Pull the password to which the SQL script is connected from GitHub or BitBucket.
 
 - **sshKeyPath**
 
-Extract the path to the SSH private key file for the SQL script connection from GitHub or BitBucket, sshkey and account password two authentication methods can be filled in either.
+The full path to the SSH private key file.
+
 
 Sample configuration of the GitHub or BitBucket public repository servers :
 ```json
@@ -306,7 +310,9 @@ The directory which includes the SQL files.
 
 #### 9. isUploadNeo4j
 
-Whether to upload the JSON analysis results obtained from SQLFlow to the Neo4j database, avaiable values for this parameter is 1 or 0, enable this function if the value is 1, disable it if the value is 0, the default is 0.
+Upload the data lineage result to a Neo4j database for further processing. 
+Available values for this parameter is 1 or 0, enable this function if the value is 1, disable it if the value is 0, 
+the default value is 0.
 
 Sample configuration of a Whether to upload neo4j:
 ```json
@@ -315,8 +321,7 @@ Sample configuration of a Whether to upload neo4j:
 
 #### 10. neo4jConnection
 
-If `IsuploadNeo4j` is set to '1', this means that uploading JSON analysis results obtained in SQLFlow to Neo4j database is enabled,
-then, this parameter then specifies the details of the neo4j server.
+If `IsuploadNeo4j` is set to '1', this parameter specifies the details of the neo4j server.
 
 - **url**
 
