@@ -1,6 +1,6 @@
-## Automated data lineage from github/bitbucket
+## Automated data lineage from Github/bitbucket
 
-Grabit able to fetch SQL scripts from the github/bitbucket repo,
+Grabit able to fetch SQL scripts from the GitHub/bitbucket repo,
 and automated data lineage from those SQL scripts by sending it
 to the SQLFlow server.
 
@@ -48,10 +48,10 @@ If the logs directory appears and the **start grabit command** is printed in the
 
 #### 1. set up optionType to grab SQL from github/bitbucket
 
-You may collect SQL script from various source such as database, github repo, file system. 
-This parameter tells grabit where the SQL scripts comes from.
+You may collect SQL scripts from various sources such as database, Github repo, file system. 
+This parameter tells grabit where the SQL scripts come from.
 
-Avaiable values for this parameter:
+Available values for this parameter:
 
 - github：2
 
