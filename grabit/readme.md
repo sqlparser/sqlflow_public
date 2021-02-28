@@ -50,7 +50,7 @@ You may set the value to `https://api.gudusoft.com` if you like to send your SQL
 
 Default value is `8081` if you connect to your SQLFlow on-premise server.
 
-However, if you use setup the nginx reverse proxy in the nginx configuration file like this:
+However, if you setup the nginx reverse proxy in the nginx configuration file like this:
 ```
 	location /api/ {
 		proxy_pass http://127.0.0.1:8081/;
@@ -102,7 +102,7 @@ Example configuration for Cloud version:
 You may collect SQL script from various source such as database, github repo, file system.
 This parameter tells grabit where the SQL scripts comes from.
 
-Avaiable values for this parameter:
+Available values for this parameter:
 - 1: database 
 - 2: github 
 - 3: bitbucket 
@@ -116,13 +116,14 @@ This configuration means the SQL script is collected from a database.
 
 #### 2.1. enableGetMetadataInJSONFromDatabase
 
-If the SQL scripts is not fetched from the database directly, we can also fetch metadata 
-from a database instance to help SQLFlow get a more accurate result during the analysis.
+If the source of the SQL scripts is not the database, we may specify a database by
+setting `databaseServer` parameter and fetch metadata from this database instance 
+to help SQLFlow get a more accurate result during the analysis.
 
-When `enableGetMetadataInJSONFromDatabase=1`, You must set all necessary information in `databaseServer` as well.
+If `enableGetMetadataInJSONFromDatabase=1`, You must set all necessary information in `databaseServer`.
 
 Of course, you can `enableGetMetadataInJSONFromDatabase=0`. This means all SQL scripts will 
-be analyzed offline without any connection to a database. SQLFlow still works quite well to 
+be analyzed offline without a connection to the database. SQLFlow still works quite well to 
 get the data lineage result by taking advantage of it's powerful SQL analysis capability.
 
 Sample configuration of enable fetching metadata in json from the database:
