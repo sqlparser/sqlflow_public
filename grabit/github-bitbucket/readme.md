@@ -35,7 +35,7 @@ cd grabit-x.x.x
 ````
 chmod 777 *.sh
 ````
-After the installation is complete, you can execute the command `./start.sh /f conf-temp` or `./start.bat /f conf-temp`. If the logs directory appears and the **start grabit command** is printed in the log file, the installation is successful.
+After the installation is complete, you can execute the command `./start.sh /f conf-temp` or `start.bat /f conf-temp`. If the logs directory appears and the **start grabit command** is printed in the log file, the installation is successful.
 
 ### Step 3: Set up configuration file
 
@@ -59,7 +59,7 @@ odbc,openedge,oracle,postgresql,postgres,redshift,snowflake,sybase,teradata,soql
 
 #### 3. set up resultType
 
-output result type.
+output result type, the obtained datalineage results are stored in the `data/datalineage/` directory. 
 
 Avaiable values for this parameter:
 
@@ -90,7 +90,7 @@ If the value is 0, no setting is required. If the value is 1, it needs to be set
 
 #### 5. set up githubRepo or bitbucketRepo
 
-connection information for operation type GitHub or BitBucket.
+connection information for operation type GitHub or BitBucket, the SQL script files are stored in `data/github/` or `data/bitbucket/` directory.
 
 Parameters to set:
 
@@ -161,7 +161,7 @@ Sample configuration of enable fetching metadata in json from the database:
 
 #### 8. databaseServer
 Specify a database instance that grabit will connect to fetch the metadata that helps SQLFlow 
-make a more precise analysis and get a more accurate result of data lineage. 
+make a more precise analysis and get a more accurate result of data lineage, the data lineage results are stored in the `data/json/` directory in a JSON file named with the current timestamp.
 
 This parameter must be specified if you set `optionType=1` which means the source of SQL script
 comes from a database. Otherwise, it can be leave empty.
