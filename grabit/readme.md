@@ -109,11 +109,30 @@ This configuration means the SQL script is collected from a database.
 "optionType":1
 ```	
 
+#### 2.1. enableGetMetadataInJSONFromDatabase
+
+If the SQL scripts is not fetched from the database directly, we can also fetch metadata 
+from a database instance to help SQLFlow get a more accurate result during the analysis.
+
+When `enableGetMetadataInJSONFromDatabase=1`, You must set all necessary information in `databaseServer` as well.
+
+Of course, you can `enableGetMetadataInJSONFromDatabase=0`. This means all SQL scripts will 
+be analyzed offline without any connection to a database. SQLFlow still works quite well to 
+get the data lineage result by taking advantage of it's powerful SQL analysis capability.
+
+Sample configuration of enable fetching metadata in json from the database:
+```json
+"enableGetMetadataInJSONFromDatabase":1
+```
+
 #### 3. resultType
 When you submit SQL script to the SQLFlow server, A job is created on the SQLFlow server
-and you can always see the graphic data lineage result in the frontend of the SQLFlow by using the browser, the obtained datalineage results are stored in the `data/datalineage/` directory. 
+and you can always see the graphic data lineage result in the frontend of the SQLFlow by using the browser, 
+
 
 Even better, grabit will fetch the data lineage back to the directory where the grabit is running.
+those data lineage result are stored in the `data/datalineage/` directory. 
+
 This parameter specify which kind of format is used to store the data lineage result.
 
 Avaiable values for this parameter:
@@ -312,14 +331,7 @@ Sample configuration of a local directory path:
 "password":"your server password here"
 ```
 
-#### 11. enableGetMetadataInJSONFromDatabase
 
-Whether to enable fetching metadata in json from the database, If the value is 1, it must be set `databaseServer`.
-
-Sample configuration of enable fetching metadata in json from the database:
-```json
-"enableGetMetadataInJSONFromDatabase":1
-```
 
 **eg configuration file:**
 ````json
