@@ -217,7 +217,7 @@ The name of the SQL file with full path.
 #### 7. SQLInDirectory
 When `optionType=5`, SQL files under this directory including sub-directory will be analyzed. 
 
-- **filePath**
+- **directoryPath**
 
 The directory which includes the SQL files.
 
