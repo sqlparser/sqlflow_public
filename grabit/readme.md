@@ -26,7 +26,7 @@ cd grabit-x.x.x
 ````
 chmod 777 *.sh
 ````
-After the installation is complete, you can execute the command **./start.sh /f conf-temp** or **./start.bat /f conf-temp**. If the logs directory appears and the **start grabit command** is printed in the log file, the installation is successful.
+After the installation is complete, you can execute the command `./start.sh /f conf-temp` or `start.bat /f conf-temp`. If the logs directory appears and the **start grabit command** is printed in the log file, the installation is successful.
 
 ### Configuration
 Modify the configure file to set all parameters correctly according to your own environment.
@@ -111,8 +111,7 @@ This configuration means the SQL script is collected from a database.
 
 #### 3. resultType
 When you submit SQL script to the SQLFlow server, A job is created on the SQLFlow server
-and you can always see the graphic data lineage result in the frontend of the SQLFlow 
-by using the browser.
+and you can always see the graphic data lineage result in the frontend of the SQLFlow by using the browser, the obtained datalineage results are stored in the `data/datalineage/` directory. 
 
 Even better, grabit will fetch the data lineage back to the directory where the grabit is running.
 This parameter specify which kind of format is used to store the data lineage result.
@@ -143,7 +142,7 @@ This sample configuration means the SQL dialect is SQL Server database.
 
 #### 5. databaseServer
 Specify a database instance that grabit will connect to fetch the metadata that helps SQLFlow 
-make a more precise analysis and get a more accurate result of data lineage. 
+make a more precise analysis and get a more accurate result of data lineage, the data lineage results are stored in the `data/json/` directory in a JSON file named with the current timestamp.
 
 This parameter must be specified if you set `optionType=1` which means the source of SQL script
 comes from a database. Otherwise, it can be leave empty.
@@ -221,7 +220,7 @@ Sample configuration of a SQL Server database:
 ```
 
 #### 6. githubRepo & bitbucketRepo
-When `optionType`=2, grabit will fetch SQL files from a specified github repo, When `optionType`=3, grabit will fetch SQL files from a specified bitbucket repo
+When `optionType`=2, grabit will fetch SQL files from a specified github repo, When `optionType`=3, grabit will fetch SQL files from a specified bitbucket repository, the SQL script files are stored in `data/github/` or `data/bitbucket/` directory.
 
 Both sshkey and account password authentication methods are supported.
 
