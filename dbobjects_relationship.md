@@ -201,7 +201,21 @@ create external table exttable_part(
 
 The data of the external table `exttable_part` comes from the stage: `exttable_part_stage`
 ```
-exttable_part(date_part,timestamp,col2) -> fdd -> exttable_part_stage (url='s3://load/encrypted_files/')
+exttable_part_stage (url='s3://load/encrypted_files/') -> fdd -> exttable_part(date_part,timestamp,col2) 
+```
+
+#### 6. create external table (bigquery)
+```sql
+CREATE EXTERNAL TABLE dataset.CsvTable OPTIONS (
+  format = 'CSV',
+  uris = ['gs://bucket/path1.csv', 'gs://bucket/path2.csv']
+);
+```
+
+The data of the external table `dataset.CsvTable` comes from the csv file: `gs://bucket/path1.csv, gs://bucket/path2.csv`
+```
+file (uri='gs://bucket/path1.csv')  -> fdd ->  dataset.CsvTable
+file (uri='gs://bucket/path2.csv')  -> fdd ->  dataset.CsvTable
 ```
 
 

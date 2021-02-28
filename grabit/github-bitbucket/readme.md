@@ -1,6 +1,10 @@
-# Grabit Using Document
+## Automated data lineage from github/bitbucket
 
-## Data source type is github or bitbucket
+Grabit able to fetch SQL scripts from the github/bitbucket repo,
+and automated data lineage from those SQL scripts by sending it
+to the SQLFlow server.
+
+
 ### Step 1: Install git
 - **ubuntu:** 
 ````
