@@ -4,14 +4,14 @@
 Grabit is a supporting tool for SQLFlow, which collects SQL scripts from various data sources for SQLFlow, 
 and then uploading them to SQLFlow for data lineage analysis of these SQL scripts. 
 The analysis results can be viewed in the browser. Meanwhile, the data lineage results will be fetched to 
-the diretory where Grabit is installed, and the JSON results can be uploaded to Neo4j database if necessary.
+the directory where Grabit is installed, and the JSON results can be uploaded to the Neo4j database if necessary.
 
 ## How to use Grabit
 
 ### Prerequisites
 - Java 8 or higher version must be installed and configured correctly.
 
-setup the PATH like this: (Please change the JAVA_HOME according to your own environment)
+setup the PATH like this: (Please change the JAVA_HOME according to your environment)
 ```
 export JAVA_HOME=/usr/lib/jvm/default-java
 
@@ -34,21 +34,21 @@ You may check logs under the logs directory for more information.
 
 
 ### Configuration
-Modify the configure file to set all parameters correctly according to your own environment.
+Modify the configure file to set all parameters correctly according to your environment.
 
 #### 1. SQLFlow Server
-This is the SQLFlow server that the grabit send the SQL script to.
+This is the SQLFlow server that the grabit sends the SQL script.
 
 - **server**
 
 Usually, it is the IP address of [the SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/) 
-installed on your owner server such as `127.0.0.1` or `http://127.0.0.1`
+installed on your owner servers such as `127.0.0.1` or `http://127.0.0.1`
 
 You may set the value to `https://api.gudusoft.com` if you like to send your SQL script to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com) to get the data lineage result.
 
 - **serverPort**
 
-Default value is `8081` if you connect to your SQLFlow on-premise server.
+The default value is `8081` if you connect to your SQLFlow on-premise server.
 
 However, if you setup the nginx reverse proxy in the nginx configuration file like this:
 ```
@@ -64,15 +64,15 @@ However, if you setup the nginx reverse proxy in the nginx configuration file li
 		proxy_set_header User-Agent $http_user_agent;  
 	}
 ```
-Then, just keep the value of `serverPort` empty and set `server` to the value like this: `http://127.0.0.1/api`.
+Then, keep the value of `serverPort` empty and set `server` to the value like this: `http://127.0.0.1/api`.
 
->Please just keep this value empty if you connect to the SQLFlow Cloud Server by specifing the `https://api.gudusoft.com` 
-in the `server`.
+>Please keep this value empty if you connect to the SQLFlow Cloud Server by specifying the `https://api.gudusoft.com` 
+in the `server`
 
 - **userId, userSecret**
 
-This is the user id that used to connect to the SQLFlow server.
-Always set this value to `gudu|0123456789` and keep `userSecret` empty if you are using the SQLFlow on-premise version.
+This is the user id that is used to connect to the SQLFlow server.
+Always set this value to `gudu|0123456789` and keep `userSecret` empty if you use the SQLFlow on-premise version.
 
 If you want to connect to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com), you may [request a 30 days premium account](https://www.gudusoft.com/request-a-premium-account/) to 
 [get the necessary userId and secret code](/sqlflow-userid-secret.md).
@@ -99,8 +99,8 @@ Example configuration for Cloud version:
 ```		
 
 #### 2. optionType
-You may collect SQL script from various source such as database, github repo, file system.
-This parameter tells grabit where the SQL scripts comes from.
+You may collect SQL scripts from various sources such as database, Github repo, file system.
+This parameter tells grabit where the SQL scripts come from.
 
 Available values for this parameter:
 - 1: database 
@@ -110,21 +110,20 @@ Available values for this parameter:
 - 5: Multiple SQL Files Under A Directory
 
 This configuration means the SQL script is collected from a database.
-```json
+```JSON
 "optionType":1
 ```	
 
 #### 2.1. enableGetMetadataInJSONFromDatabase
 
 If the source of the SQL scripts is not the database, we may specify a database by
-setting `databaseServer` parameter in order to fetch metadata from the database instance 
+setting `databaseServer` parameter to fetch metadata from the database instance 
 to help SQLFlow get a more accurate result during the analysis.
 
 If `enableGetMetadataInJSONFromDatabase=1`, You must set all necessary information in `databaseServer`.
 
-Of course, you can `enableGetMetadataInJSONFromDatabase=0`. This means all SQL scripts will 
-be analyzed offline without a connection to the database. SQLFlow still works quite well to 
-get the data lineage result by taking advantage of it's powerful SQL analysis capability.
+Of course, you can `enableGetMetadataInJSONFromDatabase=0`. This means all SQL scripts will be analyzed offline without a connection to the database. SQLFlow still works quite well to 
+get the data lineage result by taking advantage of its powerful SQL analysis capability.
 
 Sample configuration of enable fetching metadata in json from the database:
 ```json
@@ -137,13 +136,13 @@ and you can always see the graphic data lineage result in the frontend of the SQ
 
 
 Even better, grabit will fetch the data lineage back to the directory where the grabit is running.
-those data lineage result are stored in the `data/datalineage/` directory. 
+Those data lineage results are stored in the `data/datalineage/` directory. 
 
-This parameter specify which kind of format is used to save the data lineage result.
+This parameter specifies which kind of format is used to save the data lineage result.
 
 Available values for this parameter:
-- 1: json, data lineage result in json.
-- 2: csv, data lineage result in CSV format.
+- 1: JSON, data lineage result in JSON.
+- 2: CSV, data lineage result in CSV format.
 - 3: diagram, in graphml format that can be viewed by yEd.
 
 This sample configuration means the output format is json.
@@ -152,7 +151,7 @@ This sample configuration means the output format is json.
 ```
 
 #### 4. databaseType
-This parameter specify the database dialect of the SQL scripts that been analyzed by the SQLFlow.
+This parameter specifies the database dialect of the SQL scripts that the SQLFlow has analyzed.
 
 ```txt
 	access,bigquery,couchbase,dax,db2,greenplum,hana,hive,impala,informix,mdx,mssql,
@@ -169,16 +168,16 @@ This sample configuration means the SQL dialect is SQL Server database.
 Specify a database instance that grabit will connect to fetch the metadata that helps SQLFlow 
 make a more precise analysis and get a more accurate result of data lineage, the data lineage results are stored in the `data/json/` directory in a JSON file named with the current timestamp.
 
-This parameter must be specified if you set `optionType=1` which means the source of SQL script
-comes from a database. Otherwise, it can be leave empty.
+This parameter must be specified if you set `optionType=1`, which means the SQL script source
+comes from a database. Otherwise, it can be left empty.
 
 - **hostname**
 
-The IP of the datbase server that connect to.
+The IP of the database server that the grabit connects.
 
 - **port**
 
-The port number of the datbase server that connect to.
+The port number of the database server that the grabit connect.
 
 - **username**
 
@@ -190,7 +189,7 @@ The password of the database user.
 
 - **sid**
 
-Name of the Oracle instance. Used for Oracle only.
+Name of the Oracle instance. They were used for Oracle only.
 
 - **extractedSchemas**
 This option is used for Oracle only. 
@@ -209,7 +208,7 @@ If left blank, no schemas will be excluded.
 
 List of databases and schemas to extract, separated by
 commas, which are to be provided in the format database/schema;
-, or blank to extract all databases.
+Or blank to extract all databases.
 `database1/schema1,database2/schema2,database3`
 
 
@@ -221,7 +220,7 @@ separated by commas
 
 - **enableQueryHistory**
 
-Fetch SQL queries from the query history if set to `true`, default is false.
+Fetch SQL queries from the query history if set to `true` default is false.
 
 - **queryHistoryBlockOfTimeInMinutes**
 
@@ -294,7 +293,7 @@ or
 
 #### 7. SQLInSingleFile
 
-When `optionType=4`, this is a single SQL file need to be analyzed.
+When `optionType=4`, this is a single SQL file needs to be analyzed.
 
 - **filePath**
 
@@ -306,7 +305,7 @@ When `optionType=5`, SQL files under this directory including sub-directory will
 
 - **directoryPath**
 
-The directory which includes the SQL files.
+The directory includes the SQL files.
 
 #### 9. isUploadNeo4j
 
@@ -325,7 +324,7 @@ If `IsuploadNeo4j` is set to '1', this parameter specifies the details of the ne
 
 - **url**
 
-The IP of the neo4j server that connect to.
+The IP of the neo4j server that connects to.
 
 - **username**
 
@@ -393,7 +392,7 @@ Sample configuration of a local directory path:
     "resultType":1,
     "databaseType":"snowflake",
     "isUploadNeo4j":0,
-    "enableGetMetadataInJSONFromDatabase":1
+    "enableGetMetadataInJSONFromDatabase":0
 }
 ````
 
@@ -417,7 +416,7 @@ Grabit is started command-line.
 ./start.sh /f <path_to_config_file>  
 
 note: 
-    path_to_config_file: config file path  
+    path_to_config_file: the full path to the config file
 
 eg: 
     ./start.sh /f config.txt
@@ -427,16 +426,24 @@ eg:
 ./start.bat /f <path_to_config_file>  
 
 note: 
-    path_to_config_file: config file path  
+    path_to_config_file: the full path to the config file
 
 eg: 
     start.bat /f config.txt
 ````
 
-After execution, view the `logs/log.log` file. If the log prints a **submit job to sqlflow successful**. Then it is proved that the upload to SQLFlow has been successful. Log in the SQLFlow website to view the newly analyzed results. In the `Task List`, you can view the analysis results of the currently submitted tasks.If the download analysis result is set, **export json result successful** will appear in the log.
+After execution, view the `logs/graibt.log` file. 
+If the log prints a **submit the job to sqlflow successful**. 
+Then it is proved that the upload to SQLFlow has been successful. 
 
-#### grabit job 
-Timed tasks start grabit.
+Log in to the SQLFlow website to view the newly analyzed results. 
+In the `Task List`, you can view the analysis results of the currently submitted tasks.
+
+If the download analysis result is set, **export json result successful** will appear in the log.
+
+#### Running grabit automatically
+ 
+Use `cron` to run grabit automatically to generate the data lineage result.
 
 - **use mac & linux crontab**
 ````
@@ -446,7 +453,7 @@ note:
     path_to_config_file: config file path 
     lib_path: lib directory absolute path
 
-eg: 
+e.g.: 
     1. sudo vi /etc/crontab 
     2. add the following statement to the last line
         0 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh /f /home/ubuntu/grabit-2.4.6/conf-oracle /home/ubuntu/grabit-2.4.6/lib
