@@ -1,7 +1,10 @@
 # Grabit Using Document
 
 ## What is a grabit
-Grabit is a supporting tool for SQLFlow, which collects SQL scripts from various data sources for SQLFlow, and then uploading them to SQLFlow for data lineage analysis of these SQL scripts. The analysis results can be viewed in the Web front end of SQLFlow. Meanwhile, the analysis results can also be exported from SQLFlow to local area through Grabit, and the JSON results can be uploaded to Neo4j database.
+Grabit is a supporting tool for SQLFlow, which collects SQL scripts from various data sources for SQLFlow, 
+and then uploading them to SQLFlow for data lineage analysis of these SQL scripts. 
+The analysis results can be viewed in the browser. Meanwhile, the data lineage results will be fetched to 
+the diretory where Grabit is installed, and the JSON results can be uploaded to Neo4j database if necessary.
 
 ## How to use Grabit
 
@@ -26,7 +29,9 @@ cd grabit-x.x.x
 ````
 chmod 777 *.sh
 ````
-After the installation is complete, you can execute the command `./start.sh /f conf-temp` or `start.bat /f conf-temp`. If the logs directory appears and the **start grabit command** is printed in the log file, the installation is successful.
+After the installation is complete, you can execute the command `./start.sh /f conf-temp` or `start.bat /f conf-temp`. 
+You may check logs under the logs directory for more information.
+
 
 ### Configuration
 Modify the configure file to set all parameters correctly according to your own environment.
