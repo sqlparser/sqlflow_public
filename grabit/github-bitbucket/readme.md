@@ -4,9 +4,37 @@ Grabit able to fetch SQL scripts from the GitHub/bitbucket repo,
 and automated data lineage from those SQL scripts by sending it
 to the SQLFlow server.
 
-In this article, we will show you how to 
+In this article, we will show you how to fetch snowflake SQL scripts
+in [a github repo](https://github.com/sqlparser/snowflake-data-lineage) and
+sent it to the SQLFlow for analyzing to get the data lineage visually.
 
-### Step 1: Install git
+### Software used in this solution
+- [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
+- [Grabit tool](https://www.gudusoft.com/grabit/) for SQLFlow. It's free.
+
+You may [request a 30 days SQLFlow on-premise version](https://www.gudusoft.com/submit-a-ticket/)
+by filling out a form with the subject: request a 30 days SQLFlow on-premise version.
+
+Our team will contact you in 1-3 working days after receiving the message.
+
+
+### Prerequisites
+- A Linux/mac/windows server with at least 8GB memory (ubuntu 20.04 is recommended).
+- Java 8
+- Nginx web server. 
+- Port needs to be opened. (80, 8761,8081,8083. Only 80 port need to be opened if you set up the Nginx reverse proxy as mentioned in [this document](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow.md))
+
+### Install SQLFlow on-premise version
+- [Guilde for install on linux](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow.md)
+- [Guilde for install on window](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow_on_windows.md)
+- [Guilde for install on mac](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow_on_mac.md)
+
+### Install grabit tool
+After [download grabit tool](https://www.gudusoft.com/grabit/), please [check this article](https://github.com/sqlparser/sqlflow_public/tree/master/grabit) 
+to see how to setup the grabit tool.
+
+
+### Install git
 - **ubuntu:** 
 ```
 sudo apt-get install git
@@ -30,41 +58,36 @@ After the installation is completed, run **git --version** to check it is instal
 ```
 ssh-keygen -o
 ```
-### Step 2: Install grabit
-```
-unzip grabit-x.x.x.zip
 
-cd grabit-x.x.x
-```
 
-- **linux & mac open permissions** 
-```
-chmod 777 *.sh
-```
+### Set up grabit configuration file
 
-After the installation is completed, you can execute the command  `./start.sh /f conf-temp` or `start.bat /f conf-temp`. 
-If the logs directory appears and the **start grabit command** is printed in the log file, the installation is successful.
+`optionType=2` tells the grabit tool the SQL scripts are located in a github repo.
 
-### Step 3: Set up grabit configuration file
+{
+	"optionType":2,
+	"resultType":1,
+	"databaseType":"snowflake",
+	"SQLFlowServer":{
+		"server":"http://111.229.12.71",
+		"serverPort":"8081",
+		"userId":"gudu|0123456789",
+		"userSecret":"" 
+	},	
+	"githubRepo":{
+	    "url":"https://github.com/sqlparser/snowflake-data-lineage",
+	    "username":"",
+	    "password":"",
+	    "sshkeyPath":""
+	}
+}
 
-#### 1. set up optionType to grab SQL from github/bitbucket
+For other detailed information, please [check here](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#6-githubrepo--bitbucketrepo)
 
-You may collect SQL scripts from various sources such as database, Github repo, file system. 
-This parameter tells grabit where the SQL scripts come from.
+Now, you can get the full data lineage like this:
+![snowflake data lineage](./snowflake-data-lineage.png "snowflake data lineage")
 
-Available values for this parameter:
 
-- github：2
+### Know-How
+![sqlflow-automated-data-lineage](../../images/sqlflow_automated_data_lineage.png "SQLFlow automated data lineage")
 
-- bitbucket：3
-
-#### 2. set up databaseType
-
-the database type of all connections, the types currently supported：
-```text
-access,bigquery,couchbase,dax,db2,greenplum,hana,hive,impala,informix,mdx,mssql,sqlserver,mysql,netezza,
-odbc,openedge,oracle,postgresql,postgres,redshift,snowflake,sybase,teradata,soql,vertica
-```
-
-#### 3. Other options
-For all other options, please check [the grabit documentation](https://github.com/sqlparser/sqlflow_public/blob/master/grabit/readme.md)
