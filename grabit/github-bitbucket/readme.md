@@ -1,9 +1,10 @@
-## Automated data lineage from Github/bitbucket
+## Automated data lineage from SQL scripts in Github/bitbucket
 
 Grabit able to fetch SQL scripts from the GitHub/bitbucket repo,
 and automated data lineage from those SQL scripts by sending it
 to the SQLFlow server.
 
+In this article, we will show you how to 
 
 ### Step 1: Install git
 - **ubuntu:** 

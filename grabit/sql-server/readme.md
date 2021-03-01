@@ -21,7 +21,7 @@ Our team will contact you in 1-3 working days after receiving the message.
 
 ### Install SQLFlow on-premise version
 - [Guilde for install on linux](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow.md)
-- [Guilde for install on window(https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow_on_windows.md)
+- [Guilde for install on window](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow_on_windows.md)
 - [Guilde for install on mac](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow_on_mac.md)
 
 ### Install grabit tool
@@ -140,4 +140,4 @@ Now, you can get the full data lineage correctly without any ambiguous
 
 
 ### Know-How
-![sqlflow-automated-data-lineage](../../sqlflow_automated_data_lineage.png "SQLFlow automated data lineage")
+![sqlflow-automated-data-lineage](../../images/sqlflow_automated_data_lineage.png "SQLFlow automated data lineage")
