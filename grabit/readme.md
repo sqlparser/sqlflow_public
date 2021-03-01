@@ -32,6 +32,83 @@ chmod 777 *.sh
 After the installation is complete, you can execute the command `./start.sh /f conf-temp` or `start.bat /f conf-temp`. 
 You may check logs under the logs directory for more information.
 
+### Running the grabit tool
+
+The grabit tool can be running in both GUI mode and the command line mode.
+
+#### GUI mode
+
+- **mac & linux**
+```
+./start.sh
+```
+
+- **windows**
+```
+start.bat
+```
+
+#### Command line mode
+Grabit is started command-line.
+
+- **mac & linux**
+```
+./start.sh /f <path_to_config_file>  
+
+note: 
+    path_to_config_file: the full path to the config file
+
+eg: 
+    ./start.sh /f config.txt
+```
+
+- **windows**
+```
+./start.bat /f <path_to_config_file>  
+
+note: 
+    path_to_config_file: the full path to the config file
+
+eg: 
+    start.bat /f config.txt
+```
+
+After execution, view the `logs/graibt.log` file for the detailed information. 
+
+If the log prints a **submit the job to sqlflow successful**. 
+Then it is proved that the upload to SQLFlow has been successful. 
+
+Log in to the SQLFlow website to view the newly analyzed results. 
+In the `Job List`, you can view the analysis results of the currently submitted tasks.
+
+
+#### Run the grabit at a scheduled time
+ 
+This guide shows you how to set up a cron job in Linux, with examples.
+
+- **use mac & linux crontab**
+```
+cron ./start_job.sh /f <path_to_config_file> <lib_path>
+
+note: 
+    path_to_config_file: config file path 
+    lib_path: lib directory absolute path
+
+e.g.: 
+    1. sudo vi /etc/crontab 
+    2. add the following statement to the last line
+        0 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh /f /home/ubuntu/grabit-2.4.6/conf-oracle /home/ubuntu/grabit-2.4.6/lib
+        
+        note: 
+            0 */1   * * *: cron expression
+            ubuntu: The name of the system user performing the task
+            /home/ubuntu/grabit-2.4.6/start_job.sh: The path of the task script
+            /f /home/ubuntu/grabit-2.4.6/conf-oracle: config file path
+            /home/ubuntu/grabit-2.4.6/lib: lib directory absolute path
+    3.sudo service cron restart    
+```
+
+Please check [this document](https://phoenixnap.com/kb/set-up-cron-job-linux) for more information about cron.
 
 ### Configuration
 Modify the configure file to set all parameters correctly according to your environment.
@@ -394,75 +471,4 @@ Sample configuration of a local directory path:
     "isUploadNeo4j":0,
     "enableGetMetadataInJSONFromDatabase":0
 }
-````
-
-### Launch 
-#### grabit ui launch
-Graphic interface mode to start Grabit.
-
-- **mac & linux**
-`
-./start.sh
-`
-- **windows**
-`
-start.bat
-`
-#### grabit cmd launch
-Grabit is started command-line.
-
-- **mac & linux**
-````
-./start.sh /f <path_to_config_file>  
-
-note: 
-    path_to_config_file: the full path to the config file
-
-eg: 
-    ./start.sh /f config.txt
-````
-- **windows**
-````
-./start.bat /f <path_to_config_file>  
-
-note: 
-    path_to_config_file: the full path to the config file
-
-eg: 
-    start.bat /f config.txt
-````
-
-After execution, view the `logs/graibt.log` file. 
-If the log prints a **submit the job to sqlflow successful**. 
-Then it is proved that the upload to SQLFlow has been successful. 
-
-Log in to the SQLFlow website to view the newly analyzed results. 
-In the `Task List`, you can view the analysis results of the currently submitted tasks.
-
-If the download analysis result is set, **export json result successful** will appear in the log.
-
-#### Running grabit automatically
- 
-Use `cron` to run grabit automatically to generate the data lineage result.
-
-- **use mac & linux crontab**
-````
-cron ./start_job.sh /f <path_to_config_file> <lib_path>
-
-note: 
-    path_to_config_file: config file path 
-    lib_path: lib directory absolute path
-
-e.g.: 
-    1. sudo vi /etc/crontab 
-    2. add the following statement to the last line
-        0 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh /f /home/ubuntu/grabit-2.4.6/conf-oracle /home/ubuntu/grabit-2.4.6/lib
-        
-        note: 
-            0 */1   * * *: cron expression
-            ubuntu: The name of the system user performing the task
-            /home/ubuntu/grabit-2.4.6/start_job.sh: The path of the task script
-            /f /home/ubuntu/grabit-2.4.6/conf-oracle: config file path
-            /home/ubuntu/grabit-2.4.6/lib: lib directory absolute path
-    3.sudo service cron restart    
 ````
