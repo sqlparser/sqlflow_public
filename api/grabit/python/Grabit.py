@@ -91,6 +91,15 @@ if __name__ == '__main__':
         print('Please enter the server. eg: /s https://api.gudusoft.com or /s https://127.0.0.1')
         sys.exit(0)
 
+    if server.find('http:') == -1 and server.find('https:') == -1:
+        server = 'http://' + server
+
+    if server.endswith('\\'):
+        server = server[:-1]
+
+    if server == 'https://sqlflow.gudusoft.com':
+        server = 'https://api.gudusoft.com'
+
     if userId == 'gudu|0123456789':
         token = 'token'
     else:
