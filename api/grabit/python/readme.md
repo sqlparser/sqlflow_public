@@ -16,7 +16,7 @@ pip install requests
 python Grabit.py /s server /p port /u userId /k userSecret /t databaseType /f path_to_config_file /r resultType 
 
 eg: 
-    python Grabit.py /u 'auth0|xxx' /k cab9712c45189014a94a8b7aceeef7a3db504be58e18cd3686f3bbefd078ef4d /s https://api.gudusoft.com /t dbvoracle /f /Users/Documents/gsp_sqlfiles-master/TestCases/oracle/delete.sql /r 1
+    python Grabit.py /u 'auth0|xxx' /k cab9712c45189014a94a8b7aceeef7a3db504be58e18cd3686f3bbefd078ef4d /s https://api.gudusoft.com /t oracle /f /Users/Documents/gsp_sqlfiles-master/TestCases/oracle/delete.sql /r 1
 note:
     If the string contains userId "|" pipe such symbols, userId must use single quotes (' ')
 ````
