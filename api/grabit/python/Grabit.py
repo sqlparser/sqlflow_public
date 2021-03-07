@@ -83,6 +83,12 @@ if __name__ == '__main__':
         print(
             'Please enter the dbvendor，available values:dbvbigquery, dbvcouchbase,dbvdb2,dbvgreenplum,dbvhana,dbvhive,dbvimpala,dbvinformix,dbvmdx,dbvmysql,dbvnetezza,dbvopenedge,dbvoracle,dbvpostgresql,dbvredshift,dbvsnowflake,dbvmssql,dbvsybase,dbvteradata,dbvvertica. eg: /t oracle')
         sys.exit(0)
+
+    if dbvendor == 'mssql' or dbvendor == 'sqlserver':
+        dbvendor = 'mssql'
+
+    dbvendor = 'dbv' + dbvendor
+
     if sqlfiles == '':
         print(
             'Please enter the sqlfiles，request sql files, please use multiple parts to submit the sql files, required true. eg: /f path')
