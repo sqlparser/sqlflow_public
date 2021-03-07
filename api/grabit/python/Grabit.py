@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
+import os
 import sys
 import GetGenerateToken
 import SubmitJob
@@ -102,7 +103,7 @@ if __name__ == '__main__':
     if server.find('http:') == -1 and server.find('https:') == -1:
         server = 'http://' + server
 
-    if server.endswith('\\'):
+    if server.endswith(os.sep):
         server = server[:-1]
 
     if server == 'https://sqlflow.gudusoft.com':
