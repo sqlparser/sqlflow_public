@@ -5,6 +5,8 @@ import GetGenerateToken
 import SubmitJob
 import time
 import GetResultToSqlflow
+import GetJobStatus
+import datetime
 
 if __name__ == '__main__':
 
@@ -81,7 +83,7 @@ if __name__ == '__main__':
         sys.exit(0)
     if dbvendor == '':
         print(
-            'Please enter the dbvendor，available values:dbvbigquery, dbvcouchbase,dbvdb2,dbvgreenplum,dbvhana,dbvhive,dbvimpala,dbvinformix,dbvmdx,dbvmysql,dbvnetezza,dbvopenedge,dbvoracle,dbvpostgresql,dbvredshift,dbvsnowflake,dbvmssql,dbvsybase,dbvteradata,dbvvertica. eg: /t oracle')
+            'Please enter the dbvendor，available values:bigquery,couchbase,db2,greenplum,hana,hive,impala,informix,mdx,mysql,netezza,openedge,oracle,postgresql,redshift,snowflake,mssql,sybase,teradata,vertica. eg: /t oracle')
         sys.exit(0)
 
     if dbvendor == 'mssql' or dbvendor == 'sqlserver':
@@ -111,14 +113,16 @@ if __name__ == '__main__':
     else:
         token = GetGenerateToken.getToken(sys, userId, server, port)
 
-    time_time = time.time()
-    int1 = int(time_time)
-    time_ = 'grabit-' + str(int1)
+    time_ = datetime.datetime.now().strftime('%Y%m%d')
 
     jobId = SubmitJob.toSqlflow(userId, token, server, port, time_, dbvendor, sqlfiles)
 
     if download != '':
-        GetResultToSqlflow.getResult(download, userId, token, server, port, jobId, time_)
+        while True:
+            status = GetJobStatus.getStatus(userId, token, server, port, jobId)
+            if status == 'partial_success' or status == 'success':
+                GetResultToSqlflow.getResult(download, userId, token, server, port, jobId, time_)
+                break
 
     print('========================================grabit-python======================================')
 
