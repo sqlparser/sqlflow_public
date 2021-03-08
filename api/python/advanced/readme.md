@@ -8,7 +8,7 @@ and get the result in an actionable diagram, json, csv or graphml format.
 You can integerate the python code provided here into your own project and add the powerful 
 data lineage analsysis capability instantly.
 
-### 1. An actionable diagram
+### 1. interactive data lineage visualizations
 ![Python Data lineage](python-data-lineage.png)
 
 ### 2. [Data lineage in JSON format](python-data-lineage-result.json)
@@ -124,3 +124,6 @@ Available values for this parameter:
 - 1: JSON, data lineage result in JSON.
 - 2: CSV, data lineage result in CSV format.
 - 3: diagram, in graphml format that can be viewed by yEd.
+
+### SQLFlow REST API
+Please check here for the detailed information about the [SQLFlow REST API](https://github.com/sqlparser/sqlflow_public/tree/master/api/sqlflow_api.md)
