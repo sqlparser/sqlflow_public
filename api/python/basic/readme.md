@@ -2,6 +2,8 @@
 
 A basic tutorial for using the Python version of the SQLFlow API.
 
+Here is an advanced version of how to use [Python to get the data lineage](https://github.com/sqlparser/sqlflow_public/tree/master/api/python/advanced).
+
 ### Prerequisites
 
 - Python 2.7 or higher version must be installed and configured correctly.
@@ -102,5 +104,5 @@ Connect to the SQLFlow on-premise version:
 
 `python GenerateDataLineageDemo.py`
 
-### [More features in python](https://github.com/sqlparser/sqlflow_public/tree/master/api/grabit/python)
+
 

@@ -1,27 +1,41 @@
 ## Python Data lineage: using the SQLFlow REST API (Advanced)
 
-Grabit, a Python enabled version of SQLFlow, collects SQL scripts from files or folders and uploads them to SQLFlow for data lineage analysis of these SQL scripts. The analysis results can be viewed in the Web front end of SQLFlow. At the same time, analysis results can also be exported locally from SQLFlow via Grabit.
-## How to use Grabit
+This article illustrates how to discover the data lineage using Python and the SQLFlow REST API.
 
-### Prerequisites
+By using the SQLFlow REST API, you can code in python to discover the data lineage in SQL scripts
+and get the result in an actionable diagram, json, csv or graphml format.
+
+You can integerate the python code provided here into your own project and add the powerful 
+data lineage analsysis capability instantly.
+
+### An actionable diagram
+![Python Data lineage](python-data-lineage.png)
+
+### [Data lineage in JSON format](python-data-lineage-result.json)
+
+### Data lineage in CSV, graphml format
+
+
+## Prerequisites
+- [SQLFlow Cloud Server or on-premise version](https://github.com/sqlparser/sqlflow_public/tree/master/api#prerequisites)
 - Python 2.7 or higher version must be installed and configured correctly.
-
 - Installing Dependency Libraries: 
 ```
 pip install requests
 ```
 
-### Start Script
+### How to use the python code
 ````
 python Grabit.py /s server /p port /u userId /k userSecret /t databaseType /f path_to_config_file /r resultType 
 
 eg: 
-    python Grabit.py /u 'auth0|xxx' /k cab9712c45189014a94a8b7aceeef7a3db504be58e18cd3686f3bbefd078ef4d /s https://api.gudusoft.com /t oracle /f /Users/Documents/gsp_sqlfiles-master/TestCases/oracle/delete.sql /r 1
+    python Grabit.py /u 'auth0|xxx' /k cab9712c45189014a94a8b7aceeef7a3db504be58e18cd3686f3bbefd078ef4d /s https://api.gudusoft.com /t oracle /f demo.sql /r 1
+	
 note:
-    If the string contains userId "|" pipe such symbols, userId must use single quotes (' ')
+    If the parameter string contains symbols like "|" , it must be included in a single quotes (' ')
 ````
 
-#### Script parameter interpretation
+#### Parameters
 
 - **path_to_config_file**
 

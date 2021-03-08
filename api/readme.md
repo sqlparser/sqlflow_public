@@ -7,10 +7,12 @@ In this article, we use `Curl` to demonstrate the usage of the Rest API,
 you can use any preferred programming language as you like.
 
 ### Prerequisites
-In order to use the SQLFlow rest API, you may connect to the [SQLFlow Cloud server](https://sqlflow.gudusoft.com),
-Or, setup a [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/) on your owner server.
 
-1. SQLFlow Cloud server
+In order to use the SQLFlow rest API, you may connect to the [**SQLFlow Cloud server**](https://sqlflow.gudusoft.com),
+Or, setup a [**SQLFlow on-premise version**](https://www.gudusoft.com/sqlflow-on-premise-version/) on your owner server.
+
+
+1. **SQLFlow Cloud server**
 
 - User ID
 - Secrete Key
@@ -19,7 +21,7 @@ If you want to connect to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.co
 [get the necessary userId and secret code](/sqlflow-userid-secret.md).
 
 
-2. SQLFlow on-premise version
+2. **SQLFlow on-premise version**
 
 Please [check here](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow.md) to see how to install SQLFlow on-premise version on you own server.
 
