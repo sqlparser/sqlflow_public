@@ -1,5 +1,5 @@
-# grabit-python Using Document
-## What is a grabit
+## Python Data lineage: using the SQLFlow REST API (Advanced)
+
 Grabit, a Python enabled version of SQLFlow, collects SQL scripts from files or folders and uploads them to SQLFlow for data lineage analysis of these SQL scripts. The analysis results can be viewed in the Web front end of SQLFlow. At the same time, analysis results can also be exported locally from SQLFlow via Grabit.
 ## How to use Grabit
 

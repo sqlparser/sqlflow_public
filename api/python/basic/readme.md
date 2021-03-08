@@ -1,6 +1,6 @@
-# SQLFlow Python API Document
+## Python Data lineage: using the SQLFlow REST API (Basci) 
 
-A tutorial for using the Python version of the SQLFlow API.
+A basic tutorial for using the Python version of the SQLFlow API.
 
 ### Prerequisites
 
@@ -77,7 +77,7 @@ Connect to the SQLFlow Cloud Server:
     generateDataLineageUrl = 'https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow'
     userId = 'YOUR USER ID'
     screctKey = 'YOUR SECRET KEY'
-    sqlfile = 'test.json'
+    sqlfile = 'test.sql'
     ignoreRecordSet = False
     dbvendor = 'dbvoracle'
     showRelationType = 'fdd'
@@ -91,7 +91,7 @@ Connect to the SQLFlow on-premise version:
     generateDataLineageUrl = 'http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow'
     userId = 'gudu|012345678'
     screctKey = ''
-    sqlfile = 'test.json'
+    sqlfile = 'test.sql'
     ignoreRecordSet = False
     dbvendor = 'dbvoracle'
     showRelationType = 'fdd'
