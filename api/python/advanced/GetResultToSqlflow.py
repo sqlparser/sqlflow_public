@@ -8,7 +8,7 @@ import os
 
 
 def getResult(download, userId, token, server, port, jobId, filePath):
-    sep = os.path.abspath(os.path.dirname(os.getcwd())) + os.sep + 'data' + os.sep + 'result' + os.sep
+    sep = 'data' + os.sep + 'result' + os.sep
     filePath = filePath + '_' + jobId
     if download == '1':
         url = "/gspLive_backend/sqlflow/job/exportLineageAsJson"
