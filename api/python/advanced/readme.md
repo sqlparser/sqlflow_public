@@ -8,12 +8,12 @@ and get the result in an actionable diagram, json, csv or graphml format.
 You can integerate the python code provided here into your own project and add the powerful 
 data lineage analsysis capability instantly.
 
-### An actionable diagram
+### 1. An actionable diagram
 ![Python Data lineage](python-data-lineage.png)
 
-### [Data lineage in JSON format](python-data-lineage-result.json)
+### 2. [Data lineage in JSON format](python-data-lineage-result.json)
 
-### Data lineage in CSV, graphml format
+### 3. Data lineage in CSV, graphml format
 
 
 ## Prerequisites
@@ -24,7 +24,7 @@ data lineage analsysis capability instantly.
 pip install requests
 ```
 
-### How to use the python code
+### Usage
 ````
 python Grabit.py /s server /p port /u userId /k userSecret /t databaseType /f path_to_config_file /r resultType 
 
@@ -35,11 +35,30 @@ note:
     If the parameter string contains symbols like "|" , it must be included in a single quotes (' ')
 ````
 
-#### Parameters
+Example:
+
+1. Connect to the SQLFlow Cloud Server
+```
+python Grabit.py /s https://api.gudusoft.com /u 'YOUR_USER_ID' /k YOUR_SECRET_KEY /t sqlserver /f python-data-lineage-sqlserver.sql /r 1 
+```
+
+2. Connect to the SQLFlow on-premise
+This will discover data lineage by analyzing the `python-data-lineage-sqlserver.sql` file. You may also specify a zip file which includes lots of SQL files.
+```
+python Grabit.py /s http://127.0.0.1 /p 8081 /u 'gudu|0123456789' /t sqlserver /f python-data-lineage-sqlserver.sql /r 1 
+```
+
+This will discover data lineage by analyzing all SQL files under `sqlfiles` directory. 
+```
+python Grabit.py /s http://127.0.0.1 /p 8081 /u 'gudu|0123456789' /t mysql /f sqlfiles /r 1 
+```
+
+
+### Parameters
 
 - **path_to_config_file**
 
-path to a file with operation type Single File or path to a file with operation type Multiple SQL Files Under A Directory.
+This can be a single SQL file, a zip file including multiple SQL files, or a directory including lots of SQL files.
 
 - **server**
 
@@ -79,7 +98,6 @@ Always set this value to `gudu|0123456789` and keep `userSecret` empty if you us
 If you want to connect to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com), you may [request a 30 days premium account](https://www.gudusoft.com/request-a-premium-account/) to 
 [get the necessary userId and secret code](/sqlflow-userid-secret.md).
 
-If the string contains userId "|" pipe such symbols, userId must use single quotes (' ').
 
 - **databaseType**
 
@@ -94,10 +112,10 @@ This parameter specifies the database dialect of the SQL scripts that the SQLFlo
 - **resultType**
 
 When you submit SQL script to the SQLFlow server, A job is created on the SQLFlow server
-and you can always see the graphic data lineage result in the frontend of the SQLFlow by using the browser, 
+and you can always see the graphic data lineage result via the browser, 
 
 
-Even better, grabit will fetch the data lineage back to the directory where the grabit is running.
+Even better, This demo will fetch the data lineage back to the directory where the demo is running.
 Those data lineage results are stored in the `data/datalineage/` directory. 
 
 This parameter specifies which kind of format is used to save the data lineage result.
