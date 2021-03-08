@@ -26,10 +26,20 @@ Please [check here](https://github.com/sqlparser/sqlflow_public/blob/master/inst
 - User ID
 - Secrete Key
 
-Always set this value to `gudu|0123456789` and keep `userSecret` empty when connect to the SQLFlow on-premise version.
+Always set userId to `gudu|0123456789` and keep `userSecret` empty when connect to the SQLFlow on-premise version.
 
 
-### Call Rest API
+### Difference of the API calls between SQLFlow Cloud server and SQLFlow on-premise version
+
+1. TOKEN is not needed in the API calls when connect to the SQLFlow on-premise version
+2. userId alwyas set to `gudu|0123456789` and `userSecret` leave empty when connect to the SQLFlow on-premise version.
+3. The server port is 8081 by default for the SQLFlow on-premise version, and There is no need to specify the port when connect to the SQLFlow Cloud server.
+
+Regarding the server port of the SQLFlow on-premise version, please [check here](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#1-sqlflow-server) for more information.
+
+
+
+### Using the Rest API
 
 #### 1. Generate a token
 
@@ -48,6 +58,7 @@ curl -X POST "https://api.gudusoft.com/gspLive_backend/user/generateToken" -H  "
 ```
 
 **SQLFlow on-premise version**
+
 TOKEN is not needed in the on-premise version. So, there is no need to generate a token.
 
 
@@ -59,7 +70,6 @@ Call this API by sending the SQL query and get the result includes the data line
 /gspLive_backend/sqlflow/generation/sqlflow
 ```
 
-Example in `Curl`
 
 **SQLFlow Cloud Server**
 ```
@@ -71,7 +81,6 @@ curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflo
 curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow?showRelationType=fdd"    -H  "Request-Origion:testClientDemo" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:multipart/form-data" -F "sqlfile=" -F "dbvendor=dbvoracle" -F "ignoreRecordSet=false" -F "simpleOutput=false" -F "sqltext=CREATE VIEW vsal  as select * from emp" -F "userId=gudu|0123456789" 
 ```
 
-Regarding the server port of the SQLFlow on-premise version, please [check here](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#1-sqlflow-server) for more information.
 
 #### 3. Export the data lineage in csv format
 
@@ -82,8 +91,14 @@ Call this API by sending the SQL file and get the csv result includes the data l
 ```
 
 ```
-curl -X POST https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow/exportLineageAsCsv" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:multipart/form-data" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE" -F "dbvendor=dbvoracle" -F "showRelationType=fdd" -F "sqlfile=@YOUR UPLOAD FILE PATH HERE" --output YOUR DOWNLOAD FILE PATH HERE
+curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow/exportLineageAsCsv" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:multipart/form-data" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE" -F "dbvendor=dbvoracle" -F "showRelationType=fdd" -F "sqlfile=@YOUR UPLOAD FILE PATH HERE" --output YOUR DOWNLOAD FILE PATH HERE
 ```
+
+Sample:
+```
+curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow/exportLineageAsCsv" -H  "accept:application/json;charset=utf-8" -H  "Content-Type:multipart/form-data" -F "userId=auth0|5fc8e95991a780006f180d4d" -F "token=YOUR TOKEN HERE" -F "dbvendor=dbvoracle" -F "showRelationType=fdd" -F "sqlfile=@c:\prg\tmp\demo.sql" --output c:\prg\tmp\demo.csv
+```
+
 
 **Note:**
  * -H  "Content-Type:multipart/form-data" is required.
