@@ -292,8 +292,8 @@ Or blank to extract all databases.
 - **excludedDbsSchemas**
 
 List of databases and schemas to exclude from extraction,
-separated by commas
-`database1/schema1,database2`
+separated by commas `database1/schema1,database2`
+
 
 - **enableQueryHistory**
 
