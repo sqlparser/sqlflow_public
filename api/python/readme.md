@@ -101,3 +101,6 @@ Connect to the SQLFlow on-premise version:
 **start script**
 
 `python GenerateDataLineageDemo.py`
+
+### [More features in python](https://github.com/sqlparser/sqlflow_public/tree/master/api/grabit/python)
+
