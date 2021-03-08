@@ -1,4 +1,4 @@
-## How to use Rest API of SQLFlow
+## How to use the Rest API of SQLFlow
 
 This article describes how to use the Rest API provided by the SQLFlow to 
 communicate with the SQLFlow server and get the generated metadata and data lineage.

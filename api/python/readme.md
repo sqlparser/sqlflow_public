@@ -28,6 +28,16 @@ If you want to connect to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.co
 
 **set the parameters in the code**
 
+Connect to the SQLFlow Cloud Server:
+
+````json
+    url = 'https://api.gudusoft.com/gspLive_backend/user/generateToken'
+    userId = 'YOUR USER ID'
+    screctKey = 'YOUR SECRET KEY'
+````
+
+Connect to the SQLFlow on-premise version:
+
 ````json
     url = 'http://127.0.0.1:8081/gspLive_backend/user/generateToken'
     userId = 'gudu|012345678'
@@ -60,11 +70,26 @@ This demo shows how to get the desired SQL script analysis results from the SQLF
 
 **set the parameters in the code**
 
+Connect to the SQLFlow Cloud Server:
+
+````json
+    tokenUrl = 'https://api.gudusoft.com/gspLive_backend/user/generateToken'
+    generateDataLineageUrl = 'https://api.gudusoft.com/gspLive_backend/sqlflow/generation/sqlflow'
+    userId = 'YOUR USER ID'
+    screctKey = 'YOUR SECRET KEY'
+    sqlfile = 'test.json'
+    ignoreRecordSet = False
+    dbvendor = 'dbvoracle'
+    showRelationType = 'fdd'
+    simpleOutput = False
+````
+
+Connect to the SQLFlow on-premise version:
+
 ````json
     tokenUrl = 'http://127.0.0.1:8081/gspLive_backend/user/generateToken'
     generateDataLineageUrl = 'http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow'
     userId = 'gudu|012345678'
-
     screctKey = ''
     sqlfile = 'test.json'
     ignoreRecordSet = False
