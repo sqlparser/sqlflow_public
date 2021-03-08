@@ -2,6 +2,16 @@
 
 A tutorial for using the Python version of the SQLFlow API.
 
+### Prerequisites
+
+- Python 2.7 or higher version must be installed and configured correctly.
+
+- Installing Dependency Libraries: 
+
+`
+pip install requests
+`
+
 ### GenerateTokenDemo.py
 
 This demo shows how to get a token from a SQLFlow system that can be used to legally call other interfaces.
@@ -15,6 +25,18 @@ Always set this value to `gudu|0123456789` and keep `userSecret` empty if you us
 
 If you want to connect to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com), you may [request a 30 days premium account](https://www.gudusoft.com/request-a-premium-account/) to 
 [get the necessary userId and secret code](/sqlflow-userid-secret.md).
+
+**set the parameters in the code**
+
+````json
+    url = 'http://127.0.0.1:8081/gspLive_backend/user/generateToken'
+    userId = 'gudu|012345678'
+    screctKey = ''
+````
+
+**start script**
+
+`python GenerateTokenDemo.py`
 
 ### GenerateDataLineageDemo.py
 
@@ -34,3 +56,23 @@ This demo shows how to get the desired SQL script analysis results from the SQLF
       * **join**: combine rows from two or more tables, based on a related column between them
     * simpleOutput: whether simple output relation, required false, default value is false
     * ignoreRecordSet: whether ignore the record set, required false, default value is false
+
+
+**set the parameters in the code**
+
+````json
+    tokenUrl = 'http://127.0.0.1:8081/gspLive_backend/user/generateToken'
+    generateDataLineageUrl = 'http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow'
+    userId = 'gudu|012345678'
+
+    screctKey = ''
+    sqlfile = 'test.json'
+    ignoreRecordSet = False
+    dbvendor = 'dbvoracle'
+    showRelationType = 'fdd'
+    simpleOutput = False
+````
+
+**start script**
+
+`python GenerateDataLineageDemo.py`
