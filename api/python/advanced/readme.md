@@ -116,7 +116,7 @@ and you can always see the graphic data lineage result via the browser,
 
 
 Even better, This demo will fetch the data lineage back to the directory where the demo is running.
-Those data lineage results are stored in the `data/datalineage/` directory. 
+Those data lineage results are stored in the `data/result/` directory. 
 
 This parameter specifies which kind of format is used to save the data lineage result.
 
