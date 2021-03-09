@@ -2,7 +2,7 @@
   "profiles": {
     "SQLFlowClient": {
       "commandName": "Project",
-      "commandLineArgs": "test2.sql -v mssql -o out.json"
+      "commandLineArgs": "test.sql"
     }
   }
 }
