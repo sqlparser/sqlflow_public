@@ -34,13 +34,21 @@ Run the program from command line:
 
 ### Use your  own configuration 
 
-If you want to use your own server and token, create the a file named `config.json` in directory where executable exists, and then input your `host` and `token`, for example:
+If you want to use your own server and token, create the a file named `config.json` in directory where the executable exists, and then input your `host` and `token`, for example:
 
 ```json
 {
-	"Host": "https://api.gudusoft.com",
-	"Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU"
+  "Host": "https://api.gudusoft.com",
+  "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE",
+  "SecretKey": "9e8cca66ec730e490f4ddf9cd22a34a227ee1f0c242f06783878683ce39de3d1",
+  "UserId": "auth0|5fc735a542843a006e29a399"
 }
+```
+
+### default token
+
+```text
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE
 ```
 
 # Usage
@@ -49,17 +57,20 @@ SQLFlowClient filepath -parameter value
 
 ### parameters
 
-| parameter          | short | value type                                                   | default |                                   |
-| ------------------ | ----- | ------------------------------------------------------------ | ------- | --------------------------------- |
-| --graph            | -g    | boolean                                                      | false   | Get the graph from sql.           |
-| --dbvendor         | -v    | one of the following list :<br />bigquery, couchbase, db2, greenplum, <br />hana , hive, impala , informix, <br />mdx, mysql, netezza, openedge, <br />oracle, postgresql, redshift, snowflake, <br />mssql, sybase, teradata, vertica | oracle  | Set the database of the sqlfile.  |
-| --showRelationType | -r    | one or more from the following list :<br /> fdd, fdr, frd, fddi, join | fdd     | Set the relation type.            |
-| --simpleOutput     | -s    | boolean                                                      | false   | Set whether to get simple output. |
-| --ignoreRecordSet  |       | boolean                                                      | false   | Set whether to ignore record set. |
-| --ignoreFunction   |       | boolean                                                      | false   | Set whether to ignore function.   |
-| --output           | -o    | string                                                       | ""      | Save output as a file.            |
-| --help             |       |                                                              |         | Display this help screen.         |
-| --version          |       |                                                              |         | Display version information.      |
+| parameter          | short | value type                                                   | default           |                                                              |
+| ------------------ | ----- | ------------------------------------------------------------ | ----------------- | ------------------------------------------------------------ |
+| --graph            | -g    | boolean                                                      | false             | Get the graph from sql.                                      |
+| --dbvendor         | -v    | one of the following list :<br />bigquery, couchbase, db2, greenplum, <br />hana , hive, impala , informix, <br />mdx, mysql, netezza, openedge, <br />oracle, postgresql, redshift, snowflake, <br />mssql, sybase, teradata, vertica | oracle            | Set the database of the sqlfile.                             |
+| --showRelationType | -r    | one or more from the following list :<br /> fdd, fdr, frd, fddi, join | fdd               | Set the relation type.                                       |
+| --simpleOutput     | -s    | boolean                                                      | false             | Set whether to get simple output.                            |
+| --ignoreRecordSet  |       | boolean                                                      | false             | Set whether to ignore record set.                            |
+| --ignoreFunction   |       | boolean                                                      | false             | Set whether to ignore function.                              |
+| --output           | -o    | string                                                       | ""                | Save output as a file.                                       |
+| --token            | -t    | string                                                       | default token     | If userId and secretKey is given, token will be ignore, otherwise it will use token. |
+| --userId           | -u    | string                                                       | auth0\|0123456789 | If userId and secretKey is given, token will be ignore, otherwise it will use token. |
+| --secretKey        | -k    | string                                                       | ""                | If userId and secretKey is given, token will be ignore, otherwise it will use token. |
+| --help             |       |                                                              |                   | Display this help screen.                                    |
+| --version          |       |                                                              |                   | Display version information.                                 |
 
 ### examples
 1. SQLFlowClient test.sql
@@ -70,6 +81,10 @@ SQLFlowClient filepath -parameter value
 6. SQLFlowClient test.sql -g -v oracle -r fdr,join -s
 7. SQLFlowClient test.sql -g -v oracle -r fdr,join -s --ignoreRecordSet
 8. SQLFlowClient test.sql -g -v oracle -r fdr,join -s --ignoreFunction -o result.txt
+
+### token,userId and secret key
+
+1. 
 
 # Compile and build on windows
 
