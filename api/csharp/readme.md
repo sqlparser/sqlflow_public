@@ -1,9 +1,9 @@
 # Get Started
 ### [Download](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/) the executable program according to your operating system.
 
-- [windows](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/win/SQLFlowClient.exe)
-- [mac](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/osx/SQLFlowClient)
-- [linux](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/linux/SQLFlowClient)
+- [windows](https://sqlflow.gudusoft.com/download/win/SQLFlowClient.exe)
+- [mac](https://sqlflow.gudusoft.com/download/osx/SQLFlowClient)
+- [linux](https://sqlflow.gudusoft.com/download/linux/SQLFlowClient)
 
 
 ### Configuration 
@@ -111,5 +111,5 @@ dotnet publish -c Release /p:PublishProfile=Properties\PublishProfiles\osx.pubxm
 dotnet publish -c Release /p:PublishProfile=Properties\PublishProfiles\win.pubxml
 ```
 
-### [Download executable programs](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/)
+### [Download executable programs](https://sqlflow.gudusoft.com/download//)
 
