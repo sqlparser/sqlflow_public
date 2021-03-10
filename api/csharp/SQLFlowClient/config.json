@@ -1,6 +1,5 @@
 {
   "Host": "https://api.gudusoft.com",
-  "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE",
-  "SecretKey": "9e8cca66ec730e490f4ddf9cd22a34a227ee1f0c242f06783878683ce39de3d1",
-  "UserId": "auth0|5fc735a542843a006e29a399"
+  "SecretKey": "d126d0fb1a5a13abb97b160d571f29a2bbaa13861219082da7e9c4d62553ed7c",
+  "UserId": "auth0|600acd55e68a290069f8a8db"
 }

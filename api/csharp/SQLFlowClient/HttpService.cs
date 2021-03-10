@@ -21,7 +21,7 @@ namespace SQLFlowClient
             config = new Config
             {
                 Host = "https://api.gudusoft.com",
-                Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE",
+                Token = "",
                 UserId = "gudu|0123456789",
             };
             try
@@ -52,18 +52,18 @@ namespace SQLFlowClient
                 Console.WriteLine($"Invalid config.json :\n{e.Message}");
                 return;
             }
-            if (!string.IsNullOrWhiteSpace(options.Token))
-            {
-                config.Token = options.Token;
-            }
-            if (!string.IsNullOrWhiteSpace(options.UserId))
-            {
-                config.UserId = options.UserId;
-            }
-            if (!string.IsNullOrWhiteSpace(options.SecretKey))
-            {
-                config.SecretKey = options.SecretKey;
-            }
+            //if (!string.IsNullOrWhiteSpace(options.Token))
+            //{
+            //    config.Token = options.Token;
+            //}
+            //if (!string.IsNullOrWhiteSpace(options.UserId))
+            //{
+            //    config.UserId = options.UserId;
+            //}
+            //if (!string.IsNullOrWhiteSpace(options.SecretKey))
+            //{
+            //    config.SecretKey = options.SecretKey;
+            //}
             if (options.Version)
             {
                 await Version();
@@ -108,7 +108,7 @@ namespace SQLFlowClient
                     $" oracle, postgresql, redshift, snowflake, mssql, sybase, teradata, vertica");
                 return;
             }
-            if (!string.IsNullOrWhiteSpace(config.SecretKey) && !string.IsNullOrWhiteSpace(config.SecretKey))
+            if (!string.IsNullOrWhiteSpace(config.SecretKey) && !string.IsNullOrWhiteSpace(config.UserId))
             {
                 // request token
                 string url2 = $"{config.Host}/gspLive_backend/user/generateToken";
@@ -149,13 +149,14 @@ namespace SQLFlowClient
                 { new StringContent(options.IgnoreRecordSet.ToString())  , "ignoreRecordSet"  },
                 { new StringContent(options.ignoreFunction.ToString())   , "ignoreFunction"   },
                 { new StringContent(config.UserId)                       , "userId"   },
+                { new StringContent(config.Token)                        , "token"   },
             };
             try
             {
                 var stopWatch = Stopwatch.StartNew();
                 string url = $"{config.Host}/gspLive_backend/sqlflow/generation/sqlflow/" + (options.IsGraph ? "graph" : "");
                 using var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", config.Token);
+                // client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", config.Token);
                 using var response = await client.PostAsync(url, form);
                 if (response.IsSuccessStatusCode)
                 {
