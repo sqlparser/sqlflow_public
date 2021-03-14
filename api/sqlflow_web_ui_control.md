@@ -15,6 +15,7 @@ SQLFlow Web UI has some choice to control the result:
 5. show function
    * display or hide function
 
+## Web API Call
 We use the restful api **/sqlflow/generation/sqlflow/graph** to get the sqlflow graph, it has several arguments:
    * **userId**: the user id of sqlflow web or client, required **true** 
    * **token**: the token of sqlflow client request. sqlflow web, required false, sqlflow client, required true
@@ -34,7 +35,6 @@ We use the restful api **/sqlflow/generation/sqlflow/graph** to get the sqlflow 
    * ignoreFunction: whether ignore the function relations, required false, default value is false 
 
 ## How to Control The Sqlflow Web UI
-  
 1. hide all columns
    * it matches the `hideColumn` argument. If the argument is `true`, `hideColumn` will be checked.
 2. dataflow
@@ -65,7 +65,7 @@ Sqlflow error message has 4 types:
  * LINK_ORPHAN_COLUMN   
     * dataflow analyzer returns linking orphan column hint.
 
-## How to Get The Error Message Position    
+## Get the Error Message Position    
 Typically, if the datafow returns error messages, the lineage xml will show:
 ```xml
 <dlineage>
@@ -75,6 +75,52 @@ Typically, if the datafow returns error messages, the lineage xml will show:
 ```  
 Noting `coordinate="[4,22,0],[4,30,0]"`, we can use it to get the error position. [4,22,0] is the start position and [4,30,0] is the end position, 0 is the index of SQLInfo hashcode. 
 
+## How to Use WebAPI to Point the Position
+* **/sqlflow/generation/sqlflow/getSelectedDbObjectInfo**          
+  * Description: get the selected dbobject information, such as file information, sql index, dbobject positions, sql which contains selected dbobject.
+  * HTTP Method: **POST**
+  * Parameters: 
+    * **userId**: the user id of sqlflow web or client, required **true** 
+    * **token**: the token of sqlflow client request. sqlflow web, required false, sqlflow client, required true  
+    * **sessionId**: request sessionId, the value is from api **/sqlflow/generation/sqlflow/graph**, required **true**
+    * **coordinates**: the select dbobject positions, it's a json array string, the value is from api **/sqlflow/generation/sqlflow/graph**, required **true**
+  * Return code:
+    * 200: successful
+    * other: failed, check the error field to get error message.
+  * Sample:    
+    * test sql:
+    ```sql
+      select name from user
+    ```
+    * session id: `6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051`
+    * coordinates: `[{'x':1,'y':8,'hashCode':'0'},{'x':1,'y':12,'hashCode':'0'}]`
+    * curl command:
+    ```bash
+      curl -X POST "http://127.0.0.1:8081/gspLive_backend/sqlflow/generation/sqlflow/getSelectedDbObjectInfo" -H "accept:application/json;charset=utf-8" -F "userId=google-oauth2|104002923119102769706" -F "token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYxMDEyMTYwMCwiaWF0IjoxNTc4NTg1NjAwfQ.9AAIkjZ3NF7Pns-hRjZQqRHprcsj1dPKHquo8zEp7jE" -F "coordinates=[{'x':1,'y':8,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'},{'x':1,'y':12,'hashCode':'3630d5472af5f149fe3fb2202c8a338d'}]" -F "sessionId=6172a4095280ccce97e996242d8b4084f46e2c954455e71339aeffccad5f0d57_1599501562051"
+    ```
+    * response: 
+    ```json
+      {
+        "code": 200,
+        "data": [
+          {
+            "index": 0,
+            "positions": [
+              {
+                "x": 1,
+                "y": 8
+              },
+              {
+                "x": 1,
+                "y": 12
+              }
+            ],
+            "sql": "select name from user"
+          }
+        ]
+      }
+    ```   
+         
 ## Get SQL Information By SQLFLow Coordinate
 
 ### SQLInfo
@@ -121,10 +167,10 @@ Sqlflow provides a tool class **gudusoft.gsqlparser.dlineage.util.SqlInfoHelper*
   * Method parseCoordinateString support both of xml output coordinate string and json output coordinate string, like these:
   ```
       //xml output coordinate string
-      [56,36,64e5c5241fd1311e41b2182e40f77f1e],[56,62,64e5c5241fd1311e41b2182e40f77f1e]
+      [56,36,0],[56,62,0]
 
       //json output coordinate string
-      [{"x":31,"y":36,"hashCode":"64e5c5241fd1311e41b2182e40f77f1e"},{"x":31,"y":38,"hashCode":"64e5c5241fd1311e41b2182e40f77f1e"}]     
+      [{"x":31,"y":36,"hashCode":"0"},{"x":31,"y":38,"hashCode":"0"}]     
   ``` 
 
 4. Fourth step, get the DbObjectPosition by api `getSelectedDbObjectInfo`
@@ -143,7 +189,7 @@ Sqlflow provides a tool class **gudusoft.gsqlparser.dlineage.util.SqlInfoHelper*
   * Return the statement index of sqls, index **bases 0**.
   * Return a statement, but not all sqls of the file. 
   
-### How to use DbObjectPosition
+### How to Use DbObjectPosition
 ```java
 public class DbObjectPosition {
     private String file;
@@ -206,7 +252,6 @@ Select c from d;
 table d position is [[1,20], [1,21]]
 stmt index is 1
 ```
-
 
  
  
