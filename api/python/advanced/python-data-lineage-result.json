@@ -1,0 +1,4973 @@
+{
+    "code": 203,
+    "data": {
+        "mode": "global",
+        "summary": {
+            "schema": 4,
+            "database": 0,
+            "view": 2,
+            "mostRelationTables": [
+                {
+                    "schema": "SALES",
+                    "table": "SALESPERSON"
+                },
+                {
+                    "schema": "PERSON",
+                    "table": "PERSON"
+                },
+                {
+                    "table": "VIEW1"
+                }
+            ],
+            "column": 34,
+            "table": 8,
+            "relation": 33
+        },
+        "sqlflow": {
+            "dbvendor": "dbvmssql",
+            "dbobjs": [
+                {
+                    "id": "54",
+                    "schema": "dbo",
+                    "name": "dbo.uspGetEmployeeSales",
+                    "type": "procedure",
+                    "arguments": [],
+                    "coordinates": [
+                        {
+                            "x": 9,
+                            "y": 18,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 9,
+                            "y": 41,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "8",
+                    "schema": "HumanResources",
+                    "name": "HumanResources.Employee",
+                    "alias": "e",
+                    "type": "table",
+                    "columns": [
+                        {
+                            "id": "113",
+                            "name": "BusinessEntityID",
+                            "coordinates": [
+                                {
+                                    "x": 35,
+                                    "y": 28,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 35,
+                                    "y": 46,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 51,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11",
+                            "name": "HireDate",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 63,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 34,
+                            "y": 6,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 34,
+                            "y": 31,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "13",
+                    "schema": "Person",
+                    "name": "Person.Person",
+                    "alias": "p",
+                    "type": "table",
+                    "columns": [
+                        {
+                            "id": "118",
+                            "name": "BusinessEntityID",
+                            "coordinates": [
+                                {
+                                    "x": 35,
+                                    "y": 49,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 35,
+                                    "y": 67,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 16,
+                                    "y": 34,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 16,
+                                    "y": 52,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 25,
+                                    "y": 34,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 25,
+                                    "y": 52,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 51,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 51,
+                                    "y": 51,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 53,
+                                    "y": 26,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 53,
+                                    "y": 44,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "15",
+                            "name": "FirstName",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 19,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "119",
+                            "name": "LastName",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 21,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 46,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 56,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 35,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 45,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 43,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 35,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 45,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 5,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 15,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 35,
+                            "y": 6,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 35,
+                            "y": 24,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "30",
+                    "name": "FactInternetSales",
+                    "alias": "fis",
+                    "type": "table",
+                    "columns": [
+                        {
+                            "id": "114",
+                            "name": "SalesTerritoryKey",
+                            "coordinates": [
+                                {
+                                    "x": 44,
+                                    "y": 5,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 44,
+                                    "y": 26,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 3,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 24,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "32",
+                            "name": "CustomerKey",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 23,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "33",
+                            "name": "ProductKey",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 25,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 39,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "34",
+                            "name": "OrderDateKey",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 57,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 42,
+                            "y": 6,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 42,
+                            "y": 30,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "37",
+                    "name": "DimSalesTerritory",
+                    "alias": "dst",
+                    "type": "table",
+                    "columns": [
+                        {
+                            "id": "38",
+                            "name": "SalesTerritoryKey",
+                            "coordinates": [
+                                {
+                                    "x": 44,
+                                    "y": 27,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 44,
+                                    "y": 48,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "39",
+                            "name": "SalesTerritoryRegion",
+                            "coordinates": [
+                                {
+                                    "x": 41,
+                                    "y": 26,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 50,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 43,
+                            "y": 17,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 43,
+                            "y": 41,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "56",
+                    "schema": "Sales",
+                    "name": "Sales.SalesPerson",
+                    "alias": "sp",
+                    "type": "table",
+                    "columns": [
+                        {
+                            "id": "115",
+                            "name": "BusinessEntityID",
+                            "coordinates": [
+                                {
+                                    "x": 16,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 16,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 25,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 44,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 17,
+                                    "y": 11,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 17,
+                                    "y": 30,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 14,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 25,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 25,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 22,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 26,
+                                    "y": 11,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 26,
+                                    "y": 30,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 14,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 51,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 51,
+                                    "y": 30,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "116",
+                            "name": "SalesYTD",
+                            "coordinates": [
+                                {
+                                    "x": 13,
+                                    "y": 9,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 13,
+                                    "y": 20,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 55,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 66,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 17,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 27,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 59,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 67,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 55,
+                                    "y": 9,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 55,
+                                    "y": 17,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "111",
+                            "name": "TerritoryID",
+                            "coordinates": [
+                                {
+                                    "x": 54,
+                                    "y": 7,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 54,
+                                    "y": 18,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 14,
+                            "y": 10,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 14,
+                            "y": 33,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "94",
+                    "schema": "Person",
+                    "name": "Person.Address",
+                    "alias": "a",
+                    "type": "table",
+                    "columns": [
+                        {
+                            "id": "95",
+                            "name": "AddressID",
+                            "coordinates": [
+                                {
+                                    "x": 53,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 53,
+                                    "y": 23,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "117",
+                            "name": "PostalCode",
+                            "coordinates": [
+                                {
+                                    "x": 48,
+                                    "y": 29,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 39,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 49,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 52,
+                            "y": 16,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 52,
+                            "y": 35,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "schema": "dbo",
+                    "name": "dbo.EmployeeSales",
+                    "type": "table",
+                    "columns": [
+                        {
+                            "id": "3",
+                            "name": "DataSource",
+                            "coordinates": [
+                                {
+                                    "x": 3,
+                                    "y": 3,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 3,
+                                    "y": 13,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "4",
+                            "name": "BusinessEntityID",
+                            "coordinates": [
+                                {
+                                    "x": 4,
+                                    "y": 3,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 4,
+                                    "y": 19,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "5",
+                            "name": "LastName",
+                            "coordinates": [
+                                {
+                                    "x": 5,
+                                    "y": 3,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 5,
+                                    "y": 11,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "6",
+                            "name": "SalesDollars",
+                            "coordinates": [
+                                {
+                                    "x": 6,
+                                    "y": 3,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 6,
+                                    "y": 15,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "87",
+                            "name": "DUMMY0",
+                            "coordinates": [
+                                {
+                                    "x": 22,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 20,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "1",
+                            "name": "PseudoRows",
+                            "coordinates": [
+                                {
+                                    "x": 2,
+                                    "y": 14,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 2,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                }
+                            ],
+                            "source": "system"
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 2,
+                            "y": 14,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 2,
+                            "y": 31,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "109",
+                    "name": "pseudo_table_include_orphan_column",
+                    "type": "pseudoTable",
+                    "columns": [
+                        {
+                            "id": "110",
+                            "name": "TerritoryID",
+                            "coordinates": [
+                                {
+                                    "x": 54,
+                                    "y": 7,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 54,
+                                    "y": 18,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 1,
+                            "y": 1,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 1,
+                            "y": 35,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "24",
+                    "name": "hiredate_view",
+                    "type": "view",
+                    "columns": [
+                        {
+                            "id": "25",
+                            "name": "FirstName",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 19,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "26",
+                            "name": "LastName",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 21,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "27",
+                            "name": "BusinessEntityID",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 51,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "28",
+                            "name": "HireDate",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 63,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "23",
+                            "name": "PseudoRows",
+                            "coordinates": [
+                                {
+                                    "x": 31,
+                                    "y": 13,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 31,
+                                    "y": 26,
+                                    "hashCode": "0"
+                                }
+                            ],
+                            "source": "system"
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 31,
+                            "y": 13,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 31,
+                            "y": 26,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "48",
+                    "name": "view1",
+                    "type": "view",
+                    "columns": [
+                        {
+                            "id": "49",
+                            "name": "CustomerKey",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 23,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "50",
+                            "name": "ProductKey",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 25,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 39,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "51",
+                            "name": "OrderDateKey",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 57,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "52",
+                            "name": "SalesTerritoryKey",
+                            "coordinates": [
+                                {
+                                    "x": 41,
+                                    "y": 3,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 24,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "53",
+                            "name": "SalesTerritoryRegion",
+                            "coordinates": [
+                                {
+                                    "x": 41,
+                                    "y": 26,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 50,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "47",
+                            "name": "PseudoRows",
+                            "coordinates": [
+                                {
+                                    "x": 38,
+                                    "y": 13,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 38,
+                                    "y": 18,
+                                    "hashCode": "0"
+                                }
+                            ],
+                            "source": "system"
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 38,
+                            "y": 13,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 38,
+                            "y": 18,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "18",
+                    "name": "RS-1",
+                    "type": "select_list",
+                    "columns": [
+                        {
+                            "id": "19",
+                            "name": "FirstName",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 19,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "20",
+                            "name": "LastName",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 21,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "21",
+                            "name": "BusinessEntityID",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 51,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "22",
+                            "name": "HireDate",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 63,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "17",
+                            "name": "PseudoRows",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 63,
+                                    "hashCode": "0"
+                                }
+                            ],
+                            "source": "system"
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 33,
+                            "y": 8,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 33,
+                            "y": 63,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "41",
+                    "name": "RS-2",
+                    "type": "select_list",
+                    "columns": [
+                        {
+                            "id": "42",
+                            "name": "CustomerKey",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 23,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "43",
+                            "name": "ProductKey",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 25,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 39,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "44",
+                            "name": "OrderDateKey",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 57,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "45",
+                            "name": "SalesTerritoryKey",
+                            "coordinates": [
+                                {
+                                    "x": 41,
+                                    "y": 3,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 24,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "46",
+                            "name": "SalesTerritoryRegion",
+                            "coordinates": [
+                                {
+                                    "x": 41,
+                                    "y": 26,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 50,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "40",
+                            "name": "PseudoRows",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 50,
+                                    "hashCode": "0"
+                                }
+                            ],
+                            "source": "system"
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 40,
+                            "y": 8,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 41,
+                            "y": 50,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "66",
+                    "name": "RS-3",
+                    "type": "select_list",
+                    "columns": [
+                        {
+                            "id": "67",
+                            "name": "PROCEDURE",
+                            "coordinates": [
+                                {
+                                    "x": 12,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 23,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "69",
+                            "name": "BusinessEntityID",
+                            "coordinates": [
+                                {
+                                    "x": 12,
+                                    "y": 25,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 44,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "70",
+                            "name": "LastName",
+                            "coordinates": [
+                                {
+                                    "x": 12,
+                                    "y": 46,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 56,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "71",
+                            "name": "SalesYTD",
+                            "coordinates": [
+                                {
+                                    "x": 13,
+                                    "y": 9,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 13,
+                                    "y": 20,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "65",
+                            "name": "PseudoRows",
+                            "coordinates": [
+                                {
+                                    "x": 12,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 13,
+                                    "y": 20,
+                                    "hashCode": "0"
+                                }
+                            ],
+                            "source": "system"
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 12,
+                            "y": 12,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 13,
+                            "y": 20,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "81",
+                    "name": "INSERT-SELECT-1",
+                    "type": "insert-select",
+                    "columns": [
+                        {
+                            "id": "82",
+                            "name": "SELECT",
+                            "coordinates": [
+                                {
+                                    "x": 22,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 20,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "84",
+                            "name": "BusinessEntityID",
+                            "coordinates": [
+                                {
+                                    "x": 22,
+                                    "y": 22,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "85",
+                            "name": "LastName",
+                            "coordinates": [
+                                {
+                                    "x": 22,
+                                    "y": 43,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "86",
+                            "name": "SalesYTD",
+                            "coordinates": [
+                                {
+                                    "x": 22,
+                                    "y": 55,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 66,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "80",
+                            "name": "PseudoRows",
+                            "coordinates": [
+                                {
+                                    "x": 22,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 66,
+                                    "hashCode": "0"
+                                }
+                            ],
+                            "source": "system"
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 22,
+                            "y": 12,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 22,
+                            "y": 66,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "id": "98",
+                    "name": "RS-4",
+                    "type": "select_list",
+                    "columns": [
+                        {
+                            "id": "99",
+                            "name": "\"Row Number\"",
+                            "coordinates": [
+                                {
+                                    "x": 47,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 89,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "105",
+                            "name": "LastName",
+                            "coordinates": [
+                                {
+                                    "x": 48,
+                                    "y": 5,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 15,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "106",
+                            "name": "SalesYTD",
+                            "coordinates": [
+                                {
+                                    "x": 48,
+                                    "y": 17,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 27,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "107",
+                            "name": "PostalCode",
+                            "coordinates": [
+                                {
+                                    "x": 48,
+                                    "y": 29,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "97",
+                            "name": "PseudoRows",
+                            "coordinates": [
+                                {
+                                    "x": 47,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                }
+                            ],
+                            "source": "system"
+                        }
+                    ],
+                    "coordinates": [
+                        {
+                            "x": 47,
+                            "y": 8,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 48,
+                            "y": 41,
+                            "hashCode": "0"
+                        }
+                    ]
+                }
+            ],
+            "relations": [
+                {
+                    "id": "4101",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "107",
+                        "column": "PostalCode",
+                        "parentId": "98",
+                        "parentName": "RS-4",
+                        "coordinates": [
+                            {
+                                "x": 48,
+                                "y": 29,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 48,
+                                "y": 41,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "117",
+                            "column": "PostalCode",
+                            "parentId": "94",
+                            "parentName": "Person.Address",
+                            "coordinates": [
+                                {
+                                    "x": 48,
+                                    "y": 29,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 39,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 49,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4102",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "69",
+                        "column": "BusinessEntityID",
+                        "parentId": "66",
+                        "parentName": "RS-3",
+                        "coordinates": [
+                            {
+                                "x": 12,
+                                "y": 25,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 12,
+                                "y": 44,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "115",
+                            "column": "BusinessEntityID",
+                            "parentId": "56",
+                            "parentName": "Sales.SalesPerson",
+                            "coordinates": [
+                                {
+                                    "x": 16,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 16,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 25,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 44,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 17,
+                                    "y": 11,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 17,
+                                    "y": 30,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 14,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 25,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 25,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 22,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 26,
+                                    "y": 11,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 26,
+                                    "y": 30,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 14,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 51,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 51,
+                                    "y": 30,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4103",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "52",
+                        "column": "SalesTerritoryKey",
+                        "parentId": "48",
+                        "parentName": "view1",
+                        "coordinates": [
+                            {
+                                "x": 41,
+                                "y": 3,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 41,
+                                "y": 24,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "45",
+                            "column": "SalesTerritoryKey",
+                            "parentId": "41",
+                            "parentName": "RS-2",
+                            "coordinates": [
+                                {
+                                    "x": 41,
+                                    "y": 3,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 24,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4104",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "21",
+                        "column": "BusinessEntityID",
+                        "parentId": "18",
+                        "parentName": "RS-1",
+                        "coordinates": [
+                            {
+                                "x": 33,
+                                "y": 33,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 33,
+                                "y": 51,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "113",
+                            "column": "BusinessEntityID",
+                            "parentId": "8",
+                            "parentName": "HumanResources.Employee",
+                            "coordinates": [
+                                {
+                                    "x": 35,
+                                    "y": 28,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 35,
+                                    "y": 46,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 51,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4105",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "26",
+                        "column": "LastName",
+                        "parentId": "24",
+                        "parentName": "hiredate_view",
+                        "coordinates": [
+                            {
+                                "x": 33,
+                                "y": 21,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 33,
+                                "y": 31,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "20",
+                            "column": "LastName",
+                            "parentId": "18",
+                            "parentName": "RS-1",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 21,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4106",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "20",
+                        "column": "LastName",
+                        "parentId": "18",
+                        "parentName": "RS-1",
+                        "coordinates": [
+                            {
+                                "x": 33,
+                                "y": 21,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 33,
+                                "y": 31,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "119",
+                            "column": "LastName",
+                            "parentId": "13",
+                            "parentName": "Person.Person",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 21,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 46,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 56,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 35,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 45,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 43,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 35,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 45,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 5,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 15,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4107",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "99",
+                        "column": "\"Row Number\"",
+                        "parentId": "98",
+                        "parentName": "RS-4",
+                        "coordinates": [
+                            {
+                                "x": 47,
+                                "y": 8,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 47,
+                                "y": 89,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "116",
+                            "column": "SalesYTD",
+                            "parentId": "56",
+                            "parentName": "Sales.SalesPerson",
+                            "coordinates": [
+                                {
+                                    "x": 13,
+                                    "y": 9,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 13,
+                                    "y": 20,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 55,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 66,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 17,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 27,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 59,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 67,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 55,
+                                    "y": 9,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 55,
+                                    "y": 17,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "117",
+                            "column": "PostalCode",
+                            "parentId": "94",
+                            "parentName": "Person.Address",
+                            "coordinates": [
+                                {
+                                    "x": 48,
+                                    "y": 29,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 39,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 49,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4108",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "28",
+                        "column": "HireDate",
+                        "parentId": "24",
+                        "parentName": "hiredate_view",
+                        "coordinates": [
+                            {
+                                "x": 33,
+                                "y": 53,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 33,
+                                "y": 63,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "22",
+                            "column": "HireDate",
+                            "parentId": "18",
+                            "parentName": "RS-1",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 63,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4109",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "27",
+                        "column": "BusinessEntityID",
+                        "parentId": "24",
+                        "parentName": "hiredate_view",
+                        "coordinates": [
+                            {
+                                "x": 33,
+                                "y": 33,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 33,
+                                "y": 51,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "21",
+                            "column": "BusinessEntityID",
+                            "parentId": "18",
+                            "parentName": "RS-1",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 51,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4110",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "22",
+                        "column": "HireDate",
+                        "parentId": "18",
+                        "parentName": "RS-1",
+                        "coordinates": [
+                            {
+                                "x": 33,
+                                "y": 53,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 33,
+                                "y": 63,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "11",
+                            "column": "HireDate",
+                            "parentId": "8",
+                            "parentName": "HumanResources.Employee",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 63,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4111",
+                    "type": "fdd",
+                    "effectType": "insert",
+                    "target": {
+                        "id": "4",
+                        "column": "BusinessEntityID",
+                        "parentId": "2",
+                        "parentName": "dbo.EmployeeSales",
+                        "coordinates": [
+                            {
+                                "x": 4,
+                                "y": 3,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 4,
+                                "y": 19,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "84",
+                            "column": "BusinessEntityID",
+                            "parentId": "81",
+                            "parentName": "INSERT-SELECT-1",
+                            "coordinates": [
+                                {
+                                    "x": 22,
+                                    "y": 22,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4112",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "106",
+                        "column": "SalesYTD",
+                        "parentId": "98",
+                        "parentName": "RS-4",
+                        "coordinates": [
+                            {
+                                "x": 48,
+                                "y": 17,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 48,
+                                "y": 27,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "116",
+                            "column": "SalesYTD",
+                            "parentId": "56",
+                            "parentName": "Sales.SalesPerson",
+                            "coordinates": [
+                                {
+                                    "x": 13,
+                                    "y": 9,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 13,
+                                    "y": 20,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 55,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 66,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 17,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 27,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 59,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 67,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 55,
+                                    "y": 9,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 55,
+                                    "y": 17,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4113",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "86",
+                        "column": "SalesYTD",
+                        "parentId": "81",
+                        "parentName": "INSERT-SELECT-1",
+                        "coordinates": [
+                            {
+                                "x": 22,
+                                "y": 55,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 22,
+                                "y": 66,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "116",
+                            "column": "SalesYTD",
+                            "parentId": "56",
+                            "parentName": "Sales.SalesPerson",
+                            "coordinates": [
+                                {
+                                    "x": 13,
+                                    "y": 9,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 13,
+                                    "y": 20,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 55,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 66,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 17,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 27,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 59,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 67,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 55,
+                                    "y": 9,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 55,
+                                    "y": 17,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4114",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "51",
+                        "column": "OrderDateKey",
+                        "parentId": "48",
+                        "parentName": "view1",
+                        "coordinates": [
+                            {
+                                "x": 40,
+                                "y": 41,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 40,
+                                "y": 57,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "44",
+                            "column": "OrderDateKey",
+                            "parentId": "41",
+                            "parentName": "RS-2",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 57,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4115",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "70",
+                        "column": "LastName",
+                        "parentId": "66",
+                        "parentName": "RS-3",
+                        "coordinates": [
+                            {
+                                "x": 12,
+                                "y": 46,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 12,
+                                "y": 56,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "119",
+                            "column": "LastName",
+                            "parentId": "13",
+                            "parentName": "Person.Person",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 21,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 46,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 56,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 35,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 45,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 43,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 35,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 45,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 5,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 15,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4116",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "71",
+                        "column": "SalesYTD",
+                        "parentId": "66",
+                        "parentName": "RS-3",
+                        "coordinates": [
+                            {
+                                "x": 13,
+                                "y": 9,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 13,
+                                "y": 20,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "116",
+                            "column": "SalesYTD",
+                            "parentId": "56",
+                            "parentName": "Sales.SalesPerson",
+                            "coordinates": [
+                                {
+                                    "x": 13,
+                                    "y": 9,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 13,
+                                    "y": 20,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 55,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 66,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 17,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 27,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 59,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 47,
+                                    "y": 67,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 55,
+                                    "y": 9,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 55,
+                                    "y": 17,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4117",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "43",
+                        "column": "ProductKey",
+                        "parentId": "41",
+                        "parentName": "RS-2",
+                        "coordinates": [
+                            {
+                                "x": 40,
+                                "y": 25,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 40,
+                                "y": 39,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "33",
+                            "column": "ProductKey",
+                            "parentId": "30",
+                            "parentName": "FactInternetSales",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 25,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 39,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4118",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "85",
+                        "column": "LastName",
+                        "parentId": "81",
+                        "parentName": "INSERT-SELECT-1",
+                        "coordinates": [
+                            {
+                                "x": 22,
+                                "y": 43,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 22,
+                                "y": 53,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "119",
+                            "column": "LastName",
+                            "parentId": "13",
+                            "parentName": "Person.Person",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 21,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 46,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 56,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 35,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 45,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 43,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 35,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 45,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 5,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 15,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4119",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "50",
+                        "column": "ProductKey",
+                        "parentId": "48",
+                        "parentName": "view1",
+                        "coordinates": [
+                            {
+                                "x": 40,
+                                "y": 25,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 40,
+                                "y": 39,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "43",
+                            "column": "ProductKey",
+                            "parentId": "41",
+                            "parentName": "RS-2",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 25,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 39,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4120",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "44",
+                        "column": "OrderDateKey",
+                        "parentId": "41",
+                        "parentName": "RS-2",
+                        "coordinates": [
+                            {
+                                "x": 40,
+                                "y": 41,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 40,
+                                "y": 57,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "34",
+                            "column": "OrderDateKey",
+                            "parentId": "30",
+                            "parentName": "FactInternetSales",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 57,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4121",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "42",
+                        "column": "CustomerKey",
+                        "parentId": "41",
+                        "parentName": "RS-2",
+                        "coordinates": [
+                            {
+                                "x": 40,
+                                "y": 8,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 40,
+                                "y": 23,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "32",
+                            "column": "CustomerKey",
+                            "parentId": "30",
+                            "parentName": "FactInternetSales",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 23,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4122",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "84",
+                        "column": "BusinessEntityID",
+                        "parentId": "81",
+                        "parentName": "INSERT-SELECT-1",
+                        "coordinates": [
+                            {
+                                "x": 22,
+                                "y": 22,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 22,
+                                "y": 41,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "115",
+                            "column": "BusinessEntityID",
+                            "parentId": "56",
+                            "parentName": "Sales.SalesPerson",
+                            "coordinates": [
+                                {
+                                    "x": 16,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 16,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 25,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 44,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 17,
+                                    "y": 11,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 17,
+                                    "y": 30,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 14,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 25,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 25,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 22,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 41,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 26,
+                                    "y": 11,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 26,
+                                    "y": 30,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 14,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 33,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 51,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 51,
+                                    "y": 30,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4123",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "19",
+                        "column": "FirstName",
+                        "parentId": "18",
+                        "parentName": "RS-1",
+                        "coordinates": [
+                            {
+                                "x": 33,
+                                "y": 8,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 33,
+                                "y": 19,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "15",
+                            "column": "FirstName",
+                            "parentId": "13",
+                            "parentName": "Person.Person",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 19,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4124",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "105",
+                        "column": "LastName",
+                        "parentId": "98",
+                        "parentName": "RS-4",
+                        "coordinates": [
+                            {
+                                "x": 48,
+                                "y": 5,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 48,
+                                "y": 15,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "119",
+                            "column": "LastName",
+                            "parentId": "13",
+                            "parentName": "Person.Person",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 21,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 31,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 46,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 12,
+                                    "y": 56,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 35,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 18,
+                                    "y": 45,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 43,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 35,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 27,
+                                    "y": 45,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 5,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 48,
+                                    "y": 15,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4125",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "45",
+                        "column": "SalesTerritoryKey",
+                        "parentId": "41",
+                        "parentName": "RS-2",
+                        "coordinates": [
+                            {
+                                "x": 41,
+                                "y": 3,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 41,
+                                "y": 24,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "114",
+                            "column": "SalesTerritoryKey",
+                            "parentId": "30",
+                            "parentName": "FactInternetSales",
+                            "coordinates": [
+                                {
+                                    "x": 44,
+                                    "y": 5,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 44,
+                                    "y": 26,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 3,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 24,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4126",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "49",
+                        "column": "CustomerKey",
+                        "parentId": "48",
+                        "parentName": "view1",
+                        "coordinates": [
+                            {
+                                "x": 40,
+                                "y": 8,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 40,
+                                "y": 23,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "42",
+                            "column": "CustomerKey",
+                            "parentId": "41",
+                            "parentName": "RS-2",
+                            "coordinates": [
+                                {
+                                    "x": 40,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 40,
+                                    "y": 23,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4127",
+                    "type": "fdd",
+                    "effectType": "insert",
+                    "target": {
+                        "id": "5",
+                        "column": "LastName",
+                        "parentId": "2",
+                        "parentName": "dbo.EmployeeSales",
+                        "coordinates": [
+                            {
+                                "x": 5,
+                                "y": 3,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 5,
+                                "y": 11,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "85",
+                            "column": "LastName",
+                            "parentId": "81",
+                            "parentName": "INSERT-SELECT-1",
+                            "coordinates": [
+                                {
+                                    "x": 22,
+                                    "y": 43,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 53,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4128",
+                    "type": "fdd",
+                    "effectType": "insert",
+                    "target": {
+                        "id": "6",
+                        "column": "SalesDollars",
+                        "parentId": "2",
+                        "parentName": "dbo.EmployeeSales",
+                        "coordinates": [
+                            {
+                                "x": 6,
+                                "y": 3,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 6,
+                                "y": 15,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "86",
+                            "column": "SalesYTD",
+                            "parentId": "81",
+                            "parentName": "INSERT-SELECT-1",
+                            "coordinates": [
+                                {
+                                    "x": 22,
+                                    "y": 55,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 66,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4129",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "25",
+                        "column": "FirstName",
+                        "parentId": "24",
+                        "parentName": "hiredate_view",
+                        "coordinates": [
+                            {
+                                "x": 33,
+                                "y": 8,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 33,
+                                "y": 19,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "19",
+                            "column": "FirstName",
+                            "parentId": "18",
+                            "parentName": "RS-1",
+                            "coordinates": [
+                                {
+                                    "x": 33,
+                                    "y": 8,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 33,
+                                    "y": 19,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4130",
+                    "type": "fdd",
+                    "effectType": "insert",
+                    "target": {
+                        "id": "87",
+                        "column": "DUMMY0",
+                        "parentId": "2",
+                        "parentName": "dbo.EmployeeSales",
+                        "coordinates": [
+                            {
+                                "x": 22,
+                                "y": 12,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 22,
+                                "y": 20,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "82",
+                            "column": "SELECT",
+                            "parentId": "81",
+                            "parentName": "INSERT-SELECT-1",
+                            "coordinates": [
+                                {
+                                    "x": 22,
+                                    "y": 12,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 22,
+                                    "y": 20,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4131",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "53",
+                        "column": "SalesTerritoryRegion",
+                        "parentId": "48",
+                        "parentName": "view1",
+                        "coordinates": [
+                            {
+                                "x": 41,
+                                "y": 26,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 41,
+                                "y": 50,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "46",
+                            "column": "SalesTerritoryRegion",
+                            "parentId": "41",
+                            "parentName": "RS-2",
+                            "coordinates": [
+                                {
+                                    "x": 41,
+                                    "y": 26,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 50,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "4132",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "46",
+                        "column": "SalesTerritoryRegion",
+                        "parentId": "41",
+                        "parentName": "RS-2",
+                        "coordinates": [
+                            {
+                                "x": 41,
+                                "y": 26,
+                                "hashCode": "0"
+                            },
+                            {
+                                "x": 41,
+                                "y": 50,
+                                "hashCode": "0"
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "39",
+                            "column": "SalesTerritoryRegion",
+                            "parentId": "37",
+                            "parentName": "DimSalesTerritory",
+                            "coordinates": [
+                                {
+                                    "x": 41,
+                                    "y": 26,
+                                    "hashCode": "0"
+                                },
+                                {
+                                    "x": 41,
+                                    "y": 50,
+                                    "hashCode": "0"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "errors": [
+                {
+                    "errorMessage": "find orphan column(10500) near: PostalCode(47,39)",
+                    "errorType": "SyntaxHint",
+                    "coordinates": [
+                        {
+                            "x": 47,
+                            "y": 39,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 47,
+                            "y": 49,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "errorMessage": "find orphan column(10500) near: SalesYTD(47,59)",
+                    "errorType": "SyntaxHint",
+                    "coordinates": [
+                        {
+                            "x": 47,
+                            "y": 59,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 47,
+                            "y": 67,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "errorMessage": "find orphan column(10500) near: TerritoryID(54,7)",
+                    "errorType": "SyntaxHint",
+                    "coordinates": [
+                        {
+                            "x": 54,
+                            "y": 7,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 54,
+                            "y": 18,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "errorMessage": "find orphan column(10500) near: SalesYTD(55,9)",
+                    "errorType": "SyntaxHint",
+                    "coordinates": [
+                        {
+                            "x": 55,
+                            "y": 9,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 55,
+                            "y": 17,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "errorMessage": "find orphan column(10500) near: PostalCode(56,10)",
+                    "errorType": "SyntaxHint",
+                    "coordinates": [
+                        {
+                            "x": 56,
+                            "y": 10,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 56,
+                            "y": 20,
+                            "hashCode": "0"
+                        }
+                    ]
+                },
+                {
+                    "errorMessage": "Link orphan column [TerritoryID] to the first table [Sales.SalesPerson s]",
+                    "errorType": "LinkOrphanColumn",
+                    "coordinates": [
+                        {
+                            "x": 54,
+                            "y": 7,
+                            "hashCode": "0"
+                        },
+                        {
+                            "x": 54,
+                            "y": 18,
+                            "hashCode": "0"
+                        }
+                    ]
+                }
+            ]
+        },
+        "graph": {
+            "elements": {
+                "tables": [
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n0::n0",
+                                "label": {
+                                    "content": "BUSINESSENTITYID",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 130,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -625.07874
+                            },
+                            {
+                                "height": 16,
+                                "id": "n0::n1",
+                                "label": {
+                                    "content": "HIREDATE",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 76,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -609.07874
+                            }
+                        ],
+                        "height": 57.96875,
+                        "id": "n0",
+                        "label": {
+                            "content": "HumanResources.Employee",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 178,
+                            "x": -8,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 0,
+                        "y": -647.0475
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n1::n0",
+                                "label": {
+                                    "content": "FIRSTNAME",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 84,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -537.1097
+                            },
+                            {
+                                "height": 16,
+                                "id": "n1::n1",
+                                "label": {
+                                    "content": "LASTNAME",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 80,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -521.1097
+                            }
+                        ],
+                        "height": 57.96875,
+                        "id": "n1",
+                        "label": {
+                            "content": "Person.Person",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 0,
+                        "y": -559.0784
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n2::n0",
+                                "label": {
+                                    "content": "SALESTERRITORYKEY",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 141,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -78.00015
+                            },
+                            {
+                                "height": 16,
+                                "id": "n2::n1",
+                                "label": {
+                                    "content": "CUSTOMERKEY",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 105,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -62.00015
+                            },
+                            {
+                                "height": 16,
+                                "id": "n2::n2",
+                                "label": {
+                                    "content": "PRODUCTKEY",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 96,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -46.00015
+                            },
+                            {
+                                "height": 16,
+                                "id": "n2::n3",
+                                "label": {
+                                    "content": "ORDERDATEKEY",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 112,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -30.000149
+                            }
+                        ],
+                        "height": 89.96875,
+                        "id": "n2",
+                        "label": {
+                            "content": "FactInternetSales",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 0,
+                        "y": -99.9689
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n3::n0",
+                                "label": {
+                                    "content": "SALESTERRITORYREGION",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 165,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -149.9692
+                            }
+                        ],
+                        "height": 41.96875,
+                        "id": "n3",
+                        "label": {
+                            "content": "DimSalesTerritory",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 0,
+                        "y": -171.93794
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n4::n0",
+                                "label": {
+                                    "content": "BUSINESSENTITYID",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 130,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -362.57196
+                            },
+                            {
+                                "height": 16,
+                                "id": "n4::n1",
+                                "label": {
+                                    "content": "SALESYTD",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 77,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -346.57196
+                            }
+                        ],
+                        "height": 57.96875,
+                        "id": "n4",
+                        "label": {
+                            "content": "Sales.SalesPerson",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 0,
+                        "y": -384.5407
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n5::n0",
+                                "label": {
+                                    "content": "POSTALCODE",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 96,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 1,
+                                "y": -221.93825
+                            }
+                        ],
+                        "height": 41.96875,
+                        "id": "n5",
+                        "label": {
+                            "content": "Person.Address",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 0,
+                        "y": -243.907
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n6::n0",
+                                "label": {
+                                    "content": "BUSINESSENTITYID",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 130,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -495.37158
+                            },
+                            {
+                                "height": 16,
+                                "id": "n6::n1",
+                                "label": {
+                                    "content": "LASTNAME",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 80,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -479.37158
+                            },
+                            {
+                                "height": 16,
+                                "id": "n6::n2",
+                                "label": {
+                                    "content": "SALESDOLLARS",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 108,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -463.37158
+                            },
+                            {
+                                "height": 16,
+                                "id": "n6::n3",
+                                "label": {
+                                    "content": "DUMMY0",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 69,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -447.37158
+                            }
+                        ],
+                        "height": 89.96875,
+                        "id": "n6",
+                        "label": {
+                            "content": "dbo.EmployeeSales",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 484,
+                        "y": -517.34033
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n7::n0",
+                                "label": {
+                                    "content": "FIRSTNAME",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 84,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -615.34064
+                            },
+                            {
+                                "height": 16,
+                                "id": "n7::n1",
+                                "label": {
+                                    "content": "LASTNAME",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 80,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -599.34064
+                            },
+                            {
+                                "height": 16,
+                                "id": "n7::n2",
+                                "label": {
+                                    "content": "BUSINESSENTITYID",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 130,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -583.34064
+                            },
+                            {
+                                "height": 16,
+                                "id": "n7::n3",
+                                "label": {
+                                    "content": "HIREDATE",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 76,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -567.34064
+                            }
+                        ],
+                        "height": 89.96875,
+                        "id": "n7",
+                        "label": {
+                            "content": "hiredate_view",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 484,
+                        "y": -637.3094
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n8::n0",
+                                "label": {
+                                    "content": "CUSTOMERKEY",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 105,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -97.24618
+                            },
+                            {
+                                "height": 16,
+                                "id": "n8::n1",
+                                "label": {
+                                    "content": "PRODUCTKEY",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 96,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -81.24618
+                            },
+                            {
+                                "height": 16,
+                                "id": "n8::n2",
+                                "label": {
+                                    "content": "ORDERDATEKEY",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 112,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -65.24618
+                            },
+                            {
+                                "height": 16,
+                                "id": "n8::n3",
+                                "label": {
+                                    "content": "SALESTERRITORYKEY",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 141,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -49.24618
+                            },
+                            {
+                                "height": 16,
+                                "id": "n8::n4",
+                                "label": {
+                                    "content": "SALESTERRITORYREGION",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 165,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 485,
+                                "y": -33.24618
+                            }
+                        ],
+                        "height": 105.96875,
+                        "id": "n8",
+                        "label": {
+                            "content": "view1",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 484,
+                        "y": -119.21493
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n9::n0",
+                                "label": {
+                                    "content": "FirstName",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 79,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -615.34064
+                            },
+                            {
+                                "height": 16,
+                                "id": "n9::n1",
+                                "label": {
+                                    "content": "LastName",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 78,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -599.34064
+                            },
+                            {
+                                "height": 16,
+                                "id": "n9::n2",
+                                "label": {
+                                    "content": "BusinessEntityID",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 119,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -583.34064
+                            },
+                            {
+                                "height": 16,
+                                "id": "n9::n3",
+                                "label": {
+                                    "content": "HireDate",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 71,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -567.34064
+                            }
+                        ],
+                        "height": 89.96875,
+                        "id": "n9",
+                        "label": {
+                            "content": "RS-1",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 272,
+                        "y": -637.3094
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n10::n0",
+                                "label": {
+                                    "content": "CustomerKey",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 97,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -97.24618
+                            },
+                            {
+                                "height": 16,
+                                "id": "n10::n1",
+                                "label": {
+                                    "content": "ProductKey",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 86,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -81.24618
+                            },
+                            {
+                                "height": 16,
+                                "id": "n10::n2",
+                                "label": {
+                                    "content": "OrderDateKey",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 102,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -65.24618
+                            },
+                            {
+                                "height": 16,
+                                "id": "n10::n3",
+                                "label": {
+                                    "content": "SalesTerritoryKey",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 123,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -49.24618
+                            },
+                            {
+                                "height": 16,
+                                "id": "n10::n4",
+                                "label": {
+                                    "content": "SalesTerritoryRegion",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 145,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -33.24618
+                            }
+                        ],
+                        "height": 105.96875,
+                        "id": "n10",
+                        "label": {
+                            "content": "RS-2",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 272,
+                        "y": -119.21493
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n11::n0",
+                                "label": {
+                                    "content": "BusinessEntityID",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 119,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -375.40253
+                            },
+                            {
+                                "height": 16,
+                                "id": "n11::n1",
+                                "label": {
+                                    "content": "LastName",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 78,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -359.40253
+                            },
+                            {
+                                "height": 16,
+                                "id": "n11::n2",
+                                "label": {
+                                    "content": "SalesYTD",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 73,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -343.40253
+                            }
+                        ],
+                        "height": 73.96875,
+                        "id": "n11",
+                        "label": {
+                            "content": "RS-3",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 272,
+                        "y": -397.37128
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n12::n0",
+                                "label": {
+                                    "content": "SELECT",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 61,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -495.37158
+                            },
+                            {
+                                "height": 16,
+                                "id": "n12::n1",
+                                "label": {
+                                    "content": "BusinessEntityID",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 119,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -479.37158
+                            },
+                            {
+                                "height": 16,
+                                "id": "n12::n2",
+                                "label": {
+                                    "content": "LastName",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 78,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -463.37158
+                            },
+                            {
+                                "height": 16,
+                                "id": "n12::n3",
+                                "label": {
+                                    "content": "SalesYTD",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 73,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -447.37158
+                            }
+                        ],
+                        "height": 89.96875,
+                        "id": "n12",
+                        "label": {
+                            "content": "INSERT-SELECT-1",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 272,
+                        "y": -517.34033
+                    },
+                    {
+                        "columns": [
+                            {
+                                "height": 16,
+                                "id": "n13::n0",
+                                "label": {
+                                    "content": "\"Row Number\"",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 104,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -271.43347
+                            },
+                            {
+                                "height": 16,
+                                "id": "n13::n1",
+                                "label": {
+                                    "content": "LastName",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 78,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -255.43349
+                            },
+                            {
+                                "height": 16,
+                                "id": "n13::n2",
+                                "label": {
+                                    "content": "SalesYTD",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 73,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -239.43349
+                            },
+                            {
+                                "height": 16,
+                                "id": "n13::n3",
+                                "label": {
+                                    "content": "PostalCode",
+                                    "fontFamily": "Segoe UI Symbol",
+                                    "fontSize": "12",
+                                    "height": 13.96875,
+                                    "width": 87,
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "width": 160,
+                                "x": 273,
+                                "y": -223.43349
+                            }
+                        ],
+                        "height": 89.96875,
+                        "id": "n13",
+                        "label": {
+                            "content": "RS-4",
+                            "fontFamily": "Segoe UI Symbol",
+                            "fontSize": "12",
+                            "height": 17.96875,
+                            "width": 162,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "width": 162,
+                        "x": 272,
+                        "y": -293.40222
+                    }
+                ],
+                "edges": [
+                    {
+                        "id": "e0",
+                        "sourceId": "n4::n0",
+                        "targetId": "n12::n1"
+                    },
+                    {
+                        "id": "e1",
+                        "sourceId": "n9::n1",
+                        "targetId": "n7::n1"
+                    },
+                    {
+                        "id": "e2",
+                        "sourceId": "n2::n3",
+                        "targetId": "n10::n2"
+                    },
+                    {
+                        "id": "e3",
+                        "sourceId": "n9::n3",
+                        "targetId": "n7::n3"
+                    },
+                    {
+                        "id": "e4",
+                        "sourceId": "n1::n1",
+                        "targetId": "n13::n1"
+                    },
+                    {
+                        "id": "e5",
+                        "sourceId": "n1::n1",
+                        "targetId": "n12::n2"
+                    },
+                    {
+                        "id": "e6",
+                        "sourceId": "n10::n4",
+                        "targetId": "n8::n4"
+                    },
+                    {
+                        "id": "e7",
+                        "sourceId": "n5::n0",
+                        "targetId": "n13::n3"
+                    },
+                    {
+                        "id": "e8",
+                        "sourceId": "n2::n2",
+                        "targetId": "n10::n1"
+                    },
+                    {
+                        "id": "e9",
+                        "sourceId": "n1::n1",
+                        "targetId": "n11::n1"
+                    },
+                    {
+                        "id": "e10",
+                        "sourceId": "n12::n3",
+                        "targetId": "n6::n2"
+                    },
+                    {
+                        "id": "e11",
+                        "sourceId": "n2::n1",
+                        "targetId": "n10::n0"
+                    },
+                    {
+                        "id": "e12",
+                        "sourceId": "n4::n1",
+                        "targetId": "n11::n2"
+                    },
+                    {
+                        "id": "e13",
+                        "sourceId": "n12::n2",
+                        "targetId": "n6::n1"
+                    },
+                    {
+                        "id": "e14",
+                        "sourceId": "n1::n1",
+                        "targetId": "n9::n1"
+                    },
+                    {
+                        "id": "e15",
+                        "sourceId": "n12::n1",
+                        "targetId": "n6::n0"
+                    },
+                    {
+                        "id": "e16",
+                        "sourceId": "n1::n0",
+                        "targetId": "n9::n0"
+                    },
+                    {
+                        "id": "e17",
+                        "sourceId": "n9::n2",
+                        "targetId": "n7::n2"
+                    },
+                    {
+                        "id": "e18",
+                        "sourceId": "n4::n1",
+                        "targetId": "n12::n3"
+                    },
+                    {
+                        "id": "e19",
+                        "sourceId": "n0::n1",
+                        "targetId": "n9::n3"
+                    },
+                    {
+                        "id": "e20",
+                        "sourceId": "n9::n0",
+                        "targetId": "n7::n0"
+                    },
+                    {
+                        "id": "e21",
+                        "sourceId": "n3::n0",
+                        "targetId": "n10::n4"
+                    },
+                    {
+                        "id": "e22",
+                        "sourceId": "n12::n0",
+                        "targetId": "n6::n3"
+                    },
+                    {
+                        "id": "e23",
+                        "sourceId": "n2::n0",
+                        "targetId": "n10::n3"
+                    },
+                    {
+                        "id": "e24",
+                        "sourceId": "n0::n0",
+                        "targetId": "n9::n2"
+                    },
+                    {
+                        "id": "e25",
+                        "sourceId": "n10::n2",
+                        "targetId": "n8::n2"
+                    },
+                    {
+                        "id": "e26",
+                        "sourceId": "n4::n1",
+                        "targetId": "n13::n2"
+                    },
+                    {
+                        "id": "e27",
+                        "sourceId": "n4::n1",
+                        "targetId": "n13::n0"
+                    },
+                    {
+                        "id": "e28",
+                        "sourceId": "n5::n0",
+                        "targetId": "n13::n0"
+                    },
+                    {
+                        "id": "e29",
+                        "sourceId": "n10::n1",
+                        "targetId": "n8::n1"
+                    },
+                    {
+                        "id": "e30",
+                        "sourceId": "n10::n0",
+                        "targetId": "n8::n0"
+                    },
+                    {
+                        "id": "e31",
+                        "sourceId": "n10::n3",
+                        "targetId": "n8::n3"
+                    },
+                    {
+                        "id": "e32",
+                        "sourceId": "n4::n0",
+                        "targetId": "n11::n0"
+                    }
+                ]
+            },
+            "tooltip": {
+                "pseudo_tab...rphan_column": "pseudo_table_include_orphan_column"
+            },
+            "relationIdMap": {
+                "e0": "fdd",
+                "e1": "fdd",
+                "e2": "fdd",
+                "e3": "fdd",
+                "e4": "fdd",
+                "e5": "fdd",
+                "e6": "fdd",
+                "e7": "fdd",
+                "e8": "fdd",
+                "e9": "fdd",
+                "e10": "fdd",
+                "e11": "fdd",
+                "e12": "fdd",
+                "e13": "fdd",
+                "e14": "fdd",
+                "e15": "fdd",
+                "e16": "fdd",
+                "e17": "fdd",
+                "e18": "fdd",
+                "e19": "fdd",
+                "e20": "fdd",
+                "e21": "fdd",
+                "e22": "fdd",
+                "e23": "fdd",
+                "e24": "fdd",
+                "e25": "fdd",
+                "e26": "fdd",
+                "e27": "fdd",
+                "e28": "fdd",
+                "e29": "fdd",
+                "e30": "fdd",
+                "e31": "fdd",
+                "e32": "fdd"
+            },
+            "listIdMap": {
+                "n0": [
+                    "8"
+                ],
+                "n0::n0": [
+                    "113"
+                ],
+                "n0::n1": [
+                    "11"
+                ],
+                "n1": [
+                    "13"
+                ],
+                "n1::n0": [
+                    "15"
+                ],
+                "n1::n1": [
+                    "119"
+                ],
+                "n2": [
+                    "30"
+                ],
+                "n2::n0": [
+                    "114"
+                ],
+                "n2::n1": [
+                    "32"
+                ],
+                "n2::n2": [
+                    "33"
+                ],
+                "n2::n3": [
+                    "34"
+                ],
+                "n3": [
+                    "37"
+                ],
+                "n3::n0": [
+                    "39"
+                ],
+                "n4": [
+                    "56"
+                ],
+                "n4::n0": [
+                    "115"
+                ],
+                "n4::n1": [
+                    "116"
+                ],
+                "n5": [
+                    "94"
+                ],
+                "n5::n0": [
+                    "117"
+                ],
+                "n6": [
+                    "2"
+                ],
+                "n6::n0": [
+                    "4"
+                ],
+                "n6::n1": [
+                    "5"
+                ],
+                "n6::n2": [
+                    "6"
+                ],
+                "n6::n3": [
+                    "87"
+                ],
+                "n7": [
+                    "24"
+                ],
+                "n7::n0": [
+                    "25"
+                ],
+                "n7::n1": [
+                    "26"
+                ],
+                "n7::n2": [
+                    "27"
+                ],
+                "n7::n3": [
+                    "28"
+                ],
+                "n8": [
+                    "48"
+                ],
+                "n8::n0": [
+                    "49"
+                ],
+                "n8::n1": [
+                    "50"
+                ],
+                "n8::n2": [
+                    "51"
+                ],
+                "n8::n3": [
+                    "52"
+                ],
+                "n8::n4": [
+                    "53"
+                ],
+                "n9": [
+                    "18"
+                ],
+                "n9::n0": [
+                    "19"
+                ],
+                "n9::n1": [
+                    "20"
+                ],
+                "n9::n2": [
+                    "21"
+                ],
+                "n9::n3": [
+                    "22"
+                ],
+                "n10": [
+                    "41"
+                ],
+                "n10::n0": [
+                    "42"
+                ],
+                "n10::n1": [
+                    "43"
+                ],
+                "n10::n2": [
+                    "44"
+                ],
+                "n10::n3": [
+                    "45"
+                ],
+                "n10::n4": [
+                    "46"
+                ],
+                "n11": [
+                    "66"
+                ],
+                "n11::n0": [
+                    "69"
+                ],
+                "n11::n1": [
+                    "70"
+                ],
+                "n11::n2": [
+                    "71"
+                ],
+                "n12": [
+                    "81"
+                ],
+                "n12::n0": [
+                    "82"
+                ],
+                "n12::n1": [
+                    "84"
+                ],
+                "n12::n2": [
+                    "85"
+                ],
+                "n12::n3": [
+                    "86"
+                ],
+                "n13": [
+                    "98"
+                ],
+                "n13::n0": [
+                    "99"
+                ],
+                "n13::n1": [
+                    "105"
+                ],
+                "n13::n2": [
+                    "106"
+                ],
+                "n13::n3": [
+                    "107"
+                ]
+            }
+        }
+    },
+    "error": "find orphan column(10500) near: PostalCode(47,39)\r\nfind orphan column(10500) near: SalesYTD(47,59)\r\nfind orphan column(10500) near: TerritoryID(54,7)\r\nfind orphan column(10500) near: SalesYTD(55,9)\r\nfind orphan column(10500) near: PostalCode(56,10)\r\nLink orphan column [TerritoryID] to the first table [Sales.SalesPerson s]",
+    "sessionId": "ec3938ae68a8a468d729e6c426108e701e78079cf070a385acf7cd899d41058c_1615189437331"
+}

@@ -21,20 +21,29 @@ namespace SQLFlowClient
             config = new Config
             {
                 Host = "https://api.gudusoft.com",
-                Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU"
+                Token = "",
+                UserId = "gudu|0123456789",
             };
             try
             {
                 if (File.Exists("./config.json"))
                 {
                     var json = JObject.Parse(File.ReadAllText("./config.json"));
-                    if (json["Host"] != null && json["Host"].ToString() != "")
+                    if (!string.IsNullOrWhiteSpace(json["Host"]?.ToString()))
                     {
                         config.Host = json["Host"].ToString();
                     }
-                    if (json["Token"] != null && json["Token"].ToString() != "")
+                    if (!string.IsNullOrWhiteSpace(json["Token"]?.ToString()))
                     {
                         config.Token = json["Token"].ToString();
+                    }
+                    if (!string.IsNullOrWhiteSpace(json["SecretKey"]?.ToString()))
+                    {
+                        config.SecretKey = json["SecretKey"].ToString();
+                    }
+                    if (!string.IsNullOrWhiteSpace(json["UserId"]?.ToString()))
+                    {
+                        config.UserId = json["UserId"].ToString();
                     }
                 }
             }
@@ -43,6 +52,18 @@ namespace SQLFlowClient
                 Console.WriteLine($"Invalid config.json :\n{e.Message}");
                 return;
             }
+            //if (!string.IsNullOrWhiteSpace(options.Token))
+            //{
+            //    config.Token = options.Token;
+            //}
+            //if (!string.IsNullOrWhiteSpace(options.UserId))
+            //{
+            //    config.UserId = options.UserId;
+            //}
+            //if (!string.IsNullOrWhiteSpace(options.SecretKey))
+            //{
+            //    config.SecretKey = options.SecretKey;
+            //}
             if (options.Version)
             {
                 await Version();
@@ -51,7 +72,6 @@ namespace SQLFlowClient
             {
                 await SQLFlow(options);
             }
-
         }
 
         public static async Task SQLFlow(Options options)
@@ -88,6 +108,39 @@ namespace SQLFlowClient
                     $" oracle, postgresql, redshift, snowflake, mssql, sybase, teradata, vertica");
                 return;
             }
+            if (!string.IsNullOrWhiteSpace(config.SecretKey) && !string.IsNullOrWhiteSpace(config.UserId))
+            {
+                // request token
+                string url2 = $"{config.Host}/gspLive_backend/user/generateToken";
+                using var client2 = new HttpClient();
+                using var response2 = await client2.PostAsync(url2, content: new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("userId", config.UserId),
+                    new KeyValuePair<string, string>("secretKey", config.SecretKey)
+                }));
+                if (response2.IsSuccessStatusCode)
+                {
+                    var text = await response2.Content.ReadAsStringAsync();
+                    var jobject = JObject.Parse(text);
+                    var json = jobject.ToString();
+                    var code = jobject.SelectToken("code");
+                    if (code?.ToString() == "200")
+                    {
+                        config.Token = jobject.SelectToken("token").ToString();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{url2} error, code={code?.ToString() }");
+                        return;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Wrong response code {(int)response2.StatusCode} {response2.StatusCode}.url={url2}");
+                    return;
+                }
+
+            }
             var form = new MultipartFormDataContent{
                 { sqlfile                                                , "sqlfile"           , "sqlfile" },
                 { new StringContent("dbv"+dbvendor)                      , "dbvendor"         },
@@ -95,13 +148,15 @@ namespace SQLFlowClient
                 { new StringContent(options.SimpleOutput.ToString())     , "simpleOutput"     },
                 { new StringContent(options.IgnoreRecordSet.ToString())  , "ignoreRecordSet"  },
                 { new StringContent(options.ignoreFunction.ToString())   , "ignoreFunction"   },
+                { new StringContent(config.UserId)                       , "userId"   },
+                { new StringContent(config.Token)                        , "token"   },
             };
             try
             {
                 var stopWatch = Stopwatch.StartNew();
                 string url = $"{config.Host}/gspLive_backend/sqlflow/generation/sqlflow/" + (options.IsGraph ? "graph" : "");
                 using var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", config.Token);
+                // client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", config.Token);
                 using var response = await client.PostAsync(url, form);
                 if (response.IsSuccessStatusCode)
                 {
@@ -154,7 +209,10 @@ namespace SQLFlowClient
                 string url = $"{config.Host}/gspLive_backend/version";
                 using var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", config.Token);
-                using var response = await client.PostAsync(url, new StringContent(""));
+                var form = new MultipartFormDataContent{
+                { new StringContent(config.UserId)                       , "userId"   },
+            };
+                using var response = await client.PostAsync(url, form);
                 if (response.IsSuccessStatusCode)
                 {
                     var text = await response.Content.ReadAsStringAsync();
@@ -170,9 +228,9 @@ namespace SQLFlowClient
                         version = json.SelectToken("version.backend.version")?.ToString(),
                     };
                     Console.WriteLine("                 version        relase date");
-                    Console.WriteLine("SQLFlowClient    1.1.0          2020/10/12");
+                    Console.WriteLine("SQLFlowClient    1.2.0          2020/12/13");
                     Console.WriteLine($"gsp              {gsp.version}        {gsp.ReleaseDate}");
-                    Console.WriteLine($"backend         {backend.version}         {backend.ReleaseDate}");
+                    Console.WriteLine($"backend          {backend.version}          {backend.ReleaseDate}");
                 }
                 else
                 {

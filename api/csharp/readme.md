@@ -1,9 +1,39 @@
 # Get Started
-### [Download](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/) the executable program according to your operating system.
+### [Download](https://sqlflow.gudusoft.com/download/) the executable program according to your operating system.
 
-- [windows](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/win/SQLFlowClient.exe)
-- [mac](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/osx/SQLFlowClient)
-- [linux](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/linux/SQLFlowClient)
+- [windows](https://sqlflow.gudusoft.com/download/win/SQLFlowClient.exe)
+- [mac](https://sqlflow.gudusoft.com/download/osx/SQLFlowClient)
+- [linux](https://sqlflow.gudusoft.com/download/linux/SQLFlowClient)
+
+
+### Configuration 
+
+#### SQLFlow Cloud server
+
+Create a file named `config.json` in directory where the executable(.exe) exists, and then input your `SecretKey` and `UserId`, always set `host` to `https://api.gudusoft.com` ,for example:
+
+```json
+{
+  "Host": "https://api.gudusoft.com",
+  "SecretKey": "XXX",
+  "UserId": "XXX"
+}
+```
+If you want to connect to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com), you may [request a 30 days premium account](https://www.gudusoft.com/request-a-premium-account/) to 
+[get the necessary userId and secret code](/sqlflow-userid-secret.md).
+
+#### SQLFlow on-premise version
+
+Create a file named `config.json` in directory where the executable(.exe) exists, and always set `userId` to `gudu|0123456789`, keep `userSecret` empty, and set `host`to your server ip, for example:
+
+```json
+{
+  "Host": "http://your server ip:8081",
+  "SecretKey": "",
+  "UserId": "gudu|0123456789"
+}
+```
+Please [check here](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow.md) to see how to install SQLFlow on-premise version on you own server.
 
 ### Set permissions
 
@@ -30,17 +60,6 @@ Run the program from command line:
 ```
 ```
 ./SQLFlowClient test.sql -g
-```
-
-### Use your  own configuration 
-
-If you want to use your own server and token, create the a file named `config.json` in directory where executable exists, and then input your `host` and `token`, for example:
-
-```json
-{
-	"Host": "https://api.gudusoft.com",
-	"Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJndWR1c29mdCIsImV4cCI6MTYwMzc1NjgwMCwiaWF0IjoxNTcyMjIwODAwfQ.EhlnJO7oqAHdr0_bunhtrN-TgaGbARKvTh2URTxu9iU"
-}
 ```
 
 # Usage
@@ -92,5 +111,5 @@ dotnet publish -c Release /p:PublishProfile=Properties\PublishProfiles\osx.pubxm
 dotnet publish -c Release /p:PublishProfile=Properties\PublishProfiles\win.pubxml
 ```
 
-### [Download executable programs](https://api.gudusoft.com/download/api/client/csharp/SQLFlowClient/dist/)
+### [Download executable programs](https://sqlflow.gudusoft.com/download//)
 

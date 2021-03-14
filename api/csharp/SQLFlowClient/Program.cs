@@ -30,6 +30,15 @@ namespace SQLFlowClient
         [Option('o', "output", Required = false, Default = "", HelpText = "Save output as a file.")]
         public string Output { get; set; }
 
+        //[Option('t', "token", Required = false, Default = "", HelpText = "If userId and secretKey is given, token will be ignore, otherwise it will use token.")]
+        //public string Token { get; set; }
+
+        //[Option('u', "userId", Required = false, Default = "", HelpText = "")]
+        //public string UserId { get; set; }
+
+        //[Option('k', "secretKey", Required = false, Default = "", HelpText = "")]
+        //public string SecretKey { get; set; }
+
         [Option("version", Required = false, Default = false, HelpText = "Show version.")]
         public bool Version { get; set; }
     }
