@@ -30,8 +30,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 ### Usage
 
-- [Download the runnable version](target/grabit-java.jar)
-
 ````
 java -jar grabit-java.jar /s server /p port /u userId /k userSecret /t databaseType /f path_to_config_file /r resultType 
 
