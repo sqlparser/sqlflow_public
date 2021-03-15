@@ -57,6 +57,9 @@ public class Runner {
         String databaseType = "dbvoracle";
         if (argList.contains("/t") && argList.size() > argList.indexOf("/t") + 1) {
             databaseType = "dbv" + detectParam("/t", args, argList);
+            if ("dbvsqlserver".equalsIgnoreCase(databaseType)) {
+                databaseType = "dbvmssql";
+            }
         }
 
         int resultType = 1;
