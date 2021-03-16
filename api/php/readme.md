@@ -9,9 +9,9 @@ You can integerate the PHP code provided here into your own project and add the 
 data lineage analsysis capability instantly.
 
 ### 1. interactive data lineage visualizations
-![PHP Data lineage](PHP-data-lineage.png)
+![PHP Data lineage](php-data-lineage.png)
 
-### 2. [Data lineage in JSON format](PHP-data-lineage-result.json)
+### 2. [Data lineage in JSON format](php-data-lineage-result.json)
 
 ### 3. Data lineage in CSV, graphml format
 
