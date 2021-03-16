@@ -28,6 +28,20 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 export PATH=$JAVA_HOME/bin:$PATH
 ```
 
+- compile
+
+**mac&linux**
+```
+chmod 777 compile.sh
+
+./compile.sh
+```
+
+**windows**
+```
+./compile.sh
+```
+
 ### Usage
 
 ````
