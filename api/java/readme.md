@@ -28,6 +28,21 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 export PATH=$JAVA_HOME/bin:$PATH
 ```
 
+- compile and build `grabit-java.jar`
+
+**mac&linux**
+```
+chmod 777 compile.sh
+
+./compile.sh
+```
+
+**windows**
+    
+```
+compile.bat
+```
+
 ### Usage
 
 ````

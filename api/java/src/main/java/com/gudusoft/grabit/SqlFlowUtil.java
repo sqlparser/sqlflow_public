@@ -1,4 +1,4 @@
-package com.gudusoft.grabit.util;
+package com.gudusoft.grabit;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;
@@ -12,8 +12,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -23,8 +21,6 @@ import java.util.Map;
 
 public class SqlFlowUtil {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SqlFlowUtil.class);
-
     private static String token = "";
 
     private SqlFlowUtil() {
@@ -33,7 +29,7 @@ public class SqlFlowUtil {
     public static String getToken(String url, String userId,
                                   String secretKey, Integer flag) {
         try {
-            LOG.info("start get token from sqlflow.");
+            System.out.println("start get token from sqlflow.");
             Map<String, String> param = new HashMap<>();
             param.put("secretKey", secretKey);
             param.put("userId", userId);
@@ -44,7 +40,7 @@ public class SqlFlowUtil {
             JSONObject object = JSONObject.parseObject(result);
             if ("200".equals(object.getString("code"))) {
                 token = object.getString("token");
-                LOG.info("get token from sqlflow successful.");
+                System.out.println("get token from sqlflow successful.");
                 return token;
             }
             return "";
@@ -57,7 +53,7 @@ public class SqlFlowUtil {
                         secretKey, 1);
             }
             if (flag == 1) {
-                LOG.error("get token from sqlflow failed.", e);
+                System.err.println("get token from sqlflow failed.");
             }
             return token;
         }
@@ -69,7 +65,7 @@ public class SqlFlowUtil {
                                    String userId,
                                    String token,
                                    String jobName) throws IOException {
-        LOG.info("start submit job to sqlflow.");
+        System.out.println("start submit job to sqlflow.");
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpPost uploadFile = new HttpPost(url);
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();

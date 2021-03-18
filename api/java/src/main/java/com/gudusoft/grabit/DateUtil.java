@@ -1,4 +1,4 @@
-package com.gudusoft.grabit.util;
+package com.gudusoft.grabit;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
