@@ -52,7 +52,7 @@ eg:
     java -jar grabit-java.jar /u 'auth0|xxx' /k cab9712c45189014a94a8b7aceeef7a3db504be58e18cd3686f3bbefd078ef4d /s https://api.gudusoft.com /t oracle /f demo.sql /r 1
 	
 note:
-    If the parameter string contains symbols like "|" , it must be included in a single quotes (' ')
+    If the parameter string contains symbols like "|" , it must be included in a single quotes (' ') or double quotes on windows (" ")
 ````
 
 Example:
