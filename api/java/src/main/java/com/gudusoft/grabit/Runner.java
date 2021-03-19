@@ -1,11 +1,9 @@
 package com.gudusoft.grabit;
 
 import com.alibaba.fastjson.JSONObject;
-import com.gudusoft.grabit.util.SqlFlowUtil;
-import com.gudusoft.grabit.util.DateUtil;
-import com.gudusoft.grabit.util.FileUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.gudusoft.grabit.SqlFlowUtil;
+import com.gudusoft.grabit.DateUtil;
+import com.gudusoft.grabit.FileUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,11 +14,10 @@ import java.util.List;
 
 public class Runner {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Runner.class);
 
     public static void main(String[] args) throws IOException {
         if (args.length < 2) {
-            LOG.error("please enter the correct parameters.");
+            System.err.println("please enter the correct parameters.");
             return;
         }
 
@@ -29,7 +26,7 @@ public class Runner {
         String fileVal = detectParam("/f", args, argList);
         File file = new File(fileVal);
         if (!file.exists()) {
-            LOG.error("{} is not exist.", file);
+            System.err.println("{} is not exist." + file);
             return;
         }
 
@@ -57,6 +54,9 @@ public class Runner {
         String databaseType = "dbvoracle";
         if (argList.contains("/t") && argList.size() > argList.indexOf("/t") + 1) {
             databaseType = "dbv" + detectParam("/t", args, argList);
+            if ("dbvsqlserver".equalsIgnoreCase(databaseType)) {
+                databaseType = "dbvmssql";
+            }
         }
 
         int resultType = 1;
@@ -64,16 +64,16 @@ public class Runner {
             resultType = Integer.parseInt(detectParam("/r", args, argList));
         }
 
-        LOG.info("=================  run start grabit ==================");
+        System.out.println("=================  run start grabit ==================");
         run(file, server, userId, userSecret, databaseType, resultType);
-        LOG.info("=================  run end grabit ==================");
+        System.out.println("=================  run end grabit ==================");
     }
 
     private static void run(File file, String server, String userId, String userSecret, String databaseType, Integer resultType) throws IOException {
         String tokenUrl = String.format("%s/gspLive_backend/user/generateToken", server);
         String token = SqlFlowUtil.getToken(tokenUrl, userId, userSecret, 0);
         if ("".equals(token)) {
-            LOG.error("connection to sqlflow failed.");
+            System.err.println("connection to sqlflow failed.");
             System.exit(1);
         }
 
@@ -96,7 +96,7 @@ public class Runner {
             Integer code = object.getInteger("code");
             if (code == 200) {
                 JSONObject data = object.getJSONObject("data");
-                LOG.info("submit job to sqlflow successful. SQLFlow is being analyzed...");
+                System.out.println("submit job to sqlflow successful. SQLFlow is being analyzed...");
                 String jobId = data.getString("jobId");
 
                 String jsonJobUrl = String.format("%s/gspLive_backend/sqlflow/job/displayUserJobSummary", server);
@@ -108,11 +108,11 @@ public class Runner {
                             JSONObject val = statusObj.getJSONObject("data");
                             String status = val.getString("status");
                             if ("success".equals(status) || "partial_success".equals(status)) {
-                                LOG.info("sqlflow analyze successful.");
+                                System.out.println("sqlflow analyze successful.");
                                 break;
                             }
                             if ("fail".equals(status)) {
-                                LOG.error(val.getString("errorMessage"));
+                                System.err.println(val.getString("errorMessage"));
                                 System.exit(1);
                             }
                         }
@@ -147,16 +147,16 @@ public class Runner {
                 request.setUrl(rsUrl);
                 request.setDownloadFilePath(downLoadPath);
 
-                LOG.info("start export result from sqlflow.");
+                System.out.println("start export result from sqlflow.");
                 result = SqlFlowUtil.exportLineage(request);
                 if (!result.contains("success")) {
-                    LOG.error("export json result failed");
+                    System.err.println("export json result failed");
                     System.exit(1);
                 }
 
-                LOG.info("export json result successful,downloaded file path is {}", downLoadPath);
+                System.out.println("export json result successful,downloaded file path is {}" + downLoadPath);
             } else {
-                LOG.error("submit job to sqlflow failed.");
+                System.err.println("submit job to sqlflow failed.");
                 System.exit(1);
             }
         }
@@ -166,7 +166,7 @@ public class Runner {
         try {
             return args[argList.indexOf(param) + 1];
         } catch (Exception e) {
-            LOG.error("Please enter the correct parameters.");
+            System.err.println("Please enter the correct parameters.");
             System.exit(1);
         }
         return null;
@@ -174,7 +174,7 @@ public class Runner {
 
     private static void matchParam(String param, List<String> argList) {
         if (!argList.contains(param) || argList.size() <= argList.indexOf(param) + 1) {
-            LOG.error("{} parameter is required.", param);
+            System.err.println("{} parameter is required." + param);
             System.exit(1);
         }
     }

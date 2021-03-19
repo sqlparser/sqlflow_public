@@ -1,17 +1,17 @@
-## JAVA Data lineage: using the SQLFlow REST API (Advanced)
+## PHP Data lineage: using the SQLFlow REST API (Advanced)
 
-This article illustrates how to discover the data lineage using JAVA and the SQLFlow REST API.
+This article illustrates how to discover the data lineage using PHP and the SQLFlow REST API.
 
-By using the SQLFlow REST API, you can code in JAVA to discover the data lineage in SQL scripts
+By using the SQLFlow REST API, you can code in PHP to discover the data lineage in SQL scripts
 and get the result in an actionable diagram, json, csv or graphml format.
 
-You can integerate the JAVA code provided here into your own project and add the powerful 
+You can integerate the PHP code provided here into your own project and add the powerful 
 data lineage analsysis capability instantly.
 
 ### 1. interactive data lineage visualizations
-![JAVA Data lineage](java-data-lineage.png)
+![PHP Data lineage](php-data-lineage.png)
 
-### 2. [Data lineage in JSON format](java-data-lineage-result.json)
+### 2. [Data lineage in JSON format](php-data-lineage-result.json)
 
 ### 3. Data lineage in CSV, graphml format
 
@@ -19,37 +19,81 @@ data lineage analsysis capability instantly.
 ## Prerequisites
 - [SQLFlow Cloud Server or on-premise version](https://github.com/sqlparser/sqlflow_public/tree/master/api#prerequisites)
 
-- Java 8 or higher version must be installed and configured correctly.
+- PHP 7.3 or higher version must be installed and configured correctly.
 
-- setup the PATH like this: (Please change the JAVA_HOME according to your environment)
-```
-export JAVA_HOME=/usr/lib/jvm/default-java
+- Install the ZIP extension
 
-export PATH=$JAVA_HOME/bin:$PATH
-```
+**mac**
 
-- compile and build `grabit-java.jar`
+````
+wget http://pecl.php.net/get/zip-1.12.4.tgz 
 
-**mac&linux**
-```
-chmod 777 compile.sh
+tar zxfv zip-1.12.4.tgz
 
-./compile.sh
-```
+cd zip-1.12.4
 
-**windows**
-    
-```
-compile.bat
-```
+sudo mount -uw /
+
+sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/ /usr
+
+sudo phpize
+
+which php-config(get path,eg :/usr/bin/php-config)
+
+./configure --with-php-config=/usr/bin/php-config
+
+sudo mount -uw /
+
+sudo make
+
+sudo make install
+
+cd /usr/lib/php/extensions/no-debug-non-zts-20180731
+
+sudo cp /private/etc/php.ini.default php.ini
+
+chmod 777 php.ini
+
+sudo vim php.ini, write extension=zip.so
+
+sudo apachectl restart
+````
+
+**linux**
+
+````
+wget http://pecl.php.net/get/zip-1.12.4.tgz 
+
+tar zxfv zip-1.12.4.tgz
+
+cd zip-1.12.4
+
+sudo phpize
+
+which php-config(get path,eg :/usr/bin/php-config)
+
+./configure --with-php-config=/usr/bin/php-config
+
+sudo make
+
+sudo make install
+
+cd /usr/lib/php/extensions/no-debug-non-zts-20180731
+
+sudo vi /usr/local/php/etc/php.ini, write extension=zip.so
+
+sudo apachectl restart
+````
+
+#### [Reference Documentation](https://www.php.net/manual/en/install.pecl.phpize.php)
 
 ### Usage
 
 ````
-java -jar grabit-java.jar /s server /p port /u userId /k userSecret /t databaseType /f path_to_config_file /r resultType 
+php Grabit.php /s server /p port /u userId /k userSecret /t databaseType /f path_to_config_file /r resultType 
 
 eg: 
-    java -jar grabit-java.jar /u 'auth0|xxx' /k cab9712c45189014a94a8b7aceeef7a3db504be58e18cd3686f3bbefd078ef4d /s https://api.gudusoft.com /t oracle /f demo.sql /r 1
+    php Grabit.php /u 'auth0|xxx' /k cab9712c45189014a94a8b7aceeef7a3db504be58e18cd3686f3bbefd078ef4d /s https://api.gudusoft.com /t oracle /f demo.sql /r 1
 	
 note:
     If the parameter string contains symbols like "|" , it must be included in a single quotes (' ')
@@ -59,27 +103,19 @@ Example:
 
 1. Connect to the SQLFlow Cloud Server
 ```
-java -jar grabit-java.jar /s https://api.gudusoft.com /u 'YOUR_USER_ID' /k YOUR_SECRET_KEY /t sqlserver /f java-data-lineage-sqlserver.sql /r 1 
+php Grabit.php /s https://api.gudusoft.com /u 'YOUR_USER_ID' /k YOUR_SECRET_KEY /t sqlserver /f PHP-data-lineage-sqlserver.sql /r 1 
 ```
 
 2. Connect to the SQLFlow on-premise
-This will discover data lineage by analyzing the `java-data-lineage-sqlserver.sql` file. You may also specify a zip file which includes lots of SQL files.
+This will discover data lineage by analyzing the `PHP-data-lineage-sqlserver.sql` file. You may also specify a zip file which includes lots of SQL files.
 ```
-java -jar grabit-java.jar /s http://127.0.0.1 /p 8081 /u 'gudu|0123456789' /t sqlserver /f java-data-lineage-sqlserver.sql /r 1 
+php Grabit.php /s http://127.0.0.1 /p 8081 /u 'gudu|0123456789' /t sqlserver /f PHP-data-lineage-sqlserver.sql /r 1 
 ```
 
 This will discover data lineage by analyzing all SQL files under `sqlfiles` directory. 
 ```
-java -jar grabit-java.jar /s http://127.0.0.1 /p 8081 /u 'gudu|0123456789' /t mysql /f sqlfiles /r 1 
+php Grabit.php /s http://127.0.0.1 /p 8081 /u 'gudu|0123456789' /t mysql /f sqlfiles /r 1 
 ```
-
-After execution, view the `logs/graibt.log` file for the detailed information. 
-
-If the log prints a **submit the job to sqlflow successful**. 
-Then it is proved that the upload to SQLFlow has been successful. 
-
-Log in to the SQLFlow website to view the newly analyzed results. 
-In the `Job List`, you can view the analysis results of the currently submitted tasks.
 
 ### Parameters
 
