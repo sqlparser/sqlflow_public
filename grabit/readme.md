@@ -29,7 +29,7 @@ cd grabit-x.x.x
 ````
 chmod 777 *.sh
 ````
-After the installation is complete, you can execute the command `./start.sh /f conf-temp` or `start.bat /f conf-temp`. 
+After the installation is complete, you can execute the command `./start.sh /f conf-template/generic-config-template` or `start.bat /f conf-template/generic-config-template`. 
 You may check logs under the logs directory for more information.
 
 ### Running the grabit tool
@@ -97,13 +97,13 @@ note:
 e.g.: 
     1. sudo vi /etc/crontab 
     2. add the following statement to the last line
-        0 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh /f /home/ubuntu/grabit-2.4.6/conf-oracle /home/ubuntu/grabit-2.4.6/lib
+        0 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh /f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template /home/ubuntu/grabit-2.4.6/lib
         
         note: 
             0 */1   * * *: cron expression
             ubuntu: The name of the system user performing the task
             /home/ubuntu/grabit-2.4.6/start_job.sh: The path of the task script
-            /f /home/ubuntu/grabit-2.4.6/conf-oracle: config file path
+            /f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template: config file path
             /home/ubuntu/grabit-2.4.6/lib: lib directory absolute path
     3.sudo service cron restart    
 ```
@@ -269,13 +269,13 @@ The password of the database user.
 Name of the Oracle instance. They were used for Oracle only.
 
 - **extractedSchemas**
-This option is used for Oracle only. 
+This option is used for Oracle and Teradata only. 
 
 Comma separated list of schemas to extract, or blank to extract all schemas.
 `Schema1,Schema2,Schema3`
 
 - **excludedSchemas**
-This option is used for Oracle only. 
+This option is used for Oracle and Teradata only. 
 
 Comma separated list of schemas to exclude from processing.
 If left blank, no schemas will be excluded.
@@ -292,8 +292,23 @@ Or blank to extract all databases.
 - **excludedDbsSchemas**
 
 List of databases and schemas to exclude from extraction,
-separated by commas `database1/schema1,database2`
+separated by commas
+`database1/schema1,database2`
 
+
+- **extractedStoredProcedures**
+
+A list of stored procedures under the specified database and schema to extract, separated by
+commas, which are to be provided in the format database.schema.procedureName or schema.procedureName;
+Or blank to extract all databases, support expression, for example 'scott.vEmp*'.
+`database1.schema1.procedureName1,database2.schema2.procedureName2,schema3.procedureName3`
+
+- **extractedViews**
+
+A list of stored views under the specified database and schema to extract, separated by
+commas, which are to be provided in the format database.schema.viewName or schema.viewName.
+Or blank to extract all databases, support expression, for example 'scott.test*'.
+`database1.schema1.viewName1,database2.schema2.viewName2,schema3.viewName3`
 
 - **enableQueryHistory**
 
@@ -312,10 +327,12 @@ Sample configuration of a SQL Server database:
 "username":"sa",
 "password":"PASSWORD",
 "sid":"",
-"extractSchema":"AdventureWorksDW2019/dbo",
+"extractSchema":"",
 "excludedSchema":"",
-"extractedDbsSchemas":"",
+"extractedDbsSchemas":"AdventureWorksDW2019/dbo",
 "excludedDbsSchemas":"",
+"extractedStoredProcedures":"AdventureWorksDW2019.dbo.f_qry*",
+"extractedViews":"",
 "enableQueryHistory":false,
 "queryHistoryBlockOfTimeInMinutes":30
 ```
@@ -433,6 +450,8 @@ Sample configuration of a local directory path:
         "excludedSchema":"",	
         "extractedDbsSchemas":"",
         "excludedDbsSchemas":"",
+        "extractedStoredProcedures":"",
+        "extractedViews":"",
         "enableQueryHistory":false,
         "queryHistoryBlockOfTimeInMinutes":30
     },
