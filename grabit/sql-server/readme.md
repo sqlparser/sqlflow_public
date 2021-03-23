@@ -22,6 +22,10 @@ Click the `database` button.
 
 ![Grabit SQL Server UI 2 database](grabit-sql-server-2-database.png)
 
+- Set the database parameters, In this example, we only discover the data lineage in AdventureWorksDW2019/dbo schema.
+
+![Grabit SQL Server UI 3 database parameters](grabit-sql-server-3-database-parameters.png)
+
 ### Prerequisites
 - A Linux/mac/windows server with at least 8GB memory (ubuntu 20.04 is recommended).
 - Java 8
