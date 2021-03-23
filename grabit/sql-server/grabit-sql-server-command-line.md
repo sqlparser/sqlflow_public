@@ -15,8 +15,8 @@ to see how to setup the grabit tool.
 ### Discover data lineage in a SQL Server database
 - Modify the `conf-template\sqlserver-config-template` to meet your environment.
 
-Here is a sample config file: `sqlserver-config` that grab metadata from a local SQL Server database
-and send the metadata to the SQLFlow Cloud to discover the data lineage.
+Here is a sample config file: `sqlserver-config` that grabs metadata from a local SQL Server database
+and sends the metadata to the SQLFlow Cloud to discover the data lineage.
 ```json
 {
 	"databaseServer":{
@@ -52,15 +52,19 @@ and send the metadata to the SQLFlow Cloud to discover the data lineage.
 }
 ```
 
-- Run grabit command line tool 
+- Run grabit command-line tool 
 ```
 ./start.sh /f sqlserver-config
 ```
-You may find the grabit.log under logs directory.
+You may find the grabit.log under the logs directory.
 
 - Check out the diagram via this url: [https://sqlflow.gudusoft.com/#/job/latest](https://sqlflow.gudusoft.com/#/job/latest)
 
 - You may save the data lineage in JSON/CSV/GRAPHML format.
 
 The file will be saved under `data\datalineage` directory.
+
+- Run the grabit at a scheduled time
+
+[Please check the instructions here](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#run-the-grabit-at-a-scheduled-time)
 
