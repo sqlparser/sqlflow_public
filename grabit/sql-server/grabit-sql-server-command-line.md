@@ -20,7 +20,7 @@ and send the metadata to the SQLFlow Cloud to discover the data lineage.
 ```json
 {
 	"databaseServer":{
-		"hostname":"11.159.225.3",
+		"hostname":"sql server ip address",
 		"port":"1433",
 		"username":"sql server user name",
 		"password":"your password here",
@@ -56,3 +56,10 @@ and send the metadata to the SQLFlow Cloud to discover the data lineage.
 ```
 ./start.sh /f sqlserver-config
 ```
+You may find the grabit.log under logs directory.
+
+- Check out the diagram via this url: [https://sqlflow.gudusoft.com/#/job/latest](https://sqlflow.gudusoft.com/#/job/latest)
+
+- You may save the data lineage in JSON/CSV/GRAPHML
+The file will be saved under `data\datalineage` directory.
+
