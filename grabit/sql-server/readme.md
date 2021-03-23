@@ -1,4 +1,4 @@
-## Automated data lineage from SQL Server
+## Automated data lineage from SQL Server (GUI Mode)
 This article introduces how to discover the data lineage from SQL Server scripts or 
 from the SQL Server database and keep it updated automatically. 
 So the business users and developers can see the SQL Server data lineage graph instantly.
