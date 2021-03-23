@@ -45,7 +45,7 @@ The file will be saved under `data\datalineage` directory.
 This tutorial illustrates how to discover the data lineage of a SQL Server database in the grabit UI mode,
 If you like to automated the data lineage discovery, you may use the Grabit command line mode.
 
-- [Discover snowflake data lineage in command line mode](grabit-snowfalke-command-line.md)
+- [Discover snowflake data lineage in command line mode](grabit-snowflake-command-line.md)
 
 
 This tutorial illustrates how to discover the data lineage of a snowflake database by submitting the database
