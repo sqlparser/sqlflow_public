@@ -36,7 +36,7 @@ You may check logs under the logs directory for more information.
 
 The grabit tool can be running in both GUI mode and the command line mode.
 
-#### GUI mode
+#### GUI mode (only support Oracle JDK)
 
 - **mac & linux**
 ```
