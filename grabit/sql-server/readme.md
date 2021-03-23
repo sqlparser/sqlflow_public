@@ -4,14 +4,17 @@ from the SQL Server database and keep it updated automatically.
 So the business users and developers can see the SQL Server data lineage graph instantly.
 
 ### Software used in this solution
-- [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
+- [SQLFlow Cloud](https://sqlflow.gudusoft.com) Or [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
 - [Grabit tool](https://www.gudusoft.com/grabit/) for SQLFlow. It's free.
 
-You may [request a 30 days SQLFlow on-premise version](https://www.gudusoft.com/submit-a-ticket/)
-by filling out a form with the subject: request a 30 days SQLFlow on-premise version.
 
-Our team will contact you in 1-3 working days after receiving the message.
+### Install grabit tool
+After [download grabit tool](https://www.gudusoft.com/grabit/), please [check this article](https://github.com/sqlparser/sqlflow_public/tree/master/grabit) 
+to see how to setup the grabit tool.
 
+### Discover data lineage in a SQL Server database
+After [start up the grabit tool](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#running-the-grabit-tool), this is the first UI.
+![Grabit SQL Server UI 1](grabit-sql-server-1.png)
 
 ### Prerequisites
 - A Linux/mac/windows server with at least 8GB memory (ubuntu 20.04 is recommended).
@@ -24,9 +27,6 @@ Our team will contact you in 1-3 working days after receiving the message.
 - [Guilde for install on window](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow_on_windows.md)
 - [Guilde for install on mac](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow_on_mac.md)
 
-### Install grabit tool
-After [download grabit tool](https://www.gudusoft.com/grabit/), please [check this article](https://github.com/sqlparser/sqlflow_public/tree/master/grabit) 
-to see how to setup the grabit tool.
 
 ### 1. Discover data lineage in a SQL Server database
 This configuration enables the grabit tool to connect to a SQL Server,
