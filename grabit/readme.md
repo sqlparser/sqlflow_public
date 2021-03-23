@@ -266,7 +266,11 @@ The password of the database user.
 
 - **sid**
 
-Name of the Oracle instance. They were used for Oracle only.
+Name of the Oracle instance. 
+
+For other databases, it represents the database name and is optional.
+If it's specified, only metadata under this database will be extracted.
+
 
 - **extractedSchemas**
 This option is used for Oracle and Teradata only. 
