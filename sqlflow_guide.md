@@ -2,6 +2,12 @@
 
 ![1](https://user-images.githubusercontent.com/6293752/95873864-e2734400-0da2-11eb-85a9-e46ea43ff5c3.png)
 
+## video
+- [SQLFlow get started](doc/sqlflow_tutorial_101.gif)
+- [SQLFlow visual diagram](doc/sqlflow_tutorial_diagram.gif)
+- [SQLFlow settings](doc/sqlflow_tutorial_settings.gif)
+- [SQLFlow search and visualize](doc/sqlflow-tutorial-search-table-visualize.gif)
+
 ### 1. editor
 
 Enter the sql into the input box, and then choose the database accordingly from the dbvendor menu,
