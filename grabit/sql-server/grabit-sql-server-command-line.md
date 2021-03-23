@@ -59,15 +59,15 @@ It would help if you had [a premium account](https://github.com/sqlparser/sqlflo
 ```
 ./start.sh /f sqlserver-config
 ```
-You may find the grabit.log under the logs directory.
+	You may find the grabit.log under the logs directory.
 
 - Check out the diagram via this url: [https://sqlflow.gudusoft.com/#/job/latest](https://sqlflow.gudusoft.com/#/job/latest)
 
 - You may save the data lineage in JSON/CSV/GRAPHML format.
 
-The file will be saved under `data\datalineage` directory.
+	The file will be saved under `data\datalineage` directory.
 
 - Run the grabit at a scheduled time
 
-[Please check the instructions here](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#run-the-grabit-at-a-scheduled-time)
+	[Please check the instructions here](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#run-the-grabit-at-a-scheduled-time)
 
