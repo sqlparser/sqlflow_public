@@ -38,6 +38,21 @@ You need [a premium account](https://github.com/sqlparser/sqlflow_public/blob/ma
 
 ![Grabit SQL Server data lineage result](grabit-sql-server-6-data-lineage-result.png)
 
+
+### Further information
+This tutorial illustrates how to discover data lineage of a SQL Server database in the grabit UI mode,
+If you like to automated the data lineage discovery, you may use the Grabit command line mode.
+
+- [Grabit Command Line mode](grabit-sql-server-command-line.md)
+
+
+This tutorial illustrates how to discover data lineage of a SQL Server database by submit the database
+metadata to the SQLFlow Cloud version, You may set up the [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
+on your server to secure your information.
+
+For more options of the grabit tool, please check this page.
+- [Grabit tool readme](https://github.com/sqlparser/sqlflow_public/tree/master/grabit)
+
 ### Prerequisites
 - A Linux/mac/windows server with at least 8GB memory (ubuntu 20.04 is recommended).
 - Java 8
