@@ -21,7 +21,7 @@ Click the `database` button.
 
 ![Grabit snowflake UI 2 database](grabit-snowflake-2-database.png)
 
-- Set the database parameters. In this example, we only discover the data lineage in AdventureWorksDW2019/dbo schema.
+- Set the database parameters. In this example, we only discover the data lineage in DEMO_DB/PUBLIC schema.
 
 ![Grabit snowfalke UI 3 database parameters](grabit-snowflake-3-database-parameters.png)
 
