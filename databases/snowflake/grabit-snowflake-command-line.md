@@ -1,6 +1,6 @@
-## Automated data lineage from SQL Server (Command Line Mode)
-This article introduces how to discover the data lineage from SQL Server scripts or the SQL Server database and automatically update it. 
-So the business users and developers can see the SQL Server data lineage graph instantly.
+## Automated data lineage from snowflake (Command Line Mode)
+This article introduces how to discover the data lineage from snowflake scripts or the snowflake database and automatically update it. 
+So the business users and developers can see the snowflake data lineage graph instantly.
 
 ### Software used in this solution
 - [SQLFlow Cloud](https://sqlflow.gudusoft.com) Or [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
@@ -11,10 +11,10 @@ So the business users and developers can see the SQL Server data lineage graph i
 After [download grabit tool](https://www.gudusoft.com/grabit/), please [check this article](https://github.com/sqlparser/sqlflow_public/tree/master/grabit) 
 to see how to setup the grabit tool.
 
-### Discover data lineage in a SQL Server database
+### Discover data lineage in a snowflake database
 - Modify the `conf-template\sqlserver-config-template` to meet your environment.
 
-Here is a sample config file: `sqlserver-config` that grabs metadata from a local SQL Server database
+Here is a sample config file: `sqlserver-config` that grabs metadata from a local snowflake database
 and sends the metadata to the SQLFlow Cloud to discover the data lineage.
 
 It would help if you had [a premium account](https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow-userid-secret.md) to access the SQLFlow Cloud.
@@ -23,9 +23,9 @@ It would help if you had [a premium account](https://github.com/sqlparser/sqlflo
 ```json
 {
 	"databaseServer":{
-		"hostname":"sql server ip address",
+		"hostname":"snowflake ip address",
 		"port":"1433",
-		"username":"sql server user name",
+		"username":"snowflake user name",
 		"password":"your password here",
 		"sid":"",
 		"extractSchema":"",
