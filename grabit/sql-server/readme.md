@@ -26,6 +26,11 @@ Click the `database` button.
 
 ![Grabit SQL Server UI 3 database parameters](grabit-sql-server-3-database-parameters.png)
 
+- After grab the metadata from the SQL Server database, connect to the SQLFlow server. 
+You need [a premium account](https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow-userid-secret.md) in order to access the SQLFlow Cloud.
+
+![Grabit SQL Server SQLFlow](grabit-sql-server-4-sqlflow.png)
+
 ### Prerequisites
 - A Linux/mac/windows server with at least 8GB memory (ubuntu 20.04 is recommended).
 - Java 8
