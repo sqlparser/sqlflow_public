@@ -31,6 +31,13 @@ You need [a premium account](https://github.com/sqlparser/sqlflow_public/blob/ma
 
 ![Grabit SQL Server SQLFlow](grabit-sql-server-4-sqlflow.png)
 
+- Submit the database metadata to the SQLFlow server and get the data lineage 
+![Grabit SQL Server SQLFlow result](grabit-sql-server-5-sqlflow-result.png)
+
+- Check out the diagram via this url: [https://sqlflow.gudusoft.com/#/job/latest](https://sqlflow.gudusoft.com/#/job/latest)
+
+![Grabit SQL Server data lineage result](grabit-sql-server-6-data-lineage-result.png)
+
 ### Prerequisites
 - A Linux/mac/windows server with at least 8GB memory (ubuntu 20.04 is recommended).
 - Java 8
