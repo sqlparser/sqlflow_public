@@ -60,6 +60,7 @@ You may find the grabit.log under logs directory.
 
 - Check out the diagram via this url: [https://sqlflow.gudusoft.com/#/job/latest](https://sqlflow.gudusoft.com/#/job/latest)
 
-- You may save the data lineage in JSON/CSV/GRAPHML
+- You may save the data lineage in JSON/CSV/GRAPHML format.
+
 The file will be saved under `data\datalineage` directory.
 

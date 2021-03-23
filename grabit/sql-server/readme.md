@@ -38,7 +38,8 @@ You need [a premium account](https://github.com/sqlparser/sqlflow_public/blob/ma
 
 ![Grabit SQL Server data lineage result](grabit-sql-server-6-data-lineage-result.png)
 
-- You may save the data lineage in JSON/CSV/GRAPHML
+- You may save the data lineage in JSON/CSV/GRAPHML format
+
 The file will be saved under `data\datalineage` directory.
 
 ### Further information
