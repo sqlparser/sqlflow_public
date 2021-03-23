@@ -55,12 +55,10 @@ It would help if you had [a premium account](https://github.com/sqlparser/sqlflo
 }
 ```
 
-- Run grabit command-line tool 
+- Run grabit command-line tool, you may find the grabit.log under the logs directory.
 ```
 ./start.sh /f sqlserver-config
 ```
-
-	You may find the grabit.log under the logs directory.
 
 - Check out the diagram via this url: [https://sqlflow.gudusoft.com/#/job/latest](https://sqlflow.gudusoft.com/#/job/latest)
 
