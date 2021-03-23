@@ -6,6 +6,11 @@ The frontend and backend can be installed on the same server, or they can be ins
 ### Prerequisites
 - A linux server with at least 8GB memory (ubuntu 20.04 is recommended).
 - Java 8
+
+	CentOS
+	- [How To Install Nginx on CentOS](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7)
+	- [How To Install Java on CentOS ](https://www.digitalocean.com/community/tutorials/how-to-install-java-on-centos-and-fedora)
+
 - Nginx web server. 
 - Port needs to be opened. (80, 8761,8081,8083. Only 80 port need to be opened if you setup the nginx reverse proxy as mentioned in the below)
 
@@ -14,9 +19,9 @@ The frontend and backend can be installed on the same server, or they can be ins
 	sudo apt-get install nginx -y
 	sudo apt-get install default-jre -y	
 
-CentOS
-- [How To Install Nginx on CentOS](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7)
-- [How To Install Java on CentOS ](https://www.digitalocean.com/community/tutorials/how-to-install-java-on-centos-and-fedora)
+
+Mac
+- [Install SQLFlow on Mac](install_sqlflow_on_mac.md)
 
 Windows
 - [Install SQLFlow on Windows](install_sqlflow_on_windows.md)

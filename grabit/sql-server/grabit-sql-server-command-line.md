@@ -1,6 +1,5 @@
 ## Automated data lineage from SQL Server (Command Line Mode)
-This article introduces how to discover the data lineage from SQL Server scripts or 
-from the SQL Server database and keep it updated automatically. 
+This article introduces how to discover the data lineage from SQL Server scripts or the SQL Server database and automatically update it. 
 So the business users and developers can see the SQL Server data lineage graph instantly.
 
 ### Software used in this solution
@@ -17,6 +16,10 @@ to see how to setup the grabit tool.
 
 Here is a sample config file: `sqlserver-config` that grabs metadata from a local SQL Server database
 and sends the metadata to the SQLFlow Cloud to discover the data lineage.
+
+It would help if you had [a premium account](https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow-userid-secret.md) to access the SQLFlow Cloud.
+
+
 ```json
 {
 	"databaseServer":{
