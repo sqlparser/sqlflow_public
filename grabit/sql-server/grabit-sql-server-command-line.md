@@ -59,6 +59,7 @@ It would help if you had [a premium account](https://github.com/sqlparser/sqlflo
 ```
 ./start.sh /f sqlserver-config
 ```
+
 	You may find the grabit.log under the logs directory.
 
 - Check out the diagram via this url: [https://sqlflow.gudusoft.com/#/job/latest](https://sqlflow.gudusoft.com/#/job/latest)
