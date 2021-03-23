@@ -13,13 +13,14 @@ on e.SalesTerritoryKey = d.SalesTerritoryKey
 
 As you can see, due to the lack of metadata information, 
 column `SalesTerritoryRegion` is treated as a column of table: `dbo.DimEmployee`, which is not correct.
-
 This kind of error is due to the lack of the metadata from the database.
+
 ![data lineage without metadata](./sql-server-data-lineage-without-metadata.png "data lineage without metadata")
 
 
 Here is the schema information from the database, `dbo.DimSalesTerritory` includes the column `SalesTerritoryRegion`
-![sql-server-schema-column](sql-server-resolve-ambiguous-column-problem-schema.png)
+
+![sql-server-schema-column](sql-server-schema-info.png)
 
 In order to resolve ambiguous column problem, grabit tool will connect to the database to grab the metadata and 
 then resolve this problem.
