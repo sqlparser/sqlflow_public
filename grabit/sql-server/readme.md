@@ -15,9 +15,11 @@ to see how to setup the grabit tool.
 ### Discover data lineage in a SQL Server database
 - After [start up the grabit tool](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#running-the-grabit-tool), this is the first UI.
 Click the `database` button.
+
 ![Grabit SQL Server UI 1](grabit-sql-server-1.png)
 
 -  Select `sql server` in the list
+
 ![Grabit SQL Server UI 2 database](grabit-sql-server-2-database.png)
 
 ### Prerequisites
