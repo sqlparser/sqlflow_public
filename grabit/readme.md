@@ -281,7 +281,7 @@ Comma separated list of schemas to extract, or blank to extract all schemas.
 - **excludedSchemas**
 This option is used for Oracle and Teradata only. 
 
-Comma separated list of schemas to exclude from processing.
+This parameters works under the resultset filtered by `extractedSchemas`. Comma separated list of schemas to exclude from processing.
 If left blank, no schemas will be excluded.
 `Schema1,Schema2`
 
@@ -295,8 +295,8 @@ Or blank to extract all databases.
 
 - **excludedDbsSchemas**
 
-List of databases and schemas to exclude from extraction,
-separated by commas
+This parameters works under the resultset filtered by `extractedDbsSchemas`.
+List of databases and schemas to exclude from extraction, separated by commas
 `database1/schema1,database2`
 
 
