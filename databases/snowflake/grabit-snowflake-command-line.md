@@ -12,9 +12,9 @@ After [download grabit tool](https://www.gudusoft.com/grabit/), please [check th
 to see how to setup the grabit tool.
 
 ### Discover data lineage in a snowflake database
-- Modify the `conf-template\sqlserver-config-template` to meet your environment.
+- Modify the `conf-template\snowflake-config-template` to meet your environment.
 
-Here is a sample config file: `sqlserver-config` that grabs metadata from a local snowflake database
+Here is a sample config file: `snowflake-config` that grabs metadata from the remote snowflake database
 and sends the metadata to the SQLFlow Cloud to discover the data lineage.
 
 It would help if you had [a premium account](https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow-userid-secret.md) to access the SQLFlow Cloud.
@@ -22,16 +22,19 @@ It would help if you had [a premium account](https://github.com/sqlparser/sqlflo
 
 ```json
 {
+	"databaseType":"snowflake",
+	"optionType":1,
+	"resultType":1,
 	"databaseServer":{
 		"hostname":"snowflake ip address",
-		"port":"1433",
+		"port":"443",
 		"username":"snowflake user name",
 		"password":"your password here",
 		"sid":"",
 		"extractSchema":"",
 		"excludedSchema":"",
-		"extractedDbsSchemas":"",
-        "excludedDbsSchemas":"master/dbo,master/sys,master/INFORMAITON_SCHEMA,msdb/dbo,tempdb/dbo,tempdb/sys,model/dbo",
+		"extractedDbsSchemas":"DEMO_DB/PUBLIC",
+        "excludedDbsSchemas":"*/INFORMAITON_SCHEMA",
         "extractedStoredProcedures":"",
         "extractedViews":"",
 		"enableQueryHistory":false,
@@ -48,16 +51,13 @@ It would help if you had [a premium account](https://github.com/sqlparser/sqlflo
         "username":"",
         "password":""
 	},
-	"optionType":1,
-	"resultType":1,
-	"databaseType":"sqlserver",
 	"isUploadNeo4j":0
 }
 ```
 
 - Run grabit command-line tool, you may find the grabit.log under the logs directory.
 ```
-./start.sh /f sqlserver-config
+./start.sh /f snowflake-config
 ```
 
 - Check out the diagram via this url: [https://sqlflow.gudusoft.com/#/job/latest](https://sqlflow.gudusoft.com/#/job/latest)
