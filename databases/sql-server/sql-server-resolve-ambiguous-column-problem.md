@@ -18,6 +18,9 @@ This kind of error is due to the lack of the metadata from the database.
 ![data lineage without metadata](./sql-server-data-lineage-without-metadata.png "data lineage without metadata")
 
 
+This is the data lineage with support of the metadata from the database.
+![data lineage with metadata](sql-server-data-lineage-with-metadata.png "data lineage with metadata")
+
 Here is the schema information from the database, `dbo.DimSalesTerritory` includes the column `SalesTerritoryRegion`
 
 ![sql-server-schema-column](sql-server-schema-info.png)
@@ -67,6 +70,4 @@ Here is the configuration used by the grabit tool:
 }
 ```
 
-Now, you can get the full data lineage correctly without any ambiguous
-![data lineage with metadata](sql-server-data-lineage-with-metadata.png "data lineage with metadata")
 
