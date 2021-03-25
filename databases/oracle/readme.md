@@ -21,7 +21,7 @@ Click the `database` button.
 
 ![Grabit Oracle UI 2 database](grabit-oracle-2-database.png)
 
-- Set the database parameters. In this example, we only discover the data lineage in HR database, and SYS database the excluded.
+- Set the database parameters. In this example, we only discover the data lineage in HR schema, and SYS schema the excluded.
 
 ![Grabit Oracle UI 3 database parameters](grabit-oracle-3-database-parameters.png)
 
