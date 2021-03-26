@@ -1,10 +1,9 @@
 ## 一、SQLFlow是什么
 
 数据库中视图(View)的数据来自表(Table)或其他视图，视图中字段(Column)的数据可能来自多个表中多个字段的聚集(aggregation)。
-表中的数据可能通过ETL从外部系统中导入。这种从数据的源头经过各个处理环节，到达数据终点的数据链路关系
-称为数据血缘关系(data lineage)。
+表中的数据可能通过ETL从外部系统中导入。这种从数据的源头经过各个处理环节，到达数据终点的数据链路关系称为数据血缘关系([data lineage](https://en.wikipedia.org/wiki/Data_lineage))。
 
-[SQLFlow](https://sqlflow.gudusoft.com/) 通过分析各种数据库对象的定义(DDL)、ETL/ELT中使用的存储过程(Proceudre,Function)、
+[SQLFlow](https://sqlflow.gudusoft.com/) 通过分析各种数据库对象的定义(DDL)、DML 语句、ETL/ELT中使用的存储过程(Proceudre,Function)、
 触发器(Trigger)和其他 SQL 脚本，给出完整的数据血缘关系。
 
 
@@ -34,7 +33,7 @@ SQLFlow 会帮助你回答这些问题，以可视化的图形方式把这些关
 
 ## 四、SQLFlow的使用
 
-1. 通过浏览器访问[SQLFlow的前端](https://gudusoft.com/sqlflow/#/)。
+1. 通过浏览器访问[SQLFlow的前端](https://sqlflow.gudusoft.com/)。
 2. 在浏览器中上传SQL文本或文件。
 3. 点击分析按钮后，查看数据血缘关系的可视化结果。
 4. 在浏览器中，以交互形式，查看特定表或视图的完整血缘关系图。
