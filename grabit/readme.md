@@ -290,14 +290,16 @@ If left blank, no schemas will be excluded.
 List of databases and schemas to extract, separated by
 commas, which are to be provided in the format database/schema;
 Or blank to extract all databases.
-`database1/schema1,database2/schema2,database3`
+`database1/schema1,database2/schema2,database3` or `database1.schema1,database2.schema2,database3`
+When parameter `database` is filled in, this parameter is considered a schema.
 
 
 - **excludedDbsSchemas**
 
 This parameters works under the resultset filtered by `extractedDbsSchemas`.
 List of databases and schemas to exclude from extraction, separated by commas
-`database1/schema1,database2`
+`database1/schema1,database2` or `database1.schema1,database2` 
+When parameter `database` is filled in, this parameter is considered a schema.
 
 
 - **extractedStoredProcedures**
@@ -305,14 +307,14 @@ List of databases and schemas to exclude from extraction, separated by commas
 A list of stored procedures under the specified database and schema to extract, separated by
 commas, which are to be provided in the format database.schema.procedureName or schema.procedureName;
 Or blank to extract all databases, support expression, for example 'scott.vEmp*'.
-`database1.schema1.procedureName1,database2.schema2.procedureName2,schema3.procedureName3`
+`database1.schema1.procedureName1,database2.schema2.procedureName2,schema3.procedureName3` or `database1/schema1/procedureName1,schema3/procedureName3`
 
 - **extractedViews**
 
 A list of stored views under the specified database and schema to extract, separated by
 commas, which are to be provided in the format database.schema.viewName or schema.viewName.
 Or blank to extract all databases, support expression, for example 'scott.test*'.
-`database1.schema1.viewName1,database2.schema2.viewName2,schema3.viewName3`
+`database1.schema1.viewName1,database2.schema2.viewName2,schema3.viewName3` or `database1/schema1/viewName1,schema3/viewName3`
 
 - **enableQueryHistory**
 
