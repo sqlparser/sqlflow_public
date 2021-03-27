@@ -1,6 +1,6 @@
-## Automated data lineage from Oracle (Command Line Mode)
-This article introduces how to discover the data lineage from Oracle scripts or the Oracle database and automatically update it. 
-So the business users and developers can see the Oracle data lineage graph instantly.
+## Automated data lineage from PostgreSQL (Command Line Mode)
+This article introduces how to discover the data lineage from PostgreSQL scripts or the PostgreSQL database and automatically update it. 
+So the business users and developers can see the MySPostgreSQLQL data lineage graph instantly.
 
 ### Software used in this solution
 - [SQLFlow Cloud](https://sqlflow.gudusoft.com) Or [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
@@ -11,10 +11,10 @@ So the business users and developers can see the Oracle data lineage graph insta
 After [download grabit tool](https://www.gudusoft.com/grabit/), please [check this article](https://github.com/sqlparser/sqlflow_public/tree/master/grabit) 
 to see how to setup the grabit tool.
 
-### Discover data lineage in a Oracle database
-- Modify the `conf-template\oracle-config-template` to meet your environment.
+### Discover data lineage in a PostgreSQL database
+- Modify the `conf-template\postgresql-config-template` to meet your environment.
 
-Here is a sample config file: `oracle-config` that grabs metadata from a local Oracle database
+Here is a sample config file: `postgresql-config` that grabs metadata from a local PostgreSQL database
 and sends the metadata to the SQLFlow Cloud to discover the data lineage.
 
 It would help if you had [a premium account](https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow-userid-secret.md) to access the SQLFlow Cloud.
@@ -23,13 +23,13 @@ It would help if you had [a premium account](https://github.com/sqlparser/sqlflo
 ```json
 {
     "databaseServer":{
-        "hostname":"oracle ip address",
-        "port":"1521",
-        "username":"oracle user name",
+        "hostname":"postgresql ip address",
+        "port":"5432",
+        "username":"postgresql user name",
         "password":"your password here",
-        "database":"oracle database",
-        "extractSchema":"",
-        "excludedSchema":"SYS,SYSTEM,OUTLN,MGMT_VIEW,FLOWS_FILES,MDSYS,ORDSYS,EXFSYS,DBSNMP,WMSYS,APPQOSSYS,APEX_030200,OWBSYS_AUDIT,ORDDATA,CTXSYS,ANONYMOUS,SYSMAN,XDB,ORDPLUGINS,OWBSYS,SI_INFORMTN_SCHEMA,OLAPSYS,SCOTT,ORACLE_OCM,MDDATA,DIP,APEX_PUBLIC_USER,SPATIAL_CSW_ADMIN_USR,SPATIAL_WFS_ADMIN_USR",
+        "database":"postgresql database",
+        "extractedDbsSchemas":"",
+        "excludedDbsSchemas":"information_schema,pg_catalog,public",       
         "extractedStoredProcedures":"",
         "extractedViews":"",
         "enableQueryHistory":false,
@@ -48,14 +48,14 @@ It would help if you had [a premium account](https://github.com/sqlparser/sqlflo
     },
     "optionType":1,
     "resultType":1,
-    "databaseType":"oracle",
+    "databaseType":"postgresql",
     "isUploadNeo4j":0
 }
 ```
 
 - Run grabit command-line tool, you may find the grabit.log under the logs directory.
 ```
-./start.sh /f oracle-config
+./start.sh /f postgresql-config
 ```
 
 - Check out the diagram via this url: [https://sqlflow.gudusoft.com/#/job/latest](https://sqlflow.gudusoft.com/#/job/latest)
