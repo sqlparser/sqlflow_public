@@ -11,7 +11,7 @@ So the business users and developers can see the Oracle data lineage graph insta
 After [download grabit tool](https://www.gudusoft.com/grabit/), please [check this article](https://github.com/sqlparser/sqlflow_public/tree/master/grabit) 
 to see how to setup the grabit tool.
 
-### Discover data lineage in a SQL Server database
+### Discover data lineage in a Oracle database
 - After [start up the grabit tool](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#running-the-grabit-tool), this is the first UI.
 Click the `database` button.
 
