@@ -264,7 +264,7 @@ The database user used to login to the database.
 
 The password of the database user.
 
-- **sid**
+- **database**
 
 Name of the Oracle instance. 
 
@@ -330,7 +330,7 @@ Sample configuration of a SQL Server database:
 "port":"1433",
 "username":"sa",
 "password":"PASSWORD",
-"sid":"",
+"database":"",
 "extractSchema":"",
 "excludedSchema":"",
 "extractedDbsSchemas":"AdventureWorksDW2019/dbo",
@@ -449,7 +449,7 @@ Sample configuration of a local directory path:
         "port":"1433",
         "username":"sa",
         "password":"PASSWORD",
-        "sid":"",
+        "database":"",
         "extractSchema":"AdventureWorksDW2019/dbo",
         "excludedSchema":"",	
         "extractedDbsSchemas":"",
