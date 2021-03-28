@@ -233,7 +233,7 @@ This parameter specifies the database dialect of the SQL scripts that the SQLFlo
 ```txt
 	access,bigquery,couchbase,dax,db2,greenplum,hana,hive,impala,informix,mdx,mssql,
 	sqlserver,mysql,netezza,odbc,openedge,oracle,postgresql,postgres,redshift,snowflake,
-	sybase,teradata,soql,vertica
+	sybase,teradata,soql,vertica,azure
 ```
 
 This sample configuration means the SQL dialect is SQL Server database.
