@@ -64,7 +64,7 @@ eg:
 
 - **windows**
 ```
-./start.bat /f <path_to_config_file>  
+start.bat /f <path_to_config_file>  
 
 note: 
     path_to_config_file: the full path to the config file
@@ -81,6 +81,33 @@ Then it is proved that the upload to SQLFlow has been successful.
 Log in to the SQLFlow website to view the newly analyzed results. 
 In the `Job List`, you can view the analysis results of the currently submitted tasks.
 
+#### Export metadata in json to sql files
+
+Export DDL statements from the Queries object into an SQL file.
+
+- **mac & linux**
+```
+./start.sh -e path_to_json_file [target_dir]
+
+note: 
+    path_to_config_file: the full path to the metedata json file
+    target_dir: the path to the generated SQL file, optional
+
+eg: 
+    ./start.sh -e test.json /root/sqlfiles
+```
+
+- **windows**
+```
+start.bat -e path_to_json_file [target_dir]
+
+note: 
+    path_to_config_file: the full path to the metedata json file
+    target_dir: the path to the generated SQL file, optional
+
+eg: 
+    start.bat -e test.json /root/sqlfiles
+```
 
 #### Run the grabit at a scheduled time
  
