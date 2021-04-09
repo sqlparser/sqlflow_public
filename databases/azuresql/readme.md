@@ -1,6 +1,6 @@
 ## Automated data lineage from Azure (GUI Mode)
 This article introduces how to discover the data lineage from azure scripts or the azure database and automatically update it. 
-So the business users and developers can see the SQL Server data lineage graph instantly.
+So the business users and developers can see the Azure data lineage graph instantly.
 
 ### Software used in this solution
 - [SQLFlow Cloud](https://sqlflow.gudusoft.com) Or [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
