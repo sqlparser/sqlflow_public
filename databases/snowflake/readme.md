@@ -42,7 +42,7 @@ It would help if you had [a premium account](https://github.com/sqlparser/sqlflo
 The file will be saved under `data\datalineage` directory.
 
 ### Further information
-This tutorial illustrates how to discover the data lineage of a SQL Server database in the grabit UI mode,
+This tutorial illustrates how to discover the data lineage of a Snowflake database in the grabit UI mode,
 If you like to automated the data lineage discovery, you may use the Grabit command line mode.
 
 - [Discover snowflake data lineage in command line mode](grabit-snowflake-command-line.md)
