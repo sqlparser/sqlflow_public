@@ -31,8 +31,6 @@ It would help if you had [a premium account](https://github.com/sqlparser/sqlflo
         "username":"netezza user name",
         "password":"your password here",
         "database":"MY",
-        "extractSchema":"",
-        "excludedSchema":"",
         "extractedDbsSchemas":"",
         "excludedDbsSchemas":"",
         "extractedStoredProcedures":"",
