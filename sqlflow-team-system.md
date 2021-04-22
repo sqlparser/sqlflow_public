@@ -19,11 +19,13 @@ A team can includes more than one team manager.
 
 ### Team manager
 
-Team manager can add member to the team. They can change the team name.
-After login:
+Team manager can add member to the team. They can change the team name. 
+After login, click the menu icon at the right top:
+
 ![sqlflow-team-menu](/images/sqlflow-team-menu.png)
 
 Add memeber:
+
 ![sqlflow-team-manager](/images/sqlflow-team-manager.png)
 
 ### Team quote
