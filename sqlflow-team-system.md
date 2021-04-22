@@ -7,7 +7,7 @@ All members who join the team will be automatically upgraded to the premium acco
 so that able to use all features of the SQLFlow.
 
 Members join the team don't need any additional license to use the SQLFlow,
-but they need to sign up first to log in to the SQLFlow.
+but they need to [sign up](https://sqlflow.gudusoft.com) first to log in to the SQLFlow.
 
 ### Create a team
 When you purchase a team version license of SQLFlow. A SQLFlow team will be created
@@ -20,7 +20,7 @@ A team can includes more than one team manager.
 ### Team manager
 
 Team manager can add member to the team. They can change the team name. 
-After login, click the menu icon at the right top:
+After [login the SQLFlow](https://sqlflow.gudusoft.com), click the menu icon at the right top:
 
 ![sqlflow-team-menu](/images/sqlflow-team-menu.png)
 
