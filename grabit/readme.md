@@ -352,6 +352,10 @@ Fetch SQL queries from the query history if set to `true` default is false.
 Time interval to extract SQL query from query history if `enableQueryHistory=true`, 
 default is `30` minutes.
 
+- **snowflakeDefaultRole**
+
+This value represents the role of the snowflake database.
+
 
 Sample configuration of a SQL Server database:
 ```json
@@ -367,7 +371,8 @@ Sample configuration of a SQL Server database:
 "extractedStoredProcedures":"AdventureWorksDW2019.dbo.f_qry*",
 "extractedViews":"",
 "enableQueryHistory":false,
-"queryHistoryBlockOfTimeInMinutes":30
+"queryHistoryBlockOfTimeInMinutes":30,
+"snowflakeDefaultRole":""
 ```
 
 #### 6. githubRepo & bitbucketRepo
@@ -486,7 +491,8 @@ Sample configuration of a local directory path:
         "extractedStoredProcedures":"",
         "extractedViews":"",
         "enableQueryHistory":false,
-        "queryHistoryBlockOfTimeInMinutes":30
+        "queryHistoryBlockOfTimeInMinutes":30,
+        "snowflakeDefaultRole":""
     },
     "githubRepo":{
         "url":"https://github.com/sqlparser/snowflake-data-lineage",
