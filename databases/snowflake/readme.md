@@ -25,6 +25,22 @@ Click the `database` button.
 
 ![Grabit snowfalke UI 3 database parameters](grabit-snowflake-3-database-parameters.png)
 
+- If we only want to get all the schema data in the specified database, we can do this by using the following configuration:
+  
+    If you only want to retrieve all the data under the currently connected database, the `extractedDbsSchemas` parameter needs to specify all the schemas under the current database.In this example
+    ````json
+    "database":"db1"
+    "extractedDbsSchemas":"shcema1,shcema2,shcema3...",
+    "excludedDbsSchemas":""
+    ````
+
+    If you just want to get all the data under other databases, the `extractedDbsSchemas` parameter needs to specify the database as well as all the schemas.In this example
+    ````json
+    "database":"db1"
+    "extractedDbsSchemas":"db2/shcema1,db2/shcema2...",
+    "excludedDbsSchemas":""
+    ````
+
 - After grabbing the metadata from the snowflake database, connect to the SQLFlow server. 
 It would help if you had [a premium account](https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow-userid-secret.md) to access the SQLFlow Cloud.
 
