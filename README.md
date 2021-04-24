@@ -63,5 +63,8 @@ and what other data items are derived from this data value.
 ### SQLFlow architecture
 - [Architecture document](sqlflow_architecture.md)
 
-### User manual
+### User manual and FAQ
 - [User guide](sqlflow_guide.md)
+- [SQLFlow FAQ][sqlflow_faq.md]
+
+
