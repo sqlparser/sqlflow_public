@@ -65,6 +65,6 @@ and what other data items are derived from this data value.
 
 ### User manual and FAQ
 - [User guide](sqlflow_guide.md)
-- [SQLFlow FAQ][sqlflow_faq.md]
+- [SQLFlow FAQ](sqlflow_faq.md)
 
 
