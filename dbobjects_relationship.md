@@ -218,6 +218,28 @@ file (uri='gs://bucket/path1.csv')  -> fdd ->  dataset.CsvTable
 file (uri='gs://bucket/path2.csv')  -> fdd ->  dataset.CsvTable
 ```
 
+#### 7. build data lineage for the foreign key in the create table statement.
+```sql
+CREATE TABLE masteTable
+(
+	masterColumn         varchar(3)  Primary Key,
+);
+
+
+CREATE TABLE foreignTable
+(
+	foreignColumn1            varchar(3)  NOT NULL ,
+	foreignColumn2            varchar(3)  NOT NULL 
+	FOREIGN KEY (foreignColumn1) REFERENCES masteTable(masterColumn),
+	FOREIGN KEY (foreignColumn2) REFERENCES masteTable(masterColumn)
+)
+```
+
+The data flow is:
+```
+masteTable.masterColumn -> fdd -> foreignTable.foreignColumn1
+masteTable.masterColumn -> fdd -> foreignTable.foreignColumn2
+```
 
 ### The meaning of the letter in fdd, fdr
 
