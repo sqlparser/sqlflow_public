@@ -26,8 +26,7 @@ Click the `database` button.
 ![Grabit snowfalke UI 3 database parameters](grabit-snowflake-3-database-parameters.png)
 
 - If we only want to get all the schema data in the specified database, we can do this by using the following configuration:
-  
-    If you just want to get all the data in the specified database,you can configure it as follows.
+
     ````json
     "extractedDbsSchemas":"db/*"
     ````
