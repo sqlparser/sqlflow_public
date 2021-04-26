@@ -27,11 +27,11 @@ Click the `database` button.
 
 - note
 
-**The `Database` parameter is must specified.**
+1.The `Database` parameter is must specified.
 
-**When the `ExtractedDBSSchemas` and `ExcludedDBSSchemas` parameters are null, all data for all databases is retrieved by default**
+2.When the `ExtractedDBSSchemas` and `ExcludedDBSSchemas` parameters are null, all data for all databases is retrieved by default.
 
-**If you just want to get all the data in the specified database, you can use the following configuration to achieve this: `ExtractedDBSSchemas: db/*`**
+3.If you just want to get all the data in the specified database, you can use the following configuration to achieve this: `ExtractedDBSSchemas: db/*`.
 
 
 - After grabbing the metadata from the snowflake database, connect to the SQLFlow server. 
