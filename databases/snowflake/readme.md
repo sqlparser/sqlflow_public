@@ -25,11 +25,13 @@ Click the `database` button.
 
 ![Grabit snowfalke UI 3 database parameters](grabit-snowflake-3-database-parameters.png)
 
-- If we only want to get all the schema data in the specified database, we can do this by using the following configuration:
+- note
 
-    ````json
-    "extractedDbsSchemas":"db/*"
-    ````
+**The `Database` parameter is must specified.**
+
+**When the `ExtractedDBSSchemas` and `ExcludedDBSSchemas` parameters are null, all data for all databases is retrieved by default**
+
+**If you just want to get all the data in the specified database, you can use the following configuration to achieve this: `ExtractedDBSSchemas: db/*`**
 
 
 - After grabbing the metadata from the snowflake database, connect to the SQLFlow server. 
