@@ -46,8 +46,6 @@ Here is the configuration used by the grabit tool:
 		"username":"sa",
 		"password":"your password here",
 		"sid":"",
-		"extractSchema":"",
-		"excludedSchema":"",
 		"extractedDbsSchemas":"AdventureWorksDW2019/dbo",
         "excludedDbsSchemas":"master/dbo,master/sys,master/INFORMAITON_SCHEMA,msdb/dbo,tempdb/dbo,tempdb/sys,model/dbo",
         "extractedStoredProcedures":"",
