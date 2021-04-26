@@ -25,6 +25,14 @@ Click the `database` button.
 
 ![Grabit PostgreSQL UI 3 database parameters](grabit-postgresql-3-database-parameters.png)
 
+- note
+
+1.The `Database` parameter is must specified.
+
+2.When the `ExtractedDBSSchemas` and `ExcludedDBSSchemas` parameters are null, all data for the currently connected database is retrieved by default.
+
+3.If you just want to get all the data in the specified database, you can use the following configuration to achieve this: `ExtractedDBSSchemas: db/*`.
+
 - After grabbing the metadata from the PostgreSQL database, connect to the SQLFlow server. 
 It would help if you had [a premium account](https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow-userid-secret.md) to access the SQLFlow Cloud.
 
