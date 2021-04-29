@@ -3,10 +3,10 @@
 Sometimes, it's not easy to find the data flow of a specific table or column
 in a giant map of the enterprise's data lineage.
 
-Since the SQLFlow frontend version 2.1.9, it is never so easy to find 
+Since [the SQLFlow frontend version 2.1.9](https://sqlflow.gudusoft.com), it is never so easy to find 
 the table and column in the schema explorer.
 
-Just enter the name of a table or column. The SQLFlow will highlight the founded 
+Just enter the name of a table or column. [The SQLFlow](https://sqlflow.gudusoft.com) will highlight the founded 
 table or column automatically in the schema explorer, then select and visualize 
 the table or column with a right mouse click.
 SQLFlow will display the data lineage of the selected table or column instantly.
