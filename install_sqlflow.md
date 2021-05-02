@@ -140,11 +140,11 @@ java -server -Xms%heapsize% -Xmx%heapsize% -jar ..\lib\gspLive.jar %cros%
 ```
 
 We can modify the service port via two ways:
-* Application args
+* Application args (--server.port)
 ```sh
 java -server -Xms%heapsize% -Xmx%heapsize% -jar ..\lib\gspLive.jar --server.port=8081 %cros% 
 ```
-* JVM args (-Dxxx)
+* JVM args (-Dserver.port)
 ```sh
 java -server -Xms%heapsize% -Xmx%heapsize% -Dserver.port=8081 -jar ..\lib\gspLive.jar %cros% 
 ```
