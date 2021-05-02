@@ -133,6 +133,22 @@ ubuntu   11114     1  0 Nov02 ?        00:05:17 java -server -jar gspLive.jar
 | gspLive.jar    | 8081 |
 | sqlservice.jar | 8083 |
 
+#### Modify java service port
+In the bash files, `sqlservice.sh, gspLive.sh, eureka.sh` (or `sqlservice.bat, gspLive.bat, eureka.bat`), the services are started by the java command like this:
+```sh
+java -server -Xms%heapsize% -Xmx%heapsize% -jar ..\lib\gspLive.jar %cros% 
+```
+
+We can modify the service port via two ways:
+* Application args
+```sh
+java -server -Xms%heapsize% -Xmx%heapsize% -jar ..\lib\gspLive.jar --server.port=8081 %cros% 
+```
+* JVM args
+```sh
+java -server -Xms%heapsize% -Xmx%heapsize% -Dserver.port=8081 -jar ..\lib\gspLive.jar %cros% 
+```
+
 ### Nginx Reverse Proxy
 
 If we set the reverse proxy path of gspLive restful service to /api
