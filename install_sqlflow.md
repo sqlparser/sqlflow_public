@@ -187,6 +187,7 @@ server {
 	}
 }
 ```
+note that `8081` in `proxy_pass http://127.0.0.1:8081/` should be the same as gspLive.jar's port.
 
 **2. modify frontend configuration file config.private.json**
 
