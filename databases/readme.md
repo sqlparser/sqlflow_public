@@ -76,3 +76,7 @@ Fetch SQL queries from the query history if set to `yes` default is no, SQL stat
 `
 note: currently only supported Snowflake,sqlserver
 `
+
+- **snowflakeDefaultRole**
+
+This value represents the role of the snowflake database.
