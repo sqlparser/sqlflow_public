@@ -73,6 +73,22 @@ the color of `DATAMART、DBO` is orange, means the returned data linege doesn't 
 the color of `LOAN` is greeen, means all data lineage informaiton is returned.
 node in gray means it's not visualized yet.
 
+#### seach schema
+
+your can search `database`,`schema`,`table`,`schema` in the schema tree.
+
+![动画](https://user-images.githubusercontent.com/6293752/116866667-62c59d80-ac3e-11eb-9f5f-c1e35df2f173.gif)
+
+#### seach schema path
+
+you can search `database.schema.table.column ` ,`schema.table`,`table.column` or someting else like it. When you type `dot`, the schema tree will expand the next level.
+
+![2](https://user-images.githubusercontent.com/6293752/116867914-69551480-ac40-11eb-9434-a581de844911.gif)
+
+#### collapse all
+
+![3](https://user-images.githubusercontent.com/6293752/116868278-14fe6480-ac41-11eb-9c9e-c7539a5b4b62.gif)
+
 ### 3. setting
 
 ![image](https://user-images.githubusercontent.com/6293752/95977385-6da81480-0e4b-11eb-8ec0-cc0de5466701.png)
