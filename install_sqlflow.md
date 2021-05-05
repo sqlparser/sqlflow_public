@@ -214,6 +214,9 @@ sudo nginx -s reload
 open http://yourdomain.com/ to see the SQLFlow.
 
 open http://yourdomain.com/api/gspLive_backend/doc.html?lang=en to see the Restful API documention.
+OR 
+
+open http://yourdomain.com:8081/gspLive_backend/doc.html?lang=en to see the Restful API documention.
 
 ### Sqlflow client api call
 
