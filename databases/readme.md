@@ -25,13 +25,13 @@ The password of the database user.
 
 - **database**
 
-Name of the Oracle instance. 
+The name of the database instance to which it is connected. 
 
-For other databases, it represents the database name and is optional.
-If it's specified, only metadata under this database will be extracted.
+For azure,greenplum,netezza,oracle,postgresql,redshift,teradata databases, it represents the database name and is required, For other databases, it is optional.
 
 `
-note: This parameter is required when the database to which you are connecting is azure,greenplum,netezza,oracle,postgresql,redshift,teradata.
+note: 
+If this parameter is specified and the database to which it is connected is Azure, Greenplum, PostgreSQL, or Redshift, then only metadata under that library is extracted.
 `
 
 - **extractedDbsSchemas**
