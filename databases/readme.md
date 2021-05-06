@@ -119,5 +119,5 @@ extractedViews: "database.scott"
 Fetch SQL queries from the query history if set to `yes` default is no, SQL statement that can retrieve history execution from the database to which it is connected. You can specify the time for history execution. The default is 30 minutes.
 
 `
-note: Currently only supported Snowflake,sqlserver
+note: Currently only supported Snowflake,Sqlserver
 `
