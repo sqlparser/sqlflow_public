@@ -392,18 +392,21 @@ or
 extractedViews: "database.scott"
 ````
 
-- **enableQueryHistory**
-
-Fetch SQL queries from the query history if set to `true` default is false.
-
 - **queryHistoryBlockOfTimeInMinutes**
 
-Time interval to extract SQL query from query history if `enableQueryHistory=true`, 
-default is `30` minutes.
+When `enableQuery History:true`, the interval at which the SQL query was extracted in the query History,default is `30` minutes.
+
+- **queryHistorySqlType**
+
+When `enableQuery History:true`, the DML type of SQL is extracted from the query History.
+When empty, all types are extracted, and when multiple types are specified, a comma separates them, such as `SELECT,UPDATE,MERGE`.
+Currently only the snowflake database supports this parameter.
 
 - **snowflakeDefaultRole**
 
 This value represents the role of the snowflake database.
+
+
 
 
 Sample configuration of a SQL Server database:
@@ -419,7 +422,8 @@ Sample configuration of a SQL Server database:
 "extractedViews":"",
 "enableQueryHistory":false,
 "queryHistoryBlockOfTimeInMinutes":30,
-"snowflakeDefaultRole":""
+"snowflakeDefaultRole":"",
+"queryHistorySqlType":""
 ```
 
 #### 6. githubRepo & bitbucketRepo
@@ -537,7 +541,8 @@ Sample configuration of a local directory path:
         "extractedViews":"",
         "enableQueryHistory":false,
         "queryHistoryBlockOfTimeInMinutes":30,
-        "snowflakeDefaultRole":""
+        "snowflakeDefaultRole":"",
+        "queryHistorySqlType":""
     },
     "githubRepo":{
         "url":"https://github.com/sqlparser/snowflake-data-lineage",
