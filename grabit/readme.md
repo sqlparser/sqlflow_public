@@ -392,13 +392,17 @@ or
 extractedViews: "database.scott"
 ````
 
+- **enableQueryHistory**
+
+Fetch SQL queries from the query history if set to `true` default is false.
+
 - **queryHistoryBlockOfTimeInMinutes**
 
-When `enableQuery History:true`, the interval at which the SQL query was extracted in the query History,default is `30` minutes.
+When `enableQueryHistory:true`, the interval at which the SQL query was extracted in the query History,default is `30` minutes.
 
 - **queryHistorySqlType**
 
-When `enableQuery History:true`, the DML type of SQL is extracted from the query History.
+When `enableQueryHistory:true`, the DML type of SQL is extracted from the query History.
 When empty, all types are extracted, and when multiple types are specified, a comma separates them, such as `SELECT,UPDATE,MERGE`.
 Currently only the snowflake database supports this parameter.
 
