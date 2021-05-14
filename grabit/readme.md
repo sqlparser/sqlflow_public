@@ -9,6 +9,7 @@ the directory where Grabit is installed, and the JSON results can be uploaded to
 ## How to use Grabit
 
 ### Prerequisites
+- [Download grabit tool](https://www.gudusoft.com/grabit/) 
 - Java 8 or higher version must be installed and configured correctly.
 
 setup the PATH like this: (Please change the JAVA_HOME according to your environment)
