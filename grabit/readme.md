@@ -11,6 +11,8 @@ the directory where Grabit is installed, and the JSON results can be uploaded to
 ### Prerequisites
 - [Download grabit tool](https://www.gudusoft.com/grabit/) 
 - Java 8 or higher version must be installed and configured correctly.
+- Grabit GUI mode only supported in Oracle Java 8 or higher version.
+- Grabit Command Line mode works under both OpenJDK and Oracle JDK. 
 
 setup the PATH like this: (Please change the JAVA_HOME according to your environment)
 ```
