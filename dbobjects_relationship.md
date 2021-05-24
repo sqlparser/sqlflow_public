@@ -241,6 +241,17 @@ masteTable.masterColumn -> fdd -> foreignTable.foreignColumn1
 masteTable.masterColumn -> fdd -> foreignTable.foreignColumn2
 ```
 
+#### 8, Hive load data
+```sql
+LOAD DATA LOCAL INPATH /tmp/pv_2008-06-08_us.txt INTO TABLE page_view PARTITION(date='2008-06-08', country='US')
+```
+
+The data flow is:
+```
+file (/tmp/pv_2008-06-08_us.txt)  ->  fdd -> page_view(date,country)
+```
+![hive load data](/images/hive-load-data.png)
+
 ### The meaning of the letter in fdd, fdr
 
 The meaning of the letter in fdd, fdr. f: dataflow, d: data value, r: record set.
