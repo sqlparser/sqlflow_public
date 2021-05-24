@@ -252,6 +252,19 @@ file (/tmp/pv_2008-06-08_us.txt)  ->  fdd -> page_view(date,country)
 ```
 ![hive load data](/images/hive-load-data.png)
 
+#### 9, Hive INSERT OVERWRITE [LOCAL] DIRECTORY
+```sql
+INSERT OVERWRITE LOCAL DIRECTORY '/tmp/pv_gender_sum'
+SELECT pv_gender_sum.*
+FROM pv_gender_sum;
+```
+
+The data flow is:
+```
+pv_gender_sum(*) ->  fdd ->  file ('/tmp/pv_gender_sum')
+```
+
+
 ### The meaning of the letter in fdd, fdr
 
 The meaning of the letter in fdd, fdr. f: dataflow, d: data value, r: record set.
