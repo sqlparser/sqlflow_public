@@ -218,6 +218,8 @@ file (uri='gs://bucket/path1.csv')  -> fdd ->  dataset.CsvTable
 file (uri='gs://bucket/path2.csv')  -> fdd ->  dataset.CsvTable
 ```
 
+![bigquery create external table](/images/bigquery-create-external-table.png)
+
 #### 7. build data lineage for the foreign key in the create table statement.
 ```sql
 CREATE TABLE masteTable
