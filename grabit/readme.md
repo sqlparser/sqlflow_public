@@ -409,6 +409,13 @@ When `enableQueryHistory:true`, the DML type of SQL is extracted from the query 
 When empty, all types are extracted, and when multiple types are specified, a comma separates them, such as `SELECT,UPDATE,MERGE`.
 Currently only the snowflake database supports this parameter.
 
+
+for example:
+
+````json
+queryHistorySqlType: "SELECT,DELETE"
+````
+
 - **snowflakeDefaultRole**
 
 This value represents the role of the snowflake database.
