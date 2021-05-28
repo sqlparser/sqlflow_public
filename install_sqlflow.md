@@ -112,7 +112,7 @@ sqlflow provides several optioins to control the service analysis logic. Open th
 start service in background: 
 
 ```bash
-  /wings/sqlflow/backend/bin/backend.sh
+  sudo /wings/sqlflow/backend/bin/backend.sh
 ```
 
 please allow 1-2 minutes to start the service.
