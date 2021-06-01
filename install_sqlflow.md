@@ -4,6 +4,7 @@ SQLFow was comprised of two parts: frontend and backend.
 The frontend and backend can be installed on the same server, or they can be installed on two different servers seperately.
 
 ### Prerequisites
+- [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
 - A linux server with at least 8GB memory (ubuntu 20.04 is recommended).
 - Java 8
 - Nginx web server. 

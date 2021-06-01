@@ -1,4 +1,5 @@
 ### Prerequisites
+- [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
 - Server with at least 8GB memory
 - install JDK1.8 or higher  
    SET JAVA_HOME variable, and then add %JAVA_HOME%\bin to the path variable

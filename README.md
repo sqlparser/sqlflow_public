@@ -6,7 +6,7 @@ Snowflake, Hive, SparkSQL, Teradata, Oracle, SQL Server, AWS redshift, BigQuery 
 Build and visualization lineage from SQL script from query histroy, ETL script,
 Github/Bitbucket, Local filesystem and remote databases.
 
-[Exploring lineage using interactive diagram]((https://sqlflow.gudusoft.com)) or programmatically using [Restful APIs](/api) or [SDKs](https://www.sqlparser.com).
+[Exploring lineage using interactive diagram](https://sqlflow.gudusoft.com) or programmatically using [Restful APIs](/api) or [SDKs](https://www.gudusoft.com/sqlflow-java-library-2/).
 
 Discover data lineage in this query:
 ```sql
@@ -23,6 +23,8 @@ and what other data items are derived from this data value.
 [![SQLFlow Introduce](images/sqlflow_introduce1.png)](https://sqlflow.gudusoft.com)
 
 ### What SQLFlow can do for you
+- Scan your database and discover the data lineage instantly.
+- Automatically collect SQL script from github/bitbucket or local file system.
 - Provide a nice cleam diagram to the end-user to understand the data lineage quickly.
 - Incorporate the lineage metadata decoded from the complex SQL script into your own metadata database for further processing.
 - Visualize the metadata already existing in your database to release the power of data.
@@ -31,12 +33,9 @@ and what other data items are derived from this data value.
 
 ### How to use SQLFlow
 - Open [the official website](https://gudusoft.com/sqlflow/#/) of the SQLFlow and paste your SQL script or metadata to get a nice clean lineage diagram.
-- Call the Restful API of the SQLFlow in your own code to get data lineage metadata decoded by the SQLFlow from the SQL script.
-- The on-premise version of SQLflow enables you to use it on your own server to keep the data safer.
+- Call the [Restful API](/api) of the SQLFlow in your own code to get data lineage metadata decoded by the SQLFlow from the SQL script.
+- The [on-premise version](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow.md) of SQLflow enables you to use it on your own server to keep the data safer.
 
-
-### The price plan
-- [SQLFlow price plan](https://gudusoft.com)
 
 ### Restful APIs
 - [SQLFlow API document](https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api.md)
