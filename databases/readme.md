@@ -5,13 +5,13 @@
 - couchbase,
 - dax, 
 - db2,
-- ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+)greenplum
+- **greenplum**
 - hana
 - **hive**
 - impala, 
 - informix,
 - mdx, 
-- <span style="color:green">mysql</span>
+- **mysql**
 - **netezza**
 - odbc 
 - openedge, 
