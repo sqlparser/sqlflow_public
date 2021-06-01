@@ -20,7 +20,7 @@ SQLFlow presents a nice clean graph to you that tells
 where the data came from, what transformations it underwent along the way, 
 and what other data items are derived from this data value.
 
-![SQLFlow Introduce](images/sqlflow_introduce1.png)
+[![SQLFlow Introduce](images/sqlflow_introduce1.png)](https://sqlflow.gudusoft.com)
 
 ### What SQLFlow can do for you
 - Provide a nice cleam diagram to the end-user to understand the data lineage quickly.
