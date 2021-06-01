@@ -1,6 +1,6 @@
-## SQLFlow - A Tool that tracks column-level data lineage
+## SQLFlow - A tool that tracks column-level data lineage
 
-Track Column-Level Data Lineage for more than 20 major databases incluing 
+Track Column-Level Data Lineage for [more than 20 major databases](/databases/readme.md) including 
 Snowflake, Hive, SparkSQL, Teradata, Oracle, SQL Server, AWS redshift, BigQuery and etc.
 
 Build and visualization lineage from SQL script from query histroy, ETL script,
