@@ -25,4 +25,6 @@
 - **teradata**
 - vertica
 
+<span style="color:blue">greenplum</span>
+
 ### [How to connect to a database](connect-to-databases.md)
