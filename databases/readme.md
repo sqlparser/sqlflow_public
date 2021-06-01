@@ -5,7 +5,7 @@
 - couchbase,
 - dax, 
 - db2,
-- <span style="color:blue">greenplum</span>
+- ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+)greenplum
 - hana
 - **hive**
 - impala, 
@@ -25,6 +25,5 @@
 - **teradata**
 - vertica
 
-<span style="color:blue">greenplum</span>
 
 ### [How to connect to a database](connect-to-databases.md)
