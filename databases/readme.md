@@ -1,4 +1,6 @@
 ## SQLFlow tracks column-level data lineage for more than 20 major databases 
+
+- azure sql server
 - bigquery,
 - couchbase,
 - dax, 
