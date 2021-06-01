@@ -1,40 +1,22 @@
-## SQLFlow Introduce
+## SQLFlow - A Tool that tracks column-level data lineage
 
-The SQLFlow is a tool helps you collect data lineage information by analying the SQL scripts
-in a governed data environment. It scans SQL code to understand all the logic and reverse engineer it, 
-to discover the data flow/movement from its source to destination via various changes and hops on its way, 
-to build an understanding of how data changes and which data serves as input for calculating other data. 
+Track Column-Level Data Lineage for more than 20 major databases incluing 
+Snowflake, Hive, SparkSQL, Teradata, Oracle, SQL Server, AWS redshift, BigQuery and etc.
 
-The input of the SQLFlow is SQL statement or file that includes the SQL statement.
+Build and visualization lineage from SQL script from query histroy, ETL script,
+Github/Bitbucket, Local filesystem and remote databases.
+
+Exploring lineage using interactive diagram or programmatically using Restful APIs or SDKs.
+
+Discover data lineage in this query:
 ```sql
-CREATE VIEW vsal 
-AS 
-  SELECT a.deptno                  "Department", 
-         a.num_emp / b.total_count "Employees", 
-         a.sal_sum / b.total_sal   "Salary" 
-  FROM   (SELECT deptno, 
-                 Count()  num_emp, 
-                 SUM(sal) sal_sum 
-          FROM   scott.emp 
-          WHERE  city = 'NYC' 
-          GROUP  BY deptno) a, 
-         (SELECT Count()  total_count, 
-                 SUM(sal) total_sal 
-          FROM   scott.emp 
-          WHERE  city = 'NYC') b 
-;
+insert into emp (id,first_name,last_name,city,postal_code,ph)
+  select a.id,a.first_name,a.last_name,a.city,a.postal_code,b.ph
+  from emp_addr a
+  inner join emp_ph b on a.id = b.id;
 ```
 
-The output is the metadata of the table/column representing the changes and hops during the transition of the data.
-
-|source_db|source_schema|source_table|source_column	|target_db|target_schema|target_table|target_column|relation_type|effectType  |
-|---------|-------------|------------| -------------| --------| ------------|------------|-------------|-------------| -----------|
-|         |scott        |scott.emp	 |sal			|         |             |vsal	     |"Salary"	   |fdd	         |create_view|
-|         |scott        |scott.emp	 |deptno		|         |             |vsal	     |"Department" |fdd	         |create_view|
-|         |scott	    |scott.emp	 |PseudoRows	|         |         	|vsal	     |"Employees"  |frd          |create_view|
-
-
-Once the metadata of the data lineage is ready, SQLFlow presents a nice clean graph to you that tells
+SQLFlow presents a nice clean graph to you that tells
 where the data came from, what transformations it underwent along the way, 
 and what other data items are derived from this data value.
 
