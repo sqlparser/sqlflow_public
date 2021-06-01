@@ -3,13 +3,13 @@
 - couchbase,
 - dax, 
 - db2,
-- **greenplum**
+- <span style="color:blue">greenplum</span>
 - hana
 - **hive**
 - impala, 
 - informix,
 - mdx, 
-- **mysql**
+- <span style="color:green">mysql</span>
 - **netezza**
 - odbc 
 - openedge, 
