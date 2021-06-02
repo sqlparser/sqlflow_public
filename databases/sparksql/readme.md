@@ -40,7 +40,9 @@ The lineage diagram:
 
 ### [Try you SparkSQL using the SQLFlow Cloud Version](https://sqlflow.gudusoft.com)
 
-### SparkSQL for reference
+### Programmatically using [Restful APIs](/api) or [SDKs](https://www.gudusoft.com/sqlflow-java-library-2/) to get lineage in CSV, JSON, Graphml format.
+
+### SparkSQL sapmle SQLs for reference
 ```sql
 INSERT OVERWRITE DIRECTORY '/tmp/destination'
     USING parquet

@@ -26,6 +26,7 @@ and what other data items are derived from this data value.
 - Scan your database and discover the data lineage instantly.
 - Automatically collect SQL script from github/bitbucket or local file system.
 - Provide a nice cleam diagram to the end-user to understand the data lineage quickly.
+- programmatically using [Restful APIs](/api) or [SDKs](https://www.gudusoft.com/sqlflow-java-library-2/) to get lineage in CSV, JSON, Graphml format.
 - Incorporate the lineage metadata decoded from the complex SQL script into your own metadata database for further processing.
 - Visualize the metadata already existing in your database to release the power of data.
 - Perform impact analysis and root-cause analysis by tracing lineage backwards or forwards with several mouse click.
