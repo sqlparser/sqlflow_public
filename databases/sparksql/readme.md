@@ -1,7 +1,7 @@
 ## SparkSQL column-level data lineage
 Discover and visuliaztion lineage from SparkSQL script.
 SQLFlow support alls SQL statements of SparkSQL 3, below are some examples that
-illustrates how SQLFlow work. You may try your SparkSQL query to get the lineage
+illustrates how SQLFlow works. You may try your SparkSQL query to get the lineage
 using the [SQLFlow Cloud](https://sqlflow.gudusoft.com).
 
 ### INSERT OVERWRITE DIRECTORY
@@ -17,7 +17,7 @@ INSERT OVERWRITE DIRECTORY '/tmp/destination'
 ```
 
 The lineage diagram
-(![sparksql insert overwrite directory](/images/sparksql-insert-overwrite-directory.png))(https://sqlflow.gudusoft.com)
+[![sparksql insert overwrite directory](/images/sparksql-insert-overwrite-directory.png)](https://sqlflow.gudusoft.com)
 
 
 ### Pivot clause
@@ -32,7 +32,7 @@ SELECT * FROM person
 ```
 
 The lineage diagram
-(![sparksql pivot clause](/images/sparksql-pivot-clause.png))(https://sqlflow.gudusoft.com)
+[![sparksql pivot clause](/images/sparksql-pivot-clause.png)](https://sqlflow.gudusoft.com)
 
 
 ### SparkSQL for reference
