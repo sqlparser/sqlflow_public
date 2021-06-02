@@ -37,6 +37,8 @@ The lineage diagram:
 [![sparksql pivot clause](/images/sparksql-pivot-clause.png)](https://sqlflow.gudusoft.com)
 
 
+### [Try you SparkSQL using the SQLFlow Cloud Version](https://sqlflow.gudusoft.com)
+
 ### SparkSQL for reference
 ```sql
 INSERT OVERWRITE DIRECTORY '/tmp/destination'
