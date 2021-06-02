@@ -1,7 +1,8 @@
 ## SparkSQL column-level data lineage
-Discover and visuliaztion lineage from SparkSQL script.
-SQLFlow support alls SQL statements of SparkSQL 3, below are some examples that
-illustrates how SQLFlow works. You may try your SparkSQL query to get the lineage
+
+Discover and visualization lineage from SparkSQL script.
+SQLFlow supports alls SQL statements of SparkSQL 3. Below are some examples that
+illustrate how SQLFlow works. You may try your SparkSQL query to get the lineage
 using the [SQLFlow Cloud](https://sqlflow.gudusoft.com).
 
 ### INSERT OVERWRITE DIRECTORY
