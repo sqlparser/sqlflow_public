@@ -38,7 +38,7 @@ The lineage diagram:
 [![sparksql pivot clause](/images/sparksql-pivot-clause.png)](https://sqlflow.gudusoft.com)
 
 
-### [Try you SparkSQL using the SQLFlow Cloud Version](https://sqlflow.gudusoft.com)
+### [Try your SparkSQL queries using the SQLFlow Cloud Version](https://sqlflow.gudusoft.com)
 
 ### Programmatically using [Restful APIs](/api) or [SDKs](https://www.gudusoft.com/sqlflow-java-library-2/) to get lineage in CSV, JSON, Graphml format.
 
