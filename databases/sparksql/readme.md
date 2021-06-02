@@ -7,7 +7,7 @@ using the [SQLFlow Cloud](https://sqlflow.gudusoft.com).
 
 ### INSERT OVERWRITE DIRECTORY
 ```sql
-INSERT OVERWRITE DIRECTORY '/tmp/destination'
+INSERT OVERWRITE DIRECTORY 's3:///bucket/path/to/report'
     USING parquet
     OPTIONS (col1 1, col2 'sum')
     SELECT bar.my_flag,sum(foo.amount) as amount_sum 
@@ -44,7 +44,7 @@ The lineage diagram:
 
 ### SparkSQL sapmle SQLs for reference
 ```sql
-INSERT OVERWRITE DIRECTORY '/tmp/destination'
+INSERT OVERWRITE DIRECTORY 's3:///bucket/path/to/report'
     USING parquet
     OPTIONS (col1 1, col2 'sum')
     SELECT bar.my_flag,sum(foo.amount) as amount_sum 
@@ -55,7 +55,7 @@ INSERT OVERWRITE DIRECTORY '/tmp/destination'
 
 INSERT OVERWRITE DIRECTORY
     USING parquet
-    OPTIONS ('path' '/tmp/destination', col1 1, col2 'sum')
+    OPTIONS ('path' 's3:///bucket/path/to/report', col1 1, col2 'sum')
     SELECT bar.my_flag,sum(foo.amount) as amount_sum 
 	FROM mydb.foo foo 
 	left join mydb.bar bar
