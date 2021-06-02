@@ -1,12 +1,12 @@
 ## [SQLFlow](https://sqlflow.gudusoft.com) - A tool that tracks column-level data lineage
 
 Track Column-Level Data Lineage for [more than 20 major databases](/databases/readme.md) including 
-Snowflake, Hive, SparkSQL, Teradata, Oracle, SQL Server, AWS redshift, BigQuery and etc.
+Snowflake, Hive, SparkSQL, Teradata, Oracle, SQL Server, AWS redshift, BigQuery, etc.
 
-Build and visualization lineage from SQL script from query histroy, ETL script,
+Build and visualize lineage from SQL script from query history, ETL script,
 Github/Bitbucket, Local filesystem and remote databases.
 
-[Exploring lineage using interactive diagram](https://sqlflow.gudusoft.com) or programmatically using [Restful APIs](/api) or [SDKs](https://www.gudusoft.com/sqlflow-java-library-2/).
+[Exploring lineage using an interactive diagram](https://sqlflow.gudusoft.com) or programmatically using [Restful APIs](/api) or [SDKs](https://www.gudusoft.com/sqlflow-java-library-2/).
 
 Discover data lineage in this query:
 ```sql
