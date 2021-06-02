@@ -16,7 +16,8 @@ INSERT OVERWRITE DIRECTORY '/tmp/destination'
 	group by bar.my_flag;
 ```
 
-The lineage diagram
+The lineage diagram:
+
 [![sparksql insert overwrite directory](/images/sparksql-insert-overwrite-directory.png)](https://sqlflow.gudusoft.com)
 
 
@@ -31,7 +32,8 @@ SELECT * FROM person
     );
 ```
 
-The lineage diagram
+The lineage diagram:
+
 [![sparksql pivot clause](/images/sparksql-pivot-clause.png)](https://sqlflow.gudusoft.com)
 
 
