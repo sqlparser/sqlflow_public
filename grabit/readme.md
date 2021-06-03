@@ -421,6 +421,10 @@ queryHistorySqlType: "SELECT,DELETE"
 This value represents the role of the snowflake database.
 
 
+- **metaStoreDbType**
+
+When the `databaseType` parameter is `hive`, this parameter is valid, meaning that Metastore metadata is retrieved from the specified database.
+
 
 
 Sample configuration of a SQL Server database:
@@ -437,7 +441,8 @@ Sample configuration of a SQL Server database:
 "enableQueryHistory":false,
 "queryHistoryBlockOfTimeInMinutes":30,
 "snowflakeDefaultRole":"",
-"queryHistorySqlType":""
+"queryHistorySqlType":"",
+"metaStoreDbType":""
 ```
 
 #### 6. githubRepo & bitbucketRepo
@@ -556,7 +561,8 @@ Sample configuration of a local directory path:
         "enableQueryHistory":false,
         "queryHistoryBlockOfTimeInMinutes":30,
         "snowflakeDefaultRole":"",
-        "queryHistorySqlType":""
+        "queryHistorySqlType":"",
+	"metaStoreDbType":""
     },
     "githubRepo":{
         "url":"https://github.com/sqlparser/snowflake-data-lineage",
