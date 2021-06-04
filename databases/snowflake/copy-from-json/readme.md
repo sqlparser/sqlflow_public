@@ -33,3 +33,4 @@ create materialized view extjson_mv
 ## Data lineage build for the above SQL script 
 mystage(file:///tmp/sales.json, JSON) -> fdd -> house_sales(src) -> fdd -> extjson_mv
 
+[![snowflake data lineage copy to json](snowflake-data-linage-copy-to-json.png)](https://sqlflow.gudusoft.com)
