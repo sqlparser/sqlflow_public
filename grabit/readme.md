@@ -431,7 +431,7 @@ When `enableQueryHistory:true`, the interval at which the SQL query was extracte
 
 When `enableQueryHistory:true`, the DML type of SQL is extracted from the query History.
 When empty, all types are extracted, and when multiple types are specified, a comma separates them, such as `SELECT,UPDATE,MERGE`.
-Currently only the snowflake database supports this parameter,support types are **SHOW, SELECT, INSERT, UPDATE, DELETE**.
+Currently only the snowflake database supports this parameter,support types are **SHOW,SELECT,INSERT,UPDATE,DELETE,MERGE,CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE FUNCTION**.
 
 
 for example:
