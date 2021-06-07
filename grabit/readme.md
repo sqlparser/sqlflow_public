@@ -16,12 +16,13 @@
       - [3. resultType](#3-resulttype)
       - [4. databaseType](#4-databasetype)
       - [5. databaseServer](#5-databaseserver)
-      - [5.1 **hostname**](#51---hostname--)
+        * [**hostname**](#--hostname--)
       - [6. githubRepo & bitbucketRepo](#6-githubrepo---bitbucketrepo)
       - [7. SQLInSingleFile](#7-sqlinsinglefile)
       - [8. SQLInDirectory](#8-sqlindirectory)
       - [9. isUploadNeo4j](#9-isuploadneo4j)
       - [10. neo4jConnection](#10-neo4jconnection)
+
 
 
 	  
@@ -315,7 +316,7 @@ make a more precise analysis and get a more accurate result of data lineage, the
 This parameter must be specified if you set `optionType=1`, which means the SQL script source
 comes from a database. Otherwise, it can be left empty.
 
-#### 5.1 **hostname**
+#####  **hostname**
 
 The IP of the database server that the grabit connects.
 
