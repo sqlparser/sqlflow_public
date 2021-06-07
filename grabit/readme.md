@@ -13,17 +13,20 @@
     + [1. SQLFlow Server](#1-sqlflow-server)
       - [server](#server)
       - [serverPort](#serverport)
-      - [2. optionType](#2-optiontype)
+      - [userId, userSecret](#userid--usersecret)
+    + [2. optionType](#2-optiontype)
       - [2.1. enableGetMetadataInJSONFromDatabase](#21-enablegetmetadatainjsonfromdatabase)
-      - [3. resultType](#3-resulttype)
-      - [4. databaseType](#4-databasetype)
-      - [5. databaseServer](#5-databaseserver)
-        * [- **hostname**](#----hostname--)
+    + [3. resultType](#3-resulttype)
+    + [4. databaseType](#4-databasetype)
+    + [5. databaseServer](#5-databaseserver)
+      - [hostname](#hostname)
+      - [**port**](#--port--)
       - [6. githubRepo & bitbucketRepo](#6-githubrepo---bitbucketrepo)
       - [7. SQLInSingleFile](#7-sqlinsinglefile)
       - [8. SQLInDirectory](#8-sqlindirectory)
       - [9. isUploadNeo4j](#9-isuploadneo4j)
       - [10. neo4jConnection](#10-neo4jconnection)
+
 
   
 # Grabit Using Document
@@ -214,7 +217,7 @@ Then, keep the value of `serverPort` empty and set `server` to the value like th
 >Please keep this value empty if you connect to the SQLFlow Cloud Server by specifying the `https://api.gudusoft.com` 
 in the `server`
 
-- **userId, userSecret**
+#### userId, userSecret
 
 This is the user id that is used to connect to the SQLFlow server.
 Always set this value to `gudu|0123456789` and keep `userSecret` empty if you use the SQLFlow on-premise version.
@@ -243,7 +246,7 @@ Example configuration for Cloud version:
 	}
 ```		
 
-#### 2. optionType
+### 2. optionType
 You may collect SQL scripts from various sources such as database, Github repo, file system.
 This parameter tells grabit where the SQL scripts come from.
 
@@ -275,7 +278,7 @@ Sample configuration of enable fetching metadata in json from the database:
 "enableGetMetadataInJSONFromDatabase":1
 ```
 
-#### 3. resultType
+### 3. resultType
 When you submit SQL script to the SQLFlow server, A job is created on the SQLFlow server
 and you can always see the graphic data lineage result in the frontend of the SQLFlow by using the browser, 
 
@@ -295,7 +298,7 @@ This sample configuration means the output format is json.
 "resultType":1
 ```
 
-#### 4. databaseType
+### 4. databaseType
 This parameter specifies the database dialect of the SQL scripts that the SQLFlow has analyzed.
 
 ```txt
@@ -309,18 +312,18 @@ This sample configuration means the SQL dialect is SQL Server database.
 "databaseType":"sqlserver"
 ```
 
-#### 5. databaseServer
+### 5. databaseServer
 Specify a database instance that grabit will connect to fetch the metadata that helps SQLFlow 
 make a more precise analysis and get a more accurate result of data lineage, the data lineage results are stored in the `data/json/` directory in a JSON file named with the current timestamp.
 
 This parameter must be specified if you set `optionType=1`, which means the SQL script source
 comes from a database. Otherwise, it can be left empty.
 
-#####  - **hostname**
+####  hostname
 
 The IP of the database server that the grabit connects.
 
-- **port**
+#### **port**
 
 The port number of the database server that the grabit connect.
 
