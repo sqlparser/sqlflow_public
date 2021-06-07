@@ -1,6 +1,28 @@
+- [Grabit Using Document](#grabit-using-document)
+  * [What is a grabit](#what-is-a-grabit)
+  * [How to use Grabit](#how-to-use-grabit)
+    + [Prerequisites](#prerequisites)
+    + [Install](#install)
+    + [Running the grabit tool](#running-the-grabit-tool)
+      - [GUI mode (only support Oracle JDK)](#gui-mode--only-support-oracle-jdk-)
+      - [Command line mode](#command-line-mode)
+      - [Export metadata in json to sql files](#export-metadata-in-json-to-sql-files)
+      - [Run the grabit at a scheduled time](#run-the-grabit-at-a-scheduled-time)
+    + [Grabit directory of data files](#grabit-directory-of-data-files)
+    + [Configuration](#configuration)
+      - [1. SQLFlow Server](#1-sqlflow-server)
+      - [2. optionType](#2-optiontype)
+      - [2.1. enableGetMetadataInJSONFromDatabase](#21-enablegetmetadatainjsonfromdatabase)
+      - [3. resultType](#3-resulttype)
+      - [4. databaseType](#4-databasetype)
+      - [5. databaseServer](#5-databaseserver)
+      - [6. githubRepo & bitbucketRepo](#6-githubrepo---bitbucketrepo)
+      - [7. SQLInSingleFile](#7-sqlinsinglefile)
+      - [8. SQLInDirectory](#8-sqlindirectory)
+      - [9. isUploadNeo4j](#9-isuploadneo4j)
+      - [10. neo4jConnection](#10-neo4jconnection)
+	  
 # Grabit Using Document
-
-[TOC]
 
 ## What is a grabit
 Grabit is a supporting tool for SQLFlow, which collects SQL scripts from various data sources for SQLFlow, 
