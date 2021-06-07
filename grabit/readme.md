@@ -1,5 +1,7 @@
 # Grabit Using Document
 
+[TOC]
+
 ## What is a grabit
 Grabit is a supporting tool for SQLFlow, which collects SQL scripts from various data sources for SQLFlow, 
 and then uploading them to SQLFlow for data lineage analysis of these SQL scripts. 
