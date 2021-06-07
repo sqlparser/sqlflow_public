@@ -20,13 +20,28 @@
     + [4. databaseType](#4-databasetype)
     + [5. databaseServer](#5-databaseserver)
       - [hostname](#hostname)
-      - [**port**](#--port--)
-      - [6. githubRepo & bitbucketRepo](#6-githubrepo---bitbucketrepo)
-      - [7. SQLInSingleFile](#7-sqlinsinglefile)
-      - [8. SQLInDirectory](#8-sqlindirectory)
-      - [9. isUploadNeo4j](#9-isuploadneo4j)
-      - [10. neo4jConnection](#10-neo4jconnection)
-
+      - [port](#port)
+      - [username](#username)
+      - [password](#password)
+      - [database](#database)
+      - [extractedDbsSchemas](#extracteddbsschemas)
+      - [excludedDbsSchemas](#excludeddbsschemas)
+      - [extractedStoredProcedures](#extractedstoredprocedures)
+      - [extractedViews](#extractedviews)
+      - [enableQueryHistory](#enablequeryhistory)
+      - [queryHistoryBlockOfTimeInMinutes](#queryhistoryblockoftimeinminutes)
+      - [queryHistorySqlType](#queryhistorysqltype)
+      - [snowflakeDefaultRole](#snowflakedefaultrole)
+      - [metaStoreDbType](#metastoredbtype)
+    + [6. githubRepo & bitbucketRepo](#6-githubrepo---bitbucketrepo)
+      - [url](#url)
+      - [username](#username-1)
+      - [password](#password-1)
+      - [sshKeyPath](#sshkeypath)
+    + [7. SQLInSingleFile](#7-sqlinsinglefile)
+    + [8. SQLInDirectory](#8-sqlindirectory)
+    + [9. isUploadNeo4j](#9-isuploadneo4j)
+    + [10. neo4jConnection](#10-neo4jconnection)
 
   
 # Grabit Using Document
@@ -323,19 +338,19 @@ comes from a database. Otherwise, it can be left empty.
 
 The IP of the database server that the grabit connects.
 
-#### **port**
+#### port
 
 The port number of the database server that the grabit connect.
 
-- **username**
+#### username
 
 The database user used to login to the database.
 
-- **password**
+#### password
 
 The password of the database user.
 
-- **database**
+#### database
 
 The name of the database instance to which it is connected. 
 
@@ -346,7 +361,7 @@ note:
 If this parameter is specified and the database to which it is connected is Azure, Greenplum, PostgreSQL, or Redshift, then only metadata under that library is extracted.
 `
 
-- **extractedDbsSchemas**
+#### extractedDbsSchemas
 
 List of databases and schemas to extract, separated by
 commas, which are to be provided in the format database/schema;
@@ -368,7 +383,7 @@ extractedDbsSchemas: "MY/ADMIN"
 ````
 
 
-- **excludedDbsSchemas**
+#### excludedDbsSchemas
 
 This parameters works under the resultset filtered by `extractedDbsSchemas`.
 List of databases and schemas to exclude from extraction, separated by commas
@@ -388,7 +403,7 @@ When the connected databases are `Mysql` , `Sqlserver`, `Postgresql`, `Snowflake
 excludedDbsSchemas: "MY/*"
 ````
 
-- **extractedStoredProcedures**
+#### extractedStoredProcedures
 
 A list of stored procedures under the specified database and schema to extract, separated by
 commas, which are to be provided in the format database.schema.procedureName or schema.procedureName;
@@ -407,7 +422,7 @@ or
 extractedStoredProcedures: "database.scott"
 ````
 
-- **extractedViews**
+#### extractedViews
 
 A list of stored views under the specified database and schema to extract, separated by
 commas, which are to be provided in the format database.schema.viewName or schema.viewName.
@@ -426,15 +441,15 @@ or
 extractedViews: "database.scott"
 ````
 
-- **enableQueryHistory**
+#### enableQueryHistory
 
 Fetch SQL queries from the query history if set to `true` default is false.
 
-- **queryHistoryBlockOfTimeInMinutes**
+#### queryHistoryBlockOfTimeInMinutes
 
 When `enableQueryHistory:true`, the interval at which the SQL query was extracted in the query History,default is `30` minutes.
 
-- **queryHistorySqlType**
+#### queryHistorySqlType
 
 When `enableQueryHistory:true`, the DML type of SQL is extracted from the query History.
 When empty, all types are extracted, and when multiple types are specified, a comma separates them, such as `SELECT,UPDATE,MERGE`.
@@ -447,12 +462,12 @@ for example:
 queryHistorySqlType: "SELECT,DELETE"
 ````
 
-- **snowflakeDefaultRole**
+#### snowflakeDefaultRole
 
 This value represents the role of the snowflake database.
 
 
-- **metaStoreDbType**
+#### metaStoreDbType
 
 When the `databaseType` parameter is `hive`, this parameter is valid, meaning that Metastore metadata is retrieved from the specified database.
 
@@ -476,7 +491,7 @@ Sample configuration of a SQL Server database:
 "metaStoreDbType":""
 ```
 
-#### 6. githubRepo & bitbucketRepo
+### 6. githubRepo & bitbucketRepo
 When `optionType`=2, grabit will fetch SQL files from a specified github repo, 
 When `optionType`=3, grabit will fetch SQL files from a specified bitbucket repository, 
 the SQL script files are stored in `data/github/` or `data/bitbucket/` directory temporary
@@ -484,19 +499,19 @@ before submitting to the SQLFlow server.
 
 Both sshkey and account password authentication methods are supported.
 
-- **url**
+#### url
 
 Pull the repository address of the SQL script from GitHub or BitBucket.
 
-- **username**
+#### username
 
 Pull the user name to which the SQL script is connected from GitHub or BitBucket.
 
-- **password**
+#### password
 
 Pull the password to which the SQL script is connected from GitHub or BitBucket.
 
-- **sshKeyPath**
+#### sshKeyPath
 
 The full path to the SSH private key file.
 
@@ -524,7 +539,7 @@ or
 "sshKeyPath":"your private repository ssh key address here"
 ```
 
-#### 7. SQLInSingleFile
+### 7. SQLInSingleFile
 
 When `optionType=4`, this is a single SQL file needs to be analyzed.
 
@@ -532,7 +547,7 @@ When `optionType=4`, this is a single SQL file needs to be analyzed.
 
 The name of the SQL file with full path.
 
-#### 8. SQLInDirectory
+### 8. SQLInDirectory
 
 When `optionType=5`, SQL files under this directory including sub-directory will be analyzed. 
 
@@ -540,7 +555,7 @@ When `optionType=5`, SQL files under this directory including sub-directory will
 
 The directory includes the SQL files.
 
-#### 9. isUploadNeo4j
+### 9. isUploadNeo4j
 
 Upload the data lineage result to a Neo4j database for further processing. 
 Available values for this parameter is 1 or 0, enable this function if the value is 1, disable it if the value is 0, 
@@ -551,7 +566,7 @@ Sample configuration of a Whether to upload neo4j:
 "isUploadNeo4j":1
 ```
 
-#### 10. neo4jConnection
+### 10. neo4jConnection
 
 If `IsuploadNeo4j` is set to '1', this parameter specifies the details of the neo4j server.
 
