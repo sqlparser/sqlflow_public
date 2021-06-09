@@ -1,3 +1,25 @@
+- [SQLFlow frontend guide](#sqlflow-frontend-guide)
+  * [video](#video)
+    + [1. editor](#1-editor)
+      - [1.1 dbvendor](#11-dbvendor)
+      - [1.2 sample sql](#12-sample-sql)
+      - [1.3 upload](#13-upload)
+      - [1.4 visualize](#14-visualize)
+      - [1.5 visualize join](#15-visualize-join)
+      - [1.6 login](#16-login)
+    + [2. schema](#2-schema)
+      - [seach schema](#seach-schema)
+      - [seach schema path](#seach-schema-path)
+      - [collapse all](#collapse-all)
+    + [3. setting](#3-setting)
+    + [4. job](#4-job)
+    + [5. download](#5-download)
+    + [6. sqlflow diagram panel](#6-sqlflow-diagram-panel)
+    + [How it works](#how-it-works)
+    + [Restful API](#restful-api)
+
+
+
 # SQLFlow frontend guide
 
 ![1](https://user-images.githubusercontent.com/6293752/95873864-e2734400-0da2-11eb-85a9-e46ea43ff5c3.png)
@@ -106,7 +128,7 @@ set the [graph interface](#graph)：
 
 ![image](https://user-images.githubusercontent.com/6293752/95977128-0b4f1400-0e4b-11eb-8c68-62657380e853.png)
 
-click upload button to create a job by submit SQL text file or zip file including multiple SQL files.
+click upload button to create a job by submit SQL text file or zip file including multiple SQL files or connect to a database.
 
 ### 5. download
 
