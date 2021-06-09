@@ -6,7 +6,9 @@
 
 create or replace database mydatabase;
 
-/* Create target tables for CSV and JSON data. The tables are temporary, meaning they persist only for the duration of the user session and are not visible to other users. */
+/* Create target tables for CSV and JSON data. The tables are temporary, 
+   meaning they persist only for the duration of the user session and are not visible to other users. 
+*/
 
 create or replace temporary table mycsvtable (
   id integer,
