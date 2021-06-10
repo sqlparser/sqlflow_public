@@ -4,16 +4,17 @@
     + [Prerequisites](#prerequisites)
     + [Install](#install)
     + [Running the grabit tool](#running-the-grabit-tool)
-      - [GUI mode (only support Oracle JDK)](#gui-mode--only-support-oracle-jdk-)
+      - [GUI mode (only support Oracle JDK)](#GUI mode)
       - [Command line mode](#command-line-mode)
       - [Export metadata in json to sql files](#export-metadata-in-json-to-sql-files)
+      - [Encrypted password](#Encrypted password)
       - [Run the grabit at a scheduled time](#run-the-grabit-at-a-scheduled-time)
     + [Grabit directory of data files](#grabit-directory-of-data-files)
   * [Configuration](#configuration)
     + [1. SQLFlow Server](#1-sqlflow-server)
       - [server](#server)
       - [serverPort](#serverport)
-      - [userId, userSecret](#userid--usersecret)
+      - [userId, userSecret](#userId,userSecret)
     + [2. optionType](#2-optiontype)
       - [2.1. enableGetMetadataInJSONFromDatabase](#21-enablegetmetadatainjsonfromdatabase)
     + [3. resultType](#3-resulttype)
@@ -33,7 +34,7 @@
       - [queryHistorySqlType](#queryhistorysqltype)
       - [snowflakeDefaultRole](#snowflakedefaultrole)
       - [metaStoreDbType](#metastoredbtype)
-    + [6. githubRepo & bitbucketRepo](#6-githubrepo---bitbucketrepo)
+    + [6. githubRepo & bitbucketRepo](#githubRepo and bitbucketRepo)
       - [url](#url)
       - [username](#username-1)
       - [password](#password-1)
@@ -85,7 +86,9 @@ You may check logs under the logs directory for more information.
 
 The grabit tool can be running in both GUI mode and the command line mode.
 
-#### GUI mode (only support Oracle JDK)
+#### GUI mode 
+
+only support Oracle JDK.
 
 - **mac & linux**
 ```
@@ -156,6 +159,32 @@ note:
 
 eg: 
     start.bat -e test.json /root/sqlfiles
+```
+
+#### Encrypted password
+
+Encrypt the database connection password.
+
+- **mac & linux**
+```
+./start.sh /encrypt password
+
+note: 
+    password: the database connection password
+
+eg: 
+    ./start.sh /encrypt 123456
+```
+
+- **windows**
+```
+./start.bat /encrypt password
+
+note: 
+    password: the database connection password
+
+eg: 
+    ./start.bat /encrypt 123456
 ```
 
 #### Run the grabit at a scheduled time
@@ -232,7 +261,7 @@ Then, keep the value of `serverPort` empty and set `server` to the value like th
 >Please keep this value empty if you connect to the SQLFlow Cloud Server by specifying the `https://api.gudusoft.com` 
 in the `server`
 
-#### userId, userSecret
+#### userId,userSecret
 
 This is the user id that is used to connect to the SQLFlow server.
 Always set this value to `gudu|0123456789` and keep `userSecret` empty if you use the SQLFlow on-premise version.
@@ -349,6 +378,8 @@ The database user used to login to the database.
 #### password
 
 The password of the database user.
+
+note: the passwords can be encrypted using tools [Encrypted password](#Encrypted password), using encrypted passwords more secure.
 
 #### database
 
@@ -491,7 +522,7 @@ Sample configuration of a SQL Server database:
 "metaStoreDbType":""
 ```
 
-### 6. githubRepo & bitbucketRepo
+### 6. githubRepo and bitbucketRepo
 When `optionType`=2, grabit will fetch SQL files from a specified github repo, 
 When `optionType`=3, grabit will fetch SQL files from a specified bitbucket repository, 
 the SQL script files are stored in `data/github/` or `data/bitbucket/` directory temporary
