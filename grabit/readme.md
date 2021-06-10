@@ -34,7 +34,7 @@
       - [queryHistorySqlType](#queryhistorysqltype)
       - [snowflakeDefaultRole](#snowflakedefaultrole)
       - [metaStoreDbType](#metastoredbtype)
-    + [6. githubRepo & bitbucketRepo](#githubRepo-bitbucketRepo)
+    + [6. githubRepo & bitbucketRepo](#6.-githubRepo-bitbucketRepo)
       - [url](#url)
       - [username](#username-1)
       - [password](#password-1)
