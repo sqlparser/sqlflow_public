@@ -34,7 +34,7 @@
       - [queryHistorySqlType](#queryhistorysqltype)
       - [snowflakeDefaultRole](#snowflakedefaultrole)
       - [metaStoreDbType](#metastoredbtype)
-    + [6. githubRepo & bitbucketRepo](#6.-githubRepo-bitbucketRepo)
+    + [6. githubRepo & bitbucketRepo](#6.githubRepo-bitbucketRepo)
       - [url](#url)
       - [username](#username-1)
       - [password](#password-1)
@@ -522,7 +522,7 @@ Sample configuration of a SQL Server database:
 "metaStoreDbType":""
 ```
 
-### 6. githubRepo bitbucketRepo
+### 6.githubRepo bitbucketRepo
 When `optionType`=2, grabit will fetch SQL files from a specified github repo, 
 When `optionType`=3, grabit will fetch SQL files from a specified bitbucket repository, 
 the SQL script files are stored in `data/github/` or `data/bitbucket/` directory temporary
