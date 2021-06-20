@@ -45,10 +45,10 @@
     + [10. neo4jConnection](#10-neo4jconnection)
     + [11. isUploadAtlas](#11-isUploadAtlas)
     + [12. atlasServer](#12-atlasServer)
-      - [ip](#ip)
-      - [port](#port)
-      - [userName](#userName)
-      - [password](#password)
+      - [ip](#ip-1)
+      - [port](#port-1)
+      - [userName](#username-2)
+      - [password](#password-2)
     
 
   
