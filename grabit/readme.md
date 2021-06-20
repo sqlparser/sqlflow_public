@@ -34,7 +34,7 @@
       - [queryHistorySqlType](#queryhistorysqltype)
       - [snowflakeDefaultRole](#snowflakedefaultrole)
       - [metaStoreDbType](#metastoredbtype)
-    + [6. githubRepo & bitbucketRepo](#6.githubRepo-bitbucketRepo)
+    + [6. githubRepo & bitbucketRepo](#githubRepo-bitbucketRepo)
       - [url](#url)
       - [username](#username-1)
       - [password](#password-1)
@@ -522,7 +522,7 @@ Sample configuration of a SQL Server database:
 "metaStoreDbType":""
 ```
 
-### 6.githubRepo bitbucketRepo
+### 6. githubRepo bitbucketRepo
 When `optionType`=2, grabit will fetch SQL files from a specified github repo, 
 When `optionType`=3, grabit will fetch SQL files from a specified bitbucket repository, 
 the SQL script files are stored in `data/github/` or `data/bitbucket/` directory temporary
@@ -620,6 +620,44 @@ Sample configuration of a local directory path:
 "password":"your server password here"
 ```
 
+### 11. isUploadAtlas
+
+Upload the metadata to a Atlas server for further processing. 
+Available values for this parameter is 1 or 0, enable this function if the value is 1, disable it if the value is 0, 
+the default value is 0.
+
+Sample configuration of a Whether to upload neo4j:
+```json
+"isUploadAtlas":1
+```
+
+### 12. atlasServer
+
+If `isUploadAtlas` is set to '1', this parameter specifies the details of the atlas server.
+
+- **ip**
+
+The IP of the atlas server that connects to.
+
+- **port**
+
+The PORT of the atlas server that connects to.
+
+- **username**
+
+The user name of the atlas server that connect to.
+
+- **password**
+
+The password of the atlas server that connect to.
+
+Sample configuration of a local directory path:
+```json
+"ip":"127.0.0.1",
+"port":"21000",
+"username":"your server username here",
+"password":"your server password here"
+```
 
 
 **eg configuration file:**
@@ -670,6 +708,13 @@ Sample configuration of a local directory path:
         "username":"",
         "password":""
     },
+	"atlasServer":{
+        "ip":"127.0.0.1",
+        "port":"21000",
+        "username":"",
+        "password":""
+    },
+    "isUploadAtlas":0,
     "optionType":2,
     "resultType":1,
     "databaseType":"snowflake",
