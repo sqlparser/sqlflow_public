@@ -472,7 +472,7 @@ extractedViews: "database.scott"
 ````
 
 #### Snowflake related parameters
-You may set more Snowflake related parameters,  Please [check it here](databases/snowflake/readme.md).
+You may set more Snowflake related parameters,  Please [check it here](databases\snowflake\readme.md).
 
 #### metaStoreDbType
 
