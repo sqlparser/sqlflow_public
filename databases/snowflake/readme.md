@@ -86,8 +86,8 @@ You can specify what's kind of SQL statements need to be sent to the SQLFlow for
 from the Snowflake query history.
 
 1. grabit will fetch all queries in the Snowflake query history.
-2. if `queryHistorySqlType` is specified, grabit will only pickup those SQL statement type 
-and send it the SQLFlow for furhter processing. If can be useful if you only need to discover
+2. if `queryHistorySqlType` is specified, grabit will only pickup those SQL statements
+and send it to the SQLFlow for furhter processing. This parameter can be useful if you want to discover
 lineage from a specific type of SQL statements.
 3. if `queryHistorySqlType` is empty, all queries fetched from the query history will be sent to the SQLFlow server.
 
