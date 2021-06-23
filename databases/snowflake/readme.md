@@ -84,7 +84,7 @@ ORDER BY
 ```
 
 #### permission needs to extract queries from query history
-Switch to any database that has the `INFORMATION_SCHEMA` schema.
+You must switch to any database that has the INFORMATION_SCHEMA schema to run the above SQL query to return the history query run by the current user.
 ```
 USE DATABASE %s;
 ```
