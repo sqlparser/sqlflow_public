@@ -49,7 +49,7 @@ SHOW FUNCTIONS IN %s.%s;
 SELECT GET_DDL('FUNCTION', '%s.%s.%s');
 ```
 
-##  a minimum list of permissions needs to extract all DDL
+##  a minimum list of permissions need to extract all DDL
 `SQLFLOW` in the following script is the role you created and used when
 grabit connect to the Snowflake database.
 
@@ -76,6 +76,11 @@ Fetch SQL queries from the query history if set to `true` default is false.
 This is the SQL query used to get query from the snowflake query history.
 ```sql
 ```
+
+#### permission needs to extract queries from query history
+```sql
+```
+
 
 #### queryHistoryBlockOfTimeInMinutes
 
