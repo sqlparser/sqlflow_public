@@ -1,68 +1,111 @@
-## Automated data lineage from Snowflake (GUI Mode)
-This article introduces how to discover the data lineage from snowflake scripts or the snowflake database and automatically update it. 
-So the business users and developers can see the SQL Server data lineage graph instantly.
+# Snowflake column-level data lineage
 
-### Software used in this solution
-- [SQLFlow Cloud](https://sqlflow.gudusoft.com) Or [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
-- [Grabit tool](https://www.gudusoft.com/grabit/) for SQLFlow. It's free.
+Discover and visualization lineage from Snowflake database and script.
+
+## Extract DDL from the database
+
+1、database:
+```
+show databases;
+```
+
+2、table, view：
+```
+select
+  '"' || t.table_catalog || '"' as dbName,
+  '"' || t.table_schema || '"' as schemaName,
+  '"' || t.table_name || '"' as tableName,
+  case when t.table_type = 'VIEW' then 'true'
+       when t.table_type = 'BASE TABLE' then 'false'
+       else 'false'
+  end as isView,
+  '"' || c.column_name || '"' as columnName,
+  c.data_type,
+  null as comments
+from
+  "%s".information_schema.tables t,
+  "%s".information_schema.columns c
+where
+  t.table_catalog = c.table_catalog
+  and t.table_schema = c.table_schema
+  and t.table_name = c.table_name
+  and upper(t.table_schema) not in ('INFORMATION_SCHEMA')
+order by t.table_catalog, t.table_schema, t.table_name, c.ordinal_position;
+```
+3、source code of the view
+```
+SHOW VIEWS IN %s.%s;
+SELECT GET_DDL('VIEW', '%s.%s.%s');
+```
+4、source code of the procedure
+```
+SHOW PROCEDURES IN %s.%s;
+SELECT GET_DDL('PROCEDURE', '%s.%s.%s');
+```
+
+5、source code of the function:
+```
+SHOW FUNCTIONS IN %s.%s;
+SELECT GET_DDL('FUNCTION', '%s.%s.%s');
+```
+
+##  a minimum list of permissions needs to extract all DDL
+`SQLFLOW` in the following script is the role you created and used when
+grabit connect to the Snowflake database.
+
+```
+ grant select on VIEW information_schema.DATABASES  to role SQLFLOW;
+ grant select on VIEW information_schema.TABLES  to role SQLFLOW;
+ grant select on VIEW information_schema.COLUMNS  to role SQLFLOW;
+ grant all privileges on FUNCTION information_schema.GET_DDL() to role SQLFLOW;
+
+```
 
 
-### Install grabit tool
-After [download grabit tool](https://www.gudusoft.com/grabit/), please [check this article](https://github.com/sqlparser/sqlflow_public/tree/master/grabit) 
-to see how to setup the grabit tool.
+## Using the grabit tool
+1. [GUI Mode](grabit-snowflake-gui.md)
+2. [Command Line](grabit-snowflake-command-line.md)
 
-### Discover data lineage in a snowflake database
-- After [start up the grabit tool](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#running-the-grabit-tool), this is the first UI.
-Click the `database` button.
+### Parameters used in grabit tool
 
-![Grabit snowflake UI 1](grabit-snowflake-1.png)
+#### enableQueryHistory
 
--  Select `snowflake` in the list
+Fetch SQL queries from the query history if set to `true` default is false.
 
-![Grabit snowflake UI 2 database](grabit-snowflake-2-database.png)
+#### Extract from the query history
+This is the SQL query used to get query from the snowflake query history.
+```sql
+```
 
-- Set the database parameters. In this example, we only discover the data lineage in DEMO_DB/PUBLIC schema.
+#### queryHistoryBlockOfTimeInMinutes
 
-![Grabit snowfalke UI 3 database parameters](grabit-snowflake-3-database-parameters.png)
+When `enableQueryHistory:true`, the interval at which the SQL query was extracted in the query History,default is `30` minutes.
 
-- note
+#### queryHistorySqlType
+You can specify what's kind of SQL statements need to be sent to the SQLFlow for furhter processing after fetch the queries
+from the Snowflake query history.
 
-1.The `Database` parameter is must specified.
-
-2.When the `ExtractedDBSSchemas` and `ExcludedDBSSchemas` parameters are null, all data for all databases is retrieved by default.
-
-3.If you just want to get all the data in the specified database, you can use the following configuration to achieve this: `ExtractedDBSSchemas: db/*`.
-
-
-- After grabbing the metadata from the snowflake database, connect to the SQLFlow server. 
-It would help if you had [a premium account](https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow-userid-secret.md) to access the SQLFlow Cloud.
-
-![Grabit snowflake SQLFlow](grabit-snowflake-4-sqlflow.png)
-
-- Submit the database metadata to the SQLFlow server and get the data lineage 
-![Grabit snowflake SQLFlow result](grabit-snowfalke-5-sqlflow-result.png)
-
-- Check out the diagram via this url: [https://sqlflow.gudusoft.com/#/job/latest](https://sqlflow.gudusoft.com/#/job/latest)
-
-![Grabit snowflake data lineage result](grabit-snowflake-6-data-lineage-result.png)
-
-- You may save the data lineage in JSON/CSV/GRAPHML format
-
-The file will be saved under `data\datalineage` directory.
-
-### Further information
-This tutorial illustrates how to discover the data lineage of a Snowflake database in the grabit UI mode,
-If you like to automated the data lineage discovery, you may use the Grabit command line mode.
-
-- [Discover snowflake data lineage in command line mode](grabit-snowflake-command-line.md)
+1. grabit will fetch all queries in the Snowflake query history.
+2. if `queryHistorySqlType` is specified, grabit will only pickup those SQL statement type 
+and send it the SQLFlow for furhter processing. If can be useful if you only need to discover
+lineage from a specific type of SQL statements.
+3. if `queryHistorySqlType` is empty, all queries fetched from the query history will be sent to the SQLFlow server.
 
 
-This tutorial illustrates how to discover the data lineage of a snowflake database by submitting the database
-metadata to the SQLFlow Cloud version, You may set up the [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
-on your server to secure your information.
+Value of `queryHistorySqlType` can be a list of SQL statement types separated by the comma like this: `SELECT,UPDATE,MERGE`.
 
-For more options of the grabit tool, please check this page.
-- [Grabit tool readme](https://github.com/sqlparser/sqlflow_public/tree/master/grabit)
+Here is the list of available values that can be used: **SHOW,SELECT,INSERT,UPDATE,DELETE,MERGE,CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE FUNCTION**.
 
-The completed guide of SQLFlow UI
-- [How to use SQLFlow](https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow_guide.md)
+
+for example:
+
+````json
+queryHistorySqlType: "SELECT,DELETE"
+````
+
+#### snowflakeDefaultRole
+
+This value represents the role of the snowflake database.
+
+
+
