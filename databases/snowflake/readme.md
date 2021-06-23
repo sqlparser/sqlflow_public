@@ -74,11 +74,19 @@ Fetch SQL queries from the query history if set to `true` default is false.
 
 #### Extract from the query history
 This is the SQL query used to get query from the snowflake query history.
-```sql
+```
+SELECT
+ * 
+FROM
+ TABLE ( information_schema.query_history ( dateadd ( 'mins',-%s, CURRENT_TIMESTAMP ( ) ), CURRENT_TIMESTAMP ( ) ) ) 
+ORDER BY
+ start_time;
 ```
 
 #### permission needs to extract queries from query history
-```sql
+Switch to any database that has the `INFORMATION_SCHEMA` schema.
+```
+USE DATABASE %s;
 ```
 
 
