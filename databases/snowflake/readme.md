@@ -53,6 +53,7 @@ SELECT GET_DDL('FUNCTION', '%s.%s.%s');
 `SQLFLOW` in the following script is the role you created and used when
 grabit connect to the Snowflake database.
 
+Or, the user connect to the Snowflake with the role has the following privileges.
 ```
  grant select on VIEW information_schema.DATABASES  to role SQLFLOW;
  grant select on VIEW information_schema.TABLES  to role SQLFLOW;
@@ -84,7 +85,9 @@ ORDER BY
 ```
 
 #### permission needs to extract queries from query history
-You must switch to any database that has the INFORMATION_SCHEMA schema to run the above SQL query to return the history query run by the current user.
+`%s` is the database name you like to connect to .
+
+The user connect to the Snowflake database is able to execute the following command successfully in order to fetch queries from the query history.
 ```
 USE DATABASE %s;
 ```
