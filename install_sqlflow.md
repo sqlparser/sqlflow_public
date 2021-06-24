@@ -301,6 +301,7 @@ See [sqlflow client api call][1]
 
 ## Trouble Shooting
 1. Failed to get license info.
+
 ![sqlflow-install-failed-to-get-license-info](/images/sqlflow-install-failed-to-get-license-info.png)
 
 If you see this error, just wait another 3-5 minutes to wait the backend service startup successfully 
