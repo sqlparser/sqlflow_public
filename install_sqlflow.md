@@ -4,14 +4,14 @@
   * [Upload Files](#upload-files)
   * [Nginx Reverse Proxy](#nginx-reverse-proxy)
   * [Customize the port](#customize-the-port)
-    + [Default port](#default-port)
-    + [Modify the web port](#modify-the-web-port)
-    + [Modify java service port](#modify-java-service-port)
+    + [1. Default port](#1-default-port)
+    + [2. Modify the web port](#2-modify-the-web-port)
+    + [3. Modify java service port](#3-modify-java-service-port)
   * [Start Backend Services](#start-backend-services)
   * [Start Frontend Services](#start-frontend-services)
   * [Backend Services Configuration](#backend-services-configuration)
   * [Sqlflow client api call](#sqlflow-client-api-call)
-
+  * [Trouble Shooting](#trouble-shooting)
 
 
 # Instructions on how to install SQLFlow on your own server.
@@ -209,7 +209,7 @@ start service in background:
   sudo /wings/sqlflow/backend/bin/backend.sh
 ```
 
-please allow 1-2 minutes to start the service.
+please allow 3-5 minutes to start the service.
 
 use `ps -ef|grep java` to check those 3 processing are running.
 
@@ -298,3 +298,15 @@ See [sqlflow client api call][1]
   
 
 [1]: https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api_full.md#webapi
+
+## Trouble Shooting
+1. Failed to get license info.
+![sqlflow-install-failed-to-get-license-info](/images/sqlflow-install-failed-to-get-license-info.png)
+
+If you see this error, just wait another 3-5 minutes to wait the backend service startup successfully 
+and refresh the web page.
+
+Or, this issue may caused by the browser cache, just use `Incognito mode` to access the Sqlflow page and
+clear the cache.
+
+
