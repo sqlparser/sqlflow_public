@@ -35,7 +35,12 @@ create a directory :
 sudo mkdir -p /wings/sqlflow
 ```
 
-upload your backend and frontend file to `sqlflow` folder, like this :
+upload your zip file including backend and frontend file to `sqlflow` folder, and unzip like this :
+```bash
+unzip sqlflow.zip
+```
+
+You should get files organized like this:
 
 ```
 /wings/
