@@ -187,32 +187,17 @@ otherwise, please act as the following instructions.
 | sqlservice.jar | 8083 |
 
 ### Modify the web port
-Change the default web port from `80` to `9000`
+Change the default web port from `80` to `9000` (or any port you like).
 ![sqlflow-install-customize-web-port](/images/sqlflow-install-customize-web-port.png)
 
 ### Modify java service port
-Change the default gspLive port from `8081` to `9001`
+Change the default gspLive port from `8081` to `9001`(or any port you like).
 
 1. Change the port in nginx config file
 ![sqlflow-install-customize-gsplive-port-nginx](/images/sqlflow-install-customize-gsplive-port-nginx.png)
 
 2. Change the port in gspLive.sh(gspLive.bat)
 ![sqlflow-install-customize-port-gsplive](/images/sqlflow-install-customize-port-gsplive.png)
-
-In the bash files, `sqlservice.sh, gspLive.sh, eureka.sh` (or `sqlservice.bat, gspLive.bat, eureka.bat`), the services are started by the java command like this:
-```sh
-java -server -Xms%heapsize% -Xmx%heapsize% -jar ..\lib\gspLive.jar %cros% 
-```
-
-We can modify the service port via two ways:
-* Application main argument (--server.port)
-```sh
-java -server -Xms%heapsize% -Xmx%heapsize% -jar ..\lib\gspLive.jar --server.port=9001 %cros% 
-```
-* JVM argument (-Dserver.port)
-```sh
-java -server -Xms%heapsize% -Xmx%heapsize% -Dserver.port=9001 -jar ..\lib\gspLive.jar %cros% 
-```
 
 
 ## Start Backend Services
