@@ -85,7 +85,7 @@ ORDER BY
 ```
 
 #### permission needs to extract queries from query history
-`%s` is the database name you like to connect to .
+`%s` is the database name you want to connect.
 
 The user connect to the Snowflake database is able to execute the following command successfully in order to fetch queries from the query history.
 ```
