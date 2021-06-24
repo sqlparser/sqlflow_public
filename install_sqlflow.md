@@ -176,7 +176,7 @@ company doesn't allow access `8081` port from the external.
 If you don't want to change the default service port, just ignore this section,
 otherwise, please act as the following instructions.
 
-### Default port
+### 1. Default port
 1. Web port is `80`
 2. SQLFlow backend service port:
 
@@ -186,11 +186,12 @@ otherwise, please act as the following instructions.
 | gspLive.jar    | 8081 |
 | sqlservice.jar | 8083 |
 
-### Modify the web port
+### 2. Modify the web port
 Change the default web port from `80` to `9000` (or any port you like).
+
 ![sqlflow-install-customize-web-port](/images/sqlflow-install-customize-web-port.png)
 
-### Modify java service port
+### 3. Modify java service port
 Change the default gspLive port from `8081` to `9001`(or any port you like).
 
 1. Change the port in nginx config file
