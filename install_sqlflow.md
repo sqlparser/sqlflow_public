@@ -1,16 +1,32 @@
-## Instructions on how to install SQLFlow on your own server.
+- [Instructions on how to install SQLFlow on your own server.](#instructions-on-how-to-install-sqlflow-on-your-own-server)
+  * [Prerequisites](#prerequisites)
+  * [Setup Environment (Ubuntu for example)](#setup-environment--ubuntu-for-example-)
+  * [Upload Files](#upload-files)
+  * [Nginx Reverse Proxy](#nginx-reverse-proxy)
+  * [Customize the port](#customize-the-port)
+    + [Default port](#default-port)
+    + [Modify the web port](#modify-the-web-port)
+    + [Modify java service port](#modify-java-service-port)
+  * [Start Backend Services](#start-backend-services)
+  * [Start Frontend Services](#start-frontend-services)
+  * [Backend Services Configuration](#backend-services-configuration)
+  * [Sqlflow client api call](#sqlflow-client-api-call)
+
+
+
+# Instructions on how to install SQLFlow on your own server.
 
 SQLFow was comprised of two parts: frontend and backend. 
 The frontend and backend can be installed on the same server, or they can be installed on two different servers seperately.
 
-### Prerequisites
+## Prerequisites
 - [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
 - A linux server with at least 8GB memory (ubuntu 20.04 is recommended).
 - Java 8
 - Nginx web server. 
 - Port needs to be opened. (80, 8761,8081,8083. Only 80 port need to be opened if you setup the nginx reverse proxy as mentioned in the below)
 
-### Setup Environment (Ubuntu for example)
+## Setup Environment (Ubuntu for example)
 	sudo apt-get update
 	sudo apt-get install nginx -y
 	sudo apt-get install default-jre -y	
@@ -26,7 +42,7 @@ Mac
 Windows
 - [Install SQLFlow on Windows](install_sqlflow_on_windows.md)
 
-### Upload Files
+## Upload Files
 
 create a directory :
 
@@ -106,58 +122,7 @@ set folder permissions :
 sudo chmod -R 755 /wings/sqlflow
 ```
 
-### Backend Services Configuration
-
-sqlflow provides several optioins to control the service analysis logic. Open the sqlservice configuration file(conf/gudu_sqlflow.conf)
-
-* **relation_limit**:  default value is 2000. When the count of selected object relations is greater than relation_limit, sqlflow will fallback to the simple mode, ignore all the record sets. If the relations of simple mode are still greater than relation_limit, sqlflow will only show the summary information.
-* **big_sql_size**: default value is 4096. If the sql length is greater than big_sql_size, sqlflow submit the sql in the work queue and execute it. If the work queue is full, sqlflow throws an exception and return error message "Sorry, the service is busy. Please try again later."
-
-### Start Backend Services
-
-start service in background: 
-
-```bash
-  sudo /wings/sqlflow/backend/bin/backend.sh
-```
-
-please allow 1-2 minutes to start the service.
-
-use `ps -ef|grep java` to check those 3 processing are running.
-
-```
-ubuntu   11047     1  0 Nov02 ?        00:04:44 java -server -jar eureka.jar
-ubuntu   11076     1  0 Nov02 ?        00:04:11 java -server -Xmn512m -Xms2g -Xmx2g -Djavax.accessibility.assistive_technologies=  -jar sqlservice.jar
-ubuntu   11114     1  0 Nov02 ?        00:05:17 java -server -jar gspLive.jar
-```
-
-#### Java service port
-
-| File           | Port |
-| -------------- | ---- |
-| eureka.jar     | 8761 |
-| gspLive.jar    | 8081 |
-| sqlservice.jar | 8083 |
-
-#### Modify java service port
-In the bash files, `sqlservice.sh, gspLive.sh, eureka.sh` (or `sqlservice.bat, gspLive.bat, eureka.bat`), the services are started by the java command like this:
-```sh
-java -server -Xms%heapsize% -Xmx%heapsize% -jar ..\lib\gspLive.jar %cros% 
-```
-
-We can modify the service port via two ways:
-* Application main argument (--server.port)
-```sh
-java -server -Xms%heapsize% -Xmx%heapsize% -jar ..\lib\gspLive.jar --server.port=8081 %cros% 
-```
-* JVM argument (-Dserver.port)
-```sh
-java -server -Xms%heapsize% -Xmx%heapsize% -Dserver.port=8081 -jar ..\lib\gspLive.jar %cros% 
-```
-
-### Nginx Reverse Proxy
-
-If we set the reverse proxy path of gspLive restful service to /api
+## Nginx Reverse Proxy
 
 **1. Config Nginx**
 
@@ -195,6 +160,9 @@ server {
 ```
 note that `8081` in `proxy_pass http://127.0.0.1:8081/` should be the same as gspLive.jar's port.
 
+`/api` is mapped to `http://127.0.0.1:8081` in the above configration. This is useful if you 
+company doesn't allow access `8081` port from the external.
+
 **2. modify frontend configuration file config.private.json**
 
 - Open the configration file "/wings/sqlflow/frontend/config.private.json"
@@ -203,7 +171,70 @@ note that `8081` in `proxy_pass http://127.0.0.1:8081/` should be the same as gs
   "ApiPrefix": "/api"
 ```
 
-### Start Frontend Services
+## Customize the port
+
+If you don't want to change the default service port, just ignore this section,
+otherwise, please act as the following instructions.
+
+### Default port
+1. Web port is `80`
+2. SQLFlow backend service port:
+
+| File           | Port |
+| -------------- | ---- |
+| eureka.jar     | 8761 |
+| gspLive.jar    | 8081 |
+| sqlservice.jar | 8083 |
+
+### Modify the web port
+Change the default web port from `80` to `9000`
+![sqlflow-install-customize-web-port](/images/sqlflow-install-customize-web-port.png)
+
+### Modify java service port
+Change the default gspLive port from `8081` to `9001`
+
+1. Change the port in nginx config file
+![sqlflow-install-customize-gsplive-port-nginx](/images/sqlflow-install-customize-gsplive-port-nginx.png)
+
+2. Change the port in gspLive.sh(gspLive.bat)
+![sqlflow-install-customize-port-gsplive](/images/sqlflow-install-customize-port-gsplive.png)
+
+In the bash files, `sqlservice.sh, gspLive.sh, eureka.sh` (or `sqlservice.bat, gspLive.bat, eureka.bat`), the services are started by the java command like this:
+```sh
+java -server -Xms%heapsize% -Xmx%heapsize% -jar ..\lib\gspLive.jar %cros% 
+```
+
+We can modify the service port via two ways:
+* Application main argument (--server.port)
+```sh
+java -server -Xms%heapsize% -Xmx%heapsize% -jar ..\lib\gspLive.jar --server.port=9001 %cros% 
+```
+* JVM argument (-Dserver.port)
+```sh
+java -server -Xms%heapsize% -Xmx%heapsize% -Dserver.port=9001 -jar ..\lib\gspLive.jar %cros% 
+```
+
+
+## Start Backend Services
+
+start service in background: 
+
+```bash
+  sudo /wings/sqlflow/backend/bin/backend.sh
+```
+
+please allow 1-2 minutes to start the service.
+
+use `ps -ef|grep java` to check those 3 processing are running.
+
+```
+ubuntu   11047     1  0 Nov02 ?        00:04:44 java -server -jar eureka.jar
+ubuntu   11076     1  0 Nov02 ?        00:04:11 java -server -Xmn512m -Xms2g -Xmx2g -Djavax.accessibility.assistive_technologies=  -jar sqlservice.jar
+ubuntu   11114     1  0 Nov02 ?        00:05:17 java -server -jar gspLive.jar
+```
+
+
+## Start Frontend Services
 
 start your nginx : 
 
@@ -224,7 +255,20 @@ OR
 
 open http://yourdomain.com:8081/gspLive_backend/doc.html?lang=en to see the Restful API documention.
 
-### Sqlflow client api call
+
+## Backend Services Configuration
+
+sqlflow provides several optioins to control the service analysis logic. Open the sqlservice configuration file(conf/gudu_sqlflow.conf)
+
+* **relation_limit**:  default value is 2000. When the count of selected object relations is greater than relation_limit, 
+sqlflow will fallback to the simple mode, ignore all the record sets. 
+If the relations of simple mode are still greater than relation_limit, sqlflow will only show the summary information.
+
+* **big_sql_size**: default value is 4096. If the sql length is greater than big_sql_size, sqlflow submit the sql in the work queue and execute it. 
+If the work queue is full, sqlflow throws an exception and return error message "Sorry, the service is busy. Please try again later."
+
+
+## Sqlflow client api call
 
 See [sqlflow client api call][1]
 
