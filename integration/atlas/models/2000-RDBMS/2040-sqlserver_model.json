@@ -1,0 +1,573 @@
+{
+    "enumDefs": [
+        {
+            "name": "sqlserver_principal_type",
+            "serviceType": "sqlserver",
+            "typeVersion": "1.0",
+            "elementDefs": [
+                {
+                    "ordinal": 1,
+                    "value": "USER"
+                },
+                {
+                    "ordinal": 2,
+                    "value": "ROLE"
+                },
+                {
+                    "ordinal": 3,
+                    "value": "GROUP"
+                }
+            ]
+        }	
+	],
+    "structDefs": [],
+    "classificationDefs": [],
+    "entityDefs": [
+        {
+            "name": "sqlserver_process",
+            "superTypes": [
+                "Process"
+            ],
+            "serviceType": "sqlserver",
+            "typeVersion": "1.0",
+            "attributeDefs": [
+                {
+                    "name": "startTime",
+                    "typeName": "date",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "endTime",
+                    "typeName": "date",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "userName",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "operationType",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "queryText",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "queryPlan",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "queryId",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "recentQueries",
+                    "typeName": "array<string>",
+                    "cardinality": "LIST",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "clusterName",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "includeInNotification": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "queryGraph",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                }
+            ]
+        },
+        {
+            "name": "sqlserver_table",
+            "superTypes": [
+                "DataSet"
+            ],
+            "serviceType": "sqlserver",
+            "typeVersion": "1.1",
+            "options": {
+              "schemaElementsAttribute": "columns"
+            },
+            "attributeDefs": [
+                {
+                    "name": "createTime",
+                    "typeName": "date",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "lastAccessTime",
+                    "typeName": "date",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "comment",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "retention",
+                    "typeName": "int",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "aliases",
+                    "typeName": "array<string>",
+                    "cardinality": "SET",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "parameters",
+                    "typeName": "map<string,string>",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "viewOriginalText",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "viewExpandedText",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "tableType",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "temporary",
+                    "typeName": "boolean",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional": true,
+                    "isUnique": false
+                }
+            ]
+        },
+        {
+            "name": "sqlserver_db",
+            "superTypes": [
+                "Asset"
+            ],
+            "serviceType": "sqlserver",
+            "typeVersion": "1.1",
+            "attributeDefs": [
+                {
+                    "name": "clusterName",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional": false,
+                    "includeInNotification": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "location",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "parameters",
+                    "typeName": "map<string,string>",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "ownerType",
+                    "typeName": "sqlserver_principal_type",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                }
+            ]
+        },
+        {
+            "name": "sqlserver_column",
+            "superTypes": [
+                "DataSet"
+            ],
+            "serviceType": "sqlserver",
+            "typeVersion": "1.3",
+            "options": {
+              "schemaAttributes": "[\"name\", \"description\", \"owner\", \"type\", \"comment\", \"position\"]"
+            },
+            "attributeDefs": [
+                {
+                    "name": "type",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "comment",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                  "name": "position",
+                  "typeName": "int",
+                  "cardinality": "SINGLE",
+                  "isIndexable": false,
+                  "isOptional": true,
+                  "isUnique": false
+                }
+            ]
+        },
+        {
+            "name" : "sqlserver_column_lineage",
+            "superTypes" : [
+                "Process"
+            ],
+            "serviceType": "sqlserver",
+            "typeVersion" : "1.0",
+            "attributeDefs" : [
+                {
+                    "name": "depenendencyType",
+                    "typeName": "string",
+                    "cardinality" : "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "expression",
+                    "typeName": "string",
+                    "cardinality" : "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                }
+            ]
+        },
+        {
+            "name" : "sqlserver_process_execution",
+            "superTypes" : [
+                "ProcessExecution"
+            ],
+            "serviceType": "sqlserver",
+            "typeVersion" : "1.1",
+            "attributeDefs" : [
+                {
+                    "name": "startTime",
+                    "typeName": "date",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "endTime",
+                    "typeName": "date",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "userName",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "queryText",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "queryGraph",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": true,
+                    "isUnique": false
+                },
+                {
+                    "name": "queryId",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "queryPlan",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": false,
+                    "isOptional": false,
+                    "isUnique": false
+                },
+                {
+                    "name": "hostName",
+                    "typeName": "string",
+                    "cardinality": "SINGLE",
+                    "isIndexable": true,
+                    "isOptional": false,
+                    "isUnique": false
+                }
+            ],
+            "options": {
+                "displayTextAttribute": "queryText"
+            }
+        },
+        {
+            "name": "sqlserver_db_ddl",
+            "superTypes": [
+                "ddl"
+            ],
+            "serviceType": "sqlserver",
+            "typeVersion": "1.0",
+            "attributeDefs": []
+        },
+        {
+            "name": "sqlserver_table_ddl",
+            "superTypes": [
+                "ddl"
+            ],
+            "serviceType": "sqlserver",
+            "typeVersion": "1.0",
+            "attributeDefs": []
+        }
+    ],
+    "relationshipDefs": [
+        {
+            "name": "sqlserver_table_db",
+            "serviceType": "sqlserver",
+            "typeVersion": "1.2",
+            "relationshipCategory": "AGGREGATION",
+            "relationshipLabel": "__sqlserver_table.db",
+            "endDef1": {
+                "type": "sqlserver_table",
+                "name": "db",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "sqlserver_db",
+                "name": "tables",
+                "isContainer": true,
+                "cardinality": "SET"
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "sqlserver_table_columns",
+            "serviceType": "sqlserver",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel": "__sqlserver_table.columns",
+            "endDef1": {
+                "type": "sqlserver_table",
+                "name": "columns",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "sqlserver_column",
+                "name": "table",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "sqlserver_table_partitionkeys",
+            "serviceType": "sqlserver",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel": "__sqlserver_table.partitionKeys",
+            "endDef1": {
+                "type": "sqlserver_table",
+                "name": "partitionKeys",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "sqlserver_column",
+                "name": "table",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "sqlserver_process_column_lineage",
+            "serviceType": "sqlserver",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel": "__sqlserver_column_lineage.query",
+            "endDef1": {
+                "type": "sqlserver_column_lineage",
+                "name": "query",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "sqlserver_process",
+                "name": "columnLineages",
+                "isContainer": true,
+                "cardinality": "SET"
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "sqlserver_process_process_executions",
+            "serviceType": "sqlserver",
+            "typeVersion": "1.0",
+            "relationshipCategory": "COMPOSITION",
+            "endDef1": {
+                "type": "sqlserver_process",
+                "name": "processExecutions",
+                "cardinality": "SET",
+                "isContainer": true
+            },
+            "endDef2": {
+                "type": "sqlserver_process_execution",
+                "name": "process",
+                "cardinality": "SINGLE"
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "sqlserver_table_ddl_queries",
+            "serviceType": "sqlserver",
+            "typeVersion": "1.0",
+            "relationshipCategory": "COMPOSITION",
+            "endDef1": {
+                "type": "sqlserver_table",
+                "name": "ddlQueries",
+                "isContainer": true,
+                "cardinality": "SET"
+            },
+            "endDef2": {
+                "type": "sqlserver_table_ddl",
+                "name": "table",
+                "isContainer": false,
+                "cardinality": "SINGLE"
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "sqlserver_db_ddl_queries",
+            "serviceType": "sqlserver",
+            "typeVersion": "1.0",
+            "relationshipCategory": "COMPOSITION",
+            "endDef1": {
+                "type": "sqlserver_db",
+                "name": "ddlQueries",
+                "isContainer": true,
+                "cardinality": "SET"
+            },
+            "endDef2": {
+                "type": "sqlserver_db_ddl",
+                "name": "db",
+                "isContainer": false,
+                "cardinality": "SINGLE"
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "sqlserver_db_location",
+            "serviceType": "sqlserver",
+            "typeVersion": "1.0",
+            "relationshipCategory": "ASSOCIATION",
+            "endDef1": {
+                "type": "sqlserver_db",
+                "name": "locationPath",
+                "cardinality": "SINGLE"
+            },
+            "endDef2": {
+                "type": "Path",
+                "name": "sqlserverDb",
+                "cardinality": "SINGLE"
+            },
+            "propagateTags": "NONE"
+        }
+    ]
+}
