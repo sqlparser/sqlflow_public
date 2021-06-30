@@ -1,0 +1,458 @@
+{
+    "enumDefs": [],
+    "structDefs": [],
+    "classificationDefs": [],
+    "entityDefs": [
+        {
+            "name": "mysql_instance",
+            "description": "Instance that the mysql server is running on",
+            "superTypes": ["DataSet"],
+            "serviceType": "mysql",
+            "typeVersion": "1.1",
+            "attributeDefs": [
+                {
+                    "name": "mysql_type",
+                    "typeName": "string",
+                    "isOptional": false,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": true
+                },
+                {
+                    "name": "platform",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": true
+                },
+                {
+                    "name": "cloudOrOnPrem",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "hostname",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "port",
+                    "typeName": "int",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "protocol",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "contact_info",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "comment",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                }
+            ]
+        },
+        {
+            "name": "mysql_db",
+            "description": "a database (schema) in an mysql",
+            "superTypes": ["DataSet"],
+            "serviceType": "mysql",
+            "typeVersion": "1.1",
+            "attributeDefs": [
+                {
+                    "name": "prodOrOther",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": true
+                },
+                {
+                    "name": "contact_info",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                }
+            ]
+        },
+        {
+            "name": "mysql_table",
+            "description": "a table in an mysql database (schema)",
+            "superTypes": ["DataSet"],
+            "serviceType": "mysql",
+            "typeVersion": "1.2",
+            "options": {
+              "schemaElementsAttribute": "columns"
+            },
+            "attributeDefs": [
+                {
+                    "name": "name_path",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "createTime",
+                    "typeName": "date",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "comment",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "type",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "contact_info",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 1,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false
+                }
+            ]
+        },
+        {
+            "name": "mysql_column",
+            "description": "a column in an mysql table",
+            "superTypes": ["DataSet"],
+            "serviceType": "mysql",
+            "typeVersion": "1.2",
+            "options": {
+              "schemaAttributes": "[\"name\", \"description\", \"owner\", \"data_type\", \"comment\", \" isPrimaryKey\", \" isNullable\"]"
+            },
+            "attributeDefs": [
+                {
+                    "name": "data_type",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": true
+                },
+                {
+                    "name": "length",
+                    "typeName": "int",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "default_value",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "comment",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "isNullable",
+                    "typeName": "boolean",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "isPrimaryKey",
+                    "typeName": "boolean",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                }
+            ]
+        },
+        {
+            "name": "mysql_index",
+            "description": "An index on an mysql table",
+            "superTypes": ["DataSet"],
+            "serviceType": "mysql",
+            "typeVersion": "1.1",
+            "attributeDefs": [
+                {
+                    "name": "index_type",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "isUnique",
+                    "typeName": "boolean",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "comment",
+                    "typeName": "string",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "isUnique": false,
+                    "isIndexable": false
+                }
+            ]
+        },
+        {
+            "name": "mysql_foreign_key",
+            "description": null,
+            "superTypes": ["DataSet"],
+            "serviceType": "mysql",
+            "typeVersion": "1.1",
+            "attributeDefs": [
+            ]
+        }
+    ],
+    "relationshipDefs": [
+        {
+            "name": "mysql_instance_databases",
+            "serviceType": "mysql",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel":    "__mysql_instance.databases",
+            "endDef1": {
+                "type": "mysql_instance",
+                "name": "databases",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "mysql_db",
+                "name": "instance",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "mysql_db_tables",
+            "serviceType": "mysql",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel":    "__mysql_db.tables",
+            "endDef1": {
+                "type": "mysql_db",
+                "name": "tables",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "mysql_table",
+                "name": "db",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "mysql_table_columns",
+            "serviceType": "mysql",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel":    "__mysql_table.columns",
+            "endDef1": {
+                "type": "mysql_table",
+                "name": "columns",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "mysql_column",
+                "name": "table",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "mysql_table_indexes",
+            "serviceType": "mysql",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel":    "__mysql_table.indexes",
+            "endDef1": {
+                "type": "mysql_table",
+                "name": "indexes",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "mysql_index",
+                "name": "table",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "mysql_index_columns",
+            "serviceType": "mysql",
+            "typeVersion": "1.2",
+            "relationshipCategory": "ASSOCIATION",
+            "relationshipLabel": "__mysql_index.columns",
+            "endDef1": {
+                "type": "mysql_index",
+                "name": "columns",
+                "isContainer": false,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "mysql_column",
+                "name": "indexes",
+                "isContainer": false,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "mysql_table_foreign_key",
+            "serviceType": "mysql",
+            "typeVersion": "1.2",
+            "relationshipCategory": "COMPOSITION",
+            "relationshipLabel":    "__mysql_table.foreign_keys",
+            "endDef1": {
+                "type": "mysql_table",
+                "name": "foreign_keys",
+                "isContainer": true,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "mysql_foreign_key",
+                "name": "table",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "mysql_foreign_key_key_columns",
+            "serviceType": "mysql",
+            "typeVersion": "1.2",
+            "relationshipCategory": "ASSOCIATION",
+            "relationshipLabel": "__mysql_foreign_key.key_columns",
+            "endDef1": {
+                "type": "mysql_foreign_key",
+                "name": "key_columns",
+                "isContainer": false,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "mysql_column",
+                "name": "key_column_references",
+                "isContainer": false,
+                "cardinality": "SET"
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "mysql_foreign_key_table_references",
+            "serviceType": "mysql",
+            "typeVersion": "1.2",
+            "relationshipCategory": "ASSOCIATION",
+            "relationshipLabel": "__mysql_foreign_key.references_table",
+            "endDef1": {
+                "type": "mysql_foreign_key",
+                "name": "references_table",
+                "isContainer": false,
+                "cardinality": "SINGLE",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "mysql_table",
+                "name": "foreign_key_references",
+                "isContainer": false,
+                "cardinality": "SET"
+            },
+            "propagateTags": "NONE"
+        },
+        {
+            "name": "mysql_foreign_key_column_references",
+            "serviceType": "mysql",
+            "typeVersion": "1.2",
+            "relationshipCategory": "ASSOCIATION",
+            "relationshipLabel": "__mysql_foreign_key.references_columns",
+            "endDef1": {
+                "type": "mysql_foreign_key",
+                "name": "references_columns",
+                "isContainer": false,
+                "cardinality": "SET",
+                "isLegacyAttribute": true
+            },
+            "endDef2": {
+                "type": "mysql_column",
+                "name": "foreign_key_references",
+                "isContainer": false,
+                "cardinality": "SET"
+            },
+            "propagateTags": "NONE"
+        }
+    ]
+}
