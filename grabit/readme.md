@@ -557,6 +557,10 @@ Pull the personal token to which the SQL script is connected from GitHub or BitB
 
 The full path to the SSH private key file.
 
+`
+note：The private key must be in RSA format. To use the generated key: ssh-keygen -m PEM -t rsa
+`
+
 
 Sample configuration of the GitHub or BitBucket public repository servers :
 ```json
