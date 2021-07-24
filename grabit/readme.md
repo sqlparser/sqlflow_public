@@ -4,17 +4,17 @@
     + [Prerequisites](#prerequisites)
     + [Install](#install)
     + [Running the grabit tool](#running-the-grabit-tool)
-      - [GUI mode](#gui-mode)
+      - [GUI mode (only support Oracle JDK)](#GUI-mode)
       - [Command line mode](#command-line-mode)
       - [Export metadata in json to sql files](#export-metadata-in-json-to-sql-files)
-      - [Encrypted password](#encrypted-password)
+      - [Encrypted password](#Encrypted-password)
       - [Run the grabit at a scheduled time](#run-the-grabit-at-a-scheduled-time)
     + [Grabit directory of data files](#grabit-directory-of-data-files)
   * [Configuration](#configuration)
     + [1. SQLFlow Server](#1-sqlflow-server)
       - [server](#server)
       - [serverPort](#serverport)
-      - [userId userSecret](#userid-usersecret)
+      - [userId, userSecret](#userId-userSecret)
     + [2. optionType](#2-optiontype)
       - [2.1. enableGetMetadataInJSONFromDatabase](#21-enablegetmetadatainjsonfromdatabase)
     + [3. resultType](#3-resulttype)
@@ -29,9 +29,12 @@
       - [excludedDbsSchemas](#excludeddbsschemas)
       - [extractedStoredProcedures](#extractedstoredprocedures)
       - [extractedViews](#extractedviews)
-      - [Snowflake related parameters](#snowflake-related-parameters)
+      - [enableQueryHistory](#enablequeryhistory)
+      - [queryHistoryBlockOfTimeInMinutes](#queryhistoryblockoftimeinminutes)
+      - [queryHistorySqlType](#queryhistorysqltype)
+      - [snowflakeDefaultRole](#snowflakedefaultrole)
       - [metaStoreDbType](#metastoredbtype)
-    + [6. githubRepo bitbucketRepo](#6-githubrepo-bitbucketrepo)
+    + [6. githubRepo & bitbucketRepo](#githubRepo-bitbucketRepo)
       - [url](#url)
       - [username](#username-1)
       - [password](#password-1)
@@ -40,8 +43,13 @@
     + [8. SQLInDirectory](#8-sqlindirectory)
     + [9. isUploadNeo4j](#9-isuploadneo4j)
     + [10. neo4jConnection](#10-neo4jconnection)
-    + [11. isUploadAtlas](#11-isuploadatlas)
-    + [12. atlasServer](#12-atlasserver)
+    + [11. isUploadAtlas](#11-isUploadAtlas)
+    + [12. atlasServer](#12-atlasServer)
+      - [ip](#ip-1)
+      - [port](#port-1)
+      - [userName](#username-2)
+      - [password](#password-2)
+    
 
   
 # Grabit Using Document
@@ -471,8 +479,31 @@ or
 extractedViews: "database.scott"
 ````
 
-#### Snowflake related parameters
-You may set more Snowflake related parameters,  Please [check it here](/databases/snowflake/readme.md#parameters-used-in-grabit-tool).
+#### enableQueryHistory
+
+Fetch SQL queries from the query history if set to `true` default is false.
+
+#### queryHistoryBlockOfTimeInMinutes
+
+When `enableQueryHistory:true`, the interval at which the SQL query was extracted in the query History,default is `30` minutes.
+
+#### queryHistorySqlType
+
+When `enableQueryHistory:true`, the DML type of SQL is extracted from the query History.
+When empty, all types are extracted, and when multiple types are specified, a comma separates them, such as `SELECT,UPDATE,MERGE`.
+Currently only the snowflake database supports this parameter,support types are **SHOW,SELECT,INSERT,UPDATE,DELETE,MERGE,CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE FUNCTION**.
+
+
+for example:
+
+````json
+queryHistorySqlType: "SELECT,DELETE"
+````
+
+#### snowflakeDefaultRole
+
+This value represents the role of the snowflake database.
+
 
 #### metaStoreDbType
 
@@ -510,13 +541,17 @@ Both sshkey and account password authentication methods are supported.
 
 Pull the repository address of the SQL script from GitHub or BitBucket.
 
+`
+note: If sshkey authentication is used, you must enter the SSH address.
+`
+
 #### username
 
 Pull the user name to which the SQL script is connected from GitHub or BitBucket.
 
 #### password
 
-Pull the password to which the SQL script is connected from GitHub or BitBucket.
+Pull the personal token to which the SQL script is connected from GitHub or BitBucket.
 
 #### sshKeyPath
 
@@ -535,12 +570,12 @@ Sample configuration of the GitHub or BitBucket private repository servers:
 ```json
 "url":"your private library address here",
 "username":"your private repository  username here",
-"password":"your private repository  password here",
+"password":"your private repository  personal token here",
 "sshKeyPath":""
 ```
 or
 ```json
-"url":"your private repository address here",
+"url":"your private repository ssh address here",
 "username":"",
 "password":"",
 "sshKeyPath":"your private repository ssh key address here"
