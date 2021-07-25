@@ -1,0 +1,31 @@
+{
+  "databaseServer":{
+    "hostname":"",
+    "port":"",
+    "username":"",
+    "password":"",
+    "database":"",
+    "extractedDbsSchemas":"",
+    "excludedDbsSchemas":"",
+    "extractedStoredProcedures":"",
+    "extractedViews":"",
+    "enableQueryHistory":false,
+    "queryHistoryBlockOfTimeInMinutes":30
+  },
+  "bitbucketRepo":{
+    "url":"",
+    "username":"",
+    "password":"",
+    "sshkeyPath":""
+  },
+  "SQLFlowServer":{
+    "server":"https://api.gudusoft.com",
+    "serverPort":"",
+    "userId":"gudu|0123456789",
+    "userSecret":""
+  },
+  "optionType":3,
+  "resultType":1,
+  "databaseType":"sparksql",
+  "enableGetMetadataInJSONFromDatabase":0
+}
