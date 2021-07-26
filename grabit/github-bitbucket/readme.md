@@ -1,3 +1,6 @@
+Grab files in a Github/Bitbucket repository and send them to the SQLFlow
+for analyzing and return the data lineage.
+
 ### 1. Prerequisites
 
 #### Install Java
@@ -60,21 +63,21 @@ Create a config file with name such as: `gitServer.conf.json`
 
 ```json
 {
-	"optionType":2,
+	"optionType":3,
 	"resultType":1,
 	"databaseType":"sparksql",
 	"SQLFlowServer":{
 		"server":"https://api.gudusoft.com", 
 		"serverPort":"",
-		"userId":"your premium account user id",
-		"userSecret":"your user secret key"
+		"userId":"auth0|5fc735a542843a006e29a399",
+		"userSecret":"c1e11c16040d8a274045c7e773a658e0808e3f4cebf3326da154027d9f04a53d"
 	},
-	"gitServer":{
-		"url":"https://bitbucket.org/AccountName/repoName",
-		"username":"git user name",
-		"password":"git password",
-		"sshkeyPath":"ssh file if used"
-		}
+	"bitbucketRepo":{
+					"url":"https://bitbucket.org/ShenHuan001/sparksql",
+					"username":"ShenHuan001",
+					"password":"9vW57XznDthGMaWPXavX",
+					"sshkeyPath":""
+				}
 }
 ```
 
@@ -82,6 +85,14 @@ Please check this document (https://github.com/sqlparser/sqlflow_public/blob/mas
 
 ### 3. Run grabit in command line
 
+Linux or Mac:
 ```bash
 ./start.sh /f gitServer.conf.json
 ```
+
+Windows:
+```bash
+start.bat /f gitServer.conf.json
+```
+
+### 4. Check data lineage on SQLFlow Cloud
