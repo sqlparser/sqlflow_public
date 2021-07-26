@@ -96,3 +96,5 @@ start.bat /f gitServer.conf.json
 ```
 
 ### 4. Check data lineage on SQLFlow Cloud
+![image](https://user-images.githubusercontent.com/1305435/126964571-8a418d3c-1a66-4218-9173-547020a42a18.png)
+
