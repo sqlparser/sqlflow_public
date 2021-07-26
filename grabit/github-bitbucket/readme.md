@@ -14,6 +14,7 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 export PATH=$JAVA_HOME/bin:$PATH
 ```
 
+After install Java, make sure this command executed successfully:
 ```bash
 java -version
 
@@ -59,7 +60,8 @@ git version 2.30.1 (Apple Git-130)
 
 ### 2. Set up grabit configuration file
 
-Create a config file with name such as: `gitServer.conf.json`
+Create a config file with name such as: `gitServer.conf.json` and put it under the same directory
+where start.sh or start.bat file of the grabit tool is located.
 
 ```json
 {
@@ -69,15 +71,15 @@ Create a config file with name such as: `gitServer.conf.json`
 	"SQLFlowServer":{
 		"server":"https://api.gudusoft.com", 
 		"serverPort":"",
-		"userId":"auth0|5fc735a542843a006e29a399",
-		"userSecret":"c1e11c16040d8a274045c7e773a658e0808e3f4cebf3326da154027d9f04a53d"
+		"userId":"your sqlflow premium account user id",
+		"userSecret":"user secret code"
 	},
 	"bitbucketRepo":{
-					"url":"https://bitbucket.org/ShenHuan001/sparksql",
-					"username":"ShenHuan001",
-					"password":"9vW57XznDthGMaWPXavX",
-					"sshkeyPath":""
-				}
+		"url":"https://bitbucket.org/AccountName/repositoryName",
+		"username":"your bitbucket username",
+		"password":"your password",
+		"sshkeyPath":""
+	}
 }
 ```
 
