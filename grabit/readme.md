@@ -334,7 +334,7 @@ and you can always see the graphic data lineage result in the frontend of the SQ
 
 
 Even better, grabit will fetch the data lineage back to the directory where the grabit is running.
-Those data lineage results are stored in the `data/datalineage/` directory. 
+Those data lineage results are stored in the `data/job_%jobname/result/` directory. 
 
 This parameter specifies which kind of format is used to save the data lineage result.
 
@@ -364,9 +364,9 @@ This sample configuration means the SQL dialect is SQL Server database.
 
 ### 5. databaseServer
 Specify a database instance that grabit will connect to fetch the metadata that helps SQLFlow 
-make a more precise analysis and get a more accurate result of data lineage, the data lineage results are stored in the `data/json/` directory in a JSON file named with the current timestamp.
+make a more precise analysis and get a more accurate result of data lineage, the data lineage results are stored in the `data/job_%jobname%/metadata/metadata.json` directory in a JSON file named with the current timestamp.
 
-This parameter must be specified if you set `optionType=1`, which means the SQL script source
+This parameter must be specified if you set `SQLScriptSource=database`, which means the SQL script source
 comes from a database. Otherwise, it can be left empty.
 
 ####  hostname
@@ -543,8 +543,7 @@ Sample configuration of a SQL Server database:
 
 ### 6. gitServer
 When `SQLScriptSource=gitserver`, grabit will fetch SQL files from a specified github or bitbucket repo, 
-the SQL script files are stored in `data/github/` or `data/bitbucket/` directory temporary
-before submitting to the SQLFlow server.
+the SQL script files are stored in `data/job_%jobname%/metadata/` before submitting to the SQLFlow server.
 
 Both sshkey and account password authentication methods are supported.
 
