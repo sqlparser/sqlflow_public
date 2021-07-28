@@ -15,9 +15,9 @@
       - [server](#server)
       - [serverPort](#serverport)
       - [userId, userSecret](#userId-userSecret)
-    + [2. optionType](#2-optiontype)
+    + [2. SQLScriptSource](#2-SQLScriptSource)
       - [2.1. enableGetMetadataInJSONFromDatabase](#21-enablegetmetadatainjsonfromdatabase)
-    + [3. resultType](#3-resulttype)
+    + [3. lineageReturnFormat](#3-lineageReturnFormat)
     + [4. databaseType](#4-databasetype)
     + [5. databaseServer](#5-databaseserver)
       - [hostname](#hostname)
@@ -34,7 +34,7 @@
       - [queryHistorySqlType](#queryhistorysqltype)
       - [snowflakeDefaultRole](#snowflakedefaultrole)
       - [metaStoreDbType](#metastoredbtype)
-    + [6. githubRepo & bitbucketRepo](#githubRepo-bitbucketRepo)
+    + [6. gitServer](#gitServer)
       - [url](#url)
       - [username](#username-1)
       - [password](#password-1)
@@ -297,20 +297,19 @@ Example configuration for Cloud version:
 	}
 ```		
 
-### 2. optionType
+### 2. SQLScriptSource
 You may collect SQL scripts from various sources such as database, Github repo, file system.
 This parameter tells grabit where the SQL scripts come from.
 
 Available values for this parameter:
-- 1: database 
-- 2: github 
-- 3: bitbucket 
-- 4: single file 
-- 5: Multiple SQL Files Under A Directory
+- database
+- gitserver
+- singleFile
+- directory
 
 This configuration means the SQL script is collected from a database.
 ```JSON
-"optionType":1
+"SQLScriptSource":"database"
 ```	
 
 #### 2.1. enableGetMetadataInJSONFromDatabase
@@ -329,7 +328,7 @@ Sample configuration of enable fetching metadata in json from the database:
 "enableGetMetadataInJSONFromDatabase":1
 ```
 
-### 3. resultType
+### 3. lineageReturnFormat
 When you submit SQL script to the SQLFlow server, A job is created on the SQLFlow server
 and you can always see the graphic data lineage result in the frontend of the SQLFlow by using the browser, 
 
@@ -340,13 +339,13 @@ Those data lineage results are stored in the `data/datalineage/` directory.
 This parameter specifies which kind of format is used to save the data lineage result.
 
 Available values for this parameter:
-- 1: JSON, data lineage result in JSON.
-- 2: CSV, data lineage result in CSV format.
-- 3: diagram, in graphml format that can be viewed by yEd.
+- json, data lineage result in JSON.
+- csv, data lineage result in CSV format.
+- graphml, data in graphml format that can be viewed by yEd.
 
 This sample configuration means the output format is json.
 ```json
-"resultType":1
+"lineageReturnFormat":"json"
 ```
 
 ### 4. databaseType
@@ -493,6 +492,19 @@ When `enableQueryHistory:true`, the DML type of SQL is extracted from the query 
 When empty, all types are extracted, and when multiple types are specified, a comma separates them, such as `SELECT,UPDATE,MERGE`.
 Currently only the snowflake database supports this parameter,support types are **SHOW,SELECT,INSERT,UPDATE,DELETE,MERGE,CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE FUNCTION**.
 
+````
+note: You must define a role that has access to the SNOWFLAKE database.
+````
+
+Assign permissions to a role, for example:
+
+````sql
+use role accountadmin;
+grant imported privileges on database snowflake to role sysadmin;
+grant imported privileges on database snowflake to role customrole1;
+use role customrole1;
+select * from snowflake.account_usage.databases;
+````
 
 for example:
 
@@ -529,9 +541,8 @@ Sample configuration of a SQL Server database:
 "metaStoreDbType":""
 ```
 
-### 6. githubRepo bitbucketRepo
-When `optionType`=2, grabit will fetch SQL files from a specified github repo, 
-When `optionType`=3, grabit will fetch SQL files from a specified bitbucket repository, 
+### 6. gitServer
+When `SQLScriptSource=gitserver`, grabit will fetch SQL files from a specified github or bitbucket repo, 
 the SQL script files are stored in `data/github/` or `data/bitbucket/` directory temporary
 before submitting to the SQLFlow server.
 
@@ -556,10 +567,6 @@ Pull the personal token to which the SQL script is connected from GitHub or BitB
 #### sshKeyPath
 
 The full path to the SSH private key file.
-
-`
-note：The private key must be in RSA format. To use the generated key: ssh-keygen -m PEM -t rsa
-`
 
 
 Sample configuration of the GitHub or BitBucket public repository servers :
@@ -587,7 +594,7 @@ or
 
 ### 7. SQLInSingleFile
 
-When `optionType=4`, this is a single SQL file needs to be analyzed.
+When `SQLScriptSource=singleFile`, this is a single SQL file needs to be analyzed.
 
 - **filePath**
 
@@ -595,7 +602,7 @@ The name of the SQL file with full path.
 
 ### 8. SQLInDirectory
 
-When `optionType=5`, SQL files under this directory including sub-directory will be analyzed. 
+When `SQLScriptSource=directory`, SQL files under this directory including sub-directory will be analyzed. 
 
 - **directoryPath**
 
@@ -692,16 +699,10 @@ Sample configuration of a local directory path:
         "queryHistoryBlockOfTimeInMinutes":30,
         "snowflakeDefaultRole":"",
         "queryHistorySqlType":"",
-	"metaStoreDbType":""
+	    "metaStoreDbType":""
     },
-    "githubRepo":{
+    "gitServer":{
         "url":"https://github.com/sqlparser/snowflake-data-lineage",
-        "username":"",
-        "password":"",
-        "sshkeyPath":""
-    },
-    "bitbucketRepo":{
-        "url":"",
         "username":"",
         "password":"",
         "sshkeyPath":""
@@ -730,8 +731,8 @@ Sample configuration of a local directory path:
         "password":""
     },
     "isUploadAtlas":0,
-    "optionType":2,
-    "resultType":1,
+    "SQLScriptSource":"database",
+    "lineageReturnFormat":"json",
     "databaseType":"snowflake",
     "isUploadNeo4j":0,
     "enableGetMetadataInJSONFromDatabase":0
