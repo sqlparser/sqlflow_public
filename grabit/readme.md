@@ -4,20 +4,20 @@
     + [Prerequisites](#prerequisites)
     + [Install](#install)
     + [Running the grabit tool](#running-the-grabit-tool)
-      - [GUI mode (only support Oracle JDK)](#GUI-mode)
+      - [GUI mode](#gui-mode)
       - [Command line mode](#command-line-mode)
       - [Export metadata in json to sql files](#export-metadata-in-json-to-sql-files)
-      - [Encrypted password](#Encrypted-password)
+      - [Encrypted password](#encrypted-password)
       - [Run the grabit at a scheduled time](#run-the-grabit-at-a-scheduled-time)
     + [Grabit directory of data files](#grabit-directory-of-data-files)
   * [Configuration](#configuration)
     + [1. SQLFlow Server](#1-sqlflow-server)
       - [server](#server)
       - [serverPort](#serverport)
-      - [userId, userSecret](#userId-userSecret)
-    + [2. SQLScriptSource](#2-SQLScriptSource)
+      - [userId userSecret](#userid-usersecret)
+    + [2. SQLScriptSource](#2-sqlscriptsource)
       - [2.1. enableGetMetadataInJSONFromDatabase](#21-enablegetmetadatainjsonfromdatabase)
-    + [3. lineageReturnFormat](#3-lineageReturnFormat)
+    + [3. lineageReturnFormat](#3-lineagereturnformat)
     + [4. databaseType](#4-databasetype)
     + [5. databaseServer](#5-databaseserver)
       - [hostname](#hostname)
@@ -34,7 +34,9 @@
       - [queryHistorySqlType](#queryhistorysqltype)
       - [snowflakeDefaultRole](#snowflakedefaultrole)
       - [metaStoreDbType](#metastoredbtype)
-    + [6. gitServer](#gitServer)
+      - [tableIncludeSQLSource](#tableincludesqlsource)
+      - [columnIncludeSQLSource](#columnincludesqlsource)
+    + [6. gitServer](#6-gitserver)
       - [url](#url)
       - [username](#username-1)
       - [password](#password-1)
@@ -43,13 +45,8 @@
     + [8. SQLInDirectory](#8-sqlindirectory)
     + [9. isUploadNeo4j](#9-isuploadneo4j)
     + [10. neo4jConnection](#10-neo4jconnection)
-    + [11. isUploadAtlas](#11-isUploadAtlas)
-    + [12. atlasServer](#12-atlasServer)
-      - [ip](#ip-1)
-      - [port](#port-1)
-      - [userName](#username-2)
-      - [password](#password-2)
-    
+    + [11. isUploadAtlas](#11-isuploadatlas)
+    + [12. atlasServer](#12-atlasserver)
 
   
 # Grabit Using Document
@@ -540,6 +537,34 @@ Sample configuration of a SQL Server database:
 "queryHistorySqlType":"",
 "metaStoreDbType":""
 ```
+
+####  tableIncludeSQLSource
+If you save SQL queries in a specific column of a table, one SQL query per row. 
+
+Let's say: `sql_table.query`.  `sql_table` is the table name, `query` is the colum name.
+We can use this query to fetch all SQL queries in this table:
+
+```sql
+select query from sql_table
+```
+
+By set value of `tableIncludeSQLSource` and `columnIncludeSQLSource`,
+grabit can fetch all SQL queries in this table and send it to the SQLFlow to analzye the lineage.
+
+In this example, 
+```
+"tableIncludeSQLSource":"sql_table"
+```
+
+Please leave `tableIncludeSQLSource` and `columnIncludeSQLSource` empty if you don't fetch SQL queries
+from a specific table.
+ 
+####  columnIncludeSQLSource
+In the above sample:
+```
+"columnIncludeSQLSource":"query"
+```
+
 
 ### 6. gitServer
 When `SQLScriptSource=gitserver`, grabit will fetch SQL files from a specified github or bitbucket repo, 
