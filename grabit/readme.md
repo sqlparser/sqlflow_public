@@ -34,8 +34,9 @@
       - [queryHistorySqlType](#queryhistorysqltype)
       - [snowflakeDefaultRole](#snowflakedefaultrole)
       - [metaStoreDbType](#metastoredbtype)
-      - [tableIncludeSQLSource](#tableincludesqlsource)
-      - [columnIncludeSQLSource](#columnincludesqlsource)
+      - [sqlsourceTableName](#sqlsourcetablename)
+      - [sqlsourceColumnQuerySource](#sqlsourcecolumnquerysource)
+      - [sqlsourceColumnQueryName](#sqlsourcecolumnqueryname)
     + [6. gitServer](#6-gitserver)
       - [url](#url)
       - [username](#username-1)
@@ -538,33 +539,48 @@ Sample configuration of a SQL Server database:
 "metaStoreDbType":""
 ```
 
-####  tableIncludeSQLSource
-If you save SQL queries in a specific column of a table, one SQL query per row. 
+####  sqlsourceTableName
 
-Let's say: `sql_table.query`.  `sql_table` is the table name, `query` is the colum name.
+table name: **query_table**
+
+| query_name | query_source                        |
+| ---------- | ----------------------------------- |
+| query1     | create view v1 as select f1 from t1 |
+| query2     | create view v2 as select f2 from t2 |
+| query3     | create view v3 as select f3 from t3 |
+
+If you save SQL queries in a specific table, one SQL query per row. 
+
+Let's say: `query_table.query_source` store the source code of the query.
 We can use this query to fetch all SQL queries in this table:
 
 ```sql
-select query from sql_table
+select query_name as queryName, query_source as querySource from query_table
 ```
 
-By set value of `tableIncludeSQLSource` and `columnIncludeSQLSource`,
+By setting the value of `sqlsource_table_name` and `sqlsource_column_query_source`,`sqlsource_column_query_name`
 grabit can fetch all SQL queries in this table and send it to the SQLFlow to analzye the lineage.
 
 In this example, 
 ```
-"tableIncludeSQLSource":"sql_table"
+"sqlsourceTableName":"query_table"
+"sqlsourceColumnQuerySource":"query_source"
+"sqlsourceColumnQueryName":"query_name"
 ```
 
-Please leave `tableIncludeSQLSource` and `columnIncludeSQLSource` empty if you don't fetch SQL queries
-from a specific table.
+Please leave `sqlsource_table_name`  empty if you don't fetch SQL queries from a specific table.
  
-####  columnIncludeSQLSource
+####  sqlsourceColumnQuerySource
 In the above sample:
 ```
-"columnIncludeSQLSource":"query"
+"sqlsourceColumnQuerySource":"query_source"
 ```
 
+#### sqlsourceColumnQueryName
+```
+"sqlsourceColumnQueryName":"query_name"
+```
+This parameter is optional, you don't need to speicify a query name column if it doesn't exist in the table.
 
 ### 6. gitServer
 When `SQLScriptSource=gitserver`, grabit will fetch SQL files from a specified github or bitbucket repo, 
