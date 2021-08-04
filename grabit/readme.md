@@ -558,7 +558,7 @@ We can use this query to fetch all SQL queries in this table:
 select query_name as queryName, query_source as querySource from query_table
 ```
 
-By setting the value of `sqlsource_table_name` and `sqlsource_column_query_source`,`sqlsource_column_query_name`
+By setting the value of `sqlsourceTableName` and `sqlsourceColumnQuerySource`,`sqlsourceColumnQueryName`
 grabit can fetch all SQL queries in this table and send it to the SQLFlow to analzye the lineage.
 
 In this example, 
