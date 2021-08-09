@@ -33,7 +33,7 @@
       - [queryHistoryBlockOfTimeInMinutes](#queryhistoryblockoftimeinminutes)
       - [queryHistorySqlType](#queryhistorysqltype)
       - [snowflakeDefaultRole](#snowflakedefaultrole)
-      - [metaStoreDbType](#metastoredbtype)
+      - [metaStore](#metaStore)
       - [sqlsourceTableName](#sqlsourcetablename)
       - [sqlsourceColumnQuerySource](#sqlsourcecolumnquerysource)
       - [sqlsourceColumnQueryName](#sqlsourcecolumnqueryname)
@@ -515,9 +515,9 @@ queryHistorySqlType: "SELECT,DELETE"
 This value represents the role of the snowflake database.
 
 
-#### metaStoreDbType
+#### metaStore
 
-When the `databaseType` parameter is `hive`, this parameter is valid, meaning that Metastore metadata is retrieved from the specified database.
+If the current data source is a `Hive` or `Spark` data store, this parameter can be set to `hive` or `sparksql`. By default, this parameter is left blank.
 
 
 
@@ -536,7 +536,7 @@ Sample configuration of a SQL Server database:
 "queryHistoryBlockOfTimeInMinutes":30,
 "snowflakeDefaultRole":"",
 "queryHistorySqlType":"",
-"metaStoreDbType":""
+"metaStore":"hive"
 ```
 
 ####  sqlsourceTableName
@@ -739,7 +739,7 @@ Sample configuration of a local directory path:
         "queryHistoryBlockOfTimeInMinutes":30,
         "snowflakeDefaultRole":"",
         "queryHistorySqlType":"",
-	    "metaStoreDbType":""
+	    "metaStore":""
     },
     "gitServer":{
         "url":"https://github.com/sqlparser/snowflake-data-lineage",
