@@ -8,11 +8,11 @@ to the SQLFlow to analyze the data lineage.
 ```json
 {
     "databaseServer":{
-        "hostname":"115.159.225.38",
+        "hostname":"",
         "port":"3306",
-        "username":"root",
-        "password":"123456a?",
-        "database":"hive",
+        "username":"",
+        "password":"",
+        "database":"",
         "extractedDbsSchemas":"",
         "excludedDbsSchemas":"",
         "extractedStoredProcedures":"",
@@ -20,7 +20,7 @@ to the SQLFlow to analyze the data lineage.
         "metaStore":"hive"
     },
     "SQLFlowServer":{
-        "server":"http:127.0.0.1",
+        "server":"http://127.0.0.1",
         "serverPort":"8081",
         "userId":"gudu|0123456789",
         "userSecret":""
@@ -29,6 +29,14 @@ to the SQLFlow to analyze the data lineage.
     "lineageReturnFormat":"json",
     "databaseType":"mysql"
 }
+```
+
+Please make sure to setup the `database` to the name of the MySQL database 
+which store the Hive metastore.
+
+The IP below should be the machine where the SQLFlow on-premise version is installed.
+```
+"server":"http://127.0.0.1",
 ```
 
 
