@@ -65,21 +65,22 @@ where start.sh or start.bat file of the grabit tool is located.
 
 ```json
 {
-	"optionType":3,
-	"resultType":1,
+	"SQLScriptSource":"gitserver",
+	"lineageReturnFormat":"json",
 	"databaseType":"sparksql",
-	"SQLFlowServer":{
-		"server":"https://api.gudusoft.com", 
-		"serverPort":"",
-		"userId":"your sqlflow premium account user id",
-		"userSecret":"user secret code"
-	},
-	"bitbucketRepo":{
-		"url":"https://bitbucket.org/AccountName/repositoryName",
-		"username":"your bitbucket username",
+	"gitserver":{
+		"url":"https://bitbucket.org/username/repo",
+		"username":"your user name",
 		"password":"your password",
 		"sshkeyPath":""
-	}
+	},
+	"SQLFlowServer":{
+	"server":"https://api.gudusoft.com",
+	"serverPort":"",
+	"userId":"your user id",
+	"userSecret":"your secret code"
+	},
+	"enableGetMetadataInJSONFromDatabase":0
 }
 ```
 
