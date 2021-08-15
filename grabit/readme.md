@@ -144,26 +144,54 @@ Export DDL statements from the Queries object into an SQL file.
 
 - **mac & linux**
 ```
-./start.sh -e path_to_json_file [target_dir]
+./start.sh -e path_to_json_file [/targetDir target_dir]
 
 note: 
     path_to_config_file: the full path to the metedata json file
     target_dir: the path to the generated SQL file, optional
 
 eg: 
-    ./start.sh -e test.json /root/sqlfiles
+    ./start.sh -e test.json /targetDir /root/sqlfiles
 ```
 
 - **windows**
 ```
-start.bat -e path_to_json_file [target_dir]
+start.bat -e path_to_json_file [/targetDir target_dir]
 
 note: 
     path_to_config_file: the full path to the metedata json file
     target_dir: the path to the generated SQL file, optional
 
 eg: 
-    start.bat -e test.json /root/sqlfiles
+    start.bat -e test.json /targetDir /root/sqlfiles
+```
+
+#### Export metadata in csv to sql files
+
+Export DDL statements from the Queries object into an SQL file.
+
+- **mac & linux**
+```
+./start.sh -e /csv path_to_csv_file [/csvFormat 12345] [/targetDir target_dir]
+
+note: 
+    path_to_config_file: the full path to the metedata csv file
+    target_dir: the path to the generated SQL file, optional
+
+eg: 
+    ./start.sh -e /csv test.csv /csvFormat 12345 /targetDir /root/sqlfiles
+```
+
+- **windows**
+```
+start.bat -e /csv path_to_csv_file [/csvFormat 12345] [/targetDir target_dir]
+
+note: 
+    path_to_config_file: the full path to the metedata csv file
+    target_dir: the path to the generated SQL file, optional
+
+eg: 
+    start.bat -e /csv test.csv /csvFormat 12345 /targetDir /root/sqlfiles
 ```
 
 #### Encrypted password
