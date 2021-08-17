@@ -668,6 +668,18 @@ When `SQLScriptSource=singleFile`, this is a single SQL file needs to be analyze
 
 The name of the SQL file with full path.
 
+- **csvFormat**
+
+Format of a CSV file. used to represent the CSV in the `Catalog,  Schema, ObjectType, ObjectName, ObjectCode, Notes ` each column is the number of columns in the CSV file, does not exist it is `0`, The default is  `013245`. 
+
+- **objectCodeEncloseChar**
+
+Specifies that the string contains SQL Code content.
+
+- **objectCodeEscapeChar**
+
+ObjectCodeEncloseChar specifies the string escape.
+
 ### 8. SQLInDirectory
 
 When `SQLScriptSource=directory`, SQL files under this directory including sub-directory will be analyzed. 
@@ -776,7 +788,10 @@ Sample configuration of a local directory path:
         "sshkeyPath":""
     },
     "SQLInSingleFile":{
-        "filePath":""
+        "filePath":"",
+        "csvFormat": "",
+        "objectCodeEncloseChar": "",
+        "objectCodeEscapeChar": ""
     },
     "SQLInDirectory":{
         "directoryPath":""
