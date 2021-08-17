@@ -172,26 +172,26 @@ Export DDL statements from the Queries object into an SQL file.
 
 - **mac & linux**
 ```
-./start.sh -e /csv path_to_csv_file [/csvFormat 12345] [/targetDir target_dir]
+./start.sh -e /csv path_to_csv_file [/csvFormat 12345] [/objectCodeEncloseChar "] [/objectCodeEscapeChar "] [/targetDir target_dir]
 
 note: 
     path_to_config_file: the full path to the metedata csv file
     target_dir: the path to the generated SQL file, optional
 
 eg: 
-    ./start.sh -e /csv test.csv /csvFormat 12345 /targetDir /root/sqlfiles
+    ./start.sh -e /csv test.csv /csvFormat 12345 /objectCodeEscapeChar " /objectCodeEncloseChar " /targetDir /root/sqlfiles
 ```
 
 - **windows**
 ```
-start.bat -e /csv path_to_csv_file [/csvFormat 12345] [/targetDir target_dir]
+start.bat -e /csv path_to_csv_file [/csvFormat 12345] [/objectCodeEncloseChar "] [/objectCodeEscapeChar "] [/targetDir target_dir]
 
 note: 
     path_to_config_file: the full path to the metedata csv file
     target_dir: the path to the generated SQL file, optional
 
 eg: 
-    start.bat -e /csv test.csv /csvFormat 12345 /targetDir /root/sqlfiles
+    start.bat -e /csv test.csv /csvFormat 12345 /objectCodeEscapeChar " /objectCodeEncloseChar " /targetDir /root/sqlfiles
 ```
 
 #### Encrypted password
