@@ -248,6 +248,10 @@ e.g.:
 
 Please check [this document](https://phoenixnap.com/kb/set-up-cron-job-linux) for more information about cron.
 
+### custom ddl export sql
+
+`conf` directory contains all ddl export sql, you can edit the sql file in the `conf` directory, but, you must ensure that the return field remains the same, and you can join the new SQL using the `Union ALL` statement.
+
 
 ### Grabit directory of data files
 
