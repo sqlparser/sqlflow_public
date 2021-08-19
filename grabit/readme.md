@@ -252,9 +252,9 @@ Please check [this document](https://phoenixnap.com/kb/set-up-cron-job-linux) fo
 
 ### custom ddl export sql
 
-`conf.zip` file contains all ddl export sql, you can edit the sql file in the `conf.zip`, keep the same of return fields, put the modified sql file at: /conf/
+`conf.zip` file contains all ddl export sql, you can edit the sql file in the `conf.zip`, keep the same of return fields, put the modified sql file at: conf/%database_name%/%query_type%.sql
 
-for example, when you edit the conf/mssql/query.sql, please copy it to /conf/mssql/query.sql, the DataFlowAnalyzer will load your modified sql file as ddl export sql.
+for example, when you edit the conf/mssql/query.sql, please copy it to conf/mssql/query.sql, the grabit will load your modified sql file as ddl export sql.
 
 Please check [conf.zip](https://github.com/sqlparser/gsp_demo_java/tree/master/src/main/java/demos/dlineage/conf.zip) download.
 
