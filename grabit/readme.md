@@ -417,6 +417,14 @@ The password of the database user.
 
 note: the passwords can be encrypted using tools [Encrypted password](#Encrypted password), using encrypted passwords more secure.
 
+#### privateKeyFile
+
+Use a private key to connect.
+
+#### privateKeyFilePwd
+
+Generate the password for the private key.
+
 #### database
 
 The name of the database instance to which it is connected. 
@@ -774,6 +782,8 @@ Sample configuration of a local directory path:
         "port":"1433",
         "username":"sa",
         "password":"PASSWORD",
+        "privateKeyFile":"",
+		"privateKeyFilePwd":"",
         "database":"",
         "extractedDbsSchemas":"AdventureWorksDW2019/dbo",
         "excludedDbsSchemas":"",
