@@ -421,11 +421,11 @@ note: the passwords can be encrypted using tools [Encrypted password](#Encrypted
 
 #### privateKeyFile
 
-Use a private key to connect.
+Use a private key to connect, Only supports the `snowflake`.
 
 #### privateKeyFilePwd
 
-Generate the password for the private key.
+Generate the password for the private key, Only supports the `snowflake`.
 
 #### database
 
