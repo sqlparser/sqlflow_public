@@ -235,7 +235,7 @@ note:
 e.g.: 
     1. sudo vi /etc/crontab 
     2. add the following statement to the last line
-        0 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh /f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template /home/ubuntu/grabit-2.4.6/lib
+        1 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh /f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template /home/ubuntu/grabit-2.4.6/lib
         
         note: 
             0 */1   * * *: cron expression
@@ -674,7 +674,7 @@ The name of the SQL file with full path.
 
 - **csvFormat**
 
-Format of a CSV file. used to represent the CSV in the `Catalog,  Schema, ObjectType, ObjectName, ObjectCode, Notes ` each column is the number of columns in the CSV file, does not exist it is `0`, The default is  `013245`. 
+Format of a CSV file. used to represent the CSV in the `Catalog,  Schema, ObjectType, ObjectName, ObjectCode, Notes ` each column is the number of columns in the CSV file, does not exist it is `0`, The default is  `123456`. 
 
 - **objectCodeEncloseChar**
 
