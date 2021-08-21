@@ -68,6 +68,102 @@ Or, the user connect to the Snowflake with the role has the following privileges
 
 ### Parameters used in grabit tool
 
+####  hostname
+
+The IP of the database server that the grabit connects.
+
+#### port
+
+The port number of the database server that the grabit connect.
+
+#### username
+
+The database user used to login to the database.
+
+#### password
+
+The password of the database user.
+
+note: the passwords can be encrypted using tools [Encrypted password](#Encrypted password), using encrypted passwords more secure.
+
+#### privateKeyFile
+
+Use a private key to connect.
+
+#### privateKeyFilePwd
+
+Generate the password for the private key.
+
+#### database
+
+The name of the database instance to which it is connected, it is optional.
+
+#### extractedDbsSchemas
+
+List of databases and schemas to extract, separated by
+commas, which are to be provided in the format database/schema;
+Or blank to extract all databases.
+`database1/schema1,database2/schema2,database3` or `database1.schema1,database2.schema2,database3`
+When parameter `database` is filled in, this parameter is considered a schema.
+And support wildcard characters such as `database1/*`,`*/schema`,`*/*`.
+
+for example:
+````json
+extractedDbsSchemas: "MY/ADMIN"
+````
+
+
+#### excludedDbsSchemas
+
+This parameters works under the resultset filtered by `extractedDbsSchemas`.
+List of databases and schemas to exclude from extraction, separated by commas
+`database1/schema1,database2` or `database1.schema1,database2` 
+When parameter `database` is filled in, this parameter is considered a schema.
+And support wildcard characters such as `database1/*`,`*/schema`,`*/*`.
+
+for example:
+````json
+excludedDbsSchemas: "MY/*"
+````
+
+#### extractedStoredProcedures
+
+A list of stored procedures under the specified database and schema to extract, separated by
+commas, which are to be provided in the format database.schema.procedureName or schema.procedureName;
+Or blank to extract all databases, support expression.
+`database1.schema1.procedureName1,database2.schema2.procedureName2,database3.schema3,database4` or `database1/schema1/procedureName1,database2/schema2`
+
+for example:
+
+````json
+extractedStoredProcedures: "database.scott.vEmp*"
+````
+
+or
+
+````json
+extractedStoredProcedures: "database.scott"
+````
+
+#### extractedViews
+
+A list of stored views under the specified database and schema to extract, separated by
+commas, which are to be provided in the format database.schema.viewName or schema.viewName.
+Or blank to extract all databases, support expression.
+`database1.schema1.procedureName1,database2.schema2.procedureName2,database3.schema3,database4` or `database1/schema1/procedureName1,database2/schema2`
+
+for example:
+
+````json
+extractedViews: "database.scott.vEmp*"
+````
+
+or
+
+````json
+extractedViews: "database.scott"
+````
+
 #### enableQueryHistory
 
 Fetch SQL queries from the query history if set to `true` default is false.
@@ -126,4 +222,81 @@ queryHistorySqlType: "SELECT,DELETE"
 
 This value represents the role of the snowflake database.
 
+####  sqlsourceTableName
 
+table name: **query_table**
+
+| query_name | query_source                        |
+| ---------- | ----------------------------------- |
+| query1     | create view v1 as select f1 from t1 |
+| query2     | create view v2 as select f2 from t2 |
+| query3     | create view v3 as select f3 from t3 |
+
+If you save SQL queries in a specific table, one SQL query per row. 
+
+Let's say: `query_table.query_source` store the source code of the query.
+We can use this query to fetch all SQL queries in this table:
+
+```sql
+select query_name as queryName, query_source as querySource from query_table
+```
+
+By setting the value of `sqlsourceTableName` and `sqlsourceColumnQuerySource`,`sqlsourceColumnQueryName`
+grabit can fetch all SQL queries in this table and send it to the SQLFlow to analzye the lineage.
+
+In this example, 
+```json
+"sqlsourceTableName":"query_table"
+"sqlsourceColumnQuerySource":"query_source"
+"sqlsourceColumnQueryName":"query_name"
+```
+
+Please leave `sqlsource_table_name`  empty if you don't fetch SQL queries from a specific table.
+ 
+####  sqlsourceColumnQuerySource
+In the above sample:
+```json
+"sqlsourceColumnQuerySource":"query_source"
+```
+
+#### sqlsourceColumnQueryName
+```json
+"sqlsourceColumnQueryName":"query_name"
+```
+This parameter is optional, you don't need to speicify a query name column if it doesn't exist in the table.
+
+
+**eg configuration file:**
+````json
+{
+    "databaseServer":{
+        "hostname":"127.0.0.1",
+        "port":"433",
+        "username":"USERNAME",
+        "password":"PASSWORD",
+        "privateKeyFile":"",
+        "privateKeyFilePwd":"",
+        "database":"",
+        "extractedDbsSchemas":"MY/dbo",
+        "excludedDbsSchemas":"",
+        "extractedStoredProcedures":"",
+        "extractedViews":"",
+        "enableQueryHistory":true,
+        "queryHistoryBlockOfTimeInMinutes":30,
+        "snowflakeDefaultRole":"",
+        "queryHistorySqlType":"",
+        "sqlsourceTableName":"",
+        "sqlsourceColumnQuerySource":"",
+        "sqlsourceColumnQueryName":""
+    },
+    "SQLFlowServer":{
+        "server":"http:127.0.0.1",
+        "serverPort":"8081",
+        "userId":"gudu|0123456789",
+        "userSecret":""
+    },
+    "SQLScriptSource":"database",
+    "lineageReturnFormat":"json",
+    "databaseType":"snowflake"
+}
+````
