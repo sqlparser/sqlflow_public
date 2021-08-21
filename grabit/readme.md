@@ -535,20 +535,6 @@ When `enableQueryHistory:true`, the DML type of SQL is extracted from the query 
 When empty, all types are extracted, and when multiple types are specified, a comma separates them, such as `SELECT,UPDATE,MERGE`.
 Currently only the snowflake database supports this parameter,support types are **SHOW,SELECT,INSERT,UPDATE,DELETE,MERGE,CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE FUNCTION**.
 
-````
-note: You must define a role that has access to the SNOWFLAKE database.
-````
-
-Assign permissions to a role, for example:
-
-````sql
-use role accountadmin;
-grant imported privileges on database snowflake to role sysadmin;
-grant imported privileges on database snowflake to role customrole1;
-use role customrole1;
-select * from snowflake.account_usage.databases;
-````
-
 for example:
 
 ````json
@@ -559,6 +545,25 @@ queryHistorySqlType: "SELECT,DELETE"
 
 This value represents the role of the snowflake database.
 
+````
+note: You must define a role that has access to the SNOWFLAKE database,And assign WAREHOUSE permission to this role.
+````
+
+Assign permissions to a role, for example:
+
+````sql
+#create role
+use role accountadmin;
+grant imported privileges on database snowflake to role sysadmin;
+grant imported privileges on database snowflake to role customrole1;
+use role customrole1;
+select * from snowflake.account_usage.databases;
+
+#To do this, the Role gives the WAREHOUSE permission
+select current_warehouse()
+use role sysadmin
+GRANT ALL PRIVILEGES ON WAREHOUSE %current_warehouse% TO ROLE customrole1;
+````
 
 #### metaStore
 
