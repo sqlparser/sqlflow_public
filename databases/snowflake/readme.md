@@ -5,12 +5,12 @@ Discover and visualization lineage from Snowflake database and script.
 ## Extract DDL from the database
 
 1、database:
-```
+```sql
 show databases;
 ```
 
 2、table, view：
-```
+```sql
 select
   '"' || t.table_catalog || '"' as dbName,
   '"' || t.table_schema || '"' as schemaName,
@@ -33,18 +33,18 @@ where
 order by t.table_catalog, t.table_schema, t.table_name, c.ordinal_position;
 ```
 3、source code of the view
-```
+```sql
 SHOW VIEWS IN %s.%s;
 SELECT GET_DDL('VIEW', '%s.%s.%s');
 ```
 4、source code of the procedure
-```
+```sql
 SHOW PROCEDURES IN %s.%s;
 SELECT GET_DDL('PROCEDURE', '%s.%s.%s');
 ```
 
 5、source code of the function:
-```
+```sql
 SHOW FUNCTIONS IN %s.%s;
 SELECT GET_DDL('FUNCTION', '%s.%s.%s');
 ```
@@ -54,12 +54,11 @@ SELECT GET_DDL('FUNCTION', '%s.%s.%s');
 grabit connect to the Snowflake database.
 
 Or, the user connect to the Snowflake with the role has the following privileges.
-```
+```sql
  grant select on VIEW information_schema.DATABASES  to role SQLFLOW;
  grant select on VIEW information_schema.TABLES  to role SQLFLOW;
  grant select on VIEW information_schema.COLUMNS  to role SQLFLOW;
  grant all privileges on FUNCTION information_schema.GET_DDL() to role SQLFLOW;
-
 ```
 
 
@@ -74,44 +73,48 @@ Or, the user connect to the Snowflake with the role has the following privileges
 Fetch SQL queries from the query history if set to `true` default is false.
 
 #### Extract from the query history
-This is the SQL query used to get query from the snowflake query history.
-```
+This is the SQL query used to get query from the snowflake query history,We can extract data from the last year.
+```sql
 SELECT
- * 
+*
 FROM
- TABLE ( information_schema.query_history ( dateadd ( 'mins',-%s, CURRENT_TIMESTAMP ( ) ), CURRENT_TIMESTAMP ( ) ) ) 
-ORDER BY
- start_time;
+"SNOWFLAKE"."ACCOUNT_USAGE"."QUERY_HISTORY"
+WHERE
+dateadd('mins',
+-%s,
+current_timestamp()) <= start_time ORDER BY start_time;
+
 ```
 
 #### permission needs to extract queries from query history
-`%s` is the database name you want to connect.
 
-The user connect to the Snowflake database is able to execute the following command successfully in order to fetch queries from the query history.
-```
-USE DATABASE %s;
-```
+You must define a role that has access to the `SNOWFLAKE` database,And assign `WAREHOUSE` permission to this role.
 
+Assign permissions to a role, for example:
+
+````sql
+#create role
+use role accountadmin;
+grant imported privileges on database snowflake to role sysadmin;
+grant imported privileges on database snowflake to role customrole1;
+use role customrole1;
+select * from snowflake.account_usage.databases;
+
+#To do this, the Role gives the WAREHOUSE permission
+select current_warehouse()
+use role sysadmin
+GRANT ALL PRIVILEGES ON WAREHOUSE %current_warehouse% TO ROLE customrole1;
+````
 
 #### queryHistoryBlockOfTimeInMinutes
 
 When `enableQueryHistory:true`, the interval at which the SQL query was extracted in the query History,default is `30` minutes.
 
 #### queryHistorySqlType
-You can specify what's kind of SQL statements need to be sent to the SQLFlow for furhter processing after fetch the queries
-from the Snowflake query history.
 
-1. grabit will fetch all queries in the Snowflake query history.
-2. if `queryHistorySqlType` is specified, grabit will only pickup those SQL statements
-and send it to the SQLFlow for furhter processing. This parameter can be useful if you want to discover
-lineage from a specific type of SQL statements.
-3. if `queryHistorySqlType` is empty, all queries fetched from the query history will be sent to the SQLFlow server.
-
-
-Value of `queryHistorySqlType` can be a list of SQL statement types separated by the comma like this: `SELECT,UPDATE,MERGE`.
-
-Here is the list of available values that can be used: **SHOW,SELECT,INSERT,UPDATE,DELETE,MERGE,CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE FUNCTION**.
-
+When `enableQueryHistory:true`, the DML type of SQL is extracted from the query History.
+When empty, all types are extracted, and when multiple types are specified, a comma separates them, such as `SELECT,UPDATE,MERGE`.
+Currently only the snowflake database supports this parameter,support types are **SHOW,SELECT,INSERT,UPDATE,DELETE,MERGE,CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE FUNCTION**.
 
 for example:
 
@@ -122,6 +125,5 @@ queryHistorySqlType: "SELECT,DELETE"
 #### snowflakeDefaultRole
 
 This value represents the role of the snowflake database.
-
 
 
