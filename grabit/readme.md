@@ -140,6 +140,26 @@ Then it is proved that the upload to SQLFlow has been successful.
 Log in to the SQLFlow website to view the newly analyzed results. 
 In the `Job List`, you can view the analysis results of the currently submitted tasks.
 
+#### Export generic file to sql files
+
+Export DDL statements from the Queries object into an SQL file.
+
+- **mac & linux**
+```
+./start.sh -e /generic /t dbvendor dir_to_txt_file
+
+eg: 
+    ./start.sh -e /generic /t oracle /root/oracledir
+```
+
+- **windows**
+```
+start.bat -e /generic /t dbvendor dir_to_txt_file
+
+eg: 
+    start.bat -e /generic /t oracle /root/oracledir
+```
+
 #### Export metadata in json to sql files
 
 Export DDL statements from the Queries object into an SQL file.
