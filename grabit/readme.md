@@ -24,6 +24,8 @@
       - [port](#port)
       - [username](#username)
       - [password](#password)
+      - [privateKeyFile](#privateKeyFile)
+      - [privateKeyFilePwd](#privateKeyFilePwd)
       - [database](#database)
       - [extractedDbsSchemas](#extracteddbsschemas)
       - [excludedDbsSchemas](#excludeddbsschemas)
@@ -138,32 +140,80 @@ Then it is proved that the upload to SQLFlow has been successful.
 Log in to the SQLFlow website to view the newly analyzed results. 
 In the `Job List`, you can view the analysis results of the currently submitted tasks.
 
+#### Export generic file to sql files
+
+Export DDL statements from the Queries object into an SQL file.
+
+- **mac & linux**
+```
+./start.sh -e /generic /t dbvendor dir_to_txt_file
+
+eg: 
+    ./start.sh -e /generic /t oracle /root/oracledir
+```
+
+- **windows**
+```
+start.bat -e /generic /t dbvendor dir_to_txt_file
+
+eg: 
+    start.bat -e /generic /t oracle /root/oracledir
+```
+
 #### Export metadata in json to sql files
 
 Export DDL statements from the Queries object into an SQL file.
 
 - **mac & linux**
 ```
-./start.sh -e path_to_json_file [target_dir]
+./start.sh -e path_to_json_file [/targetDir target_dir]
 
 note: 
     path_to_config_file: the full path to the metedata json file
     target_dir: the path to the generated SQL file, optional
 
 eg: 
-    ./start.sh -e test.json /root/sqlfiles
+    ./start.sh -e test.json /targetDir /root/sqlfiles
 ```
 
 - **windows**
 ```
-start.bat -e path_to_json_file [target_dir]
+start.bat -e path_to_json_file [/targetDir target_dir]
 
 note: 
     path_to_config_file: the full path to the metedata json file
     target_dir: the path to the generated SQL file, optional
 
 eg: 
-    start.bat -e test.json /root/sqlfiles
+    start.bat -e test.json /targetDir /root/sqlfiles
+```
+
+#### Export metadata in csv to sql files
+
+Export DDL statements from the Queries object into an SQL file.
+
+- **mac & linux**
+```
+./start.sh -e /csv path_to_csv_file [/csvFormat 123456] [/objectCodeEncloseChar char] [/objectCodeEscapeChar char] [/targetDir target_dir]
+
+note: 
+    path_to_config_file: the full path to the metedata csv file
+    target_dir: the path to the generated SQL file, optional
+
+eg: 
+    ./start.sh -e /csv test.csv /csvFormat 123456 /objectCodeEscapeChar " /objectCodeEncloseChar " /targetDir /root/sqlfiles
+```
+
+- **windows**
+```
+start.bat -e /csv path_to_csv_file [/csvFormat 123456] [/objectCodeEncloseChar char] [/objectCodeEscapeChar char] [/targetDir target_dir]
+
+note: 
+    path_to_config_file: the full path to the metedata csv file
+    target_dir: the path to the generated SQL file, optional
+
+eg: 
+    start.bat -e /csv test.csv /csvFormat 123456 /objectCodeEscapeChar " /objectCodeEncloseChar " /targetDir /root/sqlfiles
 ```
 
 #### Encrypted password
@@ -207,7 +257,7 @@ note:
 e.g.: 
     1. sudo vi /etc/crontab 
     2. add the following statement to the last line
-        0 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh /f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template /home/ubuntu/grabit-2.4.6/lib
+        1 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh /f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template /home/ubuntu/grabit-2.4.6/lib
         
         note: 
             0 */1   * * *: cron expression
@@ -220,6 +270,13 @@ e.g.:
 
 Please check [this document](https://phoenixnap.com/kb/set-up-cron-job-linux) for more information about cron.
 
+### custom ddl export sql
+
+`conf.zip` file contains all ddl export sql, you can edit the sql file in the `conf.zip`, keep the same of return fields, put the modified sql file at: conf/%database_name%/%query_type%.sql
+
+for example, when you edit the conf/mssql/query.sql, please copy it to conf/mssql/query.sql, the grabit will load your modified sql file as ddl export sql.
+
+Please check [conf.zip](https://github.com/sqlparser/gsp_demo_java/tree/master/src/main/java/demos/dlineage/conf.zip) download.
 
 ### Grabit directory of data files
 
@@ -385,6 +442,14 @@ The password of the database user.
 
 note: the passwords can be encrypted using tools [Encrypted password](#Encrypted password), using encrypted passwords more secure.
 
+#### privateKeyFile
+
+Use a private key to connect, Only supports the `snowflake`.
+
+#### privateKeyFilePwd
+
+Generate the password for the private key, Only supports the `snowflake`.
+
 #### database
 
 The name of the database instance to which it is connected. 
@@ -490,20 +555,6 @@ When `enableQueryHistory:true`, the DML type of SQL is extracted from the query 
 When empty, all types are extracted, and when multiple types are specified, a comma separates them, such as `SELECT,UPDATE,MERGE`.
 Currently only the snowflake database supports this parameter,support types are **SHOW,SELECT,INSERT,UPDATE,DELETE,MERGE,CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE FUNCTION**.
 
-````
-note: You must define a role that has access to the SNOWFLAKE database.
-````
-
-Assign permissions to a role, for example:
-
-````sql
-use role accountadmin;
-grant imported privileges on database snowflake to role sysadmin;
-grant imported privileges on database snowflake to role customrole1;
-use role customrole1;
-select * from snowflake.account_usage.databases;
-````
-
 for example:
 
 ````json
@@ -514,6 +565,25 @@ queryHistorySqlType: "SELECT,DELETE"
 
 This value represents the role of the snowflake database.
 
+````
+note: You must define a role that has access to the SNOWFLAKE database,And assign WAREHOUSE permission to this role.
+````
+
+Assign permissions to a role, for example:
+
+````sql
+#create role
+use role accountadmin;
+grant imported privileges on database snowflake to role sysadmin;
+grant imported privileges on database snowflake to role customrole1;
+use role customrole1;
+select * from snowflake.account_usage.databases;
+
+#To do this, the Role gives the WAREHOUSE permission
+select current_warehouse()
+use role sysadmin
+GRANT ALL PRIVILEGES ON WAREHOUSE %current_warehouse% TO ROLE customrole1;
+````
 
 #### metaStore
 
@@ -640,6 +710,18 @@ When `SQLScriptSource=singleFile`, this is a single SQL file needs to be analyze
 
 The name of the SQL file with full path.
 
+- **csvFormat**
+
+Format of a CSV file. used to represent the CSV in the `Catalog,  Schema, ObjectType, ObjectName, ObjectCode, Notes ` each column is the number of columns in the CSV file, does not exist it is `0`, The default is  `123456`. 
+
+- **objectCodeEncloseChar**
+
+Specifies that the string contains SQL Code content.
+
+- **objectCodeEscapeChar**
+
+ObjectCodeEncloseChar specifies the string escape.
+
 ### 8. SQLInDirectory
 
 When `SQLScriptSource=directory`, SQL files under this directory including sub-directory will be analyzed. 
@@ -730,6 +812,8 @@ Sample configuration of a local directory path:
         "port":"1433",
         "username":"sa",
         "password":"PASSWORD",
+        "privateKeyFile":"",
+		"privateKeyFilePwd":"",
         "database":"",
         "extractedDbsSchemas":"AdventureWorksDW2019/dbo",
         "excludedDbsSchemas":"",
@@ -748,7 +832,10 @@ Sample configuration of a local directory path:
         "sshkeyPath":""
     },
     "SQLInSingleFile":{
-        "filePath":""
+        "filePath":"",
+        "csvFormat": "",
+        "objectCodeEncloseChar": "",
+        "objectCodeEscapeChar": ""
     },
     "SQLInDirectory":{
         "directoryPath":""
