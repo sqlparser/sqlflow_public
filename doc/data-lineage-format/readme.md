@@ -46,11 +46,11 @@ In the above sample SQL, there are four tables founded:
 - DEPTSAL
   you can use `$.dbobjs[1].name` to return the table name, and `$.dbobjs[1].type` to return the type of this object which is `table` in this case.
   you can also use expression like this to get this table:
-  ```
+  ```json
   $.dbobjs[?(@.name=='deptsal')].name
   ```
 - DEPT
-  ```
+  ```json
   $.dbobjs[?(@.name=='dept')].name
   ```
 - EMP
