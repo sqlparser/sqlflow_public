@@ -11,4 +11,4 @@ table or column automatically in the schema explorer, then select and visualize
 the table or column with a right mouse click.
 SQLFlow will display the data lineage of the selected table or column instantly.
 
-![sqlflow search table column](doc/sqlflow-search-table-column.gif)
+![sqlflow search table column](images/sqlflow-search-table-column.gif)

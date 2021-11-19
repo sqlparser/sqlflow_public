@@ -1,0 +1,1719 @@
+{
+  "dbvendor": "dbvoracle",
+  "dbobjs": [
+    {
+      "id": "6",
+      "name": "Query Insert",
+      "procedureName": "batchQueries",
+      "queryHashId": "0141317811aa76e20b82376fac9294ac",
+      "type": "process",
+      "coordinates": [
+        {
+          "x": 1,
+          "y": 1,
+          "hashCode": "0"
+        },
+        {
+          "x": 14,
+          "y": 19,
+          "hashCode": "0"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "deptsal",
+      "type": "table",
+      "columns": [
+        {
+          "id": "3",
+          "name": "dept_no",
+          "coordinates": [
+            {
+              "x": 2,
+              "y": 14,
+              "hashCode": "0"
+            },
+            {
+              "x": 2,
+              "y": 21,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "4",
+          "name": "dept_name",
+          "coordinates": [
+            {
+              "x": 3,
+              "y": 14,
+              "hashCode": "0"
+            },
+            {
+              "x": 3,
+              "y": 23,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "5",
+          "name": "salary",
+          "coordinates": [
+            {
+              "x": 4,
+              "y": 14,
+              "hashCode": "0"
+            },
+            {
+              "x": 4,
+              "y": 20,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "1",
+          "name": "PseudoRows",
+          "coordinates": [
+            {
+              "x": 1,
+              "y": 13,
+              "hashCode": "0"
+            },
+            {
+              "x": 1,
+              "y": 20,
+              "hashCode": "0"
+            }
+          ],
+          "source": "system"
+        }
+      ],
+      "coordinates": [
+        {
+          "x": 1,
+          "y": 13,
+          "hashCode": "0"
+        },
+        {
+          "x": 1,
+          "y": 20,
+          "hashCode": "0"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "dept",
+      "alias": "d",
+      "type": "table",
+      "columns": [
+        {
+          "id": "40",
+          "name": "deptno",
+          "coordinates": [
+            {
+              "x": 12,
+              "y": 29,
+              "hashCode": "0"
+            },
+            {
+              "x": 12,
+              "y": 37,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "41",
+          "name": "dname",
+          "coordinates": [
+            {
+              "x": 6,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 6,
+              "y": 15,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ],
+      "coordinates": [
+        {
+          "x": 8,
+          "y": 8,
+          "hashCode": "0"
+        },
+        {
+          "x": 8,
+          "y": 14,
+          "hashCode": "0"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "name": "emp",
+      "type": "table",
+      "columns": [
+        {
+          "id": "18",
+          "name": "hiredate",
+          "coordinates": [
+            {
+              "x": 11,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 11,
+              "y": 34,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "19",
+          "name": "deptno",
+          "coordinates": [
+            {
+              "x": 12,
+              "y": 18,
+              "hashCode": "0"
+            },
+            {
+              "x": 12,
+              "y": 26,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "20",
+          "name": "sal",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 12,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 17,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "21",
+          "name": "comm",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 24,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 30,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "23",
+          "name": "*",
+          "coordinates": [
+            {
+              "x": 9,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 9,
+              "y": 27,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ],
+      "coordinates": [
+        {
+          "x": 10,
+          "y": 26,
+          "hashCode": "0"
+        },
+        {
+          "x": 10,
+          "y": 29,
+          "hashCode": "0"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "name": "SQL_CONSTANTS",
+      "type": "constantTable",
+      "columns": [
+        {
+          "id": "26",
+          "name": "DATE '1980-01-01'",
+          "coordinates": [
+            {
+              "x": 11,
+              "y": 37,
+              "hashCode": "0"
+            },
+            {
+              "x": 11,
+              "y": 54,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "38",
+          "name": "0",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 32,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 33,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ],
+      "coordinates": [
+        {
+          "x": -1,
+          "y": -1,
+          "hashCode": "0"
+        },
+        {
+          "x": -1,
+          "y": -1,
+          "hashCode": "0"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "name": "RESULT_OF_E",
+      "type": "select_list",
+      "columns": [
+        {
+          "id": "22",
+          "name": "*",
+          "coordinates": [
+            {
+              "x": 9,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 9,
+              "y": 27,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "42",
+          "name": "deptno",
+          "coordinates": [
+            {
+              "x": 12,
+              "y": 18,
+              "hashCode": "0"
+            },
+            {
+              "x": 12,
+              "y": 26,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "14",
+          "name": "PseudoRows",
+          "coordinates": [
+            {
+              "x": 11,
+              "y": 56,
+              "hashCode": "0"
+            },
+            {
+              "x": 11,
+              "y": 57,
+              "hashCode": "0"
+            }
+          ],
+          "source": "system"
+        },
+        {
+          "id": "22_0",
+          "name": "SAL",
+          "coordinates": [
+            {
+              "x": 9,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 9,
+              "y": 27,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "22_1",
+          "name": "COMM",
+          "coordinates": [
+            {
+              "x": 9,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 9,
+              "y": 27,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "22_2",
+          "name": "HIREDATE",
+          "coordinates": [
+            {
+              "x": 9,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 9,
+              "y": 27,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ],
+      "coordinates": [
+        {
+          "x": 11,
+          "y": 56,
+          "hashCode": "0"
+        },
+        {
+          "x": 11,
+          "y": 57,
+          "hashCode": "0"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "name": "INSERT-SELECT-1",
+      "type": "insert-select",
+      "columns": [
+        {
+          "id": "29",
+          "name": "deptno",
+          "coordinates": [
+            {
+              "x": 5,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 5,
+              "y": 16,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "30",
+          "name": "dname",
+          "coordinates": [
+            {
+              "x": 6,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 6,
+              "y": 15,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "31",
+          "name": "sal",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 42,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "27",
+          "name": "PseudoRows",
+          "coordinates": [
+            {
+              "x": 5,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 42,
+              "hashCode": "0"
+            }
+          ],
+          "source": "system"
+        }
+      ],
+      "coordinates": [
+        {
+          "x": 5,
+          "y": 8,
+          "hashCode": "0"
+        },
+        {
+          "x": 7,
+          "y": 42,
+          "hashCode": "0"
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "name": "FUNCTION-1",
+      "type": "function",
+      "columns": [
+        {
+          "id": "34",
+          "name": "SUM",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 11,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "32",
+          "name": "PseudoRows",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 35,
+              "hashCode": "0"
+            }
+          ],
+          "source": "system"
+        }
+      ],
+      "coordinates": [
+        {
+          "x": 7,
+          "y": 8,
+          "hashCode": "0"
+        },
+        {
+          "x": 7,
+          "y": 35,
+          "hashCode": "0"
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "name": "FUNCTION-2",
+      "type": "function",
+      "columns": [
+        {
+          "id": "37",
+          "name": "Nvl",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 20,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 23,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "35",
+          "name": "PseudoRows",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 20,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 34,
+              "hashCode": "0"
+            }
+          ],
+          "source": "system"
+        }
+      ],
+      "coordinates": [
+        {
+          "x": 7,
+          "y": 20,
+          "hashCode": "0"
+        },
+        {
+          "x": 7,
+          "y": 34,
+          "hashCode": "0"
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "1_0",
+      "type": "fdd",
+      "effectType": "select",
+      "target": {
+        "id": "22_0",
+        "column": "SAL",
+        "parentId": "15",
+        "parentName": "RESULT_OF_E",
+        "coordinates": [
+          {
+            "x": 9,
+            "y": 26,
+            "hashCode": "0"
+          },
+          {
+            "x": 9,
+            "y": 27,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "20",
+          "column": "sal",
+          "parentId": "17",
+          "parentName": "emp",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 12,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 17,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1_1",
+      "type": "fdd",
+      "effectType": "select",
+      "target": {
+        "id": "22_1",
+        "column": "COMM",
+        "parentId": "15",
+        "parentName": "RESULT_OF_E",
+        "coordinates": [
+          {
+            "x": 9,
+            "y": 26,
+            "hashCode": "0"
+          },
+          {
+            "x": 9,
+            "y": 27,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "21",
+          "column": "comm",
+          "parentId": "17",
+          "parentName": "emp",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 24,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 30,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1_2",
+      "type": "fdd",
+      "effectType": "select",
+      "target": {
+        "id": "22_2",
+        "column": "HIREDATE",
+        "parentId": "15",
+        "parentName": "RESULT_OF_E",
+        "coordinates": [
+          {
+            "x": 9,
+            "y": 26,
+            "hashCode": "0"
+          },
+          {
+            "x": 9,
+            "y": 27,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "18",
+          "column": "hiredate",
+          "parentId": "17",
+          "parentName": "emp",
+          "coordinates": [
+            {
+              "x": 11,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 11,
+              "y": 34,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1_3",
+      "type": "fdd",
+      "effectType": "select",
+      "target": {
+        "id": "42",
+        "column": "DEPTNO",
+        "parentId": "15",
+        "parentName": "RESULT_OF_E",
+        "coordinates": [
+          {
+            "x": 12,
+            "y": 18,
+            "hashCode": "0"
+          },
+          {
+            "x": 12,
+            "y": 26,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "19",
+          "column": "deptno",
+          "parentId": "17",
+          "parentName": "emp",
+          "coordinates": [
+            {
+              "x": 12,
+              "y": 18,
+              "hashCode": "0"
+            },
+            {
+              "x": 12,
+              "y": 26,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "type": "fdd",
+      "effectType": "select",
+      "target": {
+        "id": "22",
+        "column": "*",
+        "parentId": "15",
+        "parentName": "RESULT_OF_E",
+        "coordinates": [
+          {
+            "x": 9,
+            "y": 26,
+            "hashCode": "0"
+          },
+          {
+            "x": 9,
+            "y": 27,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "18",
+          "column": "hiredate",
+          "parentId": "17",
+          "parentName": "emp",
+          "coordinates": [
+            {
+              "x": 11,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 11,
+              "y": 34,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "19",
+          "column": "deptno",
+          "parentId": "17",
+          "parentName": "emp",
+          "coordinates": [
+            {
+              "x": 12,
+              "y": 18,
+              "hashCode": "0"
+            },
+            {
+              "x": 12,
+              "y": 26,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "20",
+          "column": "sal",
+          "parentId": "17",
+          "parentName": "emp",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 12,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 17,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "21",
+          "column": "comm",
+          "parentId": "17",
+          "parentName": "emp",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 24,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 30,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "23",
+          "column": "*",
+          "parentId": "17",
+          "parentName": "emp",
+          "coordinates": [
+            {
+              "x": 9,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 9,
+              "y": 27,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "type": "fdd",
+      "effectType": "select",
+      "target": {
+        "id": "29",
+        "column": "deptno",
+        "parentId": "28",
+        "parentName": "INSERT-SELECT-1",
+        "coordinates": [
+          {
+            "x": 5,
+            "y": 8,
+            "hashCode": "0"
+          },
+          {
+            "x": 5,
+            "y": 16,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "40",
+          "column": "deptno",
+          "parentId": "8",
+          "parentName": "dept",
+          "coordinates": [
+            {
+              "x": 12,
+              "y": 29,
+              "hashCode": "0"
+            },
+            {
+              "x": 12,
+              "y": 37,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "type": "fdd",
+      "effectType": "select",
+      "target": {
+        "id": "30",
+        "column": "dname",
+        "parentId": "28",
+        "parentName": "INSERT-SELECT-1",
+        "coordinates": [
+          {
+            "x": 6,
+            "y": 8,
+            "hashCode": "0"
+          },
+          {
+            "x": 6,
+            "y": 15,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "41",
+          "column": "dname",
+          "parentId": "8",
+          "parentName": "dept",
+          "coordinates": [
+            {
+              "x": 6,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 6,
+              "y": 15,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "type": "fdd",
+      "effectType": "select",
+      "target": {
+        "id": "31",
+        "column": "sal",
+        "parentId": "28",
+        "parentName": "INSERT-SELECT-1",
+        "coordinates": [
+          {
+            "x": 7,
+            "y": 8,
+            "hashCode": "0"
+          },
+          {
+            "x": 7,
+            "y": 42,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "34",
+          "column": "SUM",
+          "parentId": "33",
+          "parentName": "FUNCTION-1",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 11,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "type": "fdd",
+      "effectType": "function",
+      "target": {
+        "id": "34",
+        "column": "SUM",
+        "parentId": "33",
+        "parentName": "FUNCTION-1",
+        "coordinates": [
+          {
+            "x": 7,
+            "y": 8,
+            "hashCode": "0"
+          },
+          {
+            "x": 7,
+            "y": 11,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "37",
+          "column": "Nvl",
+          "parentId": "36",
+          "parentName": "FUNCTION-2",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 20,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 23,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "type": "fdd",
+      "effectType": "function",
+      "target": {
+        "id": "37",
+        "column": "Nvl",
+        "parentId": "36",
+        "parentName": "FUNCTION-2",
+        "coordinates": [
+          {
+            "x": 7,
+            "y": 20,
+            "hashCode": "0"
+          },
+          {
+            "x": 7,
+            "y": 23,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "22_1",
+          "column": "COMM",
+          "parentId": "15",
+          "parentName": "RESULT_OF_E",
+          "coordinates": [
+            {
+              "x": 9,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 9,
+              "y": 27,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "type": "fdd",
+      "effectType": "function",
+      "target": {
+        "id": "37",
+        "column": "Nvl",
+        "parentId": "36",
+        "parentName": "FUNCTION-2",
+        "coordinates": [
+          {
+            "x": 7,
+            "y": 20,
+            "hashCode": "0"
+          },
+          {
+            "x": 7,
+            "y": 23,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "38",
+          "column": "0",
+          "parentId": "25",
+          "parentName": "SQL_CONSTANTS",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 32,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 33,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "type": "fdd",
+      "function": "Nvl",
+      "effectType": "function",
+      "target": {
+        "id": "34",
+        "column": "SUM",
+        "parentId": "33",
+        "parentName": "FUNCTION-1",
+        "coordinates": [
+          {
+            "x": 7,
+            "y": 8,
+            "hashCode": "0"
+          },
+          {
+            "x": 7,
+            "y": 11,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "22_0",
+          "column": "SAL",
+          "parentId": "15",
+          "parentName": "RESULT_OF_E",
+          "coordinates": [
+            {
+              "x": 9,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 9,
+              "y": 27,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "type": "fdd",
+      "effectType": "insert",
+      "target": {
+        "id": "3",
+        "column": "dept_no",
+        "parentId": "2",
+        "parentName": "deptsal",
+        "coordinates": [
+          {
+            "x": 2,
+            "y": 14,
+            "hashCode": "0"
+          },
+          {
+            "x": 2,
+            "y": 21,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "29",
+          "column": "deptno",
+          "parentId": "28",
+          "parentName": "INSERT-SELECT-1",
+          "coordinates": [
+            {
+              "x": 5,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 5,
+              "y": 16,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ],
+      "processId": "6"
+    },
+    {
+      "id": "18",
+      "type": "fdd",
+      "effectType": "insert",
+      "target": {
+        "id": "4",
+        "column": "dept_name",
+        "parentId": "2",
+        "parentName": "deptsal",
+        "coordinates": [
+          {
+            "x": 3,
+            "y": 14,
+            "hashCode": "0"
+          },
+          {
+            "x": 3,
+            "y": 23,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "30",
+          "column": "dname",
+          "parentId": "28",
+          "parentName": "INSERT-SELECT-1",
+          "coordinates": [
+            {
+              "x": 6,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 6,
+              "y": 15,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ],
+      "processId": "6"
+    },
+    {
+      "id": "19",
+      "type": "fdd",
+      "effectType": "insert",
+      "target": {
+        "id": "5",
+        "column": "salary",
+        "parentId": "2",
+        "parentName": "deptsal",
+        "coordinates": [
+          {
+            "x": 4,
+            "y": 14,
+            "hashCode": "0"
+          },
+          {
+            "x": 4,
+            "y": 20,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "31",
+          "column": "sal",
+          "parentId": "28",
+          "parentName": "INSERT-SELECT-1",
+          "coordinates": [
+            {
+              "x": 7,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 42,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ],
+      "processId": "6"
+    },
+    {
+      "id": "13",
+      "type": "fdr",
+      "function": "SUM",
+      "effectType": "function",
+      "target": {
+        "id": "34",
+        "column": "SUM",
+        "parentId": "33",
+        "parentName": "FUNCTION-1",
+        "coordinates": [
+          {
+            "x": 7,
+            "y": 8,
+            "hashCode": "0"
+          },
+          {
+            "x": 7,
+            "y": 11,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "40",
+          "column": "deptno",
+          "parentId": "8",
+          "parentName": "dept",
+          "coordinates": [
+            {
+              "x": 12,
+              "y": 29,
+              "hashCode": "0"
+            },
+            {
+              "x": 12,
+              "y": 37,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "type": "fdr",
+      "function": "SUM",
+      "effectType": "function",
+      "target": {
+        "id": "34",
+        "column": "SUM",
+        "parentId": "33",
+        "parentName": "FUNCTION-1",
+        "coordinates": [
+          {
+            "x": 7,
+            "y": 8,
+            "hashCode": "0"
+          },
+          {
+            "x": 7,
+            "y": 11,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "41",
+          "column": "dname",
+          "parentId": "8",
+          "parentName": "dept",
+          "coordinates": [
+            {
+              "x": 6,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 6,
+              "y": 15,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "type": "fdr",
+      "effectType": "select",
+      "target": {
+        "id": "14",
+        "column": "PseudoRows",
+        "parentId": "15",
+        "parentName": "RESULT_OF_E",
+        "coordinates": [
+          {
+            "x": 11,
+            "y": 56,
+            "hashCode": "0"
+          },
+          {
+            "x": 11,
+            "y": 57,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "26",
+          "column": "DATE '1980-01-01'",
+          "parentId": "25",
+          "parentName": "SQL_CONSTANTS",
+          "coordinates": [
+            {
+              "x": 11,
+              "y": 37,
+              "hashCode": "0"
+            },
+            {
+              "x": 11,
+              "y": 54,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "18",
+          "column": "hiredate",
+          "parentId": "17",
+          "parentName": "emp",
+          "clauseType": "where",
+          "coordinates": [
+            {
+              "x": 11,
+              "y": 26,
+              "hashCode": "0"
+            },
+            {
+              "x": 11,
+              "y": 34,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "type": "fdr",
+      "effectType": "select",
+      "target": {
+        "id": "27",
+        "column": "PseudoRows",
+        "parentId": "28",
+        "parentName": "INSERT-SELECT-1",
+        "coordinates": [
+          {
+            "x": 5,
+            "y": 8,
+            "hashCode": "0"
+          },
+          {
+            "x": 7,
+            "y": 42,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "14",
+          "column": "PseudoRows",
+          "parentId": "15",
+          "parentName": "RESULT_OF_E",
+          "coordinates": [
+            {
+              "x": 11,
+              "y": 56,
+              "hashCode": "0"
+            },
+            {
+              "x": 11,
+              "y": 57,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "type": "fdr",
+      "target": {
+        "id": "35",
+        "column": "PseudoRows",
+        "parentId": "36",
+        "parentName": "FUNCTION-2",
+        "coordinates": [
+          {
+            "x": 7,
+            "y": 20,
+            "hashCode": "0"
+          },
+          {
+            "x": 7,
+            "y": 34,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "14",
+          "column": "PseudoRows",
+          "parentId": "15",
+          "parentName": "RESULT_OF_E",
+          "coordinates": [
+            {
+              "x": 11,
+              "y": 56,
+              "hashCode": "0"
+            },
+            {
+              "x": 11,
+              "y": 57,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "type": "fdr",
+      "target": {
+        "id": "32",
+        "column": "PseudoRows",
+        "parentId": "33",
+        "parentName": "FUNCTION-1",
+        "coordinates": [
+          {
+            "x": 7,
+            "y": 8,
+            "hashCode": "0"
+          },
+          {
+            "x": 7,
+            "y": 35,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "14",
+          "column": "PseudoRows",
+          "parentId": "15",
+          "parentName": "RESULT_OF_E",
+          "coordinates": [
+            {
+              "x": 11,
+              "y": 56,
+              "hashCode": "0"
+            },
+            {
+              "x": 11,
+              "y": 57,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "type": "fdr",
+      "effectType": "select",
+      "target": {
+        "id": "27",
+        "column": "PseudoRows",
+        "parentId": "28",
+        "parentName": "INSERT-SELECT-1",
+        "coordinates": [
+          {
+            "x": 5,
+            "y": 8,
+            "hashCode": "0"
+          },
+          {
+            "x": 7,
+            "y": 42,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "42",
+          "column": "deptno",
+          "parentId": "15",
+          "parentName": "RESULT_OF_E",
+          "coordinates": [
+            {
+              "x": 12,
+              "y": 18,
+              "hashCode": "0"
+            },
+            {
+              "x": 12,
+              "y": 26,
+              "hashCode": "0"
+            }
+          ]
+        },
+        {
+          "id": "40",
+          "column": "deptno",
+          "parentId": "8",
+          "parentName": "dept",
+          "clauseType": "joinCondition",
+          "coordinates": [
+            {
+              "x": 12,
+              "y": 29,
+              "hashCode": "0"
+            },
+            {
+              "x": 12,
+              "y": 37,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "type": "fdr",
+      "effectType": "insert",
+      "target": {
+        "id": "1",
+        "column": "PseudoRows",
+        "parentId": "2",
+        "parentName": "deptsal",
+        "coordinates": [
+          {
+            "x": 1,
+            "y": 13,
+            "hashCode": "0"
+          },
+          {
+            "x": 1,
+            "y": 20,
+            "hashCode": "0"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "id": "27",
+          "column": "PseudoRows",
+          "parentId": "28",
+          "parentName": "INSERT-SELECT-1",
+          "coordinates": [
+            {
+              "x": 5,
+              "y": 8,
+              "hashCode": "0"
+            },
+            {
+              "x": 7,
+              "y": 42,
+              "hashCode": "0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
