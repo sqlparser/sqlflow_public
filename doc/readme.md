@@ -8,6 +8,6 @@
 - [5. Dataflow: column used in aggregate function](dataflow-column-used-in-aggregate-function.md)
 - [6. Dataflow chain](get-started/dataflow-chain.md)
 
-### The structure and elements of the data lineage result.
-- [Introduction](data-lineage-format/readme.md)
-- [Detailed reference](data-lineage-format/data-lineage-format-reference.md)
+### The structure and elements of the data lineage result(JSON/XML).
+- [1. Introduction](data-lineage-format/readme.md)
+- [2. Detailed reference](data-lineage-format/data-lineage-format-reference.md)
