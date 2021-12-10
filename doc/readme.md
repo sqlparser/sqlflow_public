@@ -5,6 +5,8 @@
 - [2. Direct dataflow](get-started/direct-dataflow.md)
 - [3. Indirect dataflow and pseudo column](get-started/indirect-dataflow-and-pseudo-column.md)
 - [4. Indirect dataflow: where clause and group by clause](get-started/indirect-dataflow-where-group-by.md)
+- [5. Dataflow: column used in aggregate function](dataflow-column-used-in-aggregate-function.md)
+- [6. Dataflow chain](get-started/dataflow-chain.md)
 
 ### The structure and elements of the data lineage result.
 - [Introduction](data-lineage-format/readme.md)
