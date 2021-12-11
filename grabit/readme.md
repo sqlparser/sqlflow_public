@@ -409,7 +409,7 @@ Data Lineage Results Output storage address,If this parameter is not specified, 
 
 This sample configuration means the output format is json.
 ```json
-"lineageReturnOutputFile":"/user/data.csv"
+"lineageReturnOutputFile":"/user/data.json"
 ```
 
 ### 5. databaseType
