@@ -18,8 +18,9 @@
     + [2. SQLScriptSource](#2-sqlscriptsource)
       - [2.1. enableGetMetadataInJSONFromDatabase](#21-enablegetmetadatainjsonfromdatabase)
     + [3. lineageReturnFormat](#3-lineagereturnformat)
-    + [4. databaseType](#4-databasetype)
-    + [5. databaseServer](#5-databaseserver)
+    + [4. lineageReturnOutputFile](#4-lineageReturnOutputFile)
+    + [5. databaseType](#5-databasetype)
+    + [6. databaseServer](#6-databaseserver)
       - [hostname](#hostname)
       - [port](#port)
       - [username](#username)
@@ -39,17 +40,17 @@
       - [sqlsourceTableName](#sqlsourcetablename)
       - [sqlsourceColumnQuerySource](#sqlsourcecolumnquerysource)
       - [sqlsourceColumnQueryName](#sqlsourcecolumnqueryname)
-    + [6. gitServer](#6-gitserver)
+    + [7. gitServer](#7-gitserver)
       - [url](#url)
       - [username](#username-1)
       - [password](#password-1)
       - [sshKeyPath](#sshkeypath)
-    + [7. SQLInSingleFile](#7-sqlinsinglefile)
-    + [8. SQLInDirectory](#8-sqlindirectory)
-    + [9. isUploadNeo4j](#9-isuploadneo4j)
-    + [10. neo4jConnection](#10-neo4jconnection)
-    + [11. isUploadAtlas](#11-isuploadatlas)
-    + [12. atlasServer](#12-atlasserver)
+    + [8. SQLInSingleFile](#8-sqlinsinglefile)
+    + [9. SQLInDirectory](#9-sqlindirectory)
+    + [10. isUploadNeo4j](#10-isuploadneo4j)
+    + [11. neo4jConnection](#11-neo4jconnection)
+    + [12. isUploadAtlas](#12-isuploadatlas)
+    + [13. atlasServer](#13-atlasserver)
 
   
 # Grabit Using Document
@@ -403,7 +404,15 @@ This sample configuration means the output format is json.
 "lineageReturnFormat":"json"
 ```
 
-### 4. databaseType
+### 4. lineageReturnOutputFile
+Data Lineage Results Output storage address,If this parameter is not specified, the output directory is `data/job_%jobname/result/` directory.
+
+This sample configuration means the output format is json.
+```json
+"lineageReturnOutputFile":"/user/data.csv"
+```
+
+### 5. databaseType
 This parameter specifies the database dialect of the SQL scripts that the SQLFlow has analyzed.
 
 ```txt
@@ -417,7 +426,7 @@ This sample configuration means the SQL dialect is SQL Server database.
 "databaseType":"sqlserver"
 ```
 
-### 5. databaseServer
+### 6. databaseServer
 Specify a database instance that grabit will connect to fetch the metadata that helps SQLFlow 
 make a more precise analysis and get a more accurate result of data lineage, the data lineage results are stored in the `data/job_%jobname%/metadata/metadata.json` directory in a JSON file named with the current timestamp.
 
@@ -652,7 +661,7 @@ In the above sample:
 ```
 This parameter is optional, you don't need to speicify a query name column if it doesn't exist in the table.
 
-### 6. gitServer
+### 7. gitServer
 When `SQLScriptSource=gitserver`, grabit will fetch SQL files from a specified github or bitbucket repo, 
 the SQL script files are stored in `data/job_%jobname%/metadata/` before submitting to the SQLFlow server.
 
@@ -702,7 +711,7 @@ or
 "sshKeyPath":"your private repository ssh key address here"
 ```
 
-### 7. SQLInSingleFile
+### 8. SQLInSingleFile
 
 When `SQLScriptSource=singleFile`, this is a single SQL file needs to be analyzed.
 
@@ -722,7 +731,7 @@ Specifies that the string contains SQL Code content.
 
 ObjectCodeEncloseChar specifies the string escape.
 
-### 8. SQLInDirectory
+### 9. SQLInDirectory
 
 When `SQLScriptSource=directory`, SQL files under this directory including sub-directory will be analyzed. 
 
@@ -730,7 +739,7 @@ When `SQLScriptSource=directory`, SQL files under this directory including sub-d
 
 The directory includes the SQL files.
 
-### 9. isUploadNeo4j
+### 10. isUploadNeo4j
 
 Upload the data lineage result to a Neo4j database for further processing. 
 Available values for this parameter is 1 or 0, enable this function if the value is 1, disable it if the value is 0, 
@@ -741,7 +750,7 @@ Sample configuration of a Whether to upload neo4j:
 "isUploadNeo4j":1
 ```
 
-### 10. neo4jConnection
+### 11. neo4jConnection
 
 If `IsuploadNeo4j` is set to '1', this parameter specifies the details of the neo4j server.
 
@@ -764,7 +773,7 @@ Sample configuration of a local directory path:
 "password":"your server password here"
 ```
 
-### 11. isUploadAtlas
+### 12. isUploadAtlas
 
 Upload the metadata to a Atlas server for further processing. 
 Available values for this parameter is 1 or 0, enable this function if the value is 1, disable it if the value is 0, 
@@ -775,7 +784,7 @@ Sample configuration of a Whether to upload neo4j:
 "isUploadAtlas":1
 ```
 
-### 12. atlasServer
+### 13. atlasServer
 
 If `isUploadAtlas` is set to '1', this parameter specifies the details of the atlas server.
 
@@ -860,6 +869,7 @@ Sample configuration of a local directory path:
     "isUploadAtlas":0,
     "SQLScriptSource":"database",
     "lineageReturnFormat":"json",
+    "lineageReturnOutputFile": "",
     "databaseType":"snowflake",
     "isUploadNeo4j":0,
     "enableGetMetadataInJSONFromDatabase":0
