@@ -11,10 +11,10 @@ copy into @%orderstiny/result/data_
 
 The data lineage generated for this SQL:
 ```
-orderstiny(*) -> orderstiny(result/data_)
+orderstiny(*) -> @%orderstiny(result/data_)
 ```
 
-`orderstiny(result/data_)` is the stage.
+`@%orderstiny` is the stage.
 
 #### SQL 2
 ```sql
@@ -24,7 +24,7 @@ copy into @my_stage/result/data_ from (select * from orderstiny)
 
 The data lineage generated for this SQL:
 ```
-orderstiny(*) -> my_stage(result/data_)
+orderstiny(*) -> @my_stage(result/data_)
 ```
 
 #### SQL 3, personal stage
@@ -36,7 +36,7 @@ empty_field_as_null=false);
 
 The data lineage generated for this SQL:
 ```
-home_sales(*) -> ~(unknownPath)
+home_sales(*) -> @~(unknownPath)
 ```
 
 ### externalStage
@@ -68,7 +68,7 @@ copy into mycsvtable
 
 The data lineage generated for this SQL:
 ```
-file(/tutorials/dataloading/contacts1.csv) - > my_csv_stage(s3://snowflake-docs) -> mycsvtable(*)
+file(/tutorials/dataloading/contacts1.csv) - > @my_csv_stage(s3://snowflake-docs) -> mycsvtable(*)
 ```
 
 ### externalLocation
@@ -112,6 +112,6 @@ copy into @%t1
 
 The data lineage generated for this SQL:
 ```
-t1(dt,ts) -> %t1(unknownPath)
+t1(dt,ts) -> @%t1(unknownPath)
 ```
 

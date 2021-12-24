@@ -11,7 +11,7 @@ from @my_int_stage;
 
 The data lineage generated for this SQL:
 ```
-my_int_stage(unknownPath) -> mytable(*)
+@my_int_stage(unknownPath) -> mytable(*)
 ```
 `unknownPath` and `*` is added by the gudu SQLFlow, and those columns are marked as `source="system"`.
 
@@ -31,10 +31,10 @@ file_format = (format_name = 'mycsv');
 
 The data lineage generated for this SQL:
 ```
-~(staged) -> mytable(*)
+@~(staged) -> mytable(*)
 ```
 
-`~` represents a person stage.
+`@~` represents a person stage.
 
 ### externalStage
 
@@ -46,7 +46,7 @@ copy into mycsvtable
 
 The data lineage generated for this SQL:
 ```
-file(/tutorials/dataloading/contacts1.csv) - > my_ext_stage(unknownPath) -> mycsvtable(*)
+file(/tutorials/dataloading/contacts1.csv) - > @my_ext_stage(unknownPath) -> mycsvtable(*)
 ```
 
   
@@ -63,7 +63,7 @@ copy into mycsvtable
 
 The data lineage generated for this SQL:
 ```
-file(/tutorials/dataloading/contacts1.csv) - > my_csv_stage(s3://snowflake-docs) -> mycsvtable(*)
+file(/tutorials/dataloading/contacts1.csv) - > @my_csv_stage(s3://snowflake-docs) -> mycsvtable(*)
 ```
 
 ### externalLocation
