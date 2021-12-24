@@ -1,2 +1,2 @@
 - [copy into table](copy-into-table.md)
-- [copy into table](copy-into-location.md)
+- [copy into location](copy-into-location.md)
