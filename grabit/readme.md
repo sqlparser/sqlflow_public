@@ -87,7 +87,7 @@ cd grabit-x.x.x
 ````
 chmod 777 *.sh
 ````
-After the installation is complete, you can execute the command `./start.sh /f conf-template/generic-config-template` or `start.bat /f conf-template/generic-config-template`. 
+After the installation is complete, you can execute the command `./start.sh -f conf-template/generic-config-template` or `start.bat -f conf-template/generic-config-template`. 
 You may check logs under the logs directory for more information.
 
 ### Running the grabit tool
@@ -113,24 +113,24 @@ Grabit is started command-line.
 
 - **mac & linux**
 ```
-./start.sh /f <path_to_config_file>  
+./start.sh -f <path_to_config_file>  
 
 note: 
     path_to_config_file: the full path to the config file
 
 eg: 
-    ./start.sh /f config.txt
+    ./start.sh -f config.txt
 ```
 
 - **windows**
 ```
-start.bat /f <path_to_config_file>  
+start.bat -f <path_to_config_file>  
 
 note: 
     path_to_config_file: the full path to the config file
 
 eg: 
-    start.bat /f config.txt
+    start.bat -f config.txt
 ```
 
 After execution, view the `logs/graibt.log` file for the detailed information. 
@@ -147,18 +147,18 @@ Export DDL statements from the Queries object into an SQL file.
 
 - **mac & linux**
 ```
-./start.sh -e /generic /t dbvendor dir_to_txt_file
+./start.sh -e --generic -t dbvendor dir_to_txt_file
 
 eg: 
-    ./start.sh -e /generic /t oracle /root/oracledir
+    ./start.sh -e --generic -t oracle /root/oracledir
 ```
 
 - **windows**
 ```
-start.bat -e /generic /t dbvendor dir_to_txt_file
+start.bat -e --generic -t dbvendor dir_to_txt_file
 
 eg: 
-    start.bat -e /generic /t oracle /root/oracledir
+    start.bat -e --generic -t oracle /root/oracledir
 ```
 
 #### Export metadata in json to sql files
@@ -167,26 +167,26 @@ Export DDL statements from the Queries object into an SQL file.
 
 - **mac & linux**
 ```
-./start.sh -e path_to_json_file [/targetDir target_dir]
+./start.sh -e path_to_json_file [--targetDir target_dir]
 
 note: 
     path_to_config_file: the full path to the metedata json file
     target_dir: the path to the generated SQL file, optional
 
 eg: 
-    ./start.sh -e test.json /targetDir /root/sqlfiles
+    ./start.sh -e test.json --targetDir /root/sqlfiles
 ```
 
 - **windows**
 ```
-start.bat -e path_to_json_file [/targetDir target_dir]
+start.bat -e path_to_json_file [--targetDir target_dir]
 
 note: 
     path_to_config_file: the full path to the metedata json file
     target_dir: the path to the generated SQL file, optional
 
 eg: 
-    start.bat -e test.json /targetDir /root/sqlfiles
+    start.bat -e test.json --targetDir /root/sqlfiles
 ```
 
 #### Export metadata in csv to sql files
@@ -195,26 +195,26 @@ Export DDL statements from the Queries object into an SQL file.
 
 - **mac & linux**
 ```
-./start.sh -e /csv path_to_csv_file [/csvFormat 123456] [/objectCodeEncloseChar char] [/objectCodeEscapeChar char] [/targetDir target_dir]
+./start.sh -e --csv path_to_csv_file [--csvFormat 123456] [--objectCodeEncloseChar char] [--objectCodeEscapeChar char] [--targetDir target_dir]
 
 note: 
     path_to_config_file: the full path to the metedata csv file
     target_dir: the path to the generated SQL file, optional
 
 eg: 
-    ./start.sh -e /csv test.csv /csvFormat 123456 /objectCodeEscapeChar " /objectCodeEncloseChar " /targetDir /root/sqlfiles
+    ./start.sh -e --csv test.csv --csvFormat 123456 --objectCodeEscapeChar " --objectCodeEncloseChar " --targetDir /root/sqlfiles
 ```
 
 - **windows**
 ```
-start.bat -e /csv path_to_csv_file [/csvFormat 123456] [/objectCodeEncloseChar char] [/objectCodeEscapeChar char] [/targetDir target_dir]
+start.bat -e --csv path_to_csv_file [--csvFormat 123456] [--objectCodeEncloseChar char] [--objectCodeEscapeChar char] [--targetDir target_dir]
 
 note: 
     path_to_config_file: the full path to the metedata csv file
     target_dir: the path to the generated SQL file, optional
 
 eg: 
-    start.bat -e /csv test.csv /csvFormat 123456 /objectCodeEscapeChar " /objectCodeEncloseChar " /targetDir /root/sqlfiles
+    start.bat -e --csv test.csv --csvFormat 123456 --objectCodeEscapeChar " --objectCodeEncloseChar " --targetDir /root/sqlfiles
 ```
 
 #### Encrypted password
@@ -223,24 +223,24 @@ Encrypt the database connection password.
 
 - **mac & linux**
 ```
-./start.sh /encrypt password
+./start.sh --encrypt password
 
 note: 
     password: the database connection password
 
 eg: 
-    ./start.sh /encrypt 123456
+    ./start.sh --encrypt 123456
 ```
 
 - **windows**
 ```
-./start.bat /encrypt password
+./start.bat --encrypt password
 
 note: 
     password: the database connection password
 
 eg: 
-    ./start.bat /encrypt 123456
+    ./start.bat --encrypt 123456
 ```
 
 #### Run the grabit at a scheduled time
@@ -249,7 +249,7 @@ This guide shows you how to set up a cron job in Linux, with examples.
 
 - **use mac & linux crontab**
 ```
-cron ./start_job.sh /f <path_to_config_file> <lib_path>
+cron ./start_job.sh -f <path_to_config_file> <lib_path>
 
 note: 
     path_to_config_file: config file path 
@@ -258,13 +258,13 @@ note:
 e.g.: 
     1. sudo vi /etc/crontab 
     2. add the following statement to the last line
-        1 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh /f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template /home/ubuntu/grabit-2.4.6/lib
+        1 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh -f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template /home/ubuntu/grabit-2.4.6/lib
         
         note: 
             0 */1   * * *: cron expression
             ubuntu: The name of the system user performing the task
             /home/ubuntu/grabit-2.4.6/start_job.sh: The path of the task script
-            /f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template: config file path
+            -f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template: config file path
             /home/ubuntu/grabit-2.4.6/lib: lib directory absolute path
     3.sudo service cron restart    
 ```
@@ -409,7 +409,7 @@ Data Lineage Results Output storage address,If this parameter is not specified, 
 
 This sample configuration means the output format is json.
 ```json
-"lineageReturnOutputFile":"/user/data.json"
+"lineageReturnOutputFile":"/user/data.csv"
 ```
 
 ### 5. databaseType
@@ -731,6 +731,10 @@ Specifies that the string contains SQL Code content.
 
 ObjectCodeEncloseChar specifies the string escape.
 
+- **redshiftLog**
+
+The default value of redshiftLog is 0, indicating whether the uploaded file is a common SQL script file. For example, if the redshift log file needs to be parsed by SQLFlow, set the value to 1.
+
 ### 9. SQLInDirectory
 
 When `SQLScriptSource=directory`, SQL files under this directory including sub-directory will be analyzed. 
@@ -738,6 +742,10 @@ When `SQLScriptSource=directory`, SQL files under this directory including sub-d
 - **directoryPath**
 
 The directory includes the SQL files.
+
+- **redshiftLog**
+
+The default value of redshiftLog is 0, indicating whether the uploaded file is a common SQL script file. For example, if the redshift log file needs to be parsed by SQLFlow, set the value to 1.
 
 ### 10. isUploadNeo4j
 
