@@ -63,25 +63,25 @@ You should get files organized like this:
 └── sqlflow
     ├── backend
     │   ├── bin
+    │   │   ├── backend.bat 
     │   │   ├── backend.sh
-    │   │   ├── stop.sh
-    │   │   ├── monitor.sh 
-    │   │   ├── sqlservice.sh 
-    │   │   ├── gspLive.sh  
-    │   │   ├── eureka.sh
-    │   │   ├── backend.bat
-    │   │   ├── stop.bat
-    │   │   ├── monitor.bat
-    │   │   ├── sqlservice.bat
-    │   │   ├── gspLive.bat
     │   │   ├── eureka.bat
-    │   │   ├── sqlservice.vbs
-    │   │   ├── gspLive.vbs  
+    │   │   ├── eureka.sh
     │   │   ├── eureka.vbs
+    │   │   ├── gspLive.bat
+    │   │   ├── gspLive.sh  
+    │   │   ├── gspLive.vbs  
+    │   │   ├── monitor.bat
+    │   │   ├── monitor.sh 
+    │   │   ├── sqlservice.bat
+    │   │   ├── sqlservice.sh 
+    │   │   ├── sqlservice.vbs
+    │   │   ├── stop.bat
+    │   │   ├── stop.sh
     │   ├── lib
-    │   │   ├── sqlservice.jar  
-    │   │   ├── gspLive.jar  
     │   │   ├── eureka.jar
+    │   │   ├── gspLive.jar  
+    │   │   ├── sqlservice.jar
     │   ├── conf
     │   │   ├── gudu_sqlflow_license.txt     
     │   │   ├── gudu_sqlflow.conf     
@@ -89,31 +89,34 @@ You should get files organized like this:
     │   │   ├── job  
     │   │   │   ├── task     
     │   │   │   ├── {userid}   
+    │   │   ├── schema     
     │   │   ├── session     
+    │   │   ├── version     
     │   ├── log
-    │   │   ├── sqlservice.log 
-    │   │   ├── gspLive.log  
-    │   │   ├── eureka.log 
-    │   │   ├── slow                   (slow query records)
-    │   │   ├── sqlflow                (sqlflow access records)
     │   ├── tmp
     │   │   └── cache  
     └── frontend
-        ├── 1.app.b95fd285b4e8a1af563a.js
-        ├── 1.index.b95fd285b4e8a1af563a.css
-        ├── app.b95fd285b4e8a1af563a.js
-        ├── config.private.json
-        ├── font
-        │   ├── Roboto-Regular.ttf
-        │   ├── segoeui-light.woff2
-        │   └── segoeui-semilight.woff2
+        ├── config.public.json
         ├── images
         │   ├── check.svg
         │   ├── Join.svg
         │   ├── pic_Not logged in.png
         │   └── visualize.svg
-        ├── index.b95fd285b4e8a1af563a.css
+        ├── index.********************.css
+        ├── index.********************.css
+        ├── index.********************.css
+        ├── index.********************.css
         └── index.html
+        └── lang
+        ├── page.*********************.js
+        ├── page.*********************.js
+        ├── page.*********************.js
+        ├── page.*********************.js
+        ├── public.*********************.js
+        ├── widget
+        │   ├── index.js
+        │   ├── sqlflow-library.version.css
+        │   └── sqlflow-library.version.js
 ```
 
 set folder permissions :
