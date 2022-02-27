@@ -10,7 +10,7 @@
       - [Encrypted password](#encrypted-password)
       - [Run the grabit at a scheduled time](#run-the-grabit-at-a-scheduled-time)
     + [Grabit directory of data files](#grabit-directory-of-data-files)
-    + [Grabit log](#Grabit log)
+    + [Grabit log](#grabit-log)
   * [Configuration](#configuration)
     + [1. SQLFlow Server](#1-sqlflow-server)
       - [server](#server)
