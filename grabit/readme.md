@@ -330,7 +330,7 @@ Failed to connect to the remote warehouse. Check whether the remote warehouse co
 
 The remote repository address is incorrect. Please check whether it is a Git address
 
--remote warehouse file to zip successful. path is：xx
+- remote warehouse file to zip successful. path is：xx
 
 Pull to a local storage address from a remote repository
 
