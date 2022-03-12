@@ -689,6 +689,8 @@ select current_warehouse()
   GRANT ALL PRIVILEGES ON WAREHOUSE %current_warehouse% TO ROLE customrole1;
 ````
 
+> Please refer to:[Grant Privileges](https://github.com/sqlparser/sqlflow_public/blob/master/databases/snowflake/readme.md#a-minimum-list-of-permissions-need-to-extract-all-ddl)
+
 #### metaStore
 
 If the current data source is a `Hive` or `Spark` data store, this parameter can be set to `hive` or `sparksql`. By default, this parameter is left blank.
