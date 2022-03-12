@@ -56,8 +56,11 @@ You must define a role that has access to the database of the DDL database you w
 If 'SQLFlow_role' and 'SQLFlow_user' are the roles and users you use when grabit connects to the Snowflake database, you need to do the following:
 
 1, First, you need to create a role, such as `SQLFlow_role`
+
 2, Next, you need to use the `ACCOUNTADMIN` role to assign the required database, schema, view, and table privileges to `SQLFlow_role`
+
 3, Next, create the user to access `SQLFlow_user`
+
 4, Finally, grant `SQLFlow_role` privileges to the `SQLFlow_user`
 
 ```sql
@@ -222,23 +225,7 @@ current_timestamp()) <= start_time ORDER BY start_time;
 
 #### permission needs to extract queries from query history
 
-You must define a role that has access to the `SNOWFLAKE` database,And assign `WAREHOUSE` permission to this role.
-
-Assign permissions to a role, for example:
-
-````sql
-#create role
-use role accountadmin;
-grant imported privileges on database snowflake to role sysadmin;
-grant imported privileges on database snowflake to role customrole1;
-use role customrole1;
-select * from snowflake.account_usage.databases;
-
-#To do this, the Role gives the WAREHOUSE permission
-select current_warehouse()
-use role sysadmin
-GRANT ALL PRIVILEGES ON WAREHOUSE %current_warehouse% TO ROLE customrole1;
-````
+You must define a role that has access to the `SNOWFLAKE` database,And assign `WAREHOUSE` permission to this role. please ref to: [a minimum list of permissions need to extract all DDL](#a-minimum-list-of-permissions-need-to-extract-all-DDL)
 
 #### queryHistoryBlockOfTimeInMinutes
 
