@@ -51,9 +51,7 @@ SELECT GET_DDL('FUNCTION', '%s.%s.%s');
 
 ##  a minimum list of permissions need to extract all DDL
 
-You must define a role that has access to the database of the DDL database you want to export and assign WAREHOUSE permissions to that role.
-
-If 'SQLFlow_role' and 'SQLFlow_user' are the roles and users you use when grabit connects to the Snowflake database, you need to do the following:
+You must define a role that has access to the database of the DDL database you want to export and assign WAREHOUSE permissions to that role,If `SQLFlow_role` and `SQLFlow_user` are the roles and users you use when grabit connects to the Snowflake database, you need to do the following:
 
 1, First, you need to create a role, such as `SQLFlow_role`
 
