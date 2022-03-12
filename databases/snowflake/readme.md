@@ -50,17 +50,55 @@ SELECT GET_DDL('FUNCTION', '%s.%s.%s');
 ```
 
 ##  a minimum list of permissions need to extract all DDL
-`SQLFLOW` in the following script is the role you created and used when
-grabit connect to the Snowflake database.
 
-Or, the user connect to the Snowflake with the role has the following privileges.
+You must define a role that has access to the database of the DDL database you want to export and assign WAREHOUSE permissions to that role.
+
+If 'SQLFlow_role' and 'SQLFlow_user' are the roles and users you use when grabit connects to the Snowflake database, you need to do the following:
+
+1, First, you need to create a role, such as `SQLFlow_role`
+2, Next, you need to use the `ACCOUNTADMIN` role to assign the required database, schema, view, and table privileges to `SQLFlow_role`
+3, Next, create the user to access `SQLFlow_user`
+4, Finally, grant `SQLFlow_role` privileges to the `SQLFlow_user`
+
 ```sql
- grant select on VIEW information_schema.DATABASES  to role SQLFLOW;
- grant select on VIEW information_schema.TABLES  to role SQLFLOW;
- grant select on VIEW information_schema.COLUMNS  to role SQLFLOW;
- grant all privileges on FUNCTION information_schema.GET_DDL() to role SQLFLOW;
+create or replace role SQLFlow_role;
+
+use role accountadmin;
+
+// Grant privileges to use and select from your target warehouses / dbs / schemas / tables
+grant operate, usage on warehouse <your-warehouse> to role SQLFlow_role;
+grant usage on DATABASE <your-database> to role SQLFlow_role;
+grant usage on all schemas in database <your-database> to role SQLFlow_role; 
+grant select on all tables in database <your-database> to role SQLFlow_role; 
+grant select on all external tables in database <your-database> to role SQLFlow_role;
+grant select on all views in database <your-database> to role SQLFlow_role;
+
+// Grant privileges for all future schemas and tables created in a warehouse 
+grant usage on future schemas in database "<your-database>" to role SQLFlow_role;
+grant select on future tables in database "<your-database>" to role SQLFlow_role;
+
+// Create a new SQLFlow_user user and assign the SQLFlow role to it 
+create user SQLFlow_user display_name = 'SQLFlow' password='' default_role = SQLFlow_user default_warehouse = '<your-warehouse>';
+
+// Grant the SQLFlow_role to the new SQLFlow_user user. 
+grant role SQLFlow_role to user SQLFlow_user;
 ```
 
+This represents the bare minimum privileges required to extract databases, schemas, views, tables from Snowflake.
+
+
+## enable extraction of table lineage
+
+If you plan to enable extraction of table lineage, via the include_table_lineage config flag, you'll also need to grant privileges to access the `Snowflake` Account Usage views. You can execute the following using the `ACCOUNTADMIN` role to do so:
+
+>  You must define a role that has access to the SNOWFLAKE database,And assign WAREHOUSE permission to this role.
+
+grant privileges to a role, for example:
+
+````sql
+use role accountadmin;
+grant imported privileges on database snowflake to role SQLFlow_role;
+````
 
 ## Using the grabit tool
 1. [GUI Mode](grabit-snowflake-gui.md)
@@ -117,7 +155,7 @@ extractedDbsSchemas: "MY/ADMIN"
 
 This parameters works under the resultset filtered by `extractedDbsSchemas`.
 List of databases and schemas to exclude from extraction, separated by commas
-`database1/schema1,database2` or `database1.schema1,database2` 
+`database1/schema1,database2` or `database1.schema1,database2`
 When parameter `database` is filled in, this parameter is considered a schema.
 And support wildcard characters such as `database1/*`,`*/schema`,`*/*`.
 
@@ -232,7 +270,7 @@ table name: **query_table**
 | query2     | create view v2 as select f2 from t2 |
 | query3     | create view v3 as select f3 from t3 |
 
-If you save SQL queries in a specific table, one SQL query per row. 
+If you save SQL queries in a specific table, one SQL query per row.
 
 Let's say: `query_table.query_source` store the source code of the query.
 We can use this query to fetch all SQL queries in this table:
@@ -244,7 +282,7 @@ select query_name as queryName, query_source as querySource from query_table
 By setting the value of `sqlsourceTableName` and `sqlsourceColumnQuerySource`,`sqlsourceColumnQueryName`
 grabit can fetch all SQL queries in this table and send it to the SQLFlow to analzye the lineage.
 
-In this example, 
+In this example,
 ```json
 "sqlsourceTableName":"query_table"
 "sqlsourceColumnQuerySource":"query_source"
@@ -252,7 +290,7 @@ In this example,
 ```
 
 Please leave `sqlsource_table_name`  empty if you don't fetch SQL queries from a specific table.
- 
+
 ####  sqlsourceColumnQuerySource
 In the above sample:
 ```json
@@ -269,34 +307,34 @@ This parameter is optional, you don't need to speicify a query name column if it
 **eg configuration file:**
 ````json
 {
-    "databaseServer":{
-        "hostname":"127.0.0.1",
-        "port":"433",
-        "username":"USERNAME",
-        "password":"PASSWORD",
-        "privateKeyFile":"",
-        "privateKeyFilePwd":"",
-        "database":"",
-        "extractedDbsSchemas":"MY/dbo",
-        "excludedDbsSchemas":"",
-        "extractedStoredProcedures":"",
-        "extractedViews":"",
-        "enableQueryHistory":true,
-        "queryHistoryBlockOfTimeInMinutes":30,
-        "snowflakeDefaultRole":"",
-        "queryHistorySqlType":"",
-        "sqlsourceTableName":"",
-        "sqlsourceColumnQuerySource":"",
-        "sqlsourceColumnQueryName":""
-    },
-    "SQLFlowServer":{
-        "server":"http:127.0.0.1",
-        "serverPort":"8081",
-        "userId":"gudu|0123456789",
-        "userSecret":""
-    },
-    "SQLScriptSource":"database",
-    "lineageReturnFormat":"json",
-    "databaseType":"snowflake"
+  "databaseServer":{
+    "hostname":"127.0.0.1",
+    "port":"433",
+    "username":"USERNAME",
+    "password":"PASSWORD",
+    "privateKeyFile":"",
+    "privateKeyFilePwd":"",
+    "database":"",
+    "extractedDbsSchemas":"MY/dbo",
+    "excludedDbsSchemas":"",
+    "extractedStoredProcedures":"",
+    "extractedViews":"",
+    "enableQueryHistory":true,
+    "queryHistoryBlockOfTimeInMinutes":30,
+    "snowflakeDefaultRole":"",
+    "queryHistorySqlType":"",
+    "sqlsourceTableName":"",
+    "sqlsourceColumnQuerySource":"",
+    "sqlsourceColumnQueryName":""
+  },
+  "SQLFlowServer":{
+    "server":"http:127.0.0.1",
+    "serverPort":"8081",
+    "userId":"gudu|0123456789",
+    "userSecret":""
+  },
+  "SQLScriptSource":"database",
+  "lineageReturnFormat":"json",
+  "databaseType":"snowflake"
 }
 ````
