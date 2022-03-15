@@ -832,6 +832,15 @@ ObjectCodeEncloseChar specifies the string escape.
 
 The default value of redshiftLog is 0, indicating whether the uploaded file is a common SQL script file. For example, if the redshift log file needs to be parsed by SQLFlow, set the value to 1.
 
+- **isDumpDDL**
+
+The default value of isDumpDDL is 0, this value is set to 1 when the specified file is a DDL file from the database dump.
+
+- **databaseName**
+
+The default value of databaseName is left blank. When the specified file is a DDL file from a database dump, this value is set to the name of the database from which the DDL was retrieved.
+
+
 ### 9. SQLInDirectory
 
 When `SQLScriptSource=directory`, SQL files under this directory including sub-directory will be analyzed.
@@ -949,7 +958,9 @@ Sample configuration of a local directory path:
     "filePath":"",
     "csvFormat": "",
     "objectCodeEncloseChar": "",
-    "objectCodeEscapeChar": ""
+    "objectCodeEscapeChar": "",
+    "dumpDDL": 0,
+    "databaseName": ""
   },
   "SQLInDirectory":{
     "directoryPath":""
