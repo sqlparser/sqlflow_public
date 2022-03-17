@@ -11,3 +11,6 @@
 ### The structure and elements of the data lineage result(JSON/XML).
 - [1. Introduction](data-lineage-format/readme.md)
 - [2. Detailed reference](data-lineage-format/data-lineage-format-reference.md)
+
+### SQLFlow widget
+- [Introduction](widget/readme.md)
