@@ -415,6 +415,10 @@ Local storage address of Data Lineage returned after successfully submitting a j
 job id from sqlflow , log in to the SQLFlow website to view the newly analyzed results. In the `Job List`, you can view
 the analysis results of the currently submitted tasks.
 
+- The number of relationships in this task is too large to export this file, please check blood relationships on SQLFlow platform.
+
+When the task uploaded to SQLFlow is too large and the number of rolls parsed by SQLFlow is too large, Grabit cannot obtain CSV files from it and needs to check the blood relationship of this task on SQLFlow.
+
 ## Configuration
 
 Modify the configure file to set all parameters correctly according to your environment.
