@@ -1039,6 +1039,8 @@ Sample configuration of a local directory path:
     "extractedStoredProcedures": "",
     "extractedViews": "",
     "enableQueryHistory": false,
+    "excludedHistoryDbsSchemas":"" ,
+    "duplicateQueryHistory":0 ,
     "queryHistoryBlockOfTimeInMinutes": 30,
     "snowflakeDefaultRole": "",
     "queryHistorySqlType": "",
