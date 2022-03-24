@@ -147,9 +147,13 @@ eg:
     start.bat -f config.txt
 ```
 
-#### Export generic file to sql files
+#### Extract queries from any files that surrounded by the single quote
 
-Export DDL statements from the Queries object into an SQL file.
+Read text files from a specified directory,  extract text from each file in the directory
+that surrounded by the single quote character and put the text in a separate new file 
+if the text represents a valid SQL statement.
+
+> reference #:  I48FCX
 
 - **mac & linux**
 
@@ -169,9 +173,15 @@ eg:
     start.bat -e --generic -t oracle /root/oracledir
 ```
 
-#### Export metadata in json to sql files
+#### Extract queries in metadata json file to a new sql file
 
-Export DDL statements from the Queries object into an SQL file.
+After exporting metadata from a database, the metadata is saved in a JSON file.
+Queries such as create view are included in this JSON file.
+
+By using this option, grabit will extracts all queries in the JSON file, and put 
+each query in a separate text file.
+
+> Ref #: I3DTWP
 
 - **mac & linux**
 
