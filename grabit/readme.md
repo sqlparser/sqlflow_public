@@ -1,59 +1,65 @@
 - [Grabit Using Document](#grabit-using-document)
-    * [What is a grabit](#what-is-a-grabit)
-    * [How to use Grabit](#how-to-use-grabit)
-        + [Prerequisites](#prerequisites)
-        + [Install](#install)
-        + [Running the grabit tool](#running-the-grabit-tool)
-            - [GUI mode](#gui-mode)
-            - [Command line mode](#command-line-mode)
-            - [Export metadata in json to sql files](#export-metadata-in-json-to-sql-files)
-            - [Encrypted password](#encrypted-password)
-            - [Run the grabit at a scheduled time](#run-the-grabit-at-a-scheduled-time)
-        + [Grabit directory of data files](#grabit-directory-of-data-files)
-        + [Grabit log](#grabit-log)
-    * [Configuration](#configuration)
-        + [1. SQLFlow Server](#1-sqlflow-server)
-            - [server](#server)
-            - [serverPort](#serverport)
-            - [userId userSecret](#userid-usersecret)
-        + [2. SQLScriptSource](#2-sqlscriptsource)
-            - [2.1. enableGetMetadataInJSONFromDatabase](#21-enablegetmetadatainjsonfromdatabase)
-        + [3. lineageReturnFormat](#3-lineagereturnformat)
-        + [4. lineageReturnOutputFile](#4-lineageReturnOutputFile)
-        + [5. databaseType](#5-databasetype)
-        + [6. databaseServer](#6-databaseserver)
-            - [hostname](#hostname)
-            - [port](#port)
-            - [username](#username)
-            - [password](#password)
-            - [privateKeyFile](#privateKeyFile)
-            - [privateKeyFilePwd](#privateKeyFilePwd)
-            - [database](#database)
-            - [extractedDbsSchemas](#extracteddbsschemas)
-            - [excludedDbsSchemas](#excludeddbsschemas)
-            - [extractedStoredProcedures](#extractedstoredprocedures)
-            - [extractedViews](#extractedviews)
-            - [enableQueryHistory](#enablequeryhistory)
-            - [queryHistoryBlockOfTimeInMinutes](#queryhistoryblockoftimeinminutes)
-            - [queryHistorySqlType](#queryhistorysqltype)
-            - [excludedHistoryDbsSchemas](#excludedHistoryDbsSchemas)
-            - [duplicateQueryHistory](#duplicateQueryHistory)
-            - [snowflakeDefaultRole](#snowflakedefaultrole)
-            - [metaStore](#metaStore)
-            - [sqlsourceTableName](#sqlsourcetablename)
-            - [sqlsourceColumnQuerySource](#sqlsourcecolumnquerysource)
-            - [sqlsourceColumnQueryName](#sqlsourcecolumnqueryname)
-        + [7. gitServer](#7-gitserver)
-            - [url](#url)
-            - [username](#username-1)
-            - [password](#password-1)
-            - [sshKeyPath](#sshkeypath)
-        + [8. SQLInSingleFile](#8-sqlinsinglefile)
-        + [9. SQLInDirectory](#9-sqlindirectory)
-        + [10. isUploadNeo4j](#10-isuploadneo4j)
-        + [11. neo4jConnection](#11-neo4jconnection)
-        + [12. isUploadAtlas](#12-isuploadatlas)
-        + [13. atlasServer](#13-atlasserver)
+  * [What is a grabit](#what-is-a-grabit)
+  * [How to use Grabit](#how-to-use-grabit)
+    + [Prerequisites](#prerequisites)
+    + [Install](#install)
+    + [Running the grabit tool](#running-the-grabit-tool)
+      - [GUI mode](#gui-mode)
+      - [Command line mode](#command-line-mode)
+    + [custom ddl export sql](#custom-ddl-export-sql)
+    + [Grabit directory of data files](#grabit-directory-of-data-files)
+    + [Grabit log](#grabit-log)
+      - [Common Log Description](#common-log-description)
+  * [Configuration](#configuration)
+    + [1. SQLFlow Server](#1-sqlflow-server)
+      - [server](#server)
+      - [serverPort](#serverport)
+      - [userId userSecret](#userid-usersecret)
+    + [2. SQLScriptSource](#2-sqlscriptsource)
+      - [2.1. enableGetMetadataInJSONFromDatabase](#21-enablegetmetadatainjsonfromdatabase)
+    + [3. lineageReturnFormat](#3-lineagereturnformat)
+    + [4. lineageReturnOutputFile](#4-lineagereturnoutputfile)
+    + [5. databaseType](#5-databasetype)
+    + [6. databaseServer](#6-databaseserver)
+      - [hostname](#hostname)
+      - [port](#port)
+      - [username](#username)
+      - [password](#password)
+      - [privateKeyFile](#privatekeyfile)
+      - [privateKeyFilePwd](#privatekeyfilepwd)
+      - [database](#database)
+      - [extractedDbsSchemas](#extracteddbsschemas)
+      - [excludedDbsSchemas](#excludeddbsschemas)
+      - [extractedStoredProcedures](#extractedstoredprocedures)
+      - [extractedViews](#extractedviews)
+      - [enableQueryHistory](#enablequeryhistory)
+      - [queryHistoryBlockOfTimeInMinutes](#queryhistoryblockoftimeinminutes)
+      - [queryHistorySqlType](#queryhistorysqltype)
+      - [excludedHistoryDbsSchemas](#excludedhistorydbsschemas)
+      - [duplicateQueryHistory](#duplicatequeryhistory)
+      - [snowflakeDefaultRole](#snowflakedefaultrole)
+      - [metaStore](#metastore)
+      - [sqlsourceTableName](#sqlsourcetablename)
+      - [sqlsourceColumnQuerySource](#sqlsourcecolumnquerysource)
+      - [sqlsourceColumnQueryName](#sqlsourcecolumnqueryname)
+    + [7. gitServer](#7-gitserver)
+      - [url](#url)
+      - [username](#username-1)
+      - [password](#password-1)
+      - [sshKeyPath](#sshkeypath)
+    + [8. SQLInSingleFile](#8-sqlinsinglefile)
+    + [9. SQLInDirectory](#9-sqlindirectory)
+    + [10. isUploadNeo4j](#10-isuploadneo4j)
+    + [11. neo4jConnection](#11-neo4jconnection)
+    + [12. isUploadAtlas](#12-isuploadatlas)
+    + [13. atlasServer](#13-atlasserver)
+  * [Aux features](#aux-features)
+    + [Extract queries that surrounded by the single quote from any files](#extract-queries-that-surrounded-by-the-single-quote-from-any-files)
+    + [Extract queries in metadata jsosn file to a new sql file](#extract-queries-in-metadata-jsosn-file-to-a-new-sql-file)
+    + [Export metadata in csv to sql files](#export-metadata-in-csv-to-sql-files)
+    + [Encrypted password](#encrypted-password)
+    + [Run the grabit at a scheduled time](#run-the-grabit-at-a-scheduled-time)
+
 
 # Grabit Using Document
 
@@ -147,154 +153,6 @@ eg:
     start.bat -f config.txt
 ```
 
-#### Extract queries from any files that surrounded by the single quote
-
-Read text files from a specified directory,  extract text from each file in the directory
-that surrounded by the single quote character and put the text in a separate new file 
-if the text represents a valid SQL statement.
-
-> reference #:  I48FCX
-
-- **mac & linux**
-
-```
-./start.sh -e --generic -t dbvendor dir_to_txt_file
-
-eg: 
-    ./start.sh -e --generic -t oracle /root/oracledir
-```
-
-- **windows**
-
-```
-start.bat -e --generic -t dbvendor dir_to_txt_file
-
-eg: 
-    start.bat -e --generic -t oracle /root/oracledir
-```
-
-#### Extract queries in metadata json file to a new sql file
-
-After exporting metadata from a database, the metadata is saved in a JSON file.
-Queries such as create view are included in this JSON file.
-
-By using this option, grabit will extracts all queries in the JSON file, and put 
-each query in a separate text file.
-
-> Ref #: I3DTWP
-
-- **mac & linux**
-
-```
-./start.sh -e path_to_json_file [--targetDir target_dir]
-
-note: 
-    path_to_config_file: the full path to the metedata json file
-    target_dir: the path to the generated SQL file, optional
-
-eg: 
-    ./start.sh -e test.json --targetDir /root/sqlfiles
-```
-
-- **windows**
-
-```
-start.bat -e path_to_json_file [--targetDir target_dir]
-
-note: 
-    path_to_config_file: the full path to the metedata json file
-    target_dir: the path to the generated SQL file, optional
-
-eg: 
-    start.bat -e test.json --targetDir /root/sqlfiles
-```
-
-#### Export metadata in csv to sql files
-
-Export DDL statements from the Queries object into an SQL file.
-
-- **mac & linux**
-
-```
-./start.sh -e --csv path_to_csv_file [--csvFormat 123456] [--objectCodeEncloseChar char] [--objectCodeEscapeChar char] [--targetDir target_dir]
-
-note: 
-    path_to_config_file: the full path to the metedata csv file
-    target_dir: the path to the generated SQL file, optional
-
-eg: 
-    ./start.sh -e --csv test.csv --csvFormat 123456 --objectCodeEscapeChar " --objectCodeEncloseChar " --targetDir /root/sqlfiles
-```
-
-- **windows**
-
-```
-start.bat -e --csv path_to_csv_file [--csvFormat 123456] [--objectCodeEncloseChar char] [--objectCodeEscapeChar char] [--targetDir target_dir]
-
-note: 
-    path_to_config_file: the full path to the metedata csv file
-    target_dir: the path to the generated SQL file, optional
-
-eg: 
-    start.bat -e --csv test.csv --csvFormat 123456 --objectCodeEscapeChar " --objectCodeEncloseChar " --targetDir /root/sqlfiles
-```
-
-#### Encrypted password
-
-Encrypt the database connection password.
-
-- **mac & linux**
-
-```
-./start.sh --encrypt password
-
-note: 
-    password: the database connection password
-
-eg: 
-    ./start.sh --encrypt 123456
-```
-
-- **windows**
-
-```
-./start.bat --encrypt password
-
-note: 
-    password: the database connection password
-
-eg: 
-    ./start.bat --encrypt 123456
-```
-
-#### Run the grabit at a scheduled time
-
-This guide shows you how to set up a cron job in Linux, with examples.
-
-- **use mac & linux crontab**
-
-```
-cron ./start_job.sh -f <path_to_config_file> <lib_path>
-
-note: 
-    path_to_config_file: config file path 
-    lib_path: lib directory absolute path
-
-e.g.: 
-    1. sudo vi /etc/crontab 
-    2. add the following statement to the last line
-        1 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh -f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template /home/ubuntu/grabit-2.4.6/lib
-        
-        note: 
-            0 */1   * * *: cron expression
-            ubuntu: The name of the system user performing the task
-            /home/ubuntu/grabit-2.4.6/start_job.sh: The path of the task script
-            -f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template: config file path
-            /home/ubuntu/grabit-2.4.6/lib: lib directory absolute path
-    3.sudo service cron restart    
-```
-
-Please check [this document](https://phoenixnap.com/kb/set-up-cron-job-linux) for more information about cron.
 
 ### custom ddl export sql
 
@@ -1099,3 +957,157 @@ Sample configuration of a local directory path:
   "enableGetMetadataInJSONFromDatabase": 0
 }
 ````
+
+## Aux features
+### Extract queries that surrounded by the single quote from any files
+
+Read text files from a specified directory,  extract text that surrounded by the single quote character
+from each file in the directory and put the text in a separate new file 
+if the text represents a valid SQL statement.
+
+> reference #:  I48FCX
+
+- **mac & linux**
+
+```
+./start.sh -e --generic -t dbvendor dir_to_txt_file
+
+eg: 
+    ./start.sh -e --generic -t oracle /root/oracledir
+```
+
+- **windows**
+
+```
+start.bat -e --generic -t dbvendor dir_to_txt_file
+
+eg: 
+    start.bat -e --generic -t oracle /root/oracledir
+```
+
+### Extract queries in metadata jsosn file to a new sql file
+
+After exporting metadata from a database, the metadata is saved in a JSON file.
+Queries such as create view are included in this JSON file.
+
+By using this option, grabit will extracts all queries in the JSON file, and put 
+each query in a separate text file.
+
+> Ref #: I3DTWP
+
+- **mac & linux**
+
+```
+./start.sh -e path_to_json_file [--targetDir target_dir]
+
+note: 
+    path_to_config_file: the full path to the metedata json file
+    target_dir: the path to the generated SQL file, optional
+
+eg: 
+    ./start.sh -e test.json --targetDir /root/sqlfiles
+```
+
+- **windows**
+
+```
+start.bat -e path_to_json_file [--targetDir target_dir]
+
+note: 
+    path_to_config_file: the full path to the metedata json file
+    target_dir: the path to the generated SQL file, optional
+
+eg: 
+    start.bat -e test.json --targetDir /root/sqlfiles
+```
+
+### Export metadata in csv to sql files
+
+Extract SQL queries in a CSV file and save each SQL query in a separate text file.
+
+Detailed descrition of the CSV file format, please [check this document](https://www.gudusoft.com/blog/2021/09/05/sqlflow-csv/)
+> Ref #: I45ANU
+
+- **mac & linux**
+
+```
+./start.sh -e --csv path_to_csv_file [--csvFormat 123456] [--objectCodeEncloseChar char] [--objectCodeEscapeChar char] [--targetDir target_dir]
+
+note: 
+    path_to_config_file: the full path to the metedata csv file
+    target_dir: the path to the generated SQL file, optional
+
+eg: 
+    ./start.sh -e --csv test.csv --csvFormat 123456 --objectCodeEscapeChar " --objectCodeEncloseChar " --targetDir /root/sqlfiles
+```
+
+- **windows**
+
+```
+start.bat -e --csv path_to_csv_file [--csvFormat 123456] [--objectCodeEncloseChar char] [--objectCodeEscapeChar char] [--targetDir target_dir]
+
+note: 
+    path_to_config_file: the full path to the metedata csv file
+    target_dir: the path to the generated SQL file, optional
+
+eg: 
+    start.bat -e --csv test.csv --csvFormat 123456 --objectCodeEscapeChar " --objectCodeEncloseChar " --targetDir /root/sqlfiles
+```
+
+### Encrypted password
+
+Encrypt the database connection password.
+
+- **mac & linux**
+
+```
+./start.sh --encrypt password
+
+note: 
+    password: the database connection password
+
+eg: 
+    ./start.sh --encrypt 123456
+```
+
+- **windows**
+
+```
+./start.bat --encrypt password
+
+note: 
+    password: the database connection password
+
+eg: 
+    ./start.bat --encrypt 123456
+```
+
+### Run the grabit at a scheduled time
+
+This guide shows you how to set up a cron job in Linux, with examples.
+
+- **use mac & linux crontab**
+
+```
+cron ./start_job.sh -f <path_to_config_file> <lib_path>
+
+note: 
+    path_to_config_file: config file path 
+    lib_path: lib directory absolute path
+
+e.g.: 
+    1. sudo vi /etc/crontab 
+    2. add the following statement to the last line
+        1 */1   * * * ubuntu /home/ubuntu/grabit-2.4.6/start_job.sh -f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template /home/ubuntu/grabit-2.4.6/lib
+        
+        note: 
+            0 */1   * * *: cron expression
+            ubuntu: The name of the system user performing the task
+            /home/ubuntu/grabit-2.4.6/start_job.sh: The path of the task script
+            -f /home/ubuntu/grabit-2.4.6/conf-template/oracle-config-template: config file path
+            /home/ubuntu/grabit-2.4.6/lib: lib directory absolute path
+    3.sudo service cron restart    
+```
+
+Please check [this document](https://phoenixnap.com/kb/set-up-cron-job-linux) for more information about cron.
+
