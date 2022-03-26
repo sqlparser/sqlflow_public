@@ -337,7 +337,8 @@ specify the data lineage result file directly.
 ```json
 "lineageReturnOutputFile":"/user/data.csv"
 ```
-
+> PLEASE NOTE THAT ALL VARIABLE NAMES THAT START WITH $ SIGN IN THIS SECTION IS USED FOR COMMUNICATION ONLY,
+> THEY DO NOT BEEN USED IN THE CONFIGURE FILE!
 
 ## Configuration
 
