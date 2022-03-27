@@ -62,8 +62,6 @@
   * [Encrypted password](#encrypted-password)
 - [FAQ](#faq)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 
 ## What is a grabit
 
