@@ -2,64 +2,65 @@
 - [Prerequisites](#prerequisites)
 - [Install](#install)
 - [Running the grabit tool](#running-the-grabit-tool)
-  * [GUI mode](#gui-mode)
-  * [Command line mode](#command-line-mode)
-    + [Configure file](#configure-file)
-    + [Running in command line](#running-in-command-line)
-    + [Run the grabit at a scheduled time](#run-the-grabit-at-a-scheduled-time)
-  * [Grabit log](#grabit-log)
-    + [Common Log Description](#common-log-description)
+    * [GUI mode](#gui-mode)
+    * [Command line mode](#command-line-mode)
+        + [Configure file](#configure-file)
+        + [Running in command line](#running-in-command-line)
+        + [Run the grabit at a scheduled time](#run-the-grabit-at-a-scheduled-time)
+    * [Grabit log](#grabit-log)
+        + [Common Log Description](#common-log-description)
 - [Name of directories and files](#name-of-directories-and-files)
-  * [lineageReturnOutputFile](#lineagereturnoutputfile)
+    * [lineageReturnOutputFile](#lineagereturnoutputfile)
 - [Configuration](#configuration)
-  * [1. SQLFlow Server](#1-sqlflow-server)
-    + [server](#server)
-    + [serverPort](#serverport)
-    + [userId userSecret](#userid-usersecret)
-  * [2. SQLScriptSource](#2-sqlscriptsource)
-    + [2.1. enableGetMetadataInJSONFromDatabase](#21-enablegetmetadatainjsonfromdatabase)
-  * [3. lineageReturnFormat](#3-lineagereturnformat)
-  * [4. databaseType](#4-databasetype)
-  * [5. databaseServer](#5-databaseserver)
-    + [hostname](#hostname)
-    + [port](#port)
-    + [username](#username)
-    + [password](#password)
-    + [privateKeyFile](#privatekeyfile)
-    + [privateKeyFilePwd](#privatekeyfilepwd)
-    + [database](#database)
-    + [extractedDbsSchemas](#extracteddbsschemas)
-    + [excludedDbsSchemas](#excludeddbsschemas)
-    + [extractedStoredProcedures](#extractedstoredprocedures)
-    + [extractedViews](#extractedviews)
-    + [enableQueryHistory](#enablequeryhistory)
-    + [queryHistoryBlockOfTimeInMinutes](#queryhistoryblockoftimeinminutes)
-    + [queryHistorySqlType](#queryhistorysqltype)
-    + [excludedHistoryDbsSchemas](#excludedhistorydbsschemas)
-    + [duplicateQueryHistory](#duplicatequeryhistory)
-    + [snowflakeDefaultRole](#snowflakedefaultrole)
-    + [metaStore](#metastore)
-    + [custom ddl export sql](#custom-ddl-export-sql)
-  * [6. gitServer](#6-gitserver)
-    + [url](#url)
-    + [username](#username-1)
-    + [password](#password-1)
-    + [sshKeyPath](#sshkeypath)
-  * [7. SQLInSingleFile](#7-sqlinsinglefile)
-  * [8. SQLInDirectory](#8-sqlindirectory)
-  * [9. isUploadNeo4j](#9-isuploadneo4j)
-  * [10. neo4jConnection](#10-neo4jconnection)
-  * [11. isUploadAtlas](#11-isuploadatlas)
-  * [12. atlasServer](#12-atlasserver)
+    * [1. SQLFlow Server](#1-sqlflow-server)
+        + [server](#server)
+        + [serverPort](#serverport)
+        + [userId userSecret](#userid-usersecret)
+    * [2. SQLScriptSource](#2-sqlscriptsource)
+        + [2.1. enableGetMetadataInJSONFromDatabase](#21-enablegetmetadatainjsonfromdatabase)
+    * [3. lineageReturnFormat](#3-lineagereturnformat)
+    * [4. databaseType](#4-databasetype)
+    * [5. databaseServer](#5-databaseserver)
+        + [hostname](#hostname)
+        + [port](#port)
+        + [username](#username)
+        + [password](#password)
+        + [privateKeyFile](#privatekeyfile)
+        + [privateKeyFilePwd](#privatekeyfilepwd)
+        + [database](#database)
+        + [extractedDbsSchemas](#extracteddbsschemas)
+        + [excludedDbsSchemas](#excludeddbsschemas)
+        + [extractedStoredProcedures](#extractedstoredprocedures)
+        + [extractedViews](#extractedviews)
+        + [enableQueryHistory](#enablequeryhistory)
+        + [queryHistoryBlockOfTimeInMinutes](#queryhistoryblockoftimeinminutes)
+        + [queryHistorySqlType](#queryhistorysqltype)
+        + [excludedHistoryDbsSchemas](#excludedhistorydbsschemas)
+        + [duplicateQueryHistory](#duplicatequeryhistory)
+        + [snowflakeDefaultRole](#snowflakedefaultrole)
+        + [metaStore](#metastore)
+        + [custom ddl export sql](#custom-ddl-export-sql)
+    * [6. gitServer](#6-gitserver)
+        + [url](#url)
+        + [username](#username-1)
+        + [password](#password-1)
+        + [sshKeyPath](#sshkeypath)
+    * [7. SQLInSingleFile](#7-sqlinsinglefile)
+    * [8. SQLInDirectory](#8-sqlindirectory)
+    * [9. isUploadNeo4j](#9-isuploadneo4j)
+    * [10. neo4jConnection](#10-neo4jconnection)
+    * [11. isUploadAtlas](#11-isuploadatlas)
+    * [12. atlasServer](#12-atlasserver)
+    * [13. donotConnectToSQLFlowServer](#13-donotConnectToSQLFlowServer)
 - [Process SQL queries in a database table](#process-sql-queries-in-a-database-table)
-  * [sqlsourceTableName](#sqlsourcetablename)
-    + [sqlsourceColumnQuerySource](#sqlsourcecolumnquerysource)
-    + [sqlsourceColumnQueryName](#sqlsourcecolumnqueryname)
+    * [sqlsourceTableName](#sqlsourcetablename)
+        + [sqlsourceColumnQuerySource](#sqlsourcecolumnquerysource)
+        + [sqlsourceColumnQueryName](#sqlsourcecolumnqueryname)
 - [Aux features](#aux-features)
-  * [Extract queries that surrounded by the single quote from any files](#extract-queries-that-surrounded-by-the-single-quote-from-any-files)
-  * [Extract queries in metadata jsosn file to a new sql file](#extract-queries-in-metadata-jsosn-file-to-a-new-sql-file)
-  * [Export metadata in csv to sql files](#export-metadata-in-csv-to-sql-files)
-  * [Encrypted password](#encrypted-password)
+    * [Extract queries that surrounded by the single quote from any files](#extract-queries-that-surrounded-by-the-single-quote-from-any-files)
+    * [Extract queries in metadata jsosn file to a new sql file](#extract-queries-in-metadata-jsosn-file-to-a-new-sql-file)
+    * [Export metadata in csv to sql files](#export-metadata-in-csv-to-sql-files)
+    * [Encrypted password](#encrypted-password)
 - [FAQ](#faq)
 
 
@@ -107,7 +108,7 @@ The grabit tool can be running in both GUI mode and the command line mode.
 
 ### GUI mode
 
-GUI mode only runs under Oracle JDK, and only a subset of features supported in the GUI mode, 
+GUI mode only runs under Oracle JDK, and only a subset of features supported in the GUI mode,
 The command line mode is highly recommended.
 
 - **mac & linux**
@@ -125,7 +126,7 @@ start.bat
 ### Command line mode
 
 #### Configure file
-Configure file tells the grabit tool how to collect SQL script and what's kind 
+Configure file tells the grabit tool how to collect SQL script and what's kind
 of data lineage result you like to achieve.
 
 A set of pre-configed config files are located under `conf-template/` directory.
@@ -313,8 +314,8 @@ When the task uploaded to SQLFlow is too large and the number of rolls parsed by
 $JOB_NAME = grabit_%yyyyMMddHHmmss%
 ```
 
-- After export metadata from the database, the metadata data is saved under the `data/job_%jobname%/metadata` directory. 
-Variable `$METADATA_DIR` represents the directory when the metadata exported from a database is saved.
+- After export metadata from the database, the metadata data is saved under the `data/job_%jobname%/metadata` directory.
+  Variable `$METADATA_DIR` represents the directory when the metadata exported from a database is saved.
 ```
 $METADATA_DIR =  data/job_$JOB_NAME/metadata
 ```
@@ -322,7 +323,7 @@ $METADATA_DIR =  data/job_$JOB_NAME/metadata
 Metadata file name: `metadata.json`
 
 - Once the job is done, the data lineage result generated by the SQLFlow is saved under the `data/job_%jobname%/result` directory.
-Variable: `$LINEAGE_RESULT_DIR` represents the directory where the lineage result of a job is saved.
+  Variable: `$LINEAGE_RESULT_DIR` represents the directory where the lineage result of a job is saved.
 ```
 $LINEAGE_RESULT_DIR = data/job_$JOB_NAME/result
 ```
@@ -330,7 +331,7 @@ $LINEAGE_RESULT_DIR = data/job_$JOB_NAME/result
 Lineage result file name: `data-lineage-result.json`
 
 ### lineageReturnOutputFile
-The value of `$LINEAGE_RESULT_DIR` will be overwrited by the value of `lineageReturnOutputFile` which 
+The value of `$LINEAGE_RESULT_DIR` will be overwrited by the value of `lineageReturnOutputFile` which
 specify the data lineage result file directly.
 
 
@@ -487,7 +488,7 @@ This sample configuration means the SQL dialect is SQL Server database.
 
 ### 5. databaseServer
 
-This option is used when 
+This option is used when
 - 1. Need to discover data lineage of a specific database: `SQLScriptSource=database`
 - 2. Need to discover lineage from SQL in a text file, but need metadata from a database in order to get a more accurate result.
 - 3. Need to discover the Hive metaStore that stored in a database.
@@ -902,6 +903,10 @@ Sample configuration of a local directory path:
 "password": "your server password here"
 ```
 
+### 13. donotConnectToSQLFlowServer
+
+If `donotConnectToSQLFlowServer` is set to 1, the metadata file is not uploaded to SQLFlow. the default is 0
+
 **eg configuration file:**
 
 ````json
@@ -966,6 +971,7 @@ Sample configuration of a local directory path:
   "lineageReturnOutputFile": "",
   "databaseType": "snowflake",
   "isUploadNeo4j": 0,
+  "donotConnectToSQLFlowServer": 0,
   "enableGetMetadataInJSONFromDatabase": 0
 }
 ````
@@ -993,7 +999,7 @@ table name: **query_table**
 
 If you save SQL queries in a specific table, one SQL query per row.
 
-Let's say: The column `query_table.query_source` stores the source code of the query. 
+Let's say: The column `query_table.query_source` stores the source code of the query.
 We can use this query to fetch all SQL queries in this table:
 
 ```sql
@@ -1035,7 +1041,7 @@ This parameter is optional, you don't need to speicify a query name column if it
 ### Extract queries that surrounded by the single quote from any files
 
 Read text files from a specified directory,  extract text that surrounded by the single quote character
-from each file in the directory and put the text in a separate new file 
+from each file in the directory and put the text in a separate new file
 if the text represents a valid SQL statement.
 
 > reference #:  I48FCX
@@ -1063,7 +1069,7 @@ eg:
 After exporting metadata from a database, the metadata is saved in a JSON file.
 Queries such as create view are included in this JSON file.
 
-By using this option, grabit will extracts all queries in the JSON file, and put 
+By using this option, grabit will extracts all queries in the JSON file, and put
 each query in a separate text file.
 
 > Ref #: I3DTWP
