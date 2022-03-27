@@ -60,7 +60,9 @@
   * [Extract queries in metadata jsosn file to a new sql file](#extract-queries-in-metadata-jsosn-file-to-a-new-sql-file)
   * [Export metadata in csv to sql files](#export-metadata-in-csv-to-sql-files)
   * [Encrypted password](#encrypted-password)
+- [FAQ](#faq)
 
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
 ## What is a grabit
@@ -1155,4 +1157,8 @@ eg:
     ./start.bat --encrypt 123456
 ```
 
+## FAQ
+- Q: Is it possible to upload multiple scripts and view the lineage across these scripts in a combined way?
+
+> A: Yes, you can add multiple scripts to a single zip file and then upload this zip file to SQLFlow by creating a job
 
