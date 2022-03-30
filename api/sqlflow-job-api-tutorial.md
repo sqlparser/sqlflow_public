@@ -1,13 +1,13 @@
 - [SQLFlow Job API tutorial](#sqlflow-job-api-tutorial)
-  * [Prerequisites](#prerequisites)
-  * [Difference of the API calls between SQLFlow Cloud server and SQLFlow on-premise version](#difference-of-the-api-calls-between-sqlflow-cloud-server-and-sqlflow-on-premise-version)
+  * [1. Prerequisites](#1-prerequisites)
+    + [Difference of the API calls between SQLFlow Cloud server and SQLFlow on-premise version](#difference-of-the-api-calls-between-sqlflow-cloud-server-and-sqlflow-on-premise-version)
     + [Generate a token](#generate-a-token)
-  * [Different type of Job](#different-type-of-job)
-  * [Simple job rest API](#simple-job-rest-api)
+  * [2. Different type of Job](#2-different-type-of-job)
+  * [3. Simple job rest API](#3-simple-job-rest-api)
     + [1. Submit a sqlflow job](#1-submit-a-sqlflow-job)
     + [2. Get job status](#2-get-job-status)
     + [3. Export data lineage](#3-export-data-lineage)
-  * [Regular job rest API](#regular-job-rest-api)
+  * [4. Regular job rest API](#4-regular-job-rest-api)
 
 
 ## SQLFlow Job API tutorial
@@ -15,7 +15,7 @@
 This article describes how to use the Job Rest API provided by the SQLFlow to 
 communicate with the SQLFlow server and export the data lineage in json, csv, graphml formats.
 
-### Prerequisites
+### 1. Prerequisites
 In order to use the SQLFlow rest API, you may connect to the [**SQLFlow Cloud server**](https://sqlflow.gudusoft.com),
 Or, setup a [**SQLFlow on-premise version**](https://www.gudusoft.com/sqlflow-on-premise-version/) on your owner server.
 
@@ -39,7 +39,7 @@ Please [check here](https://github.com/sqlparser/sqlflow_public/blob/master/inst
 Always set userId to `gudu|0123456789` and keep `userSecret` empty when connect to the SQLFlow on-premise version.
 
 
-### Difference of the API calls between SQLFlow Cloud server and SQLFlow on-premise version
+#### Difference of the API calls between SQLFlow Cloud server and SQLFlow on-premise version
 
 1. TOKEN is not needed in the API calls when connect to the SQLFlow on-premise version
 2. userId alwyas set to `gudu|0123456789` and `userSecret` leave empty when connect to the SQLFlow on-premise version.
@@ -63,10 +63,10 @@ curl -X POST "https://api.gudusoft.com/gspLive_backend/user/generateToken" -H  "
 
 More detail, please see https://github.com/sqlparser/sqlflow_public/edit/master/api/readme.md
 
-### Different type of Job
+### 2. Different type of Job
 ![SQLFlow job types](job-types.png)
 
-### Simple job rest API
+### 3. Simple job rest API
 
 #### 1. Submit a sqlflow job
 
@@ -203,4 +203,4 @@ Please records the jobId field.
   **Note:**
    > If you want to get table to table relation, please add option -F "tableToTable=true"
    
-### Regular job rest API   
+### 4. Regular job rest API   
