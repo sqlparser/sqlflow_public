@@ -186,6 +186,7 @@ Please records the jobId field.
   
   **Note:**
    > If you want to get table to table relation, please add option -F "tableToTable=true"
+   
    > If you want to change csv delimiter, please add option -F "delimiter=<delimiter char>" 
   
  
