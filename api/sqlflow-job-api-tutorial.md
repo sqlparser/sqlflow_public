@@ -181,13 +181,13 @@ Please records the jobId field.
   Example in `Curl`  
   
   ```
-  curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/job/exportLineageAsCsv" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE" -F "jobId=c359aef4bd9641d697732422debd8055" --output lineage.csv
+  curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/job/exportFullLineageAsCsv" -F "userId=YOUR USER ID HERE" -F "token=YOUR TOKEN HERE" -F "jobId=c359aef4bd9641d697732422debd8055" --output lineage.csv
   ```
   
   **Note:**
    > If you want to get table to table relation, please add option -F "tableToTable=true"
    
-   > If you want to change csv delimiter, please add option -F "delimiter=<delimiter char>" 
+   > If you want to change csv delimiter, please add option -F "delimiter=&lt;delimiter char&gt;" 
   
  
  * 3.3 Export data lineage in graphml format, you can view the lineage graph at yEd Graph Editor
