@@ -1,14 +1,51 @@
+- [SQLFlow Job API tutorial](#sqlflow-job-api-tutorial)
+  * [Prerequisites](#prerequisites)
+  * [Difference of the API calls between SQLFlow Cloud server and SQLFlow on-premise version](#difference-of-the-api-calls-between-sqlflow-cloud-server-and-sqlflow-on-premise-version)
+    + [Generate a token](#generate-a-token)
+  * [Different type of Job](#different-type-of-job)
+  * [Simple job rest API](#simple-job-rest-api)
+    + [1. Submit a sqlflow job](#1-submit-a-sqlflow-job)
+    + [2. Get job status](#2-get-job-status)
+    + [3. Export data lineage](#3-export-data-lineage)
+  * [Regular job rest API](#regular-job-rest-api)
+
+
 ## SQLFlow Job API tutorial
 
 This article describes how to use the Job Rest API provided by the SQLFlow to 
 communicate with the SQLFlow server and export the data lineage in json, csv, graphml formats.
 
 ### Prerequisites
-To use the Rest API of the SQLFlow, you need to <a href="https://gudusoft.com">obtain a premium account</a>. 
-After that, you will get the `userid` and `secret key`, which will be used in the API.
+In order to use the SQLFlow rest API, you may connect to the [**SQLFlow Cloud server**](https://sqlflow.gudusoft.com),
+Or, setup a [**SQLFlow on-premise version**](https://www.gudusoft.com/sqlflow-on-premise-version/) on your owner server.
+
+
+1. **SQLFlow Cloud server**
 
 - User ID
 - Secrete Key
+
+If you want to connect to [the SQLFlow Cloud Server](https://sqlflow.gudusoft.com), you may [request a 30 days premium account](https://www.gudusoft.com/request-a-premium-account/) to 
+[get the necessary userId and secret code](/sqlflow-userid-secret.md).
+
+
+2. **SQLFlow on-premise version**
+
+Please [check here](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow.md) to see how to install SQLFlow on-premise version on you own server.
+
+- User ID
+- Secrete Key
+
+Always set userId to `gudu|0123456789` and keep `userSecret` empty when connect to the SQLFlow on-premise version.
+
+
+### Difference of the API calls between SQLFlow Cloud server and SQLFlow on-premise version
+
+1. TOKEN is not needed in the API calls when connect to the SQLFlow on-premise version
+2. userId alwyas set to `gudu|0123456789` and `userSecret` leave empty when connect to the SQLFlow on-premise version.
+3. The server port is 8081 by default for the SQLFlow on-premise version, and There is no need to specify the port when connect to the SQLFlow Cloud server.
+
+Regarding the server port of the SQLFlow on-premise version, please [check here](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#1-sqlflow-server) for more information.
 
 #### Generate a token
 
@@ -26,7 +63,10 @@ curl -X POST "https://api.gudusoft.com/gspLive_backend/user/generateToken" -H  "
 
 More detail, please see https://github.com/sqlparser/sqlflow_public/edit/master/api/readme.md
 
-### Call Rest API
+### Different type of Job
+![SQLFlow job types](job-types.png)
+
+### Simple job rest API
 
 #### 1. Submit a sqlflow job
 
@@ -66,7 +106,7 @@ Return data:
 
 Please records the jobId field.
 
-### 2. Get job status
+#### 2. Get job status
 
  * Get the specify user job status and summary
   
@@ -114,7 +154,7 @@ Please records the jobId field.
   
  
 
-### 3. Export data lineage
+#### 3. Export data lineage
  
  When the job status is **success**, you can export the data lineage in json, csv, graphml formats
 
@@ -162,3 +202,5 @@ Please records the jobId field.
   
   **Note:**
    > If you want to get table to table relation, please add option -F "tableToTable=true"
+   
+### Regular job rest API   
