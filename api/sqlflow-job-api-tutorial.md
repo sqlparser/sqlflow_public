@@ -231,19 +231,38 @@ curl -X POST "https://api.gudusoft.com/gspLive_backend/sqlflow/job/submitPersist
 Return data: 
 ```json
 {
-	"code":200,
-	"data":{
-		"jobId":"c359aef4bd9641d697732422debd8055",
-		"jobName":"job1",
-		"userId":"google-oauth2|104002923119102769706",
-		"dbVendor":"dbvmssql",
-		"dataSource":{
-			
-		},
-		"fileNames":["1.sql","1.zip"],
-		"createTime":"2020-12-15 15:14:39",
-		"status":"create"
-	}
+  "code": 200,
+  "data": {
+    "jobId": "d533ada6ac624010aa6fa508ee4663a0",
+    "jobName": "job1",
+    "userId": "gudu|0123456789",
+    "dbVendor": "dbvmssql",
+    "dataSource": {
+      "account": "",
+      "database": "",
+      "hostname": "",
+      "password": ""
+    },
+    "createTime": "2022-04-02 19:38:54",
+    "status": "create",
+    "hasMetadata": false,
+    "onTop": false,
+    "simple": true,
+    "parallel": true,
+    "persist": true,
+    "incremental": true,
+    "subJobs": [
+      {
+        "batchId": "f1f46b3a37a64ca4ba4a000cb25680fd",
+        "fileNames": [
+          "1.txt",
+          "2.txt"
+        ],
+        "createTime": "2022-04-02 19:38:54",
+        "status": "create"
+      }
+    ]
+  }
 }
 ```
 
