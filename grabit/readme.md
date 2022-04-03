@@ -52,6 +52,7 @@
     * [11. isUploadAtlas](#11-isuploadatlas)
     * [12. atlasServer](#12-atlasserver)
     * [13. donotConnectToSQLFlowServer](#13-donotConnectToSQLFlowServer)
+    * [14. jobType](#14-jobType)
 - [Process SQL queries in a database table](#process-sql-queries-in-a-database-table)
     * [sqlsourceTableName](#sqlsourcetablename)
         + [sqlsourceColumnQuerySource](#sqlsourcecolumnquerysource)
@@ -907,6 +908,10 @@ Sample configuration of a local directory path:
 
 If `donotConnectToSQLFlowServer` is set to 1, the metadata file is not uploaded to SQLFlow. the default is 0
 
+### 14. jobType
+
+If `jobType` is set to "regular", tasks are submitted to SQLFlow incrementally and in batches according to reualr mode. the default is "simple"
+
 **eg configuration file:**
 
 ````json
@@ -972,7 +977,8 @@ If `donotConnectToSQLFlowServer` is set to 1, the metadata file is not uploaded 
   "databaseType": "snowflake",
   "isUploadNeo4j": 0,
   "donotConnectToSQLFlowServer": 0,
-  "enableGetMetadataInJSONFromDatabase": 0
+  "enableGetMetadataInJSONFromDatabase": 0,
+  "jobType": "simple"
 }
 ````
 
