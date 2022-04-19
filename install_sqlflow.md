@@ -303,7 +303,7 @@ See [sqlflow client api call][1]
 [1]: https://github.com/sqlparser/sqlflow_public/blob/master/api/sqlflow_api_full.md#webapi
 
 ## Trouble Shooting
-1. Failed to get license info.
+### 1. Failed to get license info.
 
 ![sqlflow-install-failed-to-get-license-info](/images/sqlflow-install-failed-to-get-license-info.png)
 
@@ -313,7 +313,8 @@ and refresh the web page.
 Or, this issue may caused by the browser cache, just use `Incognito mode` to access the Sqlflow page and
 clear the cache.
 
-2. Config nginx on RHEL(Redhat linux)
+
+### 2. Config nginx on RHEL(Redhat linux)
 
 a) Type: vim /etc/nginx/nginx.conf and change the server section of the conf file with below configurations
 ```
