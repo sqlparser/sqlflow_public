@@ -313,4 +313,85 @@ and refresh the web page.
 Or, this issue may caused by the browser cache, just use `Incognito mode` to access the Sqlflow page and
 clear the cache.
 
+2. Config nginx on RHEL(Redhat linux)
+
+a) Type: vim /etc/nginx/nginx.conf and change the server section of the conf file with below configurations
+```
+server {
+
+        listen       80 default_server;
+
+        listen       [::]:80 default_server;
+
+        server_name  _;
+
+        #root         /usr/share/nginx/html;
+
+        root          /wings/sqlflow/frontend/;
+
+        index index.html
+
+        # Load configuration files for the default server block.
+
+        include /etc/nginx/default.d/*.conf;
+
+ 
+
+        location / {
+
+                try_files $uri $uri/ =404;
+
+        }
+
+ 
+
+        error_page 404 /404.html;
+
+            location = /40x.html {
+
+        }
+
+ 
+
+        error_page 500 502 503 504 /50x.html;
+
+            location = /50x.html {
+
+        }
+
+        location ~* ^/index.html {
+
+                 add_header X-Frame-Options deny; # remove this line if you want to embed SQLFlow in iframe
+
+                 add_header Cache-Control no-store;
+
+        }
+
+         location /api/ {
+
+                 proxy_pass http://127.0.0.1:8081/;
+
+                 proxy_connect_timeout 600s ;
+
+                proxy_read_timeout 600s;
+
+                 proxy_send_timeout 600s;
+
+ 
+
+                 proxy_set_header Host $host;
+
+                 proxy_set_header X-Real-IP $remote_addr;
+
+                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+                 proxy_set_header User-Agent $http_user_agent;
+
+        }
+
+}
+```
+
+b) Configure selinux to permission by going to: vi /etc/selinux/configure --> SELinux status to = permissive
+
 
