@@ -9,9 +9,12 @@
     + [3. Modify java service port](#3-modify-java-service-port)
   * [Start Backend Services](#start-backend-services)
   * [Start Frontend Services](#start-frontend-services)
+  * [Gudu SQLFlow License file](#gudu-sqlflow-license-file)
   * [Backend Services Configuration](#backend-services-configuration)
   * [Sqlflow client api call](#sqlflow-client-api-call)
   * [Trouble Shooting](#trouble-shooting)
+    + [1. Failed to get license info.](#1-failed-to-get-license-info)
+    + [2. Config nginx on RHEL(Redhat linux)](#2-config-nginx-on-rhel-redhat-linux-)
 
 
 # Instructions on how to install SQLFlow on your own server.
@@ -244,6 +247,15 @@ OR
 
 open http://yourdomain.com:8081/gspLive_backend/doc.html?lang=en to see the Restful API documention.
 
+
+##  Gudu SQLFlow License file
+If this is the first time you setup the Gudu SQLFlow on a new machine,
+then, you will see this license related UI:
+![gudu sqlflow license ui](/images/gudu-sqlflow-license.png)
+
+1. You send us the Gudu SQLFlow Id (6 characters in red) to us.
+2. We will generate a license file for you based on this id.
+3. You upload the license file by click the "upload license file" button.
 
 ## Backend Services Configuration
 
