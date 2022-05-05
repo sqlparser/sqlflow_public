@@ -250,12 +250,12 @@ open http://yourdomain.com:8081/gspLive_backend/doc.html?lang=en to see the Rest
 
 ##  Gudu SQLFlow License file
 If this is the first time you setup the Gudu SQLFlow on a new machine,
-then, you will see this license related UI:
+then, you will see this license UI:
 ![gudu sqlflow license ui](/images/gudu-sqlflow-license.png)
 
-1. You send us the Gudu SQLFlow Id (6 characters in red) to us.
+1. You send us the Gudu SQLFlow Id (6 characters in red).
 2. We will generate a license file for you based on this id.
-3. You upload the license file by click the "upload license file" button.
+3. You upload the license file by click the "upload license file" link.
 
 ## Backend Services Configuration
 
