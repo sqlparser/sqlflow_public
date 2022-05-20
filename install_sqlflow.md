@@ -14,8 +14,8 @@
   * [Sqlflow client api call](#sqlflow-client-api-call)
   * [Trouble Shooting](#trouble-shooting)
     + [1. Failed to get license info.](#1-failed-to-get-license-info)
-    + [2. Config nginx on RHEL: Redhat linux](#2-config-nginx-on-rhel--redhat-linux)
-    + [3. Get license fail: 502 Bad Gateway](#3-get-license-fail--502-bad-gateway)
+    + [2. Config nginx on RHEL: Redhat linux](#2-config-nginx-on-rhel-redhat-linux)
+    + [3. Get license fail: 502 Bad Gateway](#3-get-license-fail-502-bad-gateway)
 
 
 
