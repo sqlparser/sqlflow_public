@@ -15,6 +15,7 @@
   * [Trouble Shooting](#trouble-shooting)
     + [1. Failed to get license info.](#1-failed-to-get-license-info)
     + [2. Config nginx on RHEL(Redhat linux)](#2-config-nginx-on-rhel-redhat-linux-)
+    + [3. Get license fail: 502 Bad Gateway](#3-get-license-fail--502-bad-gateway)
 
 
 # Instructions on how to install SQLFlow on your own server.
@@ -408,3 +409,9 @@ server {
 b) Configure selinux to permission by going to: vi /etc/selinux/configure --> SELinux status to = permissive
 
 
+### 3. Get license fail: 502 Bad Gateway
+
+![](images/sqlflow-install-sqlflow-install-502-bad-gateway.png)
+
+If you find this error, this is because the port that is needed by the SQLFlow is already used by another application,
+please configure the SQLFlow to [use another port](#customize-the-port).
