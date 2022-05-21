@@ -10,7 +10,7 @@ sqlflow_api = sqlflow_cloud_server + '/gspLive_backend/sqlflow/generation/sqlflo
 
 
 
-# Please check here for detailed explanation of al parameters: https://github.com/sqlparser/sqlflow_public/tree/master/api/python/basic
+# Please check here for detailed explanation of all parameters: https://github.com/sqlparser/sqlflow_public/tree/master/api/python/basic
 userId = 'your user id here'
 # This is your screct key: https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow-userid-secret.md
 screctKey = 'your secrect key here'  

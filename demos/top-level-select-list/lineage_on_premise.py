@@ -3,10 +3,10 @@ import json
 import pprint
 
 # Please change the IP to the server where Gudu SQLFlow on-premise version is setup
-sqlflow_on_premise_server = 'http://101.43.8.206:8081' 
+sqlflow_on_premise_server = 'http://127.0.0.1:8081' 
 sqlflow_api = sqlflow_on_premise_server + '/gspLive_backend/sqlflow/generation/sqlflow/graph'
 
-# Please check here for detailed explanation of al parameters: https://github.com/sqlparser/sqlflow_public/tree/master/api/python/basic
+# Please check here for detailed explanation of all parameters: https://github.com/sqlparser/sqlflow_public/tree/master/api/python/basic
 userId = 'gudu|0123456789'
 dbvendor = 'dbvoracle'
 ignoreRecordSet = 'True'
