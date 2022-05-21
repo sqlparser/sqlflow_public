@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dlineage>
+    <table id="4" name="employees" alias="e" type="table" coordinate="[4,7,0],[4,18,0]">
+        <column id="5" name="department_id" coordinate="[6,7,0],[6,22,0]"/>
+        <column id="6" name="last_name" coordinate="[3,9,0],[3,20,0]"/>
+    </table>
+    <table id="8" name="department" alias="d" type="table" coordinate="[5,18,0],[5,30,0]">
+        <column id="9" name="department_id" coordinate="[6,25,0],[6,40,0]"/>
+        <column id="10" name="department_name" coordinate="[3,39,0],[3,56,0]"/>
+    </table>
+    <table id="17" name="source" alias="s" type="table" coordinate="[10,7,0],[10,15,0]">
+        <column id="18" name="location_id" coordinate="[12,5,0],[12,18,0]"/>
+        <column id="19" name="remote" coordinate="[9,9,0],[9,17,0]"/>
+        <column id="20" name="department_id" coordinate="[9,18,0],[9,33,0]"/>
+    </table>
+    <table id="22" name="location" alias="l" type="table" coordinate="[11,13,0],[11,23,0]">
+        <column id="23" name="id" coordinate="[12,21,0],[12,25,0]"/>
+    </table>
+    <resultset id="27" name="RS-1" type="select_list" coordinate="[1,8,0],[1,31,0]">
+        <column id="29" name="remote" coordinate="[1,16,0],[1,31,0]"/>
+        <column id="26" name="RelationRows" coordinate="[1,8,0],[1,31,0]" source="system"/>
+        <column id="28_0" name="LAST_NAME" coordinate="[1,8,0],[1,14,0]"/>
+        <column id="28_1" name="DEPARTMENT_ID" coordinate="[1,8,0],[1,14,0]"/>
+        <column id="28_2" name="DEPARTMENT_NAME" coordinate="[1,8,0],[1,14,0]"/>
+    </resultset>
+    <relationship id="18" type="fdd" effectType="select">
+        <target id="28_0" column="LAST_NAME" parent_id="27" parent_name="RS-1" coordinate="[1,8,0],[1,14,0]"/>
+        <source id="6" column="last_name" parent_id="4" parent_name="employees" parent_alias="e" coordinate="[3,9,0],[3,20,0]"/>
+    </relationship>
+    <relationship id="19" type="fdd" effectType="select">
+        <target id="28_1" column="DEPARTMENT_ID" parent_id="27" parent_name="RS-1" coordinate="[1,8,0],[1,14,0]"/>
+        <source id="5" column="department_id" parent_id="4" parent_name="employees" parent_alias="e" coordinate="[6,7,0],[6,22,0]"/>
+    </relationship>
+    <relationship id="20" type="fdd" effectType="select">
+        <target id="28_2" column="DEPARTMENT_NAME" parent_id="27" parent_name="RS-1" coordinate="[1,8,0],[1,14,0]"/>
+        <source id="10" column="department_name" parent_id="8" parent_name="department" parent_alias="d" coordinate="[3,39,0],[3,56,0]"/>
+    </relationship>
+    <relationship id="21" type="fdd" effectType="select">
+        <target id="29" column="remote" parent_id="27" parent_name="RS-1" coordinate="[1,16,0],[1,31,0]"/>
+        <source id="19" column="remote" parent_id="17" parent_name="source" parent_alias="s" coordinate="[9,9,0],[9,17,0]"/>
+    </relationship>
+    <relationship id="22" type="fdd" effectType="join">
+        <target id="29" column="remote" parent_id="27" parent_name="RS-1" coordinate="[1,16,0],[1,31,0]"/>
+        <source id="19" column="remote" parent_id="17" parent_name="source" parent_alias="s" coordinate="[9,9,0],[9,17,0]"/>
+    </relationship>
+</dlineage>
