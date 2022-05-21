@@ -8,8 +8,6 @@ sqlflow_generate_token = sqlflow_cloud_server + '/gspLive_backend/user/generateT
 sqlflow_api = sqlflow_cloud_server + '/gspLive_backend/sqlflow/generation/sqlflow/graph'
 
 
-
-
 # Please check here for detailed explanation of all parameters: https://github.com/sqlparser/sqlflow_public/tree/master/api/python/basic
 userId = 'your user id here'
 # This is your screct key: https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow-userid-secret.md
