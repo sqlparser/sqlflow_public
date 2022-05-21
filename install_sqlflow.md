@@ -416,3 +416,5 @@ b) Configure selinux to permission by going to: vi /etc/selinux/configure --> SE
 
 If you find this error, this is because the port that is needed by the SQLFlow is already used by another application,
 please configure the SQLFlow to [use another port](#customize-the-port).
+
+Or, the Gudu SQLFlow backend service is not started. Please check how to [start the backend and verify the status](#start-backend-services).
