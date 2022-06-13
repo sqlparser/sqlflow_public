@@ -8,6 +8,6 @@ We have built a test envionment so you can see how Gudu SQLFlow works with the D
 Please login with username: datahub, password: datahub
 
 - After login, just click the dbt icon
-![datahub-dbt](./datahub-sqlflow-dbt.png)
+<img src="./datahub-sqlflow-dbt.png" alt="datahub-dbt" width="200"/>
 
 
