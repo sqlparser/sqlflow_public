@@ -8,4 +8,7 @@ Please login [Datahub with Gudu SQLFlow](http://101.43.5.98:9002/) with username
 - After login, just click the dbt icon
 <img src="./datahub-sqlflow-dbt.png" alt="datahub-dbt" width="600"/>
 
+- Select the customer table
+<img src="./datahub-sqlflow-dbt-customers.png" alt="datahub-dbt" width="600"/>
+
 
