@@ -61,13 +61,7 @@ This demo shows how to get the desired SQL script analysis results from the SQLF
     * sqlfile: sql file, required false
     * **dbvendor**: database vendor, required **true**, available values: 
       * dbvbigquery, dbvcouchbase,dbvdb2,dbvgreenplum,dbvhana,dbvhive,dbvimpala,dbvinformix,dbvmdx,dbvmysql,dbvnetezza,dbvopenedge,dbvoracle,dbvpostgresql,dbvredshift,dbvsnowflake,dbvmssql,dbvsybase,dbvteradata,dbvvertica
-    * showRelationType: show relation type, required false, default value is **fdd**, multiple values seperated by comma like fdd,frd,fdr. Available values: 
-      * **fdd**: value of target column from source column
-      * **frd**: the recordset count of target column which is affect by value of source column
-      * **fdr**: value of target column which is affected by the recordset count of source column
-      * **join**: combine rows from two or more tables, based on a related column between them
-    * simpleOutput: whether simple output relation, required false, default value is false
-    * ignoreRecordSet: whether ignore the record set, required false, default value is false
+    * filePath: data lineage file path
 
 
 **set the parameters in the code**
@@ -102,7 +96,13 @@ Connect to the SQLFlow on-premise version:
 
 **start script**
 
-`python GenerateDataLineageDemo.py`
+cmd:
 
+-  /f. the sqlfile path，required. eg: /f sql.txt
+-  /o. the data lineage file type. default value is json, optional. eg: /o csv , /o json
+
+eg:
+
+`python GenerateDataLineageDemo.py /f test.sql /o csv`
 
 
