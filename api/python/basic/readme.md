@@ -74,10 +74,8 @@ Connect to the SQLFlow Cloud Server:
     userId = 'YOUR USER ID'
     screctKey = 'YOUR SECRET KEY'
     sqlfile = 'test.sql'
-    ignoreRecordSet = False
     dbvendor = 'dbvoracle'
-    showRelationType = 'fdd'
-    simpleOutput = False
+    filePath = 'datalineage'
 ````
 
 Connect to the SQLFlow on-premise version:
@@ -88,10 +86,8 @@ Connect to the SQLFlow on-premise version:
     userId = 'gudu|012345678'
     screctKey = ''
     sqlfile = 'test.sql'
-    ignoreRecordSet = False
     dbvendor = 'dbvoracle'
-    showRelationType = 'fdd'
-    simpleOutput = False
+    filePath = 'datalineage'
 ````
 
 **start script**
