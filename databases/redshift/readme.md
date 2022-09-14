@@ -12,6 +12,7 @@ region 'us-west-2';
 ```
 
 data lineage diagram:
+
 [![redshift data lineage copy ](redshift-data-linage-copy.png)](https://sqlflow.gudusoft.com)
 
 
