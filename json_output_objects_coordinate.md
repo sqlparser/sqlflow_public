@@ -6,6 +6,7 @@ When the sqlflow analyzing sql has been finished, it recorded some sql informati
 ```java
 public class SqlInfo {
     private String fileName;
+    private String filePath;
     private String sql;
     private int originIndex;
     private int index;
@@ -70,12 +71,14 @@ Sqlflow provides a tool class gudusoft.gsqlparser.dlineage.util.SqlInfoHelper, w
 ```java
 public class DbObjectPosition {
     private String file;
+    private String filePath;
     private String sql;
     private int index;
     private List<Pair<Integer, Integer>> positions = new ArrayList<Pair<Integer, Integer>>();
 }
 ```
 * file field matches the sql file name.
+* filePath file full path.
 * sql field matches the sql content.
 * index: 
    * If the sql file is from `grabit`, it's a json file, and it has an json array named "query", the value of index field is the query item index.  
