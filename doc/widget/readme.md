@@ -1,10 +1,15 @@
 # SQLFlow widget
+The SQLFlow widget is a Javascript library that lets your web page 
+visualize the data lineage instantly.
 
-> The frontend for SQLFlow widget
+The SQLFlow widet must work together with the Gudu SQLFlow backend
+in order to visualize the data lineage and provides an actionable diagram.
+
 
 ### 1. Online demo
 
-http://101.43.8.206/widget/
+The SQLFlow widget is shipped together with the SQLFlow On-Premise version.
+No online demo is available currently.
 
 ### 2. Get started
 
@@ -12,9 +17,13 @@ http://101.43.8.206/widget/
 
 ```
 ├── index.html
-├── index.js
+├── jquery.min.js
 ├── sqlflow.widget.2.4.9.css
 └── sqlflow.widget.2.4.9.js
+└── 1\
+└── 2\
+└── 3\
+└── ...
 ```
 
 >Please note that the version number in the file will changed constantly.
@@ -79,7 +88,6 @@ $(async () => {
 });
 ```
 
-You can find the execution result here: [demo：visualize sqltext](http://101.43.8.206/widget/1/#/)
 
 ### 3. Parameter
 
@@ -92,7 +100,15 @@ You can find the execution result here: [demo：visualize sqltext](http://101.43
 
 ### 4. demos
 
-#### 4.1 visualize a job
+#### 4.1 visualize sql text
+All necessary files are under this directory.
+```
+└── 1\
+```
+- input: SQL text
+- output: data lineage diagram
+
+#### 4.2 visualize a job
 
 ```js
 $(async () => {
