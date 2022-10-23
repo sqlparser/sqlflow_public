@@ -248,7 +248,7 @@ All necessary files are under this directory.
 └── 9\
 ```
 
-#### 4.10,11,12  ?
+#### 4.10,11?
 
 free style?
 
@@ -256,6 +256,26 @@ All necessary files are under this directory.
 ```
 └── 10\
 ```
+
+#### 4.12 Access data lineage from url dierctly
+
+User can access the data lineage through a url directly by specify the data lineage type, table and column.
+
+```
+http://127.0.0.1/widget/12?type=upstream&table=dbo.emp
+http://127.0.0.1/widget/12?type=upstream&table=dbo.emp&column=salary
+```
+
+- input 
+  * type,  upstream or downstream
+  * table,
+  * column, if column is omitted, return the lineage for table.
+
+
+All necessary files are under this directory.
+```
+└── 12\
+
 
 #### 4.13 Visualize a csv file that includes lineage data
 The format of the csv
