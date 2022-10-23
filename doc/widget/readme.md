@@ -4,6 +4,38 @@ The SQLFlow widget is a Javascript library that enables instantaneous data linea
 The SQLFlow widet must work together with the Gudu SQLFlow backend
 in order to visualize the data lineage and provides an actionable diagram.
 
+- [SQLFlow widget](#sqlflow-widget)
+    + [1. Online demo](#1-online-demo)
+    + [2. Get started](#2-get-started)
+      - [Files](#files)
+    + [3. Parameter](#3-parameter)
+    + [4. demos](#4-demos)
+      - [4.1 visualize sql text](#41-visualize-sql-text)
+      - [4.2 visualize a job](#42-visualize-a-job)
+      - [4.3  visualize a specific database object in a job](#43--visualize-a-specific-database-object-in-a-job)
+      - [4.4  set data lineage options of job](#44--set-data-lineage-options-of-job)
+      - [4.5  set data lineage options of SQL query](#45--set-data-lineage-options-of-sql-query)
+      - [4.6  visualize a json object embedded in html page](#46--visualize-a-json-object-embedded-in-html-page)
+      - [4.7  visualize data lineage in a separate json file](#47--visualize-data-lineage-in-a-separate-json-file)
+      - [4.8  How to get error message](#48--how-to-get-error-message)
+      - [4.9  Event: add an event listener on field(column) click](#49--event--add-an-event-listener-on-field-column--click)
+      - [4.10,11?](#410-11-)
+      - [4.12 Access data lineage from url dierctly](#412-access-data-lineage-from-url-dierctly)
+      - [4.14 Visualize the lineage data using Vue](#414-visualize-the-lineage-data-using-vue)
+      - [4.15  Event: add an event listener on table click](#415--event--add-an-event-listener-on-table-click)
+    + [5. SQLFlow widget api reference](#5-sqlflow-widget-api-reference)
+      - [5.1 vendor.set(value: Vendor)](#51-vendorset-value--vendor-)
+      - [5.2 vendor.get(): Vendor](#52-vendorget----vendor)
+      - [5.3 sqltext.set(value: string): void](#53-sqltextset-value--string---void)
+      - [5.4 sqltext.get(): string](#54-sqltextget----string)
+      - [5.5 visualize(): Promise\<void\>](#55-visualize----promise--void--)
+      - [5.6 job.lineage.viewDetailById(jobId?: string): Promise\<void\>](#56-joblineageviewdetailbyid-jobid---string---promise--void--)
+      - [5.7 job.lineage.selectGraph(options: { database?: string; schema?: string; table?: string; column?: string;}): Promise\<void\>](#57-joblineageselectgraph-options----database---string--schema---string--table---string--column---string-----promise--void--)
+      - [5.8 addEventListener(event: Event, callback: Callback): void](#58-addeventlistener-event--event--callback--callback---void)
+        * [5.8.1 Event：'onFieldClick'](#581-event--onfieldclick-)
+      - [5.9 removeEventListener(event: Event, callback: Callback): void](#59-removeeventlistener-event--event--callback--callback---void)
+      - [5.10 removeAllEventListener(): void](#510-removealleventlistener----void)
+
 
 ### 1. Online demo
 
