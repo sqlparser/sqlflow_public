@@ -10,7 +10,7 @@ in order to visualize the data lineage and provides an actionable diagram.
 The SQLFlow widget is shipped together with [the SQLFlow On-Premise version](https://www.gudusoft.com/sqlflow-on-premise-version/).
 No online demo is available currently.
 
-Once installed the SQLFlow widget on your server, you can access the SQLFlow widget with the url like:
+Once the SQLFlow widget is installed on your server, you can access the SQLFlow widget with the url like:
 https://127.0.0.1/widget
 
 
@@ -104,14 +104,30 @@ $(async () => {
 ### 4. demos
 
 #### 4.1 visualize sql text
+Visualize the data lineage after analyzing the input SQL query.
+
+- input: SQL text
+- output: data lineage diagram
+
 All necessary files are under this directory.
 ```
 └── 1\
 ```
-- input: SQL text
-- output: data lineage diagram
+
 
 #### 4.2 visualize a job
+
+Visualize the data lineage in a [SQLFlow Job](https://docs.gudusoft.com/introduction/getting-started/different-modes-in-gudu-sqlflow).
+The SQLFlow job must be already created.
+
+- input: a SQLFlow job id, or leave it empty to view the latest job 
+- output: data lineage diagram
+
+
+All necessary files are under this directory.
+```
+└── 2\
+```
 
 ```js
 $(async () => {
@@ -127,9 +143,19 @@ $(async () => {
 });
 ```
 
-Result: [demo：visualize a job](http://101.43.8.206/widget/2/#/)
+#### 4.3  visualize schema of a job
+Visualize the data lineage of a specified table or column in a SQLFlow job.
 
-#### 4.2  visualize schema of a job
+- input: a SQLFlow job id, or leave it empty to view the latest job 
+- input: database, schema, table, column. 
+  ++ If the column is omitted, return the data lineage for the specified table.
+- output: data lineage diagram
+
+
+All necessary files are under this directory.
+```
+└── 3\
+```
 
 ```js
 $(async () => {
