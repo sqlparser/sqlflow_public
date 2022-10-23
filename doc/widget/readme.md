@@ -181,47 +181,120 @@ $(async () => {
 ```
 
 
-#### 4.4  set data lineage options
-Using the setting to control the output of data lineage.
-![gudu sqoflow settings](gudu-sqlflow-settings.png)
+#### 4.4  set data lineage options of job
+Once the job is created, lineage options can't be changed.
+So this demo doesn't work any longer.
 
 All necessary files are under this directory.
 ```
 └── 4\
 ```
 
+#### 4.5  set data lineage options of SQL query
+Using the setting to control the output of data lineage of a SQL query.
 
-#### 4.5  add an event listener on field(column) click
+![gudu sqoflow settings](gudu-sqlflow-settings.png)
 
-```js
-$(async () => {
-    // get a instance of SQLFlow
-    const sqlflow = await SQLFlow.init({
-        container: document.getElementById('sqlflow'),
-        width: 1000,
-        height: 400,
-        apiPrefix: 'http://101.43.8.206/api',
-        token: '', // input your token
-    });
-
-    // add an event listener on field(column) click
-    sqlflow.addEventListener('onFieldClick', field => {
-        $message.val(JSON.stringify(field));
-
-        // remove all event listeners
-        // sqlflow.removeAllEventListener()
-    });
-
-    // set sql text property
-    sqlflow.sqltext.set('select d from a.b.c');
-
-    visualize();
-});
+All necessary files are under this directory.
+```
+└── 5\
 ```
 
-result: [demo：add an event listener on field(column) click](http://101.43.8.206/widget/9/#/)
+#### 4.6  visualize a json object embedded in html page
+A json object that includes the lineage data is embedded in the html page,
+SQLFlow will visualize this json object and show the actionable diagram.
 
-### 5. sqlflow instance api
+Since all layout data is included in the json file, the SQLFlow widget 
+will draw the diagram and needn't to connect to the SQLFlow backend.
+
+So, this SQLFlow widget can work without the installation of the Gudu SQLFlow.
+
+All necessary files are under this directory.
+```
+└── 6\
+```
+
+#### 4.7  visualize data lineage in a separate json file
+Read and visualize the data lineage in a json file.
+This json file should be accessable in the same server as the SQLFlow widget.
+
+Since all layout data is included in the json file, the SQLFlow widget 
+will draw the diagram and needn't to connect to the SQLFlow backend.
+
+So, this SQLFlow widget can work without the installation of the Gudu SQLFlow.
+
+All necessary files are under this directory.
+```
+└── 7\
+```
+
+
+
+#### 4.8  How to get error message
+Show how to get error message after processing input SQL qurey.
+
+All necessary files are under this directory.
+```
+└── 8\
+```
+
+
+#### 4.9  Event: add an event listener on field(column) click
+Add an event listener on field(column) click, so you can get detailed 
+information about the field(column) that been clicked.
+
+All necessary files are under this directory.
+```
+└── 9\
+```
+
+#### 4.10,11,12  ?
+
+free style?
+
+All necessary files are under this directory.
+```
+└── 10\
+```
+
+#### 4.13 Visualize a csv file that includes lineage data
+The format of the csv
+```csv
+source_db,source_schema,source_table,source_column,target_db,target_schema,target_table,target_column,relation_type,effect_type
+D1E9IQ1AE488E4,DBT_TESTS,STG_PAYMENTS,AMOUNT,DEFAULT,DEFAULT,RS-5,COUPON_AMOUNT,fdd,select
+D1E9IQ1AE488E4,DBT_TESTS,STG_ORDERS,ORDER_ID,DEFAULT,DEFAULT,RS-5,ORDER_ID,fdd,select
+D1E9IQ1AE488E4,DBT_TESTS,STG_ORDERS,STATUS,DEFAULT,DEFAULT,RS-5,STATUS,fdd,select
+D1E9IQ1AE488E4,DBT_TESTS,STG_PAYMENTS,AMOUNT,DEFAULT,DEFAULT,RS-5,CREDIT_CARD_AMOUNT,fdd,select
+D1E9IQ1AE488E4,DBT_TESTS,STG_PAYMENTS,AMOUNT,DEFAULT,DEFAULT,RS-5,GIFT_CARD_AMOUNT,fdd,select
+D1E9IQ1AE488E4,DBT_TESTS,STG_ORDERS,ORDER_DATE,DEFAULT,DEFAULT,RS-5,ORDER_DATE,fdd,select
+D1E9IQ1AE488E4,DBT_TESTS,STG_PAYMENTS,AMOUNT,DEFAULT,DEFAULT,RS-5,AMOUNT,fdd,select
+D1E9IQ1AE488E4,DBT_TESTS,STG_ORDERS,CUSTOMER_ID,DEFAULT,DEFAULT,RS-5,CUSTOMER_ID,fdd,select
+D1E9IQ1AE488E4,DBT_TESTS,STG_PAYMENTS,AMOUNT,DEFAULT,DEFAULT,RS-5,BANK_TRANSFER_AMOUNT,fdd,select
+```
+
+All necessary files are under this directory.
+```
+└── 13\
+```
+
+#### 4.14 Visualize the lineage data using Vue
+The SQLFlow provides a Vue library to support Vue framework.
+
+```
+└── 14\
+```
+
+
+#### 4.15  Event: add an event listener on table click
+Add an event listener on table click, so you can get detailed 
+information about the table that been clicked.
+
+```
+└── 15\
+```
+
+
+### 5. SQLFlow widget api reference
 
 #### 5.1 vendor.set(value: Vendor)
 
