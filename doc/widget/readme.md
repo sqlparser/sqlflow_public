@@ -143,12 +143,14 @@ $(async () => {
 });
 ```
 
-#### 4.3  visualize schema of a job
+#### 4.3  visualize a specific database object in a job
 Visualize the data lineage of a specified table or column in a SQLFlow job.
 
 - input: a SQLFlow job id, or leave it empty to view the latest job 
 - input: database, schema, table, column. 
     * If the column is omitted, return the data lineage for the specified table.
+	* if the table and column are ommited, return the data lineage for the specified schema.
+	* if the schema, table and column are ommited, return the data lineage for the specified database.
 - output: data lineage diagram
 
 
@@ -178,9 +180,18 @@ $(async () => {
 });
 ```
 
-result: [demo：visualize schema of a job](http://101.43.8.206/widget/2/#/)
 
-#### 4.3  add an event listener on field(column) click
+#### 4.4  set data lineage options
+Using the setting to control the output of data lineage.
+![gudu sqoflow settings](gudu-sqlflow-settings.png)
+
+All necessary files are under this directory.
+```
+└── 4\
+```
+
+
+#### 4.5  add an event listener on field(column) click
 
 ```js
 $(async () => {
