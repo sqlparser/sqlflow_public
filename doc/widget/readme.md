@@ -148,7 +148,7 @@ Visualize the data lineage of a specified table or column in a SQLFlow job.
 
 - input: a SQLFlow job id, or leave it empty to view the latest job 
 - input: database, schema, table, column. 
-  ++ If the column is omitted, return the data lineage for the specified table.
+    * If the column is omitted, return the data lineage for the specified table.
 - output: data lineage diagram
 
 
