@@ -18,7 +18,7 @@ in order to visualize the data lineage and provides an actionable diagram.
       - [4.6  visualize a json object embedded in html page](#46--visualize-a-json-object-embedded-in-html-page)
       - [4.7  visualize data lineage in a separate json file](#47--visualize-data-lineage-in-a-separate-json-file)
       - [4.8  How to get error message](#48--how-to-get-error-message)
-      - [4.9  Event: add an event listener on field(column) click](#49--event--add-an-event-listener-on-field-column--click)
+      - [4.9  Event: add an event listener on field click](#49--event--add-an-event-listener-on-field-click)
       - [4.10,11?](#410-11-)
       - [4.12 Access data lineage from url dierctly](#412-access-data-lineage-from-url-dierctly)
       - [4.14 Visualize the lineage data using Vue](#414-visualize-the-lineage-data-using-vue)
@@ -271,7 +271,7 @@ All necessary files are under this directory.
 ```
 
 
-#### 4.9  Event: add an event listener on field(column) click
+#### 4.9  Event: add an event listener on field click
 Add an event listener on field(column) click, so you can get detailed 
 information about the field(column) that been clicked.
 
