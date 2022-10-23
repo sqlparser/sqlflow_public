@@ -4,6 +4,7 @@ The SQLFlow widget is a Javascript library that enables instantaneous data linea
 The SQLFlow widet must work together with the Gudu SQLFlow backend
 in order to visualize the data lineage and provides an actionable diagram.
 
+
 - [SQLFlow widget](#sqlflow-widget)
     + [1. Online demo](#1-online-demo)
     + [2. Get started](#2-get-started)
@@ -18,9 +19,10 @@ in order to visualize the data lineage and provides an actionable diagram.
       - [4.6  visualize a json object embedded in html page](#46--visualize-a-json-object-embedded-in-html-page)
       - [4.7  visualize data lineage in a separate json file](#47--visualize-data-lineage-in-a-separate-json-file)
       - [4.8  How to get error message](#48--how-to-get-error-message)
-      - [4.9  Event: add an event listener on field click](#49--event--add-an-event-listener-on-field-click)
+      - [4.9  Event: add an event listener on field(column) click](#49--event--add-an-event-listener-on-field-column--click)
       - [4.10,11?](#410-11-)
       - [4.12 Access data lineage from url dierctly](#412-access-data-lineage-from-url-dierctly)
+      - [4.13 Visualize a csv file that includes lineage data](#413-visualize-a-csv-file-that-includes-lineage-data)
       - [4.14 Visualize the lineage data using Vue](#414-visualize-the-lineage-data-using-vue)
       - [4.15  Event: add an event listener on table click](#415--event--add-an-event-listener-on-table-click)
     + [5. SQLFlow widget api reference](#5-sqlflow-widget-api-reference)
@@ -271,7 +273,7 @@ All necessary files are under this directory.
 ```
 
 
-#### 4.9  Event: add an event listener on field click
+#### 4.9  Event: add an event listener on field(column) click
 Add an event listener on field(column) click, so you can get detailed 
 information about the field(column) that been clicked.
 
@@ -299,17 +301,18 @@ http://127.0.0.1/widget/12?type=upstream&table=dbo.emp&column=salary
 ```
 
 - input 
-  * type,  upstream or downstream
-  * table,
-  * column, if column is omitted, return the lineage for table.
+  * type:  upstream or downstream
+  * table
+  * column: if column is omitted, return the lineage for table.
 
 
 All necessary files are under this directory.
 ```
 └── 12\
-
+```
 
 #### 4.13 Visualize a csv file that includes lineage data
+
 The format of the csv
 ```csv
 source_db,source_schema,source_table,source_column,target_db,target_schema,target_table,target_column,relation_type,effect_type
