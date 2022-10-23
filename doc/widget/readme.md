@@ -177,7 +177,7 @@ $(async () => {
 });
 ```
 
-#### 4.3  visualize a specific database object in a job
+#### 4.3  visualize a job with hardcoded parameters
 Visualize the data lineage of a specified table or column in a SQLFlow job.
 
 - input: a SQLFlow job id, or leave it empty to view the latest job 
@@ -215,9 +215,16 @@ $(async () => {
 ```
 
 
-#### 4.4  set data lineage options of job
-Once the job is created, lineage options can't be changed.
-So this demo doesn't work any longer.
+#### 4.4  visualize a job, accept various parameters in UI
+Visualize the data lineage of a specified table or column in a SQLFlow job.
+
+- input: a SQLFlow job id, or leave it empty to view the latest job 
+- input: database, schema, table, column. 
+    * If the column is omitted, return the data lineage for the specified table.
+	* if the table and column are ommited, return the data lineage for the specified schema.
+	* if the schema, table and column are ommited, return the data lineage for the specified database.
+- output: data lineage diagram
+
 
 All necessary files are under this directory.
 ```
