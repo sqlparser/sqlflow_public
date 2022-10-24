@@ -254,22 +254,25 @@ All necessary files are under this directory.
 └── 9\
 ```
 
-#### 4.10,11?
+#### 4.10,11
 
-free style?
+Those features are disabled currently.
 
 All necessary files are under this directory.
 ```
-└── 10\
+└── 10,11\
 ```
 
 #### 4.12 Access data lineage from url dierctly
 
 User can access the data lineage through a url directly by specify the data lineage type, table and column.
 
+>All data lineage comes from the default job at the Gudu SQLFlow backend.
+If no default job is set, lineage data will be retrieved from the latest job.
+
 ```
-http://127.0.0.1/widget/12?type=upstream&table=dbo.emp
-http://127.0.0.1/widget/12?type=upstream&table=dbo.emp&column=salary
+http://127.0.0.1/widget/12/?type=upstream&table=dbo.emp
+http://127.0.0.1/widget/12/?type=upstream&table=dbo.emp&column=salary
 ```
 
 - input 
@@ -277,6 +280,7 @@ http://127.0.0.1/widget/12?type=upstream&table=dbo.emp&column=salary
   * table
   * column: if column is omitted, return the lineage for table.
 
+the table and column name in the url is case insensitive.
 
 All necessary files are under this directory.
 ```
