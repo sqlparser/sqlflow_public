@@ -1,3 +1,8 @@
+## Hive data lineage examples
+
+- [Alter table set location](alter_table_set_location.md)
+
+
 ## connect to hive metastore
 
 Use grabit command line to connect to a MySQL database that save the 
