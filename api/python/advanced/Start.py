@@ -13,13 +13,22 @@ if __name__ == '__main__':
 
     print('========================================grabit-python======================================')
 
+    # sqlflow platform user id. If the on-permise version is used, the default value is gudu|0123456789
     userId = ''
+
+    # Type of database to analyze, for example: oracle,mysql,mssql...
     dbvendor = ''
+
+    # File or directory path to analyze
     sqlfiles = ''
+
+    # sqlflow server
     server = ''
+
+    # sqlflow api prot,the default value is 8081
     port = ''
 
-    # optional type: json,csv,graphml
+    # Analysis result return type. The value is optional: json, csv, graphml
     downloadFileType = ''
 
     for i in range(1, len(sys.argv)):
