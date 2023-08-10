@@ -1,9 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 import zipfile
-
 import requests
-
 import json
 import sys
 import os
@@ -17,9 +15,16 @@ def toSqlflow(userId, token, server, port, jobName, dbvendor, sqlfiles):
     else:
         url = server + url
 
-    if os.path.isdir(sqlfiles):
-        sqlfiles = toZip(sqlfiles)
-    files = {'sqlfiles': open(sqlfiles, 'rb')}
+    if isinstance(sqlfiles, str):
+        if os.path.isdir(sqlfiles):
+            sqlfiles = [sqlfiles]
+        else:
+            sqlfiles = [sqlfiles]
+
+    if isinstance(sqlfiles, list):
+        sqlfiles_zip = toZip(sqlfiles)
+
+    files = {'sqlfiles': open(sqlfiles_zip, 'rb')}
     data = {'dbvendor': dbvendor, 'jobName': jobName, 'token': token, 'userId': userId}
     datastr = json.dumps(data)
 
@@ -41,17 +46,16 @@ def toSqlflow(userId, token, server, port, jobName, dbvendor, sqlfiles):
         sys.exit(0)
 
 
-def toZip(start_dir):
-    if start_dir.endswith(os.sep):
-        start_dir = start_dir[:-1]
-    start_dir = start_dir
-    file_news = start_dir + '.zip'
+def toZip(file_list):
+    zip_filename = 'files.zip'
 
-    z = zipfile.ZipFile(file_news, 'w', zipfile.ZIP_DEFLATED)
-    for dir_path, dir_names, file_names in os.walk(start_dir):
-        f_path = dir_path.replace(start_dir, '')
-        f_path = f_path and f_path + os.sep or ''
-        for filename in file_names:
-            z.write(os.path.join(dir_path, filename), f_path + filename)
-    z.close()
-    return file_news
+    with zipfile.ZipFile(zip_filename, 'w', zipfile.ZIP_DEFLATED) as z:
+        for file in file_list:
+            if os.path.isfile(file):
+                z.write(file, os.path.basename(file))
+            elif os.path.isdir(file):
+                for dir_path, dir_names, filenames in os.walk(file):
+                    for filename in filenames:
+                        z.write(os.path.join(dir_path, filename), os.path.join(os.path.basename(file), filename))
+
+    return zip_filename
