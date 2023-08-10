@@ -86,7 +86,7 @@ python Start.py /s http://127.0.0.1 /p 8081 /u 'gudu|0123456789' /t mysql /f sql
 
 - **path_to_config_file**
 
-This can be a single SQL file, a zip file including multiple SQL files, or a directory including lots of SQL files.
+This can be a single SQL file, a zip file including multiple SQL files, or a directory including lots of SQL files. note: Multiple files cannot be entered consecutively. If multiple files exist, please set them as directories.
 
 - **server**
 
