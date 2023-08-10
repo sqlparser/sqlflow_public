@@ -19,7 +19,7 @@ if __name__ == '__main__':
     # Type of database to analyze, for example: oracle,mysql,mssql...
     dbvendor = ''
 
-    # File or directory path to analyze
+    # The file or directory path or array of files to analyze. eg: ['sqls/sql1','sqls/sql2'] or sqls/ or sqls/sql1
     sqlfiles = ''
 
     # sqlflow server
