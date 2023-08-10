@@ -25,6 +25,8 @@ pip install requests
 ```
 
 ### Usage
+
+##### command type
 ````
 python Start.py /s server /p port /u userId /k userSecret /t databaseType /f path_to_config_file /r resultType 
 
@@ -53,6 +55,32 @@ This will discover data lineage by analyzing all SQL files under `sqlfiles` dire
 python Start.py /s http://127.0.0.1 /p 8081 /u 'gudu|0123456789' /t mysql /f sqlfiles /r csv
 ```
 
+#### direct
+1, Set parameters in the script
+```
+# sqlflow platform user id. If the on-permise version is used, the default value is gudu|0123456789
+userId = ''
+
+# Type of database to analyze, for example: oracle,mysql,mssql...
+dbvendor = ''
+
+# The file or directory path or array of files to analyze. eg: ['sqls/sql1','sqls/sql2'] or sqls/ or sqls/sql1
+sqlfiles = ''
+
+# sqlflow server
+server = ''
+
+# sqlflow api prot,the default value is 8081
+port = ''
+
+# Analysis result return type. The value is optional: json, csv, graphml
+downloadFileType = ''
+```
+
+2, Run the `Start.py` script
+```shell
+python Start.py
+```
 
 ### Parameters
 
