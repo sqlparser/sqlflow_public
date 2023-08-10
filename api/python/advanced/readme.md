@@ -55,7 +55,7 @@ This will discover data lineage by analyzing all SQL files under `sqlfiles` dire
 python Start.py /s http://127.0.0.1 /p 8081 /u 'gudu|0123456789' /t mysql /f sqlfiles /r csv
 ```
 
-#### direct
+#### direct type
 1, Set parameters in the script
 ```
 # sqlflow platform user id. If the on-permise version is used, the default value is gudu|0123456789
