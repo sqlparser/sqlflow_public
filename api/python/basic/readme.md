@@ -1,4 +1,4 @@
-## Python Data lineage: using the SQLFlow REST API (Basci) 
+## Python Data lineage: using the SQLFlow REST API (Basic) 
 
 A basic tutorial for using the Python version of the SQLFlow API.
 
