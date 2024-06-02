@@ -10,13 +10,13 @@ import os
 def getResult(download, userId, token, server, port, jobId, filePath):
     sep = 'data' + os.sep + 'result' + os.sep
     filePath = filePath + '_' + jobId
-    if download == '1':
+    if download == 'json':
         url = "/gspLive_backend/sqlflow/job/exportLineageAsJson"
         filePath = sep + filePath + '_json.json'
-    elif download == '3':
+    elif download == 'graphml':
         url = "/gspLive_backend/sqlflow/job/exportLineageAsGraphml"
         filePath = sep + filePath + '_graphml.graphml'
-    elif download == '2':
+    elif download == 'csv':
         url = "/gspLive_backend/sqlflow/job/exportLineageAsCsv"
         filePath = sep + filePath + '_csv.csv'
     else:

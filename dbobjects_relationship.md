@@ -218,6 +218,54 @@ file (uri='gs://bucket/path1.csv')  -> fdd ->  dataset.CsvTable
 file (uri='gs://bucket/path2.csv')  -> fdd ->  dataset.CsvTable
 ```
 
+![bigquery create external table](/images/bigquery-create-external-table.png)
+
+#### 7. build data lineage for the foreign key in the create table statement.
+```sql
+CREATE TABLE masteTable
+(
+	masterColumn         varchar(3)  Primary Key,
+);
+
+
+CREATE TABLE foreignTable
+(
+	foreignColumn1            varchar(3)  NOT NULL ,
+	foreignColumn2            varchar(3)  NOT NULL 
+	FOREIGN KEY (foreignColumn1) REFERENCES masteTable(masterColumn),
+	FOREIGN KEY (foreignColumn2) REFERENCES masteTable(masterColumn)
+)
+```
+
+The data flow is:
+```
+masteTable.masterColumn -> fdd -> foreignTable.foreignColumn1
+masteTable.masterColumn -> fdd -> foreignTable.foreignColumn2
+```
+
+#### 8, Hive load data
+```sql
+LOAD DATA LOCAL INPATH /tmp/pv_2008-06-08_us.txt INTO TABLE page_view PARTITION(date='2008-06-08', country='US')
+```
+
+The data flow is:
+```
+file (/tmp/pv_2008-06-08_us.txt)  ->  fdd -> page_view(date,country)
+```
+![hive load data](/images/hive-load-data.png)
+
+#### 9, Hive INSERT OVERWRITE [LOCAL] DIRECTORY
+```sql
+INSERT OVERWRITE LOCAL DIRECTORY '/tmp/pv_gender_sum'
+SELECT pv_gender_sum.*
+FROM pv_gender_sum;
+```
+
+The data flow is:
+```
+pv_gender_sum(*) ->  fdd ->  file ('/tmp/pv_gender_sum')
+```
+
 
 ### The meaning of the letter in fdd, fdr
 

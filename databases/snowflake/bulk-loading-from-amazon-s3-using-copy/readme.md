@@ -6,7 +6,9 @@
 
 create or replace database mydatabase;
 
-/* Create target tables for CSV and JSON data. The tables are temporary, meaning they persist only for the duration of the user session and are not visible to other users. */
+/* Create target tables for CSV and JSON data. The tables are temporary, 
+   meaning they persist only for the duration of the user session and are not visible to other users. 
+*/
 
 create or replace temporary table mycsvtable (
   id integer,
@@ -66,5 +68,7 @@ create materialized view exttable_csv_mv
 
 my_csv_stage('s3://snowflake-docs',CSV) -> fdd -> mycsvtable -> fdd -> exttable_csv_mv(ID , LAST_NAME , FIRST_NAME ,COMPANY,EMAIL)
 > CSV used in mycsvformat is attached to my_csv_stage
+
+[![snowflake data lineage bulk loading](snowflake-data-from-stage.png)](https://sqlflow.gudusoft.com)
 
 [Tutorial: Bulk Loading from Amazon S3 Using COPY](https://docs.snowflake.com/en/user-guide/data-load-external-tutorial.html)

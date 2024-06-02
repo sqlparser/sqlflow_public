@@ -1,93 +1,103 @@
-## Automated data lineage from SQL scripts in Github/bitbucket
+Grab files in a Github/Bitbucket repository and send them to the SQLFlow
+for analyzing and return the data lineage.
 
-Grabit able to fetch SQL scripts from the GitHub/bitbucket repo,
-and automated data lineage from those SQL scripts by sending it
-to the SQLFlow server.
+### 1. Prerequisites
 
-In this article, we will show you how to fetch snowflake SQL scripts
-in [a github repo](https://github.com/sqlparser/snowflake-data-lineage) and
-sent it to the SQLFlow for analyzing to get the data lineage visually.
+#### Install Java
 
-### Software used in this solution
-- [SQLFlow on-premise version](https://www.gudusoft.com/sqlflow-on-premise-version/)
-- [Grabit tool](https://www.gudusoft.com/grabit/) for SQLFlow. It's free.
+- Java 8 or higher version must be installed and configured correctly.
 
-You may [request a 30 days SQLFlow on-premise version](https://www.gudusoft.com/submit-a-ticket/)
-by filling out a form with the subject: request a 30 days SQLFlow on-premise version.
+setup the PATH like this: (Please change the JAVA_HOME according to your environment)
 
-Our team will contact you in 1-3 working days after receiving the message.
+```bash
+export JAVA_HOME=/usr/lib/jvm/default-java
+export PATH=$JAVA_HOME/bin:$PATH
+```
 
+After install Java, make sure this command executed successfully:
+```bash
+java -version
 
-### Prerequisites
-- A Linux/mac/windows server with at least 8GB memory (ubuntu 20.04 is recommended).
-- Java 8
-- Nginx web server. 
-- Port needs to be opened. (80, 8761,8081,8083. Only 80 port need to be opened if you set up the Nginx reverse proxy as mentioned in [this document](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow.md))
+java version "1.8.0_281"
+Java(TM) SE Runtime Environment (build 1.8.0_281-b09)
+Java HotSpot(TM) 64-Bit Server VM (build 25.281-b09, mixed mode)
+```
 
-### Install SQLFlow on-premise version
-- [Guilde for install on linux](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow.md)
-- [Guilde for install on window](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow_on_windows.md)
-- [Guilde for install on mac](https://github.com/sqlparser/sqlflow_public/blob/master/install_sqlflow_on_mac.md)
+#### Install git
 
-### Install grabit tool
-After [download grabit tool](https://www.gudusoft.com/grabit/), please [check this article](https://github.com/sqlparser/sqlflow_public/tree/master/grabit) 
-to see how to setup the grabit tool.
+- **ubuntu:**
 
-
-### Install git
-- **ubuntu:** 
 ```
 sudo apt-get install git
 ```
-- **centos:** 
+
+- **centos:**
+
 ```
 sudo yum install git
 ```
-- **mac:** 
+
+- **mac:**
+
 ```
 brew install git
 ```
-- **windows:** 
+
+- **windows:**
+
 ```
 1.Go to the Git official website to download, website address: https://git-scm.com/downloads
 2.Run the Git installation file and click Next to finish the installation
 ```
+
 After the installation is completed, run **git --version** to check it is installed successfully.
 
-- **Generate the ssh public and private key**：
+```bash
+git --version
+
+git version 2.30.1 (Apple Git-130)
 ```
-ssh-keygen -o
-```
 
+### 2. Set up grabit configuration file
 
-### Set up grabit configuration file
+Create a config file with name such as: `gitServer.conf.json` and put it under the same directory
+where start.sh or start.bat file of the grabit tool is located.
 
-`optionType=2` tells the grabit tool the SQL scripts are located in a github repo.
-
+```json
 {
-	"optionType":2,
-	"resultType":1,
-	"databaseType":"snowflake",
+	"SQLScriptSource":"gitserver",
+	"lineageReturnFormat":"json",
+	"databaseType":"sparksql",
+	"gitserver":{
+		"url":"https://bitbucket.org/username/repo",
+		"username":"your user name",
+		"password":"your password",
+		"sshkeyPath":""
+	},
 	"SQLFlowServer":{
-		"server":"http://111.229.12.71",
-		"serverPort":"8081",
-		"userId":"gudu|0123456789",
-		"userSecret":"" 
-	},	
-	"githubRepo":{
-	    "url":"https://github.com/sqlparser/snowflake-data-lineage",
-	    "username":"",
-	    "password":"",
-	    "sshkeyPath":""
-	}
+	"server":"https://api.gudusoft.com",
+	"serverPort":"",
+	"userId":"your user id",
+	"userSecret":"your secret code"
+	},
+	"enableGetMetadataInJSONFromDatabase":0
 }
+```
 
-For other detailed information, please [check here](https://github.com/sqlparser/sqlflow_public/tree/master/grabit#6-githubrepo--bitbucketrepo)
+Please check this document (https://github.com/sqlparser/sqlflow_public/blob/master/sqlflow-userid-secret.md) if you don't know your userId and userSecret of the SQLFlow Cloud.
 
-Now, you can get the full data lineage like this:
-![snowflake data lineage](./snowflake-data-lineage.png "snowflake data lineage")
+### 3. Run grabit in command line
 
+Linux or Mac:
+```bash
+./start.sh /f gitServer.conf.json
+```
 
-### Know-How
-![sqlflow-automated-data-lineage](../../images/sqlflow_automated_data_lineage.png "SQLFlow automated data lineage")
+Windows:
+```bash
+start.bat /f gitServer.conf.json
+```
+
+### 4. Check data lineage on SQLFlow Cloud
+![image](https://user-images.githubusercontent.com/1305435/126964571-8a418d3c-1a66-4218-9173-547020a42a18.png)
 

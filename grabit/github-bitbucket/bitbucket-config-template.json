@@ -1,0 +1,18 @@
+{
+	"SQLScriptSource":"gitserver",
+	"lineageReturnFormat":"json",
+	"databaseType":"sparksql",
+	"gitserver":{
+		"url":"https://bitbucket.org/username/repo",
+		"username":"your user name",
+		"password":"your password",
+		"sshkeyPath":""
+	},
+	"SQLFlowServer":{
+	"server":"https://api.gudusoft.com",
+	"serverPort":"",
+	"userId":"your user id",
+	"userSecret":"your secret code"
+	},
+	"enableGetMetadataInJSONFromDatabase":0
+}

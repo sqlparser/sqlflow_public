@@ -1,6 +1,34 @@
+- [SQLFlow frontend guide](#sqlflow-frontend-guide)
+  * [video](#video)
+    + [1. editor](#1-editor)
+      - [1.1 dbvendor](#11-dbvendor)
+      - [1.2 sample sql](#12-sample-sql)
+      - [1.3 upload](#13-upload)
+      - [1.4 visualize](#14-visualize)
+      - [1.5 visualize join](#15-visualize-join)
+      - [1.6 login](#16-login)
+    + [2. schema](#2-schema)
+      - [seach schema](#seach-schema)
+      - [seach schema path](#seach-schema-path)
+      - [collapse all](#collapse-all)
+    + [3. setting](#3-setting)
+    + [4. job](#4-job)
+    + [5. download](#5-download)
+    + [6. sqlflow diagram panel](#6-sqlflow-diagram-panel)
+    + [How it works](#how-it-works)
+    + [Restful API](#restful-api)
+
+
+
 # SQLFlow frontend guide
 
 ![1](https://user-images.githubusercontent.com/6293752/95873864-e2734400-0da2-11eb-85a9-e46ea43ff5c3.png)
+
+## video
+- [SQLFlow get started](images/sqlflow_tutorial_101.gif)
+- [SQLFlow visual diagram](images/sqlflow_tutorial_diagram.gif)
+- [SQLFlow settings](images/sqlflow_tutorial_settings.gif)
+- [SQLFlow search and visualize](images/sqlflow-tutorial-search-table-visualize.gif)
 
 ### 1. editor
 
@@ -67,6 +95,22 @@ the color of `DATAMART、DBO` is orange, means the returned data linege doesn't 
 the color of `LOAN` is greeen, means all data lineage informaiton is returned.
 node in gray means it's not visualized yet.
 
+#### seach schema
+
+your can search `database`,`schema`,`table`,`schema` in the schema tree.
+
+![动画](https://user-images.githubusercontent.com/6293752/116866667-62c59d80-ac3e-11eb-9f5f-c1e35df2f173.gif)
+
+#### seach schema path
+
+you can search `database.schema.table.column ` ,`schema.table`,`table.column` or someting else like it. When you type `dot`, the schema tree will expand the next level.
+
+![2](https://user-images.githubusercontent.com/6293752/116867914-69551480-ac40-11eb-9434-a581de844911.gif)
+
+#### collapse all
+
+![3](https://user-images.githubusercontent.com/6293752/116868278-14fe6480-ac41-11eb-9c9e-c7539a5b4b62.gif)
+
 ### 3. setting
 
 ![image](https://user-images.githubusercontent.com/6293752/95977385-6da81480-0e4b-11eb-8ec0-cc0de5466701.png)
@@ -84,7 +128,7 @@ set the [graph interface](#graph)：
 
 ![image](https://user-images.githubusercontent.com/6293752/95977128-0b4f1400-0e4b-11eb-8c68-62657380e853.png)
 
-click upload button to create a job by submit SQL text file or zip file including multiple SQL files.
+click upload button to create a job by submit SQL text file or zip file including multiple SQL files or connect to a database.
 
 ### 5. download
 
