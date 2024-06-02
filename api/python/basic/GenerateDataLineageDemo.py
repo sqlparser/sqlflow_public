@@ -10,7 +10,9 @@ import os
 
 
 def toSqlflow(userId, token, server, port, jobName, dbvendor, sqlfiles):
-	url = '/gspLive_backend/sqlflow/job/submitUserJob'
+	url = '/api/gspLive_backend/sqlflow/job/submitUserJob'
+    	if 'api.gudusoft.com' in server:
+        	url = '/gspLive_backend/sqlflow/job/submitUserJob'
 
 	if port != '':
 		url = server + ':' + port + url
@@ -62,7 +64,9 @@ def getToken(userId, server, port,screctKey):
 	if userId == 'gudu|0123456789':
 		return 'token'
 
-	url = '/gspLive_backend/user/generateToken'
+	url = '/api/gspLive_backend/user/generateToken'
+    	if 'api.gudusoft.com' in server:
+        	url = '/gspLive_backend/user/generateToken'
 	if port != '':
 		url = server + ':' + port + url
 	else:
@@ -89,16 +93,24 @@ def getResult(dataLineageFileType, userId, token, server, port, jobId, filePath)
 	sep = 'data' + os.sep + 'result' + os.sep
 	filePath = filePath + '_' + jobId
 	if dataLineageFileType == 'json':
-		url = "/gspLive_backend/sqlflow/job/exportLineageAsJson"
+		url = "/api/gspLive_backend/sqlflow/job/exportLineageAsJson"
+    		if 'api.gudusoft.com' in server:
+        		url = '/gspLive_backend/sqlflow/job/exportLineageAsJson'
 		filePath = sep + filePath + '_json.json'
 	elif dataLineageFileType == 'graphml':
-		url = "/gspLive_backend/sqlflow/job/exportLineageAsGraphml"
+		url = "/api/gspLive_backend/sqlflow/job/exportLineageAsGraphml"
+    		if 'api.gudusoft.com' in server:
+        		url = '/gspLive_backend/sqlflow/job/exportLineageAsGraphml'
 		filePath = sep + filePath + '_graphml.graphml'
 	elif dataLineageFileType == 'csv':
-		url = "/gspLive_backend/sqlflow/job/exportLineageAsCsv"
+		url = "/api/gspLive_backend/sqlflow/job/exportLineageAsCsv"
+    		if 'api.gudusoft.com' in server:
+        		url = '/gspLive_backend/sqlflow/job/exportLineageAsCsv'
 		filePath = sep + filePath + '_csv.csv'
 	else:
-		url = "/gspLive_backend/sqlflow/job/exportLineageAsJson"
+		url = "/api/gspLive_backend/sqlflow/job/exportLineageAsJson"
+    		if 'api.gudusoft.com' in server:
+        		url = '/gspLive_backend/sqlflow/job/exportLineageAsJson'
 		filePath = sep + filePath + '_json.json'
 
 	if port != '':
@@ -131,7 +143,9 @@ def getResult(dataLineageFileType, userId, token, server, port, jobId, filePath)
 
 
 def getStatus(userId, token, server, port, jobId):
-	url = "/gspLive_backend/sqlflow/job/displayUserJobSummary"
+	url = "/api/gspLive_backend/sqlflow/job/displayUserJobSummary"
+	if 'api.gudusoft.com' in server:
+		url = '/gspLive_backend/sqlflow/job/displayUserJobSummary'
 
 	if port != '':
 		url = server + ':' + port + url
