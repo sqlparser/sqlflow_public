@@ -129,7 +129,7 @@ if __name__ == '__main__':
     sqltext = ''
 
     # sql file
-    sqlfile = '/Users/chenbo/Documents/test.sql'
+    sqlfile = ''
 
     # database type,
     # dbvazuresql
