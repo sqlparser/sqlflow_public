@@ -10,8 +10,9 @@ import zipfile
 def getToken(userId, server, port, screctKey):
     if userId == 'gudu|0123456789':
         return 'token'
-
     url = '/api/gspLive_backend/user/generateToken'
+    if 'api.gudusoft.com' in server:
+        url = '/gspLive_backend/user/generateToken'
     if port != '':
         url = server + ':' + port + url
     else:
@@ -21,8 +22,8 @@ def getToken(userId, server, port, screctKey):
 
     try:
         r = requests.post(url, data=mapA, headers=header_dict)
-    except Exception:
-        print('get token failed.')
+    except Exception as e:
+        print('get token failed.', e)
     result = json.loads(r.text)
 
     if result['code'] == '200':
@@ -50,6 +51,8 @@ def toZip(start_dir):
 def getResult(userId, token, server, port, delimiter, export_include_table, showConstantTable,
               treatArgumentsInCountFunctionAsDirectDataflow, dbvendor, sqltext, sqlfile):
     url = "/api/gspLive_backend/sqlflow/generation/sqlflow/exportFullLineageAsCsv"
+    if 'api.gudusoft.com' in server:
+        url = '/gspLive_backend/sqlflow/generation/sqlflow/exportFullLineageAsCsv'
     if port != '':
         url = server + ':' + port + url
     else:
@@ -97,11 +100,11 @@ if __name__ == '__main__':
     # the secret key of sqlflow user for webapi request, required true
     screctKey = ''
 
-    # sqlflow server
-    server = 'http://127.0.0.1'
+    # sqlflow server, For the cloud version, the value is https://api.gudusoft.com
+    server = ''
 
-    # sqlflow api port
-    port = '8165'
+    # sqlflow api port, For the cloud version, the value is 80
+    port = ''
 
     # The token is generated from userid and usersecret. It is used in every Api invocation.
     token = getToken(userId, server, port, screctKey)
@@ -122,7 +125,7 @@ if __name__ == '__main__':
     sqltext = ''
 
     # sql file
-    sqlfile = ''
+    sqlfile = '/Users/chenbo/Documents/test.sql'
 
     # database type,
     # dbvazuresql
