@@ -11,9 +11,6 @@ import os
 
 def toSqlflow(userId, token, server, port, jobName, dbvendor, sqlfiles):
 	url = '/api/gspLive_backend/sqlflow/job/submitUserJob'
-    	if 'api.gudusoft.com' in server:
-        	url = '/gspLive_backend/sqlflow/job/submitUserJob'
-
 	if port != '':
 		url = server + ':' + port + url
 	else:
@@ -65,8 +62,6 @@ def getToken(userId, server, port,screctKey):
 		return 'token'
 
 	url = '/api/gspLive_backend/user/generateToken'
-    	if 'api.gudusoft.com' in server:
-        	url = '/gspLive_backend/user/generateToken'
 	if port != '':
 		url = server + ':' + port + url
 	else:
@@ -94,23 +89,15 @@ def getResult(dataLineageFileType, userId, token, server, port, jobId, filePath)
 	filePath = filePath + '_' + jobId
 	if dataLineageFileType == 'json':
 		url = "/api/gspLive_backend/sqlflow/job/exportLineageAsJson"
-    		if 'api.gudusoft.com' in server:
-        		url = '/gspLive_backend/sqlflow/job/exportLineageAsJson'
 		filePath = sep + filePath + '_json.json'
 	elif dataLineageFileType == 'graphml':
 		url = "/api/gspLive_backend/sqlflow/job/exportLineageAsGraphml"
-    		if 'api.gudusoft.com' in server:
-        		url = '/gspLive_backend/sqlflow/job/exportLineageAsGraphml'
 		filePath = sep + filePath + '_graphml.graphml'
 	elif dataLineageFileType == 'csv':
 		url = "/api/gspLive_backend/sqlflow/job/exportLineageAsCsv"
-    		if 'api.gudusoft.com' in server:
-        		url = '/gspLive_backend/sqlflow/job/exportLineageAsCsv'
 		filePath = sep + filePath + '_csv.csv'
 	else:
 		url = "/api/gspLive_backend/sqlflow/job/exportLineageAsJson"
-    		if 'api.gudusoft.com' in server:
-        		url = '/gspLive_backend/sqlflow/job/exportLineageAsJson'
 		filePath = sep + filePath + '_json.json'
 
 	if port != '':
@@ -144,8 +131,6 @@ def getResult(dataLineageFileType, userId, token, server, port, jobId, filePath)
 
 def getStatus(userId, token, server, port, jobId):
 	url = "/api/gspLive_backend/sqlflow/job/displayUserJobSummary"
-	if 'api.gudusoft.com' in server:
-		url = '/gspLive_backend/sqlflow/job/displayUserJobSummary'
 
 	if port != '':
 		url = server + ':' + port + url
