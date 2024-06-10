@@ -11,10 +11,6 @@ def getToken(userId, server, port, screctKey):
     if userId == 'gudu|0123456789':
         return 'token'
     url = '/api/gspLive_backend/user/generateToken'
-
-    # For the cloud version, there is no api path in the url
-    if 'api.gudusoft.com' in server:
-        url = '/gspLive_backend/user/generateToken'
     if port != '':
         url = server + ':' + port + url
     else:
@@ -53,10 +49,6 @@ def toZip(start_dir):
 def getResult(userId, token, server, port, delimiter, export_include_table, showConstantTable,
               treatArgumentsInCountFunctionAsDirectDataflow, dbvendor, sqltext, sqlfile):
     url = "/api/gspLive_backend/sqlflow/generation/sqlflow/exportFullLineageAsCsv"
-
-    # For the cloud version, there is no api path in the url
-    if 'api.gudusoft.com' in server:
-        url = '/gspLive_backend/sqlflow/generation/sqlflow/exportFullLineageAsCsv'
     if port != '':
         url = server + ':' + port + url
     else:
