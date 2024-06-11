@@ -6,6 +6,8 @@ def getToken(userId, server, port, screctKey):
     if userId == 'gudu|0123456789':
         return 'token'
     url = '/api/gspLive_backend/user/generateToken'
+    if 'api.gudusoft.com' in server:
+        url = '/gspLive_backend/user/generateToken'
     if port != '':
         url = server + ':' + port + url
     else:
