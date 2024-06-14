@@ -13,12 +13,23 @@ if __name__ == '__main__':
 
     print('========================================grabit-python======================================')
 
+    # sqlflow platform user id. If the on-permise version is used, the default value is gudu|0123456789
     userId = ''
+
+    # Type of database to analyze, for example: oracle,mysql,mssql...
     dbvendor = ''
+
+    # The file or directory path or array of files to analyze. eg: ['sqls/sql1','sqls/sql2'] or sqls/ or sqls/sql1
     sqlfiles = ''
+
+    # sqlflow server
     server = ''
+
+    # sqlflow api prot,the default value is 8081
     port = ''
-    download = ''
+
+    # Analysis result return type. The value is optional: json, csv, graphml
+    downloadFileType = ''
 
     for i in range(1, len(sys.argv)):
         if sys.argv[i] == '/u':
@@ -74,9 +85,9 @@ if __name__ == '__main__':
         if sys.argv[i] == '/r':
             try:
                 if sys.argv[i + 1] is not None:
-                    download = sys.argv[i + 1]
+                    downloadFileType = sys.argv[i + 1]
             except Exception:
-                print('Please enter the download type to sqlflow,type 1:json 2:csv 3:diagram : eg: /r 1')
+                print('Please enter the download type to sqlflow, type json csv diagram : eg: /r 1')
                 sys.exit(0)
 
     if userId == '':
@@ -118,11 +129,11 @@ if __name__ == '__main__':
 
     jobId = SubmitJob.toSqlflow(userId, token, server, port, time_, dbvendor, sqlfiles)
 
-    if download != '':
+    if downloadFileType != '':
         while True:
             status = GetJobStatus.getStatus(userId, token, server, port, jobId)
             if status == 'partial_success' or status == 'success':
-                GetResultToSqlflow.getResult(download, userId, token, server, port, jobId, time_)
+                GetResultToSqlflow.getResult(downloadFileType, userId, token, server, port, jobId, time_)
                 break
 
     print('========================================grabit-python======================================')
