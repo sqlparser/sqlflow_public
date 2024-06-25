@@ -21,9 +21,9 @@ def getResult(server, port, data, files):
     print('start get csv result from sqlflow.')
     try:
         if files != '':
-            response = requests.post(url, data=eval(datastr), files=files)
+            response = requests.post(url, data=eval(datastr), files=files, verify=False)
         else:
-            response = requests.post(url, data=eval(datastr))
+            response = requests.post(url, data=eval(datastr), verify=False)
     except Exception as e:
         print('get csv result from sqlflow failed.', e)
         sys.exit(0)
