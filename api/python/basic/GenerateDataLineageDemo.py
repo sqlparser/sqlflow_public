@@ -28,7 +28,7 @@ def toSqlflow(userId, token, server, port, jobName, dbvendor, sqlfiles):
 	print('start submit job to sqlflow.')
 
 	try:
-		response = requests.post(url, data=eval(datastr), files=files)
+		response = requests.post(url, data=eval(datastr), files=files, verify=False)
 	except Exception:
 		print('submit job to sqlflow failed.')
 		sys.exit(0)
@@ -76,7 +76,7 @@ def getToken(userId, server, port,screctKey):
 
 	print('start get token.')
 	try:
-		r = requests.post(url, data=mapA, headers=header_dict)
+		r = requests.post(url, data=mapA, headers=header_dict, verify=False)
 		print(r)
 	except Exception:
 		print('get token failed.')
@@ -123,7 +123,7 @@ def getResult(dataLineageFileType, userId, token, server, port, jobId, filePath)
 
 	print('start download result to sqlflow.')
 	try:
-		response = requests.post(url, data=eval(datastr))
+		response = requests.post(url, data=eval(datastr), verify=False)
 	except Exception:
 		print('download result to sqlflow failed.')
 		sys.exit(0)
@@ -156,7 +156,7 @@ def getStatus(userId, token, server, port, jobId):
 	datastr = json.dumps(data)
 
 	try:
-		response = requests.post(url, data=eval(datastr))
+		response = requests.post(url, data=eval(datastr), verify=False)
 	except Exception:
 		print('get job status to sqlflow failed.')
 		sys.exit(0)
