@@ -16,7 +16,7 @@ def getToken(userId, server, port, screctKey):
     header_dict = {"Content-Type": "application/x-www-form-urlencoded"}
 
     try:
-        r = requests.post(url, data=mapA, headers=header_dict)
+        r = requests.post(url, data=mapA, headers=header_dict, verify=False)
     except Exception as e:
         print('get token failed.', e)
     result = json.loads(r.text)
