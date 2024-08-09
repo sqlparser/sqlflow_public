@@ -84,6 +84,8 @@ A join relationship will be created after analzying the above SQL. It indicates 
 
 ![image.png](https://images.gitee.com/uploads/images/2021/0711/185405_036c2a1a_8136809.png)
 
+#### 1.2.4 function call
+
 ## 2. The entity in dataflow
 
 When build dataflow between 2 entities: the source and target entity. They can be column to column, or, table to colum, or table to table.
