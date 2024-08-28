@@ -7,7 +7,7 @@ TODO: add String literal section in this article.
 
 这篇文章讨论一些具体问题。
 
-### 常用的 Identifier 和 String literal
+### 常见的 Identifier 和 String literal 形式
 #### Identifier
 - name
 - [my name]
@@ -17,22 +17,14 @@ TODO: add String literal section in this article.
 - 'name'
 
 
-```sql
-use master
-create table dbo.person(name varchar(100), age int );
-insert into dbo.person(name,age) values('Tom',11),('Alice',12);
-create table dbo.student(sname varchar(100), sage int );
-insert into dbo.student(sname,sage) values('sTom',21),('sAlice',22);
-```
 
 ### Column in select list
-执行
 ```sql
  select name,[name],"name",'name', age from dbo.person
 ```
 上面这个语句中的 name,[name],"name" 都是 identifier, 而 'name' 为 string literal。
 
-看下面的输出就知道它们的区别：
+看下面的输出，identifier 会返回数据库表中对应字段的值，但 string literal 返回该字符串本身：
 ![images](identifier-and-string-literal01.png)
 
 
@@ -68,4 +60,12 @@ select p."first name" from (select name name, name "first name", name [second na
 select p.'third name' from (select name name, name "first name", name [second name], name 'third name'  from dbo.person) p
 ```
 
+### 测试用的脚本
+```sql
+use master
+create table dbo.person(name varchar(100), age int );
+insert into dbo.person(name,age) values('Tom',11),('Alice',12);
+create table dbo.student(sname varchar(100), sage int );
+insert into dbo.student(sname,sage) values('sTom',21),('sAlice',22);
+```
 以上测试目前在 SQL Server 下通过，其他数据库还需要测试。
