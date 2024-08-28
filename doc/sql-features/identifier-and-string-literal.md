@@ -52,8 +52,9 @@ select name name, name "first name", name "second name", name 'third name'  from
 但在引用 column alias 时，仅能使用 identifier， 不能使用 string constant。
 ```sql
 -- 语法正确
-select p."first name" from (select name name, name "first name", name [second name], name 'third name'  from dbo.person) p
+select p.[third name] from (select name name, name "first name", name [second name], name 'third name'  from dbo.person) p
 ```
+**上面的这个 SQL 说明，subquery 中的 name 'third name' 和 外部的 p.[third name] 是指同一个 column，因此我们在比较时，仅比较 `third name`, 外面的 ' 和 [] 符号都需要去掉**。
 
 ```sql
 -- 语法错误
