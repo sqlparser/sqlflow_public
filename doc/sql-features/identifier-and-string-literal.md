@@ -111,14 +111,14 @@ select name, age from dbo.person "ps"
 
 在创建 column alias 时，Identifier 和 string constant 都可以作为 column alias
 
-```
+```sql
 -- 语法正确
 select name name, name "first name", name 'second name',  name \`third name\` from dbo.person
 ```
 
 但在引用 column alias 时，仅能使用 identifier， 不能使用 string constant。**且Identifier 类型无需保持一致**
 
-```
+```sql
 -- 语法正确
 SELECT renta.staff FROM (SELECT rental_id "staff" FROM rental) `renta`
 ```
@@ -164,21 +164,21 @@ select name, 'ps'.age from dbo.person 'ps'
 
 在创建 column alias 时，Identifier 作为 column alias,但 string constant 不行
 
-```
+```sql
 -- 语法正确
 select name name, name "first name" from dbo.person
 ```
 
 在创建 column alias 时，Identifier 作为 column alias,但 string constant 不行
 
-```
+```sql
 -- 语法错误
 select name 'name' from dbo.person
 ```
 
 但在引用 column alias 时，仅能使用 identifier， 不能使用 string constant。**且Identifier 类型无需保持一致**
 
-```
+```sql
 -- 语法正确
 SELECT "P".REGION_ID2 FROM (SELECT REGION_ID "REGION_ID2" FROM REGIONS )P 
 ```
@@ -225,27 +225,27 @@ select name, 'ps'.age from dbo.person ps
 
 在创建 column alias 时，Identifier 作为 column alias,但 string constant 不行
 
-```
+```sql
 -- 语法正确
 select name name, name "first name" from dbo.person
 ```
 
 在创建 column alias 时，Identifier 作为 column alias,但 string constant 不行
 
-```
+```sql
 -- 语法错误
 select name 'name' from dbo.person
 ```
 
 但在引用 column alias 时，仅能使用 identifier， 不能使用 string constant。**且Identifier类型 需要保持一致，不可混用**
 
-```
+```sql
 -- 语法正确
 SELECT "P".REGION_ID2 FROM (SELECT column1 REGION_ID2 FROM newtable_1 ) "P" 
 select P."REGION_ID2" FROM (SELECT column1 "REGION_ID2" FROM newtable_1 ) P 
 ```
 
-```
+```sql
 -- 语法错误
 SELECT "P".REGION_ID2 FROM (SELECT column1 REGION_ID2 FROM newtable_1 ) P 
 select P."REGION_ID2" FROM (SELECT column1 REGION_ID2 FROM newtable_1 ) P 
