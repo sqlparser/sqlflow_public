@@ -7,6 +7,8 @@ TODO: add String literal section in this article.
 
 这篇文章讨论一些具体问题。
 
+## SQLServer
+
 ### 常见的 Identifier 和 String literal 形式
 #### Identifier
 - name
@@ -15,7 +17,6 @@ TODO: add String literal section in this article.
 
 #### String literal
 - 'name'
-
 
 
 ### Column in select list
@@ -69,4 +70,183 @@ insert into dbo.person(name,age) values('Tom',11),('Alice',12);
 create table dbo.student(sname varchar(100), sage int );
 insert into dbo.student(sname,sage) values('sTom',21),('sAlice',22);
 ```
-以上测试目前在 SQL Server 下通过，其他数据库还需要测试。
+
+## mysql
+
+#### Identifier
+
+- name
+- \`name\`
+
+#### String literal
+
+- 'name'
+- "name"
+
+### Column in select list：
+
+```sql
+select name,`name`,"name",'name' from dbo.person
+```
+
+上面这个语句中的 name,\`name\` 都是 identifier, 而 'name',"name" 为 string literal。
+
+### Table alias
+
+创建 table alias 时，Identifier 可以作为 table alias，但 string constant 不行，**且Identifier类型 无需保持一致**
+
+```sql
+-- 语法正确
+select name, \`ps\`.age from dbo.person ps
+select name, ps.age from dbo.person \`ps\`
+```
+
+```sql
+-- 语法错误
+select name, age from dbo.person 'ps'
+select name, age from dbo.person "ps"
+```
+
+### Column alias
+
+在创建 column alias 时，Identifier 和 string constant 都可以作为 column alias
+
+```
+-- 语法正确
+select name name, name "first name", name 'second name',  name \`third name\` from dbo.person
+```
+
+但在引用 column alias 时，仅能使用 identifier， 不能使用 string constant。**且Identifier 类型无需保持一致**
+
+```
+-- 语法正确
+SELECT renta.staff FROM (SELECT rental_id "staff" FROM rental) `renta`
+```
+
+
+## Oracle
+
+#### Identifier
+
+- name
+- "name"
+
+#### String literal
+
+- 'name'
+
+### Column in select list：
+
+```sql
+select name,"name",'name' from dbo.person
+```
+
+上面这个语句中的 name,"name" 都是 identifier, 而 'name', 为 string literal。
+
+### Table alias
+
+创建 table alias 时，Identifier 可以作为 table alias，但 string constant 不行, **且Identifier类型 需要保持一致，不可混用**
+
+```sql
+-- 语法正确
+select name, ps.age from dbo.person ps
+select name, "ps".age from dbo.person "ps"
+```
+
+```sql
+-- Identifier 语法错误
+select name, "ps".age from dbo.person ps
+select name, ps.age from dbo.person "ps"
+select name, 'ps'.age from dbo.person 'ps'
+```
+
+### Column alias
+
+在创建 column alias 时，Identifier 作为 column alias,但 string constant 不行
+
+```
+-- 语法正确
+select name name, name "first name" from dbo.person
+```
+
+在创建 column alias 时，Identifier 作为 column alias,但 string constant 不行
+
+```
+-- 语法错误
+select name 'name' from dbo.person
+```
+
+但在引用 column alias 时，仅能使用 identifier， 不能使用 string constant。**且Identifier 类型无需保持一致**
+
+```
+-- 语法正确
+SELECT "P".REGION_ID2 FROM (SELECT REGION_ID "REGION_ID2" FROM REGIONS )P 
+```
+
+
+
+
+
+## PostgreSQL
+
+#### Identifier
+
+- name
+- "name"
+
+#### String literal
+
+- 'name'
+
+### Column in select list：
+
+```sql
+select name,"name",'name' from dbo.person
+```
+
+上面这个语句中的 name,"name" 都是 identifier, 而 'name', 为 string literal。identifier和string literal都支持。
+
+### Table alias
+
+创建 table alias 时，Identifier 可以作为 table alias，但 string constant 不行,**且Identifier类型 无需保持一致**
+
+```sql
+-- 语法正确
+select name, "ps".age from dbo.person ps
+select name, ps.age from dbo.person "ps"
+```
+
+```sql
+-- Identifier 语法错误
+select name, 'ps'.age from dbo.person ps
+```
+
+### Column alias
+
+在创建 column alias 时，Identifier 作为 column alias,但 string constant 不行
+
+```
+-- 语法正确
+select name name, name "first name" from dbo.person
+```
+
+在创建 column alias 时，Identifier 作为 column alias,但 string constant 不行
+
+```
+-- 语法错误
+select name 'name' from dbo.person
+```
+
+但在引用 column alias 时，仅能使用 identifier， 不能使用 string constant。**且Identifier类型 需要保持一致，不可混用**
+
+```
+-- 语法正确
+SELECT "P".REGION_ID2 FROM (SELECT column1 REGION_ID2 FROM newtable_1 ) "P" 
+select P."REGION_ID2" FROM (SELECT column1 "REGION_ID2" FROM newtable_1 ) P 
+```
+
+```
+-- 语法错误
+SELECT "P".REGION_ID2 FROM (SELECT column1 REGION_ID2 FROM newtable_1 ) P 
+select P."REGION_ID2" FROM (SELECT column1 REGION_ID2 FROM newtable_1 ) P 
+```
