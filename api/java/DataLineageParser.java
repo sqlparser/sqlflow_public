@@ -1,3 +1,4 @@
+package java;
 /**
 *  解析SQLFLow exportLineageAsJson接口返回的JSON格式的血缘关系中的关系链路
 *
