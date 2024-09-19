@@ -6,23 +6,23 @@ import GenerateToken
 
 
 def check(server, port, sql, dbvendor, userId, token):
-    url = "/api/gspLive_backend/sqlflow/demo/syntax/check"
+    url = "/api/gspLive_backend/demo/syntax/check"
     if 'api.gudusoft.com' in server:
-        url = '/gspLive_backend/sqlflow/demo/syntax/check'
+        url = '/gspLive_backend/demo/syntax/check'
     if port != '':
         url = server + ':' + port + url
     else:
         url = server + url
 
     data = {'sql': sql, 'dbvendor': dbvendor, 'userId': userId, 'token': token}
-    header_dict = {"Content-Type": "application/json"}
+    header_dict = {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
     try:
         r = requests.post(url, data=data, headers=header_dict, verify=False)
     except Exception as e:
         print('syntax error.', e)
     result = json.loads(r.text)
 
-    if result['code'] == '200':
+    if result['code'] == 200:
         print('syntax correct.')
     else:
         print('syntax error. check result: ' + result)
@@ -37,6 +37,7 @@ if __name__ == '__main__':
 
     # sqlflow server, For the cloud version, the value is https://api.gudusoft.com
     server = 'https://api.gudusoft.com'
+
 
     # sqlflow api port, For the cloud version, the value is 80
     port = ''
