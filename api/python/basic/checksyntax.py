@@ -25,11 +25,11 @@ def check(server, port, sql, dbvendor, userId, token):
     if result['code'] == 200:
         usedTime = result['data']['usedTime']
         version = result['data']['gsp.version']
-        print('syntax correct. cost: ' + usedTime+' ,gsp version: ' + version)
+        print('syntax correct. elapsed time: ' + usedTime+' ,gsp version: ' + version)
     else:
         usedTime = result['data']['usedTime']
         version = result['data']['gsp.version']
-        print('syntax error. cost: ' + usedTime + ' ,gsp version: ' + version + ' ,error info:')
+        print('syntax error. elapsed time: ' + usedTime + ' ,gsp version: ' + version + ' ,error info:')
         errorInfos = result['data']['errorInfos']
         for error in errorInfos:
             print(error['errorMessage'])
