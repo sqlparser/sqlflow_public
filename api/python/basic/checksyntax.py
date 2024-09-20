@@ -23,9 +23,13 @@ def check(server, port, sql, dbvendor, userId, token):
     result = json.loads(r.text)
 
     if result['code'] == 200:
-        print('syntax correct.')
+        usedTime = result['data']['usedTime']
+        version = result['data']['gsp.version']
+        print('syntax correct. cost: ' + usedTime+' ,gsp version: ' + version)
     else:
-        print('syntax error. error info: ')
+        usedTime = result['data']['usedTime']
+        version = result['data']['gsp.version']
+        print('syntax error. cost: ' + usedTime + ' ,gsp version: ' + version + ' ,error info:')
         errorInfos = result['data']['errorInfos']
         for error in errorInfos:
             print(error['errorMessage'])
