@@ -25,8 +25,10 @@ def check(server, port, sql, dbvendor, userId, token):
     if result['code'] == 200:
         print('syntax correct.')
     else:
-        print('syntax error. check result: ' + result)
-
+        print('syntax error. error info: ')
+        errorInfos = result['data']['errorInfos']
+        for error in errorInfos:
+            print(error['errorMessage'])
 
 if __name__ == '__main__':
     # the user id of sqlflow web or client, required true
@@ -46,7 +48,7 @@ if __name__ == '__main__':
     token = GenerateToken.getToken(userId, server, port, screctKey)
 
     # sql to be checked
-    sql = 'select * from table1'
+    sql = 'select * fro1m table1'
 
     # database type, dbvansi,dbvathena,dbvazuresql,dbvbigquery,dbvcouchbase,dbvdb2,dbvgreenplum,dbvgaussdb,dbvhana,dbvhive,dbvimpala,dbvinformix,dbvmdx,dbvmysql,dbvnetezza,dbvopenedge,dbvoracle,dbvpresto,dbvpostgresql,dbvredshift,dbvsnowflake,dbvmssql,dbvsparksql,dbvsybase,dbvteradata,dbvvertica
     dbvendor = 'dbvoracle'
