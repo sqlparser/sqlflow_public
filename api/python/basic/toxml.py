@@ -26,10 +26,10 @@ def check(server, port, sql, dbvendor, userId, token):
     version = result['data']['gsp.version']
     if result['code'] == 200:
         xml = result['data']['xml']
-        print('cost: ' + usedTime+' ,gsp version: ' + version + ' ,xml result: ')
+        print('elapsed time: ' + usedTime+' ,gsp version: ' + version + ' ,xml result: ')
         print(xml)
     else:
-        print('to xml failed. cost: ' + usedTime + ' ,gsp version: ' + version + ' ,error info: ')
+        print('to xml failed. elapsed time: ' + usedTime + ' ,gsp version: ' + version + ' ,error info: ')
         print(result['error'])
 
 
