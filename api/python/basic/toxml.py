@@ -22,12 +22,15 @@ def check(server, port, sql, dbvendor, userId, token):
         print('convert failed.', e)
     result = json.loads(r.text)
 
+    usedTime = result['data']['usedTime']
+    version = result['data']['gsp.version']
     if result['code'] == 200:
         xml = result['data']['xml']
-        print('convert result:')
+        print('cost: ' + usedTime+' ,gsp version: ' + version + ' ,xml result: ')
         print(xml)
     else:
-        print('convert failed')
+        print('to xml failed. cost: ' + usedTime + ' ,gsp version: ' + version + ' ,error info: ')
+        print(result['error'])
 
 
 if __name__ == '__main__':
