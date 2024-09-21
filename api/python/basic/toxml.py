@@ -55,5 +55,5 @@ if __name__ == '__main__':
     # database type, dbvansi,dbvathena,dbvazuresql,dbvbigquery,dbvcouchbase,dbvdb2,dbvgreenplum,dbvgaussdb,dbvhana,dbvhive,dbvimpala,dbvinformix,dbvmdx,dbvmysql,dbvnetezza,dbvopenedge,dbvoracle,dbvpresto,dbvpostgresql,dbvredshift,dbvsnowflake,dbvmssql,dbvsparksql,dbvsybase,dbvteradata,dbvvertica
     dbvendor = 'dbvoracle'
 
-    # check syntax
+    # to xml
     toxml(server, port, sql, dbvendor, userId, token)
