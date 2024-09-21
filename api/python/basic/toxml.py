@@ -5,7 +5,7 @@ import json
 import GenerateToken
 
 
-def check(server, port, sql, dbvendor, userId, token):
+def toxml(server, port, sql, dbvendor, userId, token):
     url = "/api/gspLive_backend/demo/xml/toXML"
     if 'api.gudusoft.com' in server:
         url = '/gspLive_backend/demo/xml/toXML'
@@ -56,4 +56,4 @@ if __name__ == '__main__':
     dbvendor = 'dbvoracle'
 
     # check syntax
-    check(server, port, sql, dbvendor, userId, token)
+    toxml(server, port, sql, dbvendor, userId, token)
