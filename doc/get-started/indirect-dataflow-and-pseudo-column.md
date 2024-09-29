@@ -1,8 +1,10 @@
+## Indirect dataflow and RelationRows (pseudo column)
+
 This article introduces some SQL elements that generate indirect dataflow. Indirect dataflow usually is generated from columns used in the where clause, group by clause, aggregate function and etc.
 
 In order to create indirect dataflow between columns, we introduce a pseudo column: **RelationRows**.
 
-RelationRows is a pseudo column of a relation used to represents the number of rows in a relation. As it's name indicates, RelationRows is not a real column in the relation(table/resultset and etc). Usually, It is used to represents a dataflow between a column and a relation.
+RelationRows is a pseudo column of a relation used to represents the number of rows in a relation. As it's name indicates, RelationRows is not a real column in the relation(table/resultset and etc). Usually, It is used to represent a dataflow between a column and a relation.
 
 RelationRows pseudo column can be used in both the source and target relation.
 
@@ -60,7 +62,7 @@ t2.RelationRows -> direct -> t3.RelationRows
 
 Build a table to table dataflow that using the RelationRows pseudo column for 2 reasons:
 
-* This pseudo column that used to represent a table to column dataflow will be used to generate a table to table dataflow later if user need a table-level lineage model.
+* This pseudo column that used to represent a table to column dataflow can be re-used in a table to table dataflow later when SQLFlow generates a table-level relationship.
 * If other columns in the same table are used in a column to column dataflow while this table itself is also in a table to table dataflow, then, this pseudo column will make it possible for a single table to includes  both the column to column dataflow and table to table dataflow.
 
 take this SQL for example

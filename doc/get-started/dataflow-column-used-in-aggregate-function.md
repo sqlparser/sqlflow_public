@@ -1,3 +1,5 @@
+## Dataflow between column used as aggregate function argument and the aggregate function
+
 Aggregate function usually takes column as an argument, in this article, we will discuss what's kind of dataflow will be created between the column used as function argument and the aggregate function.
 
 ## 1. COUNT()
@@ -13,7 +15,7 @@ SELECT count(empId) total_num
 FROM scott.emp
 ```
 
-By default, a direct dataflow will be generted by between the empId column and COUNT() function.
+By default, a direct dataflow will be generated between the empId column and COUNT() function.
 
 ```
 scott.emp.empId -> direct -> COUNT()

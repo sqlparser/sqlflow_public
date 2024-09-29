@@ -1,8 +1,12 @@
+## Introduction
+
 SQLFlow generates data lineage by analyzing SQL queries and stored procedures.
 
 The entity in the data lineage model includes table, column, function, relation and other entities . The combination of the entity and dataflow shows the lineage from one table/column to another.
 
 ![image.png](https://images.gitee.com/uploads/images/2021/0706/171437_139f041e_8136809.png)
+
+[toc]
 
 ## 1. A dataflow unit
 
@@ -23,11 +27,13 @@ person.persion.FirstName -> direct -> RS-1.FirstName
 
 ### 1.1 Source, target entity
 
-Source and target entity usually referes to table, view and other relations such as common table expression, result set generated during the execution of the query. It may also refers to a file in the HDFS system and etc.
+Source and target entity usually referes to table, view and other relations such as Common Table Expression (CTE), result set generated during the execution of the query. It may also refers to a file in the HDFS system and etc.
 
-### 1.2 Dataflow type
+### 1.2 Relationship types
 
-There are two types of dataflow: direct and indirect.
+There are several relationship types in SQLFlow, the dataflow type is the most important realtionship type which is used to represents the dataflow between 2 objects, and there are two dataflow types: direct and indirect.
+
+SQLFlow also supports other relationship types, such as join, function call and so on.
 
 #### 1.2.1 Direct dataflow
 
@@ -69,7 +75,7 @@ scott.emp.deptno -> indirect -> SUM(SAL)
 
 ![image.png](https://images.gitee.com/uploads/images/2021/1206/174012_ba0c83f4_8136809.png)
 
-For other indirect dataflows, we will discuss later.
+For other indirect dataflow types, we will discuss later.
 
 #### 1.2.3 Join
 
