@@ -193,7 +193,31 @@ the intermediate result set generated: (a `resultset` XML tag and type attribute
 </resultset>
 ```
 
-#### 5. other SQL clauses
+#### 7. table alias (alias)
+
+The table alias: p (empid_renamed, Q1, Q2, Q3, Q4) in the following SQL statement:
+```sql
+-- sql server sample SQL
+SELECT *
+FROM quarterly_sales
+         PIVOT(SUM(amount) FOR quarter IN ('2023_Q1','2023_Q2','2023_Q3','2023_Q4')
+        ) AS p (empid_renamed, Q1, Q2, Q3, Q4)
+ORDER BY empid_renamed;
+```
+
+the intermediate result set generated: (a `resultset` XML tag and type attribute value `alias`)
+
+```xml
+<resultset id="13" name="ALIAS-1" type="alias">
+    <column id="14" name="Q1"/>
+    <column id="15" name="Q2"/>
+    <column id="16" name="Q3"/>
+    <column id="17" name="Q4"/>
+    <column id="36" name="empid_renamed"/>
+</resultset>
+```
+
+#### 8. array, struct, result_of, output, rs
 
 ### 3. resultset ouput but not a relation
 
