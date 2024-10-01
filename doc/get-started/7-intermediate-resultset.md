@@ -59,7 +59,15 @@ And the data flow graph is like this:
 
 ### 2. SQL clauses that generate intermediate result set
 
-#### 1. select list
+The type of intermediate result set can be found in the [ResultSetType.java](src/main/java/gudusoft/gsqlparser/dlineage/dataflow/model/ResultSetType.java)
+
+```java
+array, struct, result_of, cte, insert_select, update_select, merge_update, 
+merge_insert, output, update_set,pivot_table, unpivot_table, alias, rs, function, 
+case_when;
+```
+
+#### 1. select list (select_list)
 ```sql
 SELECT EmployeeID, FirstName, LastName, ManagerID, EmpLevel  FROM Employees
 ```
@@ -77,7 +85,7 @@ the intermediate result set generated: (a `resultset` XML tag and type attribute
 ```
 
 
-#### 2. cte
+#### 2. cte (cte)
 [CTE example SQL](#cte-example), the intermediate result set generated: (a `resultset` XML tag and type attribute value `with_cte`)
 ```xml
 <resultset id="4" name="CTE-CTEREPORTS-1" type="with_cte">
@@ -90,7 +98,7 @@ the intermediate result set generated: (a `resultset` XML tag and type attribute
 </resultset>
 ```
 
-#### 3. set clause in update statement
+#### 3. set clause in update statement (update_set)
 ```sql
 UPDATE table1 t1 JOIN table2 t2 ON t1.field1 = t2.field1 
 SET t1.field2=t2.field2 --mysql
@@ -107,7 +115,7 @@ the intermediate result set generated: (a `resultset` XML tag and type attribute
 
 ![update-set](../../assets/images/get-started-intermediate-resultset3.png)
 
-#### 4. merge statement
+#### 4. merge statement (update_select, merge_update)
 
 ```sql
 -- bigquery sample SQL
@@ -136,6 +144,54 @@ the intermediate result set generated: (a `resultset` XML tag with type attribut
     <column id="26" name="supply_constrained"/>
 </resultset>
 ```
+#### 5. pivot table (pivot_table)
+
+```sql
+-- sql server sample SQL
+SELECT *
+FROM
+(
+    SELECT salesperson, product, sales_amount
+    FROM sales
+) AS SourceTable
+PIVOT
+(
+    SUM(sales_amount)
+    FOR product IN ([Laptop], [Desktop], [Tablet])
+) AS PivotTable;
+```
+
+the intermediate result set generated: (a `resultset` XML tag and type attribute value `pivot_table`)
+
+```xml
+<resultset id="19" name="PIVOT-TABLE-1" type="select_list">
+    <column id="33" name="[Laptop]"/>
+    <column id="34" name="[Desktop]"/>
+    <column id="35" name="[Tablet]"/>
+</resultset>
+```
+
+#### 6. unpivot table (unpivot_table)
+
+```sql
+-- sql server sample SQL
+SELECT ProductID, Quarter, Sales
+FROM SalesData
+UNPIVOT
+(
+    Sales
+    FOR Quarter IN (Q1_Sales, Q2_Sales, Q3_Sales, Q4_Sales)
+) AS UnpivotedData;
+```
+
+the intermediate result set generated: (a `resultset` XML tag and type attribute value `unpivot_table`)
+
+```xml
+<resultset id="4" name="UNPIVOT-TABLE-1" type="select_list">
+    <column id="5" name="Sales"/>
+    <column id="6" name="Quarter"/>
+</resultset>
+```
 
 #### 5. other SQL clauses
 
@@ -159,6 +215,32 @@ the intermediate result set generated: (a `resultset` XML tag and type attribute
 This result is not a true intermediate result set, but rather a scalar value. However, we can distinguish it from other intermediate result sets by examining the `type` attribute. In this case, the `type` attribute has a value of `function`, indicating that it represents the output of a SQL function rather than a traditional result set.
 
 This distinction is important for understanding how different SQL operations are represented in the intermediate result structure. While tables and subqueries typically produce relational result sets, functions often return single values, which are handled differently in the data lineage analysis.
+
+##### Case expression
+
+case expression is treated as a special function when considered in the context of data lineage analysis.
+
+```sql
+-- postgres sample SQL
+SELECT 
+    employee_id,first_name,last_name,salary,
+    CASE 
+        WHEN salary < 30000 THEN 'Low'
+        WHEN salary BETWEEN 30000 AND 60000 THEN 'Medium'
+        WHEN salary > 60000 THEN 'High'
+        ELSE 'Unknown'
+    END AS salary_category
+FROM 
+    employees;
+```
+
+the intermediate result set generated: (a `resultset` XML tag and type attribute value `case_when`)
+
+```xml
+<resultset id="17" name="case-when" type="function">
+    <column id="18" name="case-when"/>
+</resultset>
+```
 
 #### (2) Constant
 
