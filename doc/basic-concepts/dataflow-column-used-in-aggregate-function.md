@@ -4,18 +4,23 @@ Aggregate function usually takes column as an argument, in this article, we will
 
 ## 1. COUNT()
 
-COUN() may takes a star column, or any column name or even empty argument.
+COUNT() may takes a star column, or any column name or even empty argument.
 
-If the argument is empty or a star column, no dataflow will be generated between the argument and function.
+If the argument is empty or a star column, no dataflow will be generated between the argument and function. 
+If a column is used as the argument, a direct dataflow will be generated between the column and function 
+by setting `/treatArgumentsInCountFunctionAsDirectDataflow` option to `true`.
 
 ### 1.1 A direct dataflow
 
 ```sql
-SELECT count(empId) total_num
-FROM scott.emp
+SELECT count(empId) total_num FROM scott.emp
 ```
 
-By default, a direct dataflow will be generated between the empId column and COUNT() function.
+In [SQLFlow Cloud](https://sqlflow.gudusoft.com), a direct dataflow will be generated between the empId column and COUNT() function by default.
+
+However, in [Dlineage command line tool](https://github.com/sqlparser/gsp_demo_java/releases), a direct dataflow will not be generated between the empId column and COUNT() function by default.
+
+To enable the direct dataflow in Dlineage command line tool, you can use the `/treatArgumentsInCountFunctionAsDirectDataflow` option.
 
 ```
 scott.emp.empId -> direct -> COUNT()
@@ -27,7 +32,7 @@ This dataflow may seems strange since the result value of COUNT() doesn't depend
 
 ### 1.2 No dataflow
 
-You can use an option to decide not to generate a dataflow between empId and COUNT() if prefered.
+You can use an option to decide not to generate a dataflow between empId and COUNT() if preferred.
 
 Please note that, no matter  a direct dataflow is generated between the empId and COUNT() or not. The following indirect dataflow will always be created.
 

@@ -59,7 +59,7 @@ And the data flow graph is like this:
 
 ### 2. SQL clauses that generate intermediate result set
 
-The type of intermediate result set can be found in the [ResultSetType.java](src/main/java/gudusoft/gsqlparser/dlineage/dataflow/model/ResultSetType.java)
+The definition of intermediate result set type can be found in the [ResultSetType.java](src/main/java/gudusoft/gsqlparser/dlineage/dataflow/model/ResultSetType.java)
 
 ```java
 array, struct, result_of, cte, insert_select, update_select, merge_update, 
@@ -218,8 +218,9 @@ the intermediate result set generated: (a `resultset` XML tag and type attribute
 ```
 
 #### 8. array, struct, result_of, output, rs
+Those definition of intermediate result set types are not used in the SQLFlow.
 
-### 3. resultset ouput but not a relation
+### 3. resultset output but not a relation
 
 #### (1) Function
 Due to historical design reasons, some SQL clauses will generate a result set but it is not a relation. The most common example is the SQL function that returns a scalar value.
@@ -238,7 +239,7 @@ the intermediate result set generated: (a `resultset` XML tag and type attribute
 
 This result is not a true intermediate result set, but rather a scalar value. However, we can distinguish it from other intermediate result sets by examining the `type` attribute. In this case, the `type` attribute has a value of `function`, indicating that it represents the output of a SQL function rather than a traditional result set.
 
-This distinction is important for understanding how different SQL operations are represented in the intermediate result structure. While tables and subqueries typically produce relational result sets, functions often return single values, which are handled differently in the data lineage analysis.
+This distinction is important for understanding how different SQL operations are represented in the intermediate result structure. While tables and sub-queries typically produce relational result sets, functions often return single values, which are handled differently in the data lineage analysis.
 
 ##### Case expression
 
@@ -268,12 +269,12 @@ the intermediate result set generated: (a `resultset` XML tag and type attribute
 
 #### (2) Constant
 
-Constants used in the SQL statement will be collected and saved in a pseduo table: `constantTable`.
+Constants used in the SQL statement will be collected and saved in a pseudo table: `constantTable`.
 Each SQL statement will create a `constantTable` table to save the constants used in the SQL statement.
 
 So SQLFlow able to generate the data flow to trace the constant value.
 > Constants only will be collected when the /showConstant is set to true in the SQLFlow.
-and constants used in the insert statement WILLNOT BE collected in order to avoid too many constants even if the /showConstant is set to true.
+and constants used in the insert statement WILL NOT BE collected in order to avoid too many constants even if the /showConstant is set to true.
 
 >By default, the /showConstant is set to false in the SQLFlow which means constants will not be collected.
 
