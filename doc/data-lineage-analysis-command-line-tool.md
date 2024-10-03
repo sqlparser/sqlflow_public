@@ -1,4 +1,35 @@
 ## Data lineage analysis command line tool
+
+[Dlineage analysis command line tool](https://github.com/sqlparser/gsp_demo_java/releases) is used to analyze the data lineage in column level of a SQL query and output the data lineage in the XML/JSON format.
+
+By default, the tool will output the data lineage in the XML format and includes the most detailed information except the following elements which will be ignored:
+
+- the constant value (can be turned on using `/showConstant` option)
+- transform: the transform code (can be turned on using `/transform` option)
+- join: the join relation (can be turned on using `/j` option)
+
+
+### Table level data lineage
+This data lineage tool generate the data lineage at column level by default.
+If you want to generate the data lineage at table level, you can use `/tableLineage` option.
+
+### Control the output of specific relation types
+In the data lineage analysis, there are several types of relations, such as:
+- fdd: [the direct data flow](./basic-concept/2-direct-dataflow.md)
+- fdr: [the indirect data flow](./basic-concept/3-indirect-dataflow-and-pseudo-column.md)
+- join: [the join relation](./basic-concept/8-join.md)
+- call: [the call relation](./basic-cocept)
+- er: [the entity-relationship relation](./basic-concept)
+
+You may want to control which relation types are included in the output. The `/includeRelationTypes` option allows you to specify which relation types should be included. The syntax is:
+
+```
+/includeRelationTypes fdd,fdr,join,call,er
+```
+
+Please note that relation type not specified in the `/includeRelationTypes` option will not be output.
+
+
 ### Parameters
 #### /showResultSetTypes
 There are many types of [the intermediate result sets](./basic-concepts/7-intermediate-resultset.md#intermediate-result-sets) will be generated during the analysis of the data lineage in SQL query.
@@ -17,11 +48,50 @@ The result set types can be specified in the following format:
 This option is valid only when `/s` option is used.
 
 #### /withTemporaryTable
-Temporary table such as `#temp_table` in SQL Server will not be output in simple output by default.
+Temporary table such as `#temp_table` in SQL Server will not be output in **the simple output** by default.
 If you want to output the temporary table, you can use `/withTemporaryTable` option.
 
 ```
-/withTemporaryTable true
+/s /withTemporaryTable
 ```
 
+#### /j
 
+Option to output the join relation.
+```sql
+-- Oracle sample query
+SELECT e.employee_id, e.first_name, e.last_name, d.department_name
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.department_id
+ORDER BY e.employee_id;
+```
+
+#### call relation
+
+Option to output the call relation.
+```sql
+-- SQL Server sample query
+CREATE PROCEDURE [dbo].[usp_insert]
+( @a varchar(50), @b varchar(15), @c varchar(6), @d varchar(50) )
+AS
+BEGIN
+    if ((select count(*) from tbl_Log1) <50000)
+      exec [dbo].[usp_insert_into_Log1] @a,@b,@c,@d
+    else
+      exec [dbo].[usp_insert_into_Log2] @a,@b,@c,@d
+END
+```
+
+generated lineage with call relation:
+```xml
+<relationship id="3" type="call">
+    <caller id="1" name="[dbo].[usp_insert]" type="procedure"/>
+    <callee id="29" name="[dbo].[usp_insert_into_Log1]" type="procedure"/>
+</relationship>
+<relationship id="4" type="call">
+    <caller id="1" name="[dbo].[usp_insert]" type="procedure"/>
+    <callee id="30" name="[dbo].[usp_insert_into_Log2]" type="procedure"/>
+</relationship>
+```
+
+#### er relation

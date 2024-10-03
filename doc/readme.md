@@ -11,8 +11,6 @@ Fourthly, check the detailed reference of the data lineage model.
 Finally, integrate the SQLFlow Rest API/Java API/Widget into your project and get the data lineage of your SQL in the Rest API/Java/Python code/JavaScript code.
 
 
-### Get started
-
 ### Concepts
 - [1. Introduction](basic-concepts/1-introduction.md)
 - [2. Direct dataflow](basic-concepts/2-direct-dataflow.md)
