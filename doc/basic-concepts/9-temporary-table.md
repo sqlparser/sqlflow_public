@@ -11,7 +11,7 @@ Temporary table such as `#temp_table` in SQL Server will not be output in simple
 If you want to output the temporary table, you can use `/withTemporaryTable` option.
 
 ```
-/withTemporaryTable true
+/withTemporaryTable
 ```
 
 ### Temporary table in different database

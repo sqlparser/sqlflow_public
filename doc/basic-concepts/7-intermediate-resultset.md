@@ -164,10 +164,10 @@ PIVOT
 the intermediate result set generated: (a `resultset` XML tag and type attribute value `pivot_table`)
 
 ```xml
-<resultset id="19" name="PIVOT-TABLE-1" type="select_list">
-    <column id="33" name="[Laptop]"/>
-    <column id="34" name="[Desktop]"/>
-    <column id="35" name="[Tablet]"/>
+<resultset id="19" name="PIVOT-TABLE-1" type="pivot_table">
+    <column id="20" name="[Laptop]"/>
+    <column id="21" name="[Desktop]"/>
+    <column id="22" name="[Tablet]"/>
 </resultset>
 ```
 
@@ -187,7 +187,7 @@ UNPIVOT
 the intermediate result set generated: (a `resultset` XML tag and type attribute value `unpivot_table`)
 
 ```xml
-<resultset id="4" name="UNPIVOT-TABLE-1" type="select_list">
+<resultset id="4" name="UNPIVOT-TABLE-1" type="unpivot_table">
     <column id="5" name="Sales"/>
     <column id="6" name="Quarter"/>
 </resultset>
@@ -267,40 +267,26 @@ the intermediate result set generated: (a `resultset` XML tag and type attribute
 </resultset>
 ```
 
-#### (2) Constant
+### 4. List of all intermediate result sets
 
-Constants used in the SQL statement will be collected and saved in a pseudo table: `constantTable`.
-Each SQL statement will create a `constantTable` table to save the constants used in the SQL statement.
+A complete list of all intermediate result sets that can be controlled to remove from the data flow graph is as follows:
 
-So SQLFlow able to generate the data flow to trace the constant value.
-> Constants only will be collected when the /showConstant is set to true in the SQLFlow.
-and constants used in the insert statement WILL NOT BE collected in order to avoid too many constants even if the /showConstant is set to true.
 
->By default, the /showConstant is set to false in the SQLFlow which means constants will not be collected.
+1. XML tag: `<resultset>`, type attribute value:`select_list`
+2. XML tag: `<resultset>`, type attribute value:`with_cte`
+3. XML tag: `<resultset>`, type attribute value:`update-set`
+4. XML tag: `<resultset>`, type attribute value:`merge-insert`
+5. XML tag: `<resultset>`, type attribute value:`pivot_table`
+6. XML tag: `<resultset>`, type attribute value:`unpivot_table`
+7. XML tag: `<resultset>`, type attribute value:`alias`
+8. XML tag: `<resultset>`, type attribute value:`function`
+9. XML tag: `<table>`, type attribute value:`constantTable`
+10. XML tag: `<variable>`, type attribute value:`variable`
 
-```sql
-SELECT 'constant' as field1, 2 as field2;
-```
+所有默认生成的 `<resultset>` and `<variable>` 的内容都可以通过设置参数来移除，
+所有默认没有生成的例如 `<table>` with type attribute value `constantTable` 可以通过设置参数来生成。
 
-a `table` XML tag and type attribute value `constantTable`:
 
-```xml
-  <table id="5" name="SQL_CONSTANTS-1" type="constantTable">
-      <column id="6" name="'constant'"/>
-      <column id="8" name="2"/>
-  </table>
-```
+在 dlineage demo tool 中加入可以控制以上所有参数的设置。形如：/removeResultSetXXX, /includeTableConstantTable, /removeVariable 等。
 
-```sql
-UPDATE table1 t1 JOIN table2 t2 ON t1.field1 = t2.field1 
-SET t1.field2='constant' and t1.field3=2;
-```
-
-a `table` XML tag and type attribute value `constantTable`:
-
-```xml
-  <table id="15" name="SQL_CONSTANTS-1" type="constantTable">
-      <column id="16" name="'constant'"/>
-      <column id="17" name="2"/>
-  </table>
-```
+目前在 dlineage demo tool 中的 /s , /i, /if 等参数都是这些参数的一种组合。
