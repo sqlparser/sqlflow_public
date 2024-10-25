@@ -33,4 +33,7 @@ Finally, integrate the SQLFlow Rest API/Java API/Widget into your project and ge
 - [2. Detailed reference](data-lineage-format/data-lineage-format-reference.md)
 
 ### SQLFlow widget
+
+The SQLFlow widget is a Javascript library that enables instantaneous data lineage visualisation on your website.
+
 - [Introduction](widget/readme.md)
