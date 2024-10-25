@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <title>demo: visualize sqltext with setting</title>
+        <script src="/widget/jquery.min.js"></script>
+        <script src="/widget/sqlflow.widget.3.6.2.js?t=1728569340295"></script>
+        <script src="index.js"></script>
+        <style>
+            body {
+                padding: 0 20px 20px;
+            }
+
+            h1 {
+                margin-top: 50px;
+                font-size: 24px;
+            }
+
+            .config {
+                margin: 20px;
+            }
+
+            .config .row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .config .row input {
+                width: 300px;
+            }
+
+            .config .row textarea {
+                width: 500px;
+                height: 300px;
+            }
+
+            .config .row input[type='checkbox'] {
+                width: 20px;
+                cursor: pointer;
+            }
+
+            .checkbox {
+                cursor: pointer;
+            }
+
+            .checkbox .title {
+                width: 220px;
+            }
+
+            .input .title {
+                width: 80px;
+            }
+
+            #visualizeTableLevel {
+                margin-left: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="config">
+            <div class="row input">
+                <div class="title">sqltext</div>
+                <textarea id="sqltext">
+INSERT INTO deptsal
+            (dept_no,
+             dept_name,
+             salary)
+SELECT d.deptno,
+       d.dname,
+       SUM(e.sal + Nvl(e.comm, 0)) AS sal
+FROM   dept d
+       left join (SELECT *
+                  FROM   emp
+                  WHERE  hiredate > DATE '1980-01-01') e
+              ON e.deptno = d.deptno
+GROUP  BY d.deptno,
+          d.dname; 
+
+                </textarea>
+            </div>
+            <div class="row checkbox">
+                <div class="title">direct dataflow</div>
+                <input id="dataflow" type="checkbox" checked />
+            </div>
+            <div class="row checkbox">
+                <div class="title">indirect dataflow</div>
+                <input id="impact" type="checkbox" />
+            </div>
+            <div class="row checkbox">
+                <div class="title">args in count function</div>
+                <input id="args" type="checkbox" />
+            </div>
+            <div class="row checkbox">
+                <div class="title">show intermediate recordset</div>
+                <input id="recordset" type="checkbox" checked />
+            </div>
+            <div class="row checkbox">
+                <div class="title">show function</div>
+                <input id="function" type="checkbox" />
+            </div>
+            <div class="row checkbox">
+                <div class="title">show constant</div>
+                <input id="constant" type="checkbox" />
+            </div>
+            <div class="row checkbox">
+                <div class="title">show transform</div>
+                <input id="transform" type="checkbox" />
+            </div>
+            <button id="visualize">visualize</button>
+            <button id="visualizeTableLevel">visualize table level lineage</button>
+        </div>
+        <div id="sqlflow"></div>
+    </body>
+</html>

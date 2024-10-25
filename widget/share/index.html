@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <title>sqlflow share</title>
+        <script src="sqlflow.widget.3.6.2.js?t=1728569340295"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', async () => {
+                SQLFlow.init({
+                    container: document.getElementById('sqlflow'),
+                    width: '100%',
+                    height: '100%',
+                    apiPrefix: 'http://hdp02.sqlflow.cn/api',
+                    visualizeShare: true,
+                });
+            });
+        </script>
+        <style>
+            html,
+            body {
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            #sqlflow {
+                height: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="sqlflow"></div>
+    </body>
+</html>

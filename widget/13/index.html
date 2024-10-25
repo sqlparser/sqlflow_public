@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <title>demo: visualize sqltext with setting</title>
+        <script src="/widget/jquery.min.js"></script>
+        <script src="/widget/sqlflow.widget.3.6.2.js?t=1728569340295"></script>
+        <script src="index.js"></script>
+        <style>
+            body {
+                padding: 0 20px 20px;
+            }
+
+            h1 {
+                margin-top: 50px;
+                font-size: 24px;
+            }
+
+            .config {
+                margin: 20px;
+            }
+
+            .config .row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .config .row input {
+                width: 300px;
+            }
+
+            .config .row textarea {
+                width: 500px;
+                height: 300px;
+            }
+
+            .config .row input[type='checkbox'] {
+                width: 20px;
+                cursor: pointer;
+            }
+
+            .checkbox {
+                cursor: pointer;
+            }
+
+            .checkbox .title {
+                width: 220px;
+            }
+
+            .input .title {
+                width: 80px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="config">
+            <div class="row input">
+                <div class="title">csv file</div>
+                <input type="file" id="file" />
+            </div>
+            <div class="row input">
+                <div class="title">csv content</div>
+                <textarea id="sqltext"></textarea>
+            </div>
+            <div class="row checkbox">
+                <div class="title">dataflow</div>
+                <input id="dataflow" type="checkbox" checked />
+            </div>
+            <div class="row checkbox">
+                <div class="title">impact</div>
+                <input id="impact" type="checkbox" />
+            </div>
+            <div class="row checkbox">
+                <div class="title">show intermediate recordset</div>
+                <input id="recordset" type="checkbox" checked />
+            </div>
+            <div class="row checkbox">
+                <div class="title">show function</div>
+                <input id="function" type="checkbox" />
+            </div>
+            <button id="visualize">visualize</button>
+        </div>
+        <div id="sqlflow"></div>
+    </body>
+</html>

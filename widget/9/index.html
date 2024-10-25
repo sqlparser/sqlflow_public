@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <title>demo: add an event listener on field(column) click</title>
+        <script src="/widget/jquery.min.js"></script>
+        <script src="/widget/sqlflow.widget.3.6.2.js?t=1728569340295"></script>
+        <script src="index.js"></script>
+        <style>
+            body {
+                padding: 0 20px 20px;
+            }
+
+            h1 {
+                margin-top: 50px;
+                font-size: 24px;
+            }
+
+            .config {
+                margin: 20px;
+            }
+
+            .config .row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .config .row textarea {
+                width: 500px;
+                height: 168px;
+            }
+
+            .input .title {
+                width: 80px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="config">
+            <div class="row input">
+                <div class="title">sqltext</div>
+                <textarea id="sqltext">
+        select d from a.b.c
+                    
+                </textarea>
+            </div>
+            <div class="row input">
+                <div class="title">message on click</div>
+                <textarea id="message"> </textarea>
+            </div>
+            <button id="visualize">visualize</button>
+        </div>
+        <div id="sqlflow"></div>
+    </body>
+</html>
