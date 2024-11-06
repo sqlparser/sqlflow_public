@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>demo：custom UI component</title>
-        <script src="/widget/sqlflow.widget.3.6.2.js?t=1728569340295"></script>
+        <script src="/sqlflow.widget.3.6.2.js?t=1728569340295"></script>
         <script>
             const sqltext = `
             CREATE VIEW vsal
@@ -211,12 +211,12 @@ create table scott.emp(
 
             let sqlflow_6;
             document.addEventListener('DOMContentLoaded', async () => {
-                // run_sqlflow_1();
-                // run_sqlflow_2();
-                // run_sqlflow_3();
-                // run_sqlflow_4();
-                // run_sqlflow_5();
-                // run_sqlflow_6();
+                run_sqlflow_1();
+                run_sqlflow_2();
+                run_sqlflow_3();
+                run_sqlflow_4();
+                run_sqlflow_5();
+                run_sqlflow_6();
                 sqlflow_6 = await SQLFlow.init({
                     container: document.getElementById('sqlflow_6'),
                     width: '100%',

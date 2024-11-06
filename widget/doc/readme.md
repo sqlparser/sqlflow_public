@@ -271,8 +271,8 @@ User can access the data lineage through a url directly by specify the data line
 If no default job is set, lineage data will be retrieved from the latest job.
 
 ```
-http://127.0.0.1/widget/12/?type=upstream&table=dbo.emp
-http://127.0.0.1/widget/12/?type=upstream&table=dbo.emp&column=salary
+http://127.0.0.1/12/?type=upstream&table=dbo.emp
+http://127.0.0.1/12/?type=upstream&table=dbo.emp&column=salary
 ```
 
 - input 
