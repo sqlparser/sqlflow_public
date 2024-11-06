@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         },
     });
     sqlflow.vendor.set("dbvoracle");
+    const json = await fetch('demo.json').then(res => res.json());
+    sqlflow.sqltext.set(JSON.stringify(json));
+    await sqlflow.visualizeJSON(json, { layout: true});
 });
 
 const visualize = async () => {
