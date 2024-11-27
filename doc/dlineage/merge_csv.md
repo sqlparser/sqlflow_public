@@ -186,7 +186,10 @@ If more than 1000 records in the job, don't export the data lineage to the csv f
 /show_dlineage_job_info <job_name>
 /collect_dlineage <job_name> <sql_script_file>
 /collect_dlineage_from_csv <job_name> <csv_file>
-/query_dlineage_downstream <job_name> <source_db> <source_schema> <source_table> <source_column>
-/query_dlineage_upstream <job_name> <target_db> <target_schema> <target_table> <target_column>
+/query_dlineage_downstream <job_name> <source_db> <source_schema> <source_table> <source_column> /csv <output_csv_file>
+/query_dlineage_upstream <job_name> <target_db> <target_schema> <target_table> <target_column> /csv <output_csv_file>
 /visualize_dlineage <dlineage_csv_file>
+/list_tables_in_job <job_name>
+/list_columns_in_table <job_name> <table_name>
+/export_dlineage_to_csv <job_name> <output_csv_file>
 ```
