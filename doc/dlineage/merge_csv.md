@@ -117,7 +117,7 @@ source_db, source_schema, source_table, source_column, target_db, target_schema,
 ### 3.3. Query the data lineage from duckdb
 
 ```
-/query_dlineage_downstream <job_name> <source_db> <source_schema> <source_table> <source_column> /csv <output_csv_file>
+/query_dlineage_downstream <job_name> [source_db.][source_schema.]<source_table>.<source_column> /csv <output_csv_file>
 ```
 This will query the downstream data lineage of the column `[source_db.][source_schema.]<source_table>.<source_column>` in the dlineage job `<job_name>`.
 The output is a csv file, each line of which is a downstream data lineage of the column `[source_db.][source_schema.]<source_table>.<source_column>`.
@@ -132,7 +132,7 @@ source_db, source_schema, source_table, source_column, target_db, target_schema,
 
 
 ```
-/query_dlineage_upstream <job_name> <target_db> <target_schema> <target_table> <target_column> /csv <output_csv_file>
+/query_dlineage_upstream <job_name> [target_db.][target_schema.]<target_table>.<target_column> /csv <output_csv_file>
 ```
 This will query the upstream data lineage of the column `[target_db.][target_schema.]<target_table>.<target_column>` in the dlineage job `<job_name>`.
 The output is a csv file, each line of which is a upstream data lineage of the column `[target_db.][target_schema.]<target_table>.<target_column>`.
