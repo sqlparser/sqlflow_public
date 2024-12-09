@@ -1,8 +1,9 @@
 name: Generate PDF
 on:
   push:
-    paths:
-      - 'doc/**'  # Trigger when docs are updated
+    branches: [ pdf ]
+    # paths:
+    #   - 'doc/**'  # Trigger when docs are updated
     
 jobs:
   convert_to_pdf:
