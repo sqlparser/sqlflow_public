@@ -1,0 +1,29 @@
+name: Generate PDF
+on:
+  push:
+    paths:
+      - 'doc/**'  # Trigger when docs are updated
+    
+jobs:
+  convert_to_pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup mdPDF
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install md-to-pdf
+        run: npm install -g md-to-pdf
+      
+      - name: Convert Markdown to PDF
+        run: |
+          find doc -name "*.md" -exec sh -c 'md-to-pdf "$1" --output "${1%.md}.pdf"' _ {} \;
+      
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-pdfs
+          path: doc/**/*.pdf
