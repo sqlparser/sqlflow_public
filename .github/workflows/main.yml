@@ -21,7 +21,7 @@ jobs:
       
       - name: Convert Markdown to PDF
         run: |
-          find doc -name "*.md" -exec sh -c 'md-to-pdf "$1" --output "${1%.md}.pdf"' _ {} \;
+          find doc -name "*.md" -exec md-to-pdf {} -o {}.pdf \;
       
       - name: Upload PDFs
         uses: actions/upload-artifact@v4
