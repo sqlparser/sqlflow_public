@@ -23,10 +23,13 @@ jobs:
       - name: Verify pandoc installation
         run: pandoc --version
       
-      - name: Merge Markdown files
-        run: |      
-           find doc -type f -name "*.md" | sort | xargs pandoc -o combined-documentation.pdf
-
+      - name: List Markdown files
+        run: find doc -type f -name "*.md"
+      
+      - name: Convert Markdown to PDF
+        run: |          # Find all markdown files in the doc directory and sort them
+          find doc -type f -name "*.md" | sort | xargs pandoc -o combined-documentation.pdf
+      
       - name: Upload PDFs
         uses: actions/upload-artifact@v4
         with:
