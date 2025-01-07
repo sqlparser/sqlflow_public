@@ -19,10 +19,10 @@ jobs:
       - name: Install md-to-pdf
         run: npm install -g md-to-pdf
       
-      - name: Merge Markdown files
+      - name: Merge Markdown files using -exec
         run: |
-          # Find all markdown files in the doc directory and sort them
-          find doc -type f -name "*.md" | sort | xargs cat > combined-documentation.md
+          # Find all markdown files in the doc directory, sort them, and merge using -exec
+          find doc -type f -name "*.md" | sort | xargs -I {} sh -c 'cat "$@" >> combined-documentation.md' _ {}
       
       - name: Convert Markdown to PDF
         run: md-to-pdf combined-documentation.md -o combined-documentation.pdf
