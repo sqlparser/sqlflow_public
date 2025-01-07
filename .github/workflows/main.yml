@@ -20,12 +20,9 @@ jobs:
         run: npm install -g md-to-pdf
       
       - name: Merge Markdown files
-        run: |          # Find all markdown files in the doc directory and sort them
-          find doc -name "*.md" | sort | xargs cat > combined-documentation.md
-      
-      - name: Convert Markdown to PDF
-        run: md-to-pdf combined-documentation.md -o combined-documentation.pdf
-      
+        run: |      
+          find doc -name "*.md" | sort | xargs pandoc -o combined-documentation.pdf
+
       - name: Upload PDFs
         uses: actions/upload-artifact@v4
         with:
