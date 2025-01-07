@@ -16,8 +16,12 @@ jobs:
         with:
           node-version: '20'
       
-      - name: Install md-to-pdf
-        run: npm install -g md-to-pdf
+      - name: Install pandoc and texlive-xetex
+        run: |         
+          sudo apt-get install -y pandoc texlive-xetex
+      
+      - name: Verify pandoc installation
+        run: pandoc --version
       
       - name: Merge Markdown files
         run: |      
