@@ -25,7 +25,8 @@ jobs:
           find doc -type f -name "*.md" | sort | xargs -I {} sh -c 'cat "$@" >> combined-documentation.md' _ {}
       
       - name: Convert Markdown to PDF
-        run: md-to-pdf combined-documentation.md -o combined-documentation.pdf
+        run: |
+          md-to-pdf combined-documentation.md  combined-documentation.pdf
       
       - name: Upload PDF
         uses: actions/upload-artifact@v4
