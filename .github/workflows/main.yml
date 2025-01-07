@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: documentation-pdfs
-          path: doc/**/*.pdf
+          path: README.pdf
