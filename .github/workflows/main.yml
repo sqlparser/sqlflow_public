@@ -1,30 +1,39 @@
+
 name: Generate PDF
 on:
   push:
     branches: [ pdf ]
     # paths:
     #   - 'doc/**'  # Trigger when docs are updated
-    
+
 jobs:
   convert_to_pdf:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup mdPDF
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      - name: Install pandoc and texlive-xetex
+        run: |          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex
       
-      - name: Install md-to-pdf
-        run: npm install -g md-to-pdf
+      - name: Verify pandoc installation
+        run: pandoc --version
+      
+      - name: List Markdown files
+        run: |          find doc -type f -name "*.md"
+          echo "Found Markdown files:"
+          find doc -type f -name "*.md" | sort
       
       - name: Convert Markdown to PDF
-        run: |
-           find doc -name "*.md" -exec sh -c 'md-to-pdf "$1" > "${1%.md}.pdf"' _ {} \;
+        run: |          # Find all markdown files in the doc directory, sort them, and pass to pandoc
+          find doc -type f -name "*.md" | sort | xargs pandoc -o combined-documentation.pdf
       
-      - name: Upload PDFs
+      - name: Convert Markdown to PDF using -exec
+        run: |          # Find all markdown files in the doc directory, sort them, and pass to pandoc using -exec
+          find doc -type f -name "*.md" | sort | xargs -I {} sh -c 'pandoc "$@" -o combined-documentation.pdf' _ {}
+      
+      - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
-          name: documentation-pdfs
-          path: doc/**/*.pdf
+          name: documentation-pdf
+          path: combined-documentation.pdf
