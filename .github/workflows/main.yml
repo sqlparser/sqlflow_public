@@ -25,7 +25,7 @@ jobs:
       
       - name: Merge Markdown files
         run: |      
-          find doc -name "*.md" | sort | xargs pandoc -o combined-documentation.pdf
+           find doc -type f -name "*.md" | sort | xargs pandoc -o combined-documentation.pdf
 
       - name: Upload PDFs
         uses: actions/upload-artifact@v4
