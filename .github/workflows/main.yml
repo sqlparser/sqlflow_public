@@ -19,17 +19,16 @@ jobs:
       - name: Install md-to-pdf
         run: npm install -g md-to-pdf
       
-      - name: Merge Markdown files using -exec
+      - name: Merge Markdown files
         run: |
-          # Find all markdown files in the doc directory, sort them, and merge using -exec
-          find doc -type f -name "*.md" | sort | xargs -I {} sh -c 'cat "$@" >> combined-documentation.md' _ {}
+          find doc -type f -name "*.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
       
       - name: Convert Markdown to PDF
         run: |
-          md-to-pdf combined-documentation.md > combined-documentation.pdf
+          md-to-pdf README.md > README.pdf
       
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
-          name: documentation-pdf
-          path: combined-documentation.pdf
+          name: documentation-pdfs
+          path: doc/**/*.pdf
