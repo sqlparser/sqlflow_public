@@ -19,10 +19,23 @@ jobs:
       - name: Install md-to-pdf
         run: npm install -g md-to-pdf
 
-      - name: Merge Markdown files
-        run: |
-          cat doc/README.md > README.md
-          find doc -type f -name "*.md" ! -name "README.md" | sort | xargs -I {} sh -c 'cat "$1" >> README.md' _ {}
+      - name: Find readme.md path
+        id: find_readme
+        run: |          
+          README_PATH=$(find . -name "readme.md" | head -n 1)
+          echo "README_PATH=$README_PATH" >> $GITHUB_ENV
+      
+      - name: Merge readme.md first
+        run: |          
+          if [ -n "$README_PATH" ]; then
+            cat "$README_PATH" > README.md
+          else
+            echo "readme.md not found"
+          fi
+      
+      - name: Merge other Markdown files
+        run: |          
+          find doc -type f -name "*.md" ! -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
       
       - name: Upload PDF
         uses: actions/upload-artifact@v4
