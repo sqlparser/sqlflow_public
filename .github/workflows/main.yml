@@ -18,13 +18,20 @@ jobs:
       
       - name: Install pandoc and LaTeX
         run: |
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
-
-      - name: Merge Markdown files
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra tree imagemagick
+      
+      - name: Generate documentation tree image
+        run: |
+          tree doc -I 'node_modules|.git' -L 2 -o tree.txt
+          convert -density 150 tree.txt -trim tree.png
+      
+      - name: Merge Markdown files and insert tree image
         run: |
           touch combined.md
-          cat doc/readme.md > combined.md
-          find doc -type f -name "*.md" ! -name "readme.md" ！-name "doc-tree.md" | sort | xargs -I {} sh -c 'cat "$@" >> combined.md' _ {}
+          echo "![](tree.png)" > combined.md
+          cat doc/readme.md >> combined.md
+          find doc -type f -name "*.md" ! -name "readme.md" ! -name "doc-tree.md" | sort | xargs -I {} sh -c 'cat "$@" >> combined.md' _ {}
         
       - name: Convert README.md to README.pdf
         run: pandoc combined.md -o README.pdf --pdf-engine=xelatex
