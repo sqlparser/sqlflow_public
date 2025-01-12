@@ -35,7 +35,8 @@ jobs:
       
       - name: Merge other Markdown files
         run: |         
-          find doc -type f -name "*.md" ! -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
+          find doc -type f -name "*.md" ! -name "readme.md" | sort | xargs -exec sh -c 'md-to-pdf "$1" > "${1%.md}.pdf"' _ {} 
+
       
       - name: Convert Markdown to PDF
         run: |          
