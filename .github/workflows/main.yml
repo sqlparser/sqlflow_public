@@ -20,19 +20,10 @@ jobs:
         run: |
           sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 
-      - name: Install tree
-        run: |
-          sudo apt-get install -y tree
-          
-      - name: Generate directory tree for doc
-        run: |
-          tree doc -I '.git' > doc-tree.md
-      
       - name: Merge Markdown files
         run: |
           touch combined.md
           cat doc/readme.md > combined.md
-          cat doc-tree.md > combined.md
           find doc -type f -name "*.md" ! -name "readme.md" ！-name "doc-tree.md" | sort | xargs -I {} sh -c 'cat "$@" >> combined.md' _ {}
         
       - name: Convert README.md to README.pdf
