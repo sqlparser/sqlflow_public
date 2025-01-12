@@ -37,10 +37,14 @@ jobs:
         run: |          
           find doc -type f -name "*.md" ! -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
       
-      - name: Upload PDF
+      - name: Convert Markdown to PDF
+        run: |
+           find doc -name "*.md" -exec sh -c 'md-to-pdf "$1" > "${1%.md}.pdf"' _ {} \;
+      
+      - name: Upload PDFs
         uses: actions/upload-artifact@v4
         with:
           name: documentation-pdfs
-          path: README.md
+          path: doc/**/*.pdf
 
 
