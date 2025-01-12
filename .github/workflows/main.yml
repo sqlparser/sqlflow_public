@@ -18,8 +18,15 @@ jobs:
       
       - name: Install pandoc and LaTeX
         run: |
-          sudo apt-get update
           sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+
+      - name: Install tree
+        run: |
+          sudo apt-get install -y tree
+          
+      - name: Generate directory tree for doc
+        run: |
+          tree doc -I '.git' > doc-tree.txt
       
       - name: Merge Markdown files
         run: |
@@ -34,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: documentation-pdfs
-          path: README.pdf
+          path: doc-tree.txt
