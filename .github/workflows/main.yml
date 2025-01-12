@@ -23,7 +23,10 @@ jobs:
       
       - name: Install md-to-pdf
         run: npm install -g md-to-pdf
-      
+
+      - name: Set Puppeteer options
+        run: echo "PUPPETEER_LAUNCH_OPTIONS={\"args\":[\"--no-sandbox\",\"--disable-setuid-sandbox\"]}" >> $GITHUB_ENV
+
       - name: Convert Markdown to PDF
         run: |
            find doc -name "*.md" -exec sh -c 'md-to-pdf "$1" > "${1%.md}.pdf"' _ {} \;
