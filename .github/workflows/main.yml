@@ -40,12 +40,19 @@ jobs:
           cat tree.md >> combined.md
           echo "" >> combined.md
           
-          # Find and sort README.md files first
-          find doc -type f -name "readme.md" | sort | while read -r file; do
+          # Find and sort README.md files first, excluding doc/readme.md
+          find doc -type f -name "readme.md" ! -path "doc/readme.md" | sort | while read -r file; do
             echo "Processing $file"
             cat "$file" >> combined.md
             echo "" >> combined.md
           done
+          
+          # Add doc/readme.md after other README.md files
+          if [ -f "doc/readme.md" ]; then
+            echo "Processing doc/readme.md"
+            cat "doc/readme.md" >> combined.md
+            echo "" >> combined.md
+          fi
           
           # Find and sort other .md files
           find doc -type f -name "*.md" ! -name "readme.md" ! -name "doc-tree.md" | sort | while read -r file; do
@@ -53,6 +60,7 @@ jobs:
             cat "$file" >> combined.md
             echo "" >> combined.md
           done
+          
       - name: Convert README.md to README.pdf
         run: pandoc combined.md -o README.pdf --pdf-engine=xelatex
       
