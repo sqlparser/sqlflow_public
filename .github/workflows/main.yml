@@ -25,7 +25,7 @@ jobs:
           find doc -type f -name "*.md" ! -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
       
       - name: Convert README.md to README.pdf
-        run: markdown-pdf README.md -o README.pdf
+        run: markdown-pdf -p A4 -m 2cm README.md -o README.pdf
       
       - name: Upload PDF
         uses: actions/upload-artifact@v4
