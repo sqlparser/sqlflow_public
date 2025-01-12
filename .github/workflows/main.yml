@@ -15,6 +15,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          
+      - name: Install dependencies for md-to-pdf
+        run: |       
+          sudo apt-get update
+          sudo apt-get install -y libnss3 libatk-bridge2.0-0 libdrm2 libgbm1 libgtk-3-0 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libxshmfence1 libxtst6    
       
       - name: Install md-to-pdf
         run: npm install -g md-to-pdf
