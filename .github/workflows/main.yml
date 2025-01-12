@@ -17,20 +17,22 @@ jobs:
           node-version: '20'
       
       - name: Install dependencies
-        run: npm install puppeteer markdown-it markdown-it-pdf
+        run: npm install puppeteer markdown-it
       
       - name: Merge Markdown files
         run: |
           find doc -type f -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
           find doc -type f -name "*.md" ! -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
       
-      - name: Convert README.md to README.pdf
+      - name: Convert README.md to README.html
+        run: npx markdown-it README.md -o README.html
+      
+      - name: Convert README.html to README.pdf
         run: |
-          npx markdown-it README.md -o README.html
           npx puppeteer --headless --disable-gpu --print-to-pdf=README.pdf README.html
       
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
           name: documentation-pdfs
-          path: README.md
+          path: README.pdf
