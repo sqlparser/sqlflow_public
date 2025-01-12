@@ -21,11 +21,11 @@ jobs:
       
       - name: Merge Markdown files
         run: |
-          find doc -type f -name "*.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
+          sudo find doc -type f -name "*.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
       
       - name: Convert Markdown to PDF
         run: |
-          md-to-pdf README.md > README.pdf
+          sudo md-to-pdf README.md > README.pdf
       
       - name: Upload PDF
         uses: actions/upload-artifact@v4
