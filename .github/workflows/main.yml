@@ -10,28 +10,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: Install md-to-pdf
-        run: npm install -g md-to-pdf@5.5.0
-
+      
+      - name: Install pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+      
+      - name: Install wkhtmltopdf
+        run: |
+          wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+          sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
+          sudo apt-get install -f
+      
+      - name: Find readme.md path
+        id: find_readme
+        run: |
+          README_PATH=$(find . -name "readme.md" | head -n 1)
+          echo "README_PATH=$README_PATH" >> $GITHUB_ENV
+      
+      - name: Merge readme.md first
+        run: |
+          if [ -n "$README_PATH" ]; then
+            cat "$README_PATH" > README.md
+          else
+            echo "readme.md not found"
+          fi
+      
       - name: Merge other Markdown files
-        run: |          
-          find doc -type f -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
+        run: |
           find doc -type f -name "*.md" ! -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
       
-      - name: Convert Markdown to PDF
+      - name: Generate PDF
         run: |
-          md-to-pdf README.md
+          pandoc README.md -o README.html
+          wkhtmltopdf README.html README.pdf
       
-      - name: Upload PDFs
+      - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
           name: documentation-pdfs
-          path: doc/**/*.pdf
-
-
+          path: README.pdf
