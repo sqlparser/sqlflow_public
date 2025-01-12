@@ -24,7 +24,7 @@ jobs:
       - name: Generate documentation tree image
         run: |
           tree doc -I 'node_modules|.git' -L 2 -o tree.txt
-          enscript -p - tree.txt | convert -density 150 - tree.png
+          enscript -f Courier-Bold10 -p - tree.txt | convert -density 150 - tree.png
       
       - name: Merge Markdown files and insert tree image
         run: |
