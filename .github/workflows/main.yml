@@ -45,7 +45,7 @@ jobs:
           
       - name: Convert Markdown to PDF
         run: |          
-          md-to-pdf README.md > README.pdf
+          find doc -name "README.md" -exec sh -c 'md-to-pdf "$1" > "${1%.md}.pdf"' _ {} \;
       
       - name: Upload PDF
         uses: actions/upload-artifact@v4
