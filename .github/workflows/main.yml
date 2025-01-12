@@ -10,15 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
+
       - name: Install md-to-pdf
         run: npm install -g md-to-pdf
-      
+
       - name: Merge Markdown files
         run: |
           find doc -type f -name "*.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
