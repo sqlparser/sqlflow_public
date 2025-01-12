@@ -23,11 +23,12 @@ jobs:
       
       - name: Merge Markdown files
         run: |
-          find doc -type f -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
-          find doc -type f -name "*.md" ! -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
-          
+          touch combined.md
+          cat doc/readme.md > combined.md
+          find doc -type f -name "*.md" ! -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> combined.md' _ {}
+        
       - name: Convert README.md to README.pdf
-        run: pandoc README.md -o README.pdf --pdf-engine=xelatex
+        run: pandoc combined.md -o README.pdf --pdf-engine=xelatex
       
       - name: Upload PDF
         uses: actions/upload-artifact@v4
