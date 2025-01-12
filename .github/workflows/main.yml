@@ -4,14 +4,14 @@ on:
     branches: [ pdf ]
     # paths:
     #   - 'doc/**'  # Trigger when docs are updated
-    
+
 jobs:
   convert_to_pdf:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup mdPDF
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -19,12 +19,16 @@ jobs:
       - name: Install md-to-pdf
         run: npm install -g md-to-pdf
       
+      - name: Merge Markdown files
+        run: |
+          find doc -type f -name "*.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
+      
       - name: Convert Markdown to PDF
         run: |
-           find doc -name "*.md" -exec sh -c 'md-to-pdf "$1" > "${1%.md}.pdf"' _ {} \;
+          sudo md-to-pdf README.md > README.pdf
       
-      - name: Upload PDFs
+      - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
           name: documentation-pdfs
-          path: doc/**/*.pdf
+          path: README.pdf
