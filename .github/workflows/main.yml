@@ -22,9 +22,13 @@ jobs:
           sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra tree
       
       - name: Generate documentation tree in Markdown
-        run: |
-          tree doc -I 'node_modules|.git' -L 2 --noreport --charset ascii --prune --matchdirs --ignore-case -P '!*.md|!*.docx' > tree.md
+        run: |          
+          tree doc -I 'node_modules|.git' -L 2 --noreport --charset ascii > tree.md
       
+      - name: Remove file extensions from tree.md
+        run: |          
+          sed -i 's/\(.*\)\.[^.]*$/\1/' tree.md
+        
       - name: Format tree.md for Markdown
         run: |          
           sed -i 's/^/    /' tree.md 
