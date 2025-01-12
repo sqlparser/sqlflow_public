@@ -21,7 +21,8 @@ jobs:
 
       - name: Merge Markdown files
         run: |
-          find doc -type f -name "*.md" | sort | xargs -I {} sh -c 'cat "$1" >> README.md' _ {}
+          cat doc/README.md > README.md
+          find doc -type f -name "*.md" ! -name "README.md" | sort | xargs -I {} sh -c 'cat "$1" >> README.md' _ {}
       
       - name: Upload PDF
         uses: actions/upload-artifact@v4
