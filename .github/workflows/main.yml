@@ -19,17 +19,18 @@ jobs:
       - name: Install pandoc and LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra tree enscript imagemagick
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra tree
       
-      - name: Generate documentation tree image
+      - name: Generate documentation tree in Markdown
         run: |
-          tree doc -I 'node_modules|.git' -L 2 -o tree.txt
-          enscript -f Courier-Bold10 -p - tree.txt | convert -density 150 - tree.png
+          tree doc -I 'node_modules|.git' -L 2 -o tree.md --charset ascii
       
-      - name: Merge Markdown files and insert tree image
+      - name: Merge Markdown files and insert tree
         run: |
           touch combined.md
-          echo "![](tree.png)" > combined.md
+          echo "# Document Structure" > combined.md
+          cat tree.md >> combined.md
+          echo "" >> combined.md
           cat doc/readme.md >> combined.md
           find doc -type f -name "*.md" ! -name "readme.md" ! -name "doc-tree.md" | sort | xargs -I {} sh -c 'cat "$@" >> combined.md' _ {}
         
@@ -40,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: documentation-pdfs
-          path: tree.txt
+          path: README.pdf
