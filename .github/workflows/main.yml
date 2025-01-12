@@ -23,8 +23,8 @@ jobs:
       
       - name: Generate documentation tree in Markdown
         run: |
-          tree doc -I 'node_modules|.git' -L 2 --noreport --charset ascii --prune --matchdirs --ignorecase -P '!*.md|!*.docx' > tree.md
-          
+          tree doc -I 'node_modules|.git' -L 2 --noreport --charset ascii --prune --matchdirs --ignore-case -P '!*.md|!*.docx' > tree.md
+      
       - name: Format tree.md for Markdown
         run: |          
           sed -i 's/^/    /' tree.md 
