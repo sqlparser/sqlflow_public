@@ -25,7 +25,7 @@ jobs:
       
       - name: Convert Markdown to PDF
         run: |
-          md-to-pdf README.md --no-sandbox -o README.pdf
+          md-to-pdf README.md -o README.pdf
       
       - name: Upload PDFs
         uses: actions/upload-artifact@v4
