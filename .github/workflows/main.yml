@@ -19,12 +19,12 @@ jobs:
       - name: Install pandoc and LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra tree imagemagick
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra tree enscript imagemagick
       
       - name: Generate documentation tree image
         run: |
           tree doc -I 'node_modules|.git' -L 2 -o tree.txt
-          convert -density 150 tree.txt -trim tree.png
+          enscript -p - tree.txt | convert -density 150 - tree.png
       
       - name: Merge Markdown files and insert tree image
         run: |
