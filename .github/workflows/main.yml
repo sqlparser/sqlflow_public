@@ -16,8 +16,10 @@ jobs:
         with:
           node-version: '20'
       
-      - name: Install dependencies
-        run: npm install -g markdown-pdf puppeteer
+      - name: Install pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
       
       - name: Merge Markdown files
         run: |
@@ -25,7 +27,7 @@ jobs:
           find doc -type f -name "*.md" ! -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
       
       - name: Convert README.md to README.pdf
-        run: markdown-pdf -p A4 -m 2cm README.md -o README.pdf
+        run: pandoc README.md -o README.pdf
       
       - name: Upload PDF
         uses: actions/upload-artifact@v4
