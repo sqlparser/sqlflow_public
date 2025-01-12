@@ -17,7 +17,7 @@ jobs:
           node-version: '20'
 
       - name: Install md-to-pdf
-        run: npm install -g md-to-pdf
+        run: npm install -g md-to-pdf@5.5.0
 
       - name: Merge other Markdown files
         run: |          
