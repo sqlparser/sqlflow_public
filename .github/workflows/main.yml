@@ -25,12 +25,6 @@ jobs:
         run: |
           find doc -type f -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
           find doc -type f -name "*.md" ! -name "readme.md" | sort | xargs -I {} sh -c 'cat "$@" >> README.md' _ {}
-      
-      - name: Upload md
-        uses: actions/upload-artifact@v4
-        with:
-          name: documentation-pdfs
-          path: README.md
           
       - name: Convert README.md to README.pdf
         run: pandoc README.md -o README.pdf --pdf-engine=xelatex
