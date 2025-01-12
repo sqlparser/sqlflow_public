@@ -40,21 +40,21 @@ jobs:
           cat tree.md >> combined.md
           echo "" >> combined.md
           
-          # Find and sort README.md files first, excluding doc/readme.md
-          find doc -type f -name "readme.md" ! -path "doc/readme.md" | sort | while read -r file; do
-            echo "Processing $file"
-            cat "$file" >> combined.md
-            echo "" >> combined.md
-          done
-          
-          # Add doc/readme.md after other README.md files
+           # Insert doc/readme.md first
           if [ -f "doc/readme.md" ]; then
             echo "Processing doc/readme.md"
             cat "doc/readme.md" >> combined.md
             echo "" >> combined.md
           fi
           
-          # Find and sort other .md files
+          # Find and sort other README.md files (excluding doc/readme.md)
+          find doc -type f -name "readme.md" ! -path "doc/readme.md" | sort | while read -r file; do
+            echo "Processing $file"
+            cat "$file" >> combined.md
+            echo "" >> combined.md
+          done
+          
+          # Find and sort other .md files (excluding readme.md and doc-tree.md)
           find doc -type f -name "*.md" ! -name "readme.md" ! -name "doc-tree.md" | sort | while read -r file; do
             echo "Processing $file"
             cat "$file" >> combined.md
