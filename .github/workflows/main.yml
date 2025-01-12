@@ -21,7 +21,7 @@ jobs:
       
       - name: Merge Markdown files
         run: |
-            cat readme.md > combined.md
+            cat doc/readme.md > combined.md
             find doc -type f -name "*.md" ! -name "README.md" | sort | xargs -I {} sh -c 'cat "$@" >> combined.md' _ {}
             
       - name: Convert Markdown to PDF
