@@ -18,6 +18,16 @@ The total number of rows of the select list is impacted by the value of column `
 scott.emp.sal -> indirect -> RS-1.RelationRows
 ```
 
+if you want to filter the relation types to only include the direct dataflows, you can use the following option:
+
+```
+option.filterRelationTypes("fdd");
+```
+
+This will only show the direct dataflows in the result which doesn't include the indirect dataflows in where clause.
+
+
+
 ![image.png](https://images.gitee.com/uploads/images/2021/1206/120228_c087c542_8136809.png)
 
 ### 2. COUNT()
