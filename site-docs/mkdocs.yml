@@ -1,0 +1,50 @@
+    # Project information
+    site_name: Gudu GSP and SQLFlow Docs
+    site_url: https://sqlparse.github.io/sqlflow_public/ # IMPORTANT: Update this later!
+    site_author: James
+    site_description: >-
+      A short description of your project documentation.
+
+    # Repository
+    repo_name: 'sqlparser/sqlflow_public' # IMPORTANT: Update this later!
+    repo_url: https://github.com/sqlparser/sqlflow_public/ # IMPORTANT: Update this later!
+    # edit_uri: edit/main/docs/ # Optional: Link to edit pages directly on GitHub
+
+    # Copyright
+    # copyright: Copyright &copy; 2023 Your Name
+
+    # Theme configuration
+    theme:
+      name: material
+      # Optional features - see Material for MkDocs documentation for many more
+      features:
+        - navigation.tabs # Use tabs for top-level sections
+        - navigation.sections # Expand sections in the side nav
+        - toc.integrate # Show table of contents on the left
+        - navigation.top # Back-to-top button
+        - search.suggest # Search autocompletion
+        - content.code.copy # Copy button for code blocks
+      # palette: # Optional color scheme customization
+      #   scheme: default
+      #   primary: indigo
+      #   accent: indigo
+
+    # Extensions (built-in)
+    markdown_extensions:
+      - pymdownx.highlight: # Code highlighting
+          anchor_linenums: true
+      - pymdownx.inlinehilite
+      - pymdownx.snippets # Include content from other files
+      - pymdownx.superfences # Nicer code blocks
+      - admonition # Admonition blocks (note, warning, etc.)
+      - toc:
+          permalink: true # Add anchor links to headings
+
+    # Navigation structure (optional but recommended)
+    nav:
+      - Home: index.md
+      - Getting Started: getting-started.md
+      # Add more pages or sections here
+      # - Section:
+      #   - Page 1: section/page1.md
+      #   - Page 2: section/page2.md

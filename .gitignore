@@ -24,3 +24,21 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+# Python virtual environments
+venv/
+.venv/
+env/
+.env/
+*/venv/    # Ignore venv directories in any subdirectory too (optional)
+*/.venv/   # Ignore .venv directories in any subdirectory too (optional)
+
+site/
+.cache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.pyzw
