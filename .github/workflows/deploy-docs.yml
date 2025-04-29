@@ -1,4 +1,4 @@
-name: Deploy Documentation to GitHub Pages
+name: Deploy GSP and SQLFlow Documentation to GitHub Pages
 
 on:
   # Trigger the workflow on push events to the main branch
