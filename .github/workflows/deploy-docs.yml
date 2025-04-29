@@ -4,7 +4,7 @@ on:
   # Trigger the workflow on push events to the main branch
   push:
     branches:
-      - master
+      - release/docs
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 

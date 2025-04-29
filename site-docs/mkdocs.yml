@@ -1,17 +1,16 @@
     # Project information
-    site_name: Gudu GSP and SQLFlow Docs
-    site_url: https://sqlparse.github.io/sqlflow_public/ # IMPORTANT: Update this later!
-    site_author: James
-    site_description: >-
-      A short description of your project documentation.
+    site_name: GSP Documentation
+    site_url: https://sqlparser.github.io/sqlflow_public/
+    site_author: GSP Team
+    site_description: Comprehensive documentation for GSP (Generic SQL Parser)
 
     # Repository
-    repo_name: 'sqlparser/sqlflow_public' # IMPORTANT: Update this later!
-    repo_url: https://github.com/sqlparser/sqlflow_public/ # IMPORTANT: Update this later!
-    # edit_uri: edit/main/docs/ # Optional: Link to edit pages directly on GitHub
+    repo_name: sqlparser/sqlflow_public
+    repo_url: https://github.com/sqlparser/sqlflow_public/
+    edit_uri: edit/release_docs/site-docs/docs/
 
     # Copyright
-    # copyright: Copyright &copy; 2023 Your Name
+    copyright: Copyright &copy; 2023-2025 GSP Team
 
     # Theme configuration
     theme:
@@ -24,10 +23,10 @@
         - navigation.top # Back-to-top button
         - search.suggest # Search autocompletion
         - content.code.copy # Copy button for code blocks
-      # palette: # Optional color scheme customization
-      #   scheme: default
-      #   primary: indigo
-      #   accent: indigo
+      palette:
+        scheme: default
+        primary: indigo
+        accent: indigo
 
     # Extensions (built-in)
     markdown_extensions:
@@ -43,8 +42,13 @@
     # Navigation structure (optional but recommended)
     nav:
       - Home: index.md
-      - Getting Started: getting-started.md
-      # Add more pages or sections here
-      # - Section:
-      #   - Page 1: section/page1.md
-      #   - Page 2: section/page2.md
+      - Product Introduction:
+        - Overview: features/product-introduction.md
+      - Tutorials:
+        - Getting Started: tutorials/getting-started.md
+      - Reference:
+        - SQL Syntax Support:
+          - Overview: reference/sql-support/index.md
+        - SQL Parsing Analysis:
+          - Overview: reference/sql-analysis/index.md
+        - Java API: reference/javadoc/index.html
