@@ -1,4 +1,4 @@
-# GSP Documentation
+# GSP and SQLFlow Documentation
 
 Welcome to the GSP (Generic SQL Parser) documentation. This site provides comprehensive information about GSP's features, capabilities, and usage.
 
