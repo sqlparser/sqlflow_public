@@ -32,7 +32,7 @@ env/
 */venv/    # Ignore venv directories in any subdirectory too (optional)
 */.venv/   # Ignore .venv directories in any subdirectory too (optional)
 
-site/
+./site-docs/site
 .cache/
 __pycache__/
 *.pyc

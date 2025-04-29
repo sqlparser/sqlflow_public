@@ -38,7 +38,7 @@ jobs:
           cache: 'pip' # Cache pip dependencies
 
       - name: Install dependencies
-        run: pip install mkdocs mkdocs-material # Add any other mkdocs plugins here
+        run: pip install -r requirements.txt # Install from requirements.txt 
 
       # --- !!! ---
       # Add steps here to generate automatic content if needed
@@ -52,13 +52,14 @@ jobs:
       # --- !!! ---
 
       - name: Build MkDocs site
+        working-directory: ./site-docs
         run: mkdocs build --verbose # Build into the 'site' directory
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3 # Use updated action
         with:
           # Upload entire site directory built by mkdocs
-          path: './site'
+          path: './site-docs/site'
 
   # Deployment job
   deploy:
