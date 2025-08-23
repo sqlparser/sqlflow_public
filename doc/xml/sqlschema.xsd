@@ -1,0 +1,2147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.sqlparser.com/xml/sqlschema/1.0"
+    xmlns="http://www.sqlparser.com/xml/sqlschema/1.0" version="1.0">
+
+    <xs:element name="sqlscript">
+        <xs:annotation>
+            <xs:documentation>root element</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="statement" type="statement_type" minOccurs="0"
+                    maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="dbvendor" type="xs:string"/>
+            <xs:attribute name="stmt_count" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="statement_type">
+        <xs:choice>
+            <xs:element ref="alter_table_statement"/>
+            <xs:element ref="assignment_statement"/>
+            <xs:element ref="block_statement"/>
+            <xs:element ref="constant_declaration_statement"/>
+            <xs:element ref="close_statement"/>
+            <xs:element ref="continue_statement"/>
+            <xs:element ref="comment_on_statement"/>
+            <xs:element ref="cursor_declaration_statement"/>
+            <xs:element ref="create_database_statement"/>
+            <xs:element ref="create_table_statement"/>
+            <xs:element ref="create_view_statement"/>
+            <xs:element ref="create_index_statement"/>
+            <xs:element ref="create_function_statement"/>
+            <xs:element ref="create_materialize_view_statement"/>
+            <xs:element ref="create_procedure_statement"/>
+            <xs:element ref="create_package_statement"/>
+            <xs:element ref="create_package_body_statement"/>
+            <xs:element ref="create_schema_statement"/>
+            <xs:element ref="create_sequence_statement"/>
+            <xs:element ref="create_synonym_statement"/>
+            <xs:element ref="create_trigger_statement"/>
+            <xs:element ref="create_type_statement"/>
+            <xs:element ref="create_type_body_statement"/>
+            <xs:element ref="create_xml_schema_collection_statement"/>
+            <xs:element ref="exception_declaration_statement"/>
+            <xs:element ref="execute_immediate_statement"/>
+            <xs:element ref="exit_statement"/>
+            <xs:element ref="declare_incomplete_object_type"/>
+            <xs:element ref="declare_nested_table_type"/>
+            <xs:element ref="declare_object_type"/>
+            <xs:element ref="declare_variable_statement"/>
+            <xs:element ref="declare_varray_type"/>
+            <xs:element ref="delete_statement"/>
+            <xs:element ref="drop_table_statement"/>
+            <xs:element ref="execute_statement"/>
+            <xs:element ref="fetch_statement"/>
+            <xs:element ref="forall_statement"/>
+            <xs:element ref="function_declare_statement"/>
+            <xs:element ref="function_specification_statement"/>
+            <xs:element ref="go_statement"/>
+            <xs:element ref="goto_statement"/>
+            <xs:element ref="if_statement"/>
+            <xs:element ref="insert_statement"/>
+            <xs:element ref="loop_statement"/>
+            <xs:element ref="merge_statement"/>
+            <xs:element ref="mssql_create_type"/>
+            <xs:element ref="mssql_set_command"/>
+            <xs:element ref="mssql_set_variable_statement"/>
+            <xs:element ref="open_statement"/>
+            <xs:element ref="open_for_statement"/>
+            <xs:element ref="oracle_create_type_statement"/>
+            <xs:element ref="plsql_block_statement"/>
+            <xs:element ref="plsql_null_statement"/>
+            <xs:element ref="plsql_basic_statement"/>
+            <xs:element ref="procedure_declare_statement"/>
+            <xs:element ref="procedure_specification_statement"/>
+            <xs:element ref="raise_statement"/>
+            <xs:element ref="record_type_definition_statement"/>
+            <xs:element ref="ref_cursor_type_definition_statement"/>
+            <xs:element ref="return_statement"/>
+            <xs:element ref="select_statement"/>
+            <xs:element ref="sqlplus_command"/>
+            <xs:element ref="subtype_definition_statement"/>
+            <xs:element ref="truncate_table_statement"/>
+            <xs:element ref="update_statement"/>
+            <xs:element ref="use_database_statement"/>
+            <xs:element ref="variable_declaration_statement"/>
+            <xs:element ref="while_statement"/>
+            <xs:element ref="mdx_select"/>
+        </xs:choice>
+        <xs:attribute name="type" type="xs:string"/>
+    </xs:complexType>
+
+
+    <xs:element name="comment_on_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="object_name" type="objectName_type"/>
+                <xs:element name="comment_message" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="object_type" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="oracle_create_type_statement">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="declare_nested_table_type"/>
+                <xs:element ref="declare_varray_type"/>
+                <xs:element ref="declare_incomplete_object_type"/>
+                <xs:element ref="declare_object_type"/>
+            </xs:choice>
+            <xs:attribute name="createdType" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="declare_object_type">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="type_name" type="objectName_type"/>
+                <xs:element ref="attribute_type" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="supertype" type="objectName_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="attribute_type">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="attribute_name" type="objectName_type"/>
+                <xs:element name="datatype" type="datatype_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="declare_incomplete_object_type">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="type_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="declare_nested_table_type">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="type_name" type="objectName_type"/>
+                <xs:element name="element_type" type="datatype_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="declare_varray_type">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="type_name" type="objectName_type"/>
+                <xs:element name="element_type" type="datatype_type"/>
+                <xs:element name="size_limit" type="xs:integer"/>
+            </xs:sequence>
+            <xs:attribute name="notnull" type="xs:boolean"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="mssql_set_variable_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="variable_name" type="objectName_type"/>
+                <xs:element name="variable_value" type="expression_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="mssql_set_command" type="xs:string"/>
+
+    <xs:element name="mssql_create_type">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="type_name" type="objectName_type"/>
+                <xs:element name="base_type" type="datatype_type" minOccurs="0"/>
+                <xs:element name="external_name" type="objectName_type" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="notnull" type="xs:boolean" use="optional"/>
+            <xs:attribute name="null" type="xs:boolean" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="declare_variable_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="variable" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="variable">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="variable_name" type="objectName_type"/>
+                <xs:element name="datatype" type="datatype_type"/>
+                <xs:element name="default_value" type="expression_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_trigger_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="trigger_name" type="objectName_type"/>
+                <xs:element name="onTable" type="table_reference_type"/>
+                <xs:element name="timing_point" type="xs:string"/>
+                <xs:element name="dml_type" type="xs:string" maxOccurs="unbounded"/>
+                <xs:element name="body_statement_list" type="statement_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="create_xml_schema_collection_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="schema_name" type="objectName_type"/>
+                <xs:element name="expr" type="expression_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_synonym_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="synonym_name" type="objectName_type"/>
+                <xs:element name="for_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_sequence_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sequence_name" type="objectName_type"/>
+            </xs:sequence>
+            <xs:attribute name="start_with" type="xs:integer"/>
+            <xs:attribute name="restart_with" type="xs:integer"/>
+            <xs:attribute name="increment_by" type="xs:integer"/>
+            <xs:attribute name="min_value" type="xs:integer"/>
+            <xs:attribute name="max_value" type="xs:integer"/>
+            <xs:attribute name="cache" type="xs:integer"/>
+            <xs:attribute name="nocache" type="xs:boolean"/>
+            <xs:attribute name="cycle" type="xs:boolean"/>
+            <xs:attribute name="nocycle" type="xs:boolean"/>
+            <xs:attribute name="order" type="xs:boolean"/>
+            <xs:attribute name="noorder" type="xs:boolean"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="execute_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="module_name" type="objectName_type"/>
+                <xs:element name="exec_parameter" type="exec_parameter_type" minOccurs="0"
+                    maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="exec_parameter_type">
+        <xs:sequence>
+            <xs:element name="parameter_name" type="objectName_type" minOccurs="0"/>
+            <xs:element name="parameter_value" type="expression_type"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="create_schema_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="schema_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_database_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="database_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="use_database_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="database_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="alter_table_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="table_name" type="objectName_type"/>
+                <xs:element name="alter_table_option_list" type="alter_table_option_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="alter_table_option_list_type">
+        <xs:sequence>
+            <xs:element name="alter_table_option" type="alter_table_option_type" minOccurs="0"
+                maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="count" use="required" type="xs:integer"/>
+    </xs:complexType>
+
+    <xs:complexType name="alter_table_option_type">
+        <xs:choice>
+            <xs:element ref="add_column_option"/>
+            <xs:element ref="alter_column_option"/>
+            <xs:element ref="drop_column_option"/>
+            <xs:element ref="modify_column_option"/>
+            <xs:element ref="rename_column_option"/>
+            <xs:element ref="add_constraint_option"/>
+            <xs:element ref="switch_partition_option"/>
+            <xs:element ref="not_implemented_option"/>
+        </xs:choice>
+        <xs:attribute name="alter_type" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:element name="not_implemented_option" type="xs:string"/>
+
+
+    <xs:element name="switch_partition_option">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="new_table_name" type="objectName_type"/>
+                <xs:element name="source_partition_number" type="expression_type" minOccurs="0"
+                    maxOccurs="1"/>
+                <xs:element name="target_partition_number" type="expression_type" minOccurs="0"
+                    maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="add_constraint_option">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="constraint" type="constraint_type" minOccurs="0"
+                    maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="rename_column_option">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="column_name" type="objectName_type"/>
+                <xs:element name="new_column_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="alter_column_option">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="column_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="drop_column_option">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="column_name" type="objectName_type" minOccurs="0"
+                    maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="add_column_option">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="column_definition" type="column_definition_type" minOccurs="0"
+                    maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="modify_column_option">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="column_definition" type="column_definition_type" minOccurs="0"
+                    maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_type_body_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="type_name" type="objectName_type"/>
+                <xs:element name="statement_list" type="statement_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_type_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="type_name" type="objectName_type"/>
+                <xs:choice>
+                    <xs:element ref="sqlj_object_type"/>
+                    <xs:element ref="named_varying_array"/>
+                    <xs:element ref="incomplete_type"/>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="sqlj_object_type" type="xs:string"/>
+    <xs:element name="named_varying_array" type="xs:string"/>
+    <xs:element name="incomplete_type" type="xs:string"/>
+
+
+    <xs:element name="create_variable_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="variable_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_alias_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="alias_name" type="objectName_type"/>
+                <xs:choice minOccurs="1">
+                    <xs:element name="table_name" type="objectName_type"/>
+                    <xs:element name="module_name" type="objectName_type"/>
+                    <xs:element name="sequence_name" type="objectName_type"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="object_type" use="required" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="set_database_object_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="object_name" type="objectName_type"/>
+            </xs:sequence>
+            <xs:attribute name="object_type" use="required" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="truncate_table_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="table_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="drop_table_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="table_name" type="objectName_type" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="cursor_declaration_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cursor_name" type="objectName_type"/>
+                <xs:element ref="parameter_declaration_list" minOccurs="0"/>
+                <xs:element name="return_type" type="datatype_type" minOccurs="0"/>
+                <xs:element ref="select_statement"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="plsql_block_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="declaration_section" type="statement_list_type" minOccurs="0"/>
+                <xs:element name="body_statement_list" type="statement_list_type"/>
+                <xs:element ref="exception_clause" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="block_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="body_statement_list" type="statement_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="return_statement">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="expression" type="expression_type" minOccurs="0"/>
+                <xs:element ref="select_statement" minOccurs="0"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="raise_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exception_name" type="objectName_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="open_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cursor_name" type="objectName_type"/>
+                <xs:element name="parameter_list" type="expression_list_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="open_for_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="variable_name" type="objectName_type"/>
+                <xs:element name="dynamic_string" type="xs:string" minOccurs="0"/>
+                <xs:element ref="select_statement" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="continue_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="label_name" type="objectName_type" minOccurs="0"/>
+                <xs:element name="condition" type="expression_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="exit_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="label_name" type="objectName_type" minOccurs="0"/>
+                <xs:element name="condition" type="expression_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="close_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cursor_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="plsql_basic_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="expression" type="expression_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="loop_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="statement_list" type="statement_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="cursor_for_loop_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cursor" type="objectName_type"/>
+                <xs:element name="statement_list" type="statement_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="for_loop_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="statement_list" type="statement_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="while_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="condition" type="expression_type"/>
+                <xs:element name="statement_list" type="statement_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="assignment_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="left" type="expression_type"/>
+                <xs:element name="right" type="expression_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ref_cursor_type_definition_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="type_name" type="objectName_type"/>
+                <xs:element name="datatype" type="datatype_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="parameter_declaration_type">
+        <xs:sequence>
+            <xs:element name="name" type="objectName_type"/>
+            <xs:element name="datatype" type="datatype_type"/>
+            <xs:element name="default_value" type="expression_type" minOccurs="0"/>
+            <xs:element name="mode" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="parameter_declaration_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="parameter_declaration" type="parameter_declaration_type"
+                    minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="record_type_definition_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="type_name" type="objectName_type"/>
+                <xs:element ref="field_declaration_list"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="field_declaration_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="record_field_declaration" type="parameter_declaration_type"
+                    maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="subtype_definition_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="subtype_name" type="objectName_type"/>
+                <xs:element name="datatype" type="datatype_type"/>
+                <xs:element name="default_value" type="expression_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="constant_declaration_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="constant_name" type="objectName_type"/>
+                <xs:element name="datatype" type="datatype_type"/>
+                <xs:element name="default_value" type="expression_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="variable_declaration_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="variable_name" type="objectName_type"/>
+                <xs:element name="datatype" type="datatype_type"/>
+                <xs:element name="default_value" type="expression_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="exception_declaration_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exception_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_package_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="package_name" type="objectName_type"/>
+                <xs:element name="end_package_name" type="objectName_type" minOccurs="0"/>
+                <xs:element name="declare_section" type="statement_list_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_package_body_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="package_name" type="objectName_type"/>
+                <xs:element name="end_package_name" type="objectName_type" minOccurs="0"/>
+                <xs:element name="declare_section" type="statement_list_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="statement_list_type">
+        <xs:sequence>
+            <xs:element name="statement" type="statement_type" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="count" use="required" type="xs:integer"/>
+    </xs:complexType>
+
+
+
+
+    <xs:element name="sqlplus_command" type="xs:string"/>
+
+    <xs:element name="create_table_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="table_name" type="table_reference_type"/>
+                <xs:element name="column_definition_list" type="column_definition_list_type"
+                    minOccurs="0"/>
+                <xs:element name="table_constraint_list" type="constraint_list_type" minOccurs="0"/>
+                <xs:element name="subquery" type="query_expression_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_index_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="index_name" type="objectName_type"/>
+                <xs:element name="on_name" type="objectName_type"/>
+                <xs:element name="column_with_sort_list" type="column_with_sort_list_type"/>
+            </xs:sequence>
+            <xs:attribute name="clustered" use="optional" type="xs:boolean"/>
+            <xs:attribute name="unique" use="optional" type="xs:boolean"/>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="create_materialize_view_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="view_name" type="objectName_type"/>
+                <xs:element name="column_list" type="objectName_list_type" minOccurs="0"/>
+                <xs:element ref="select_statement"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_view_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="view_name" type="objectName_type"/>
+                <xs:element name="column_list" type="objectName_list_type" minOccurs="0"/>
+                <xs:element name="table_constraint_list" type="constraint_list_type" minOccurs="0"/>
+                <xs:element ref="select_statement"/>
+            </xs:sequence>
+            <xs:attribute name="schemabinding" use="optional" type="xs:boolean"/>
+            <xs:attribute name="encryption" use="optional" type="xs:boolean"/>
+            <xs:attribute name="view_metadata" use="optional" type="xs:boolean"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="column_definition_list_type">
+        <xs:sequence>
+            <xs:element name="column_definition" type="column_definition_type" maxOccurs="unbounded"
+            />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="column_definition_type">
+        <xs:sequence>
+            <xs:element name="column_name" type="objectName_type"/>
+            <xs:element name="datatype" type="datatype_type" minOccurs="0"/>
+            <xs:element name="column_constraint_list" type="constraint_list_type" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="nullable" use="required" type="xs:boolean"/>
+    </xs:complexType>
+
+    <xs:complexType name="constraint_list_type">
+        <xs:sequence>
+            <xs:element name="constraint" type="constraint_type" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="column_with_sort_list_type">
+        <xs:sequence>
+            <xs:element name="column_with_sort" type="column_with_sort_type" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="column_with_sort_type">
+        <xs:sequence>
+            <xs:element name="column_expr" type="expression_type"/>
+        </xs:sequence>
+        <xs:attribute name="sort_order" use="required" type="sort_order_type"/>
+    </xs:complexType>
+
+
+    <xs:simpleType name="sort_order_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="asc"/>
+            <xs:enumeration value="desc"/>
+            <xs:enumeration value="none"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="constraintColumn_type">
+        <xs:attribute name="name" use="required" type="xs:string"/>
+        <xs:attribute name="sort_order" use="optional" type="sort_order_type"/>
+    </xs:complexType>
+
+    <xs:complexType name="constraint_type">
+        <xs:sequence>
+            <xs:element name="column" maxOccurs="unbounded" minOccurs="0"
+                type="constraintColumn_type"/>
+        </xs:sequence>
+        <xs:attribute name="name" use="optional" type="xs:string"/>
+        <xs:attribute name="type" use="required" type="xs:string"/>
+        <xs:attribute name="clustered" use="required" type="xs:boolean"/>
+        <xs:attribute name="nonclustered" use="optional" type="xs:boolean"/>
+        <xs:attribute name="fillFactor" use="optional" type="xs:integer"/>
+        <xs:attribute name="padIndex" use="optional" type="xs:boolean"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="check_constriant_type">
+        <xs:complexContent>
+            <xs:extension base="constraint_type">
+                <xs:sequence>
+                    <xs:element name="check_condition" type="expression_type"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="default_constriant_type">
+        <xs:complexContent>
+            <xs:extension base="constraint_type">
+                <xs:sequence>
+                    <xs:element name="default_value" type="expression_type"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="foreign_key_constriant_type">
+        <xs:complexContent>
+            <xs:extension base="constraint_type">
+                <xs:sequence>
+                    <xs:element name="referenced_table" type="objectName_type"/>
+                    <xs:element name="referenced_column" maxOccurs="unbounded" minOccurs="0"
+                        type="constraintColumn_type"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="unqiue_constriant_type">
+        <xs:complexContent>
+            <xs:extension base="constraint_type">
+                <xs:attribute name="is_primary_key" use="required" type="xs:boolean"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="update_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cte_list" type="cte_list_type" minOccurs="0"/>
+                <xs:element name="target_table" type="table_reference_type"/>
+                <xs:element name="set_clause" type="expression_type" maxOccurs="unbounded"/>
+                <xs:element ref="from_clause" minOccurs="0"/>
+                <xs:element ref="where_clause" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="delete_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cte_list" type="cte_list_type" minOccurs="0"/>
+                <xs:element name="top_clause" type="top_row_filter_type" minOccurs="0"/>
+                <xs:element name="target_table" type="table_reference_type"/>
+                <xs:element ref="from_clause" minOccurs="0"/>
+                <xs:element ref="where_clause" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="cte_list_type">
+        <xs:sequence>
+            <xs:element name="cte" type="cte_type" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cte_type">
+        <xs:sequence>
+            <xs:element name="expression_name" type="objectName_type"/>
+            <xs:element name="column_list" type="objectName_list_type" minOccurs="0"/>
+            <xs:choice>
+                <xs:element ref="select_statement"/>
+                <xs:element ref="update_statement"/>
+                <xs:element ref="delete_statement"/>
+                <xs:element ref="insert_statement"/>
+            </xs:choice>
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="select_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cte_list" type="cte_list_type" minOccurs="0"/>
+                <xs:element name="query_expression" type="query_expression_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="merge_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cte_list" type="cte_list_type" minOccurs="0"/>
+                <xs:element name="target_table" type="table_reference_type"/>
+                <xs:element name="source_table" type="table_reference_type"/>
+                <xs:element name="search_condition" type="expression_type"/>
+                <xs:element name="merge_action" type="merge_action_type" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="top_row_filter_type">
+        <xs:sequence>
+            <xs:element name="expression" type="expression_type"/>
+        </xs:sequence>
+        <xs:attribute name="percent" type="xs:boolean"/>
+        <xs:attribute name="with_ties" type="xs:boolean"/>
+    </xs:complexType>
+
+    <xs:complexType name="merge_action_type">
+        <xs:sequence>
+            <xs:element name="search_condition" type="expression_type" minOccurs="0"/>
+            <xs:choice>
+                <xs:element name="merge_update_action" type="merge_update_action_type"/>
+                <xs:element name="merge_insert_action" type="merge_insert_action_type"/>
+                <xs:element name="merge_delete_action" type="xs:string"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="merge_condition" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="merge_update_action_type">
+        <xs:sequence>
+            <xs:element name="assignment_set_clause" type="expression_type" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="merge_insert_action_type">
+        <xs:sequence>
+            <xs:element name="column_list_reference" type="objectName_list_type" minOccurs="0"
+                maxOccurs="unbounded"/>
+            <xs:choice>
+                <xs:element name="row_values" type="expression_list_type" minOccurs="0"
+                    maxOccurs="1"/>
+                <xs:element name="default_values" type="xs:string"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="insert_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cte_list" type="cte_list_type" minOccurs="0"/>
+                <xs:element name="target_table" type="table_reference_type"/>
+                <xs:element name="column_list" type="objectName_list_type" minOccurs="0"
+                    maxOccurs="unbounded"/>
+                <xs:choice>
+                    <xs:element name="insert_values">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="row_values" type="expression_list_type"
+                                    maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="insert_query" type="query_expression_type"/>
+                    <xs:element name="insert_execute">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element ref="execute_statement"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="insertSource" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_procedure_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="procedure_specification_statement"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="create_function_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="function_specification_statement"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="literal_type">
+        <xs:sequence>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="datatype_type">
+        <xs:sequence>
+            <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="xs:string" use="required"/>
+        <xs:attribute name="precision" type="xs:string"/>
+        <xs:attribute name="scale" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="expression_type">
+        <xs:choice>
+            <xs:element name="column_referenced_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="objectName" type="objectName_type"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="constant_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="literal" type="literal_type"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="functionCall_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="functionCall" type="functionCall_type"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="assignment_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="first_expr" type="expression_type" minOccurs="0"/>
+                        <xs:element name="second_expr" type="expression_type" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="subquery_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="query_expression" type="query_expression_type"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="exists_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="query_expression" type="query_expression_type"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="case_expr" type="case_expr_type"/>
+            <xs:element name="comparison_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="expr_list" type="expression_list_type" minOccurs="0"/>
+                        <xs:element name="subquery" type="query_expression_type" minOccurs="0"/>
+                        <xs:element name="first_expr" type="expression_type" minOccurs="0"/>
+                        <xs:element name="second_expr" type="expression_type" minOccurs="0"/>
+                    </xs:sequence>
+                    <xs:attribute name="type" type="xs:string"/>
+                    <xs:attribute name="quantifier" type="xs:string"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="in_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="first_expr" type="expression_type" minOccurs="0"/>
+                        <xs:element name="second_expr" type="expression_type" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="list_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="expression_list" type="expression_list_type" minOccurs="0"
+                        />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="row_constructor_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="expression_list" type="expression_list_type" minOccurs="0"
+                        />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="array_constructor_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="expression_list" type="expression_list_type" minOccurs="0"/>
+                        <xs:element name="query_expression" type="query_expression_type"
+                            minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="like_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="first_expr" type="expression_type"/>
+                        <xs:element name="second_expr" type="expression_type"/>
+                        <xs:element name="third_expr" type="expression_type" minOccurs="0"/>
+                    </xs:sequence>
+                    <xs:attribute name="not" type="xs:boolean"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="between_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="first_expr" type="expression_type"/>
+                        <xs:element name="second_expr" type="expression_type"/>
+                        <xs:element name="third_expr" type="expression_type"/>
+                    </xs:sequence>
+                    <xs:attribute name="not" type="xs:boolean"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="not_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="first_expr" type="expression_type"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="parenthesis_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="first_expr" type="expression_type"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="null_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="first_expr" type="expression_type"/>
+                    </xs:sequence>
+                    <xs:attribute name="not" type="xs:boolean"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="unary_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="first_expr" type="expression_type"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="binary_expr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="first_expr" type="expression_type"/>
+                        <xs:element name="second_expr" type="expression_type"/>
+                    </xs:sequence>
+                    <xs:attribute name="operator" type="xs:string"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="unknown_expr" type="xs:string"/>
+        </xs:choice>
+        <xs:attribute name="expr_type" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="query_expression_type">
+        <xs:sequence>
+            <xs:element name="cte_list" type="cte_list_type" minOccurs="0"/>
+            <xs:choice>
+                <xs:element name="query_specification" type="query_specification_type"/>
+                <xs:element name="binary_query_expression" type="binary_query_expression_type"/>
+                <xs:element name="parenthiesis_query_expression"
+                    type="parenthiesis_query_expression_type"/>
+                <xs:element name="table_value_constructor"/>
+                <xs:element name="explict_table"/>
+            </xs:choice>
+            <xs:element ref="order_by_clause" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="is_parenthesis" type="xs:boolean"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="binary_query_expression_type">
+        <xs:sequence>
+            <xs:element name="first_query_expression" type="query_expression_type"/>
+            <xs:element name="second_query_expression" type="query_expression_type"/>
+        </xs:sequence>
+        <xs:attribute name="set_operator" type="xs:string"/>
+        <xs:attribute name="is_all" type="xs:boolean"/>
+    </xs:complexType>
+
+    <xs:complexType name="parenthiesis_query_expression_type">
+        <xs:sequence>
+            <xs:element name="query_expression" type="query_expression_type"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="order_by_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="order_by_item" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="within_group">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="order_by_clause"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="keep_dense_rank">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="order_by_clause"/>
+            </xs:sequence>
+            <xs:attribute name="first" type="xs:string"/>
+            <xs:attribute name="last" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="order_by_item">
+        <xs:complexType>
+            <xs:choice>
+                <xs:sequence>
+                    <xs:element name="sort_key" type="expression_type"/>
+                    <xs:element name="null_ordering" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+                <xs:element name="order_of" type="xs:string"/>
+                <xs:element name="input_sequence" type="xs:string"/>
+            </xs:choice>
+            <xs:attribute name="sort_order" type="sort_order_type"/>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="query_specification_type">
+        <xs:sequence>
+            <xs:element name="set_quantifier" type="xs:string" minOccurs="0"/>
+            <xs:element ref="distinct_clause" minOccurs="0"/>
+            <xs:element name="select_list" type="select_list_type"/>
+            <xs:element ref="into_clause" minOccurs="0"/>
+            <xs:element ref="from_clause" minOccurs="0"/>
+            <xs:element ref="where_clause" minOccurs="0"/>
+            <xs:element ref="group_by_clause" minOccurs="0"/>
+            <xs:element name="having_clause" type="expression_type" minOccurs="0"/>
+            <xs:element ref="hierarchial_clause" minOccurs="0"/>
+            <xs:element ref="order_by_clause" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:element name="query_specification">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="set_quantifier" type="xs:string" minOccurs="0"/>
+                <xs:element ref="distinct_clause" minOccurs="0"/>
+                <xs:element name="select_list" type="select_list_type"/>
+                <xs:element ref="from_clause" minOccurs="0"/>
+                <xs:element ref="where_clause" minOccurs="0"/>
+                <xs:element ref="group_by_clause" minOccurs="0"/>
+                <xs:element ref="having_clause" minOccurs="0"/>
+                <xs:element ref="order_by_clause" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="distinct_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="on_expression" type="expression_type" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="distinct_type" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="into_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element  name="expression_list" type="expression_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="hierarchial_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="connect_by_clause" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="start_with_clause" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="start_with_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="expression" type="expression_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="connect_by_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="expression" type="expression_type"/>
+            </xs:sequence>
+            <xs:attribute name="nocycle" type="xs:boolean"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="group_by_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="grouping_element" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="grouping_element">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="grouping_expression" type="expression_type"/>
+                <xs:element name="rollup_list" type="expression_list_type"/>
+                <xs:element name="cube_list" type="expression_list_type"/>
+                <xs:element ref="grouping_sets_specification"/>
+                <xs:element name="grand_total" type="xs:string"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="grouping_sets_specification">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="grouping_set_item" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="grouping_set_item">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="grouping_expression" type="expression_type"/>
+                <xs:element name="rollup_list" type="expression_list_type"/>
+                <xs:element name="cube_list" type="expression_list_type"/>
+                <xs:element name="grand_total" type="xs:string"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="expression_list_type">
+        <xs:sequence>
+            <xs:element name="expression" type="expression_type" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="objectName_list_type">
+        <xs:sequence>
+            <xs:element name="objectName" type="objectName_type" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="from_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="table_reference" type="table_reference_type" maxOccurs="unbounded"
+                />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="table_reference_type">
+        <xs:sequence>
+            <xs:choice>
+                <xs:element name="named_table_reference" type="named_table_reference_type"/>
+                <xs:element name="expr_table_reference" type="expr_table_reference_type"/>
+                <xs:element name="query_table_reference" type="query_table_reference_type"/>
+                <xs:element name="functionCall_table_reference"
+                    type="functionCall_table_reference_type"/>
+                <xs:element name="pivoted_table_reference" type="pivoted_table_reference_type"/>
+                <xs:element name="single_table_reference" type="single_table_reference_type"/>
+                <xs:element name="joined_table" type="joined_table_type"/>
+                <xs:element name="not_decode_reference" type="xs:string"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="type" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="functionCall_table_reference_type">
+        <xs:sequence>
+            <xs:element name="func_expr" type="functionCall_type"/>
+            <xs:element name="alias_clause" type="alias_clause_type" minOccurs="0"/>
+            <xs:element name="sample_clause" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="query_table_reference_type">
+        <xs:sequence>
+            <xs:element name="query_expression" type="query_expression_type"/>
+            <xs:element name="alias_clause" type="alias_clause_type" minOccurs="0"/>
+            <xs:element name="sample_clause" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="expr_table_reference_type">
+        <xs:sequence>
+            <xs:element name="table_expr" type="expression_type"/>
+            <xs:element name="alias_clause" type="alias_clause_type" minOccurs="0"/>
+            <xs:element name="sample_clause" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="pivoted_table_reference_type">
+        <xs:sequence>
+            <xs:element name="alias_clause" type="alias_clause_type" minOccurs="0"/>
+            <xs:element name="aggregateFunction" type="functionCall_type" minOccurs="0"/>
+            <xs:element name="valueColumn" type="objectName_type" minOccurs="0"/>
+            <xs:element name="pivotColumn" type="objectName_type"/>
+            <xs:element name="inColumns" type="objectName_list_type"/>
+            <xs:element name="table_reference" type="table_reference_type"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="named_table_reference_type">
+        <xs:sequence>
+            <xs:element name="table_name" type="objectName_type"/>
+            <xs:element name="alias_clause" type="alias_clause_type" minOccurs="0"/>
+            <xs:element name="sample_clause" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="single_table_reference_type">
+        <xs:sequence>
+            <xs:element name="table_name" type="objectName_type"/>
+            <xs:element name="alias_clause" type="alias_clause_type" minOccurs="0"/>
+            <xs:element name="sample_clause" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="joined_table_type">
+        <xs:sequence>
+            <xs:element name="first_table_reference" type="table_reference_type"/>
+            <xs:element name="second_table_reference" type="table_reference_type"/>
+            <xs:element name="join_condition" type="expression_type" minOccurs="0"/>
+            <xs:element ref="join_column_list" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:element name="join_column_list">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="column_name_list"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="column_name_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="column_name" type="xs:string" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="having_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="expression" type="expression_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="where_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="condition" type="expression_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="select_list_type">
+        <xs:sequence>
+            <xs:element name="result_column" type="result_column_type" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="result_column_type">
+        <xs:sequence>
+            <xs:element name="expression" type="expression_type"/>
+            <xs:element name="alias_clause" type="alias_clause_type" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="alias_clause_type">
+        <xs:sequence>
+            <xs:element name="object_name" type="objectName_type"/>
+        </xs:sequence>
+        <xs:attribute name="with_as" type="xs:boolean"/>
+    </xs:complexType>
+
+
+    <xs:element name="set_quantifier">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="all"/>
+                <xs:enumeration value="distinct"/>
+                <xs:enumeration value="unique"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+
+    <xs:complexType name="objectName_type">
+        <xs:sequence>
+            <xs:element name="full_name" type="xs:string"/>
+            <xs:element name="server_name" type="xs:string" minOccurs="0"/>
+            <xs:element name="database_name" type="xs:string" minOccurs="0"/>
+            <xs:element name="schema_name" type="xs:string" minOccurs="0"/>
+            <xs:element name="object_name" type="xs:string" minOccurs="0"/>
+            <xs:element name="part_name" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="object_type" type="xs:string"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="functionCall_type">
+        <xs:sequence>
+            <xs:element name="functionName" type="objectName_type"/>
+            <xs:choice>
+                <xs:element name="generic_function">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="functionArgs" type="expression_list_type"
+                                minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="cast_function">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="expression" type="expression_type"/>
+                            <xs:element name="datatype" type="datatype_type"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="convert_function">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="expression" type="expression_type"/>
+                            <xs:element name="datatype" type="datatype_type"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="trim_function">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="style" type="xs:string" minOccurs="0"/>
+                            <xs:element name="char_expr" type="expression_type" minOccurs="0"/>
+                            <xs:element name="source_expr" type="expression_type"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="extract_function">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="time" type="xs:string" minOccurs="0"/>
+                            <xs:element name="expression" type="expression_type" minOccurs="0"/>
+                            <xs:element name="functionArgs" type="expression_list_type"
+                                minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="treat_function">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="expression" type="expression_type"/>
+                            <xs:element name="datatype" type="datatype_type"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="contains_function">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="column_reference" type="expression_type"/>
+                            <xs:element name="value_expression" type="expression_type"/>
+                            <xs:element name="term_expression" type="expression_type" minOccurs="0"
+                            />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="freetext_function">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="column_reference" type="expression_type"/>
+                            <xs:element name="value_expression" type="expression_type"/>
+                            <xs:element name="term_expression" type="expression_type" minOccurs="0"
+                            />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="substring_function">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="string_expression" type="expression_type"/>
+                            <xs:element name="from_expression" type="expression_type" minOccurs="0"/>
+                            <xs:element name="for_expression" type="expression_type" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="not_decode_function" type="xs:string"/>
+            </xs:choice>
+            <xs:element ref="within_group" minOccurs="0"/>
+            <xs:element ref="keep_dense_rank" minOccurs="0"/>
+            <xs:element ref="over_clause" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="xs:string"/>
+        <xs:attribute name="aggregateType" type="xs:string"/>
+        <xs:attribute name="builtIn" type="xs:boolean"/>
+    </xs:complexType>
+
+    <xs:element name="over_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="partition_clause" minOccurs="0"/>
+                <xs:element ref="order_by_clause" minOccurs="0"/>
+                <xs:element ref="window_frame" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="partition_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="partitions" type="expression_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="window_frame">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="window_frame_boundary" minOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="type" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="window_frame_boundary">
+        <xs:complexType>
+            <xs:attribute name="type" type="xs:string"/>
+            <xs:attribute name="offset_value" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>  
+    
+    <xs:element name="case_stmt">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="case_expr"  type="case_expr_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>    
+    
+    <xs:element name="searched_case_expression">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="searched_when_clause" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="searched_when_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="boolean_expression"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="simple_case_expression">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="scalar_expression" type="expression_type"/>
+                <xs:element ref="simple_when_clause" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="simple_when_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="scalar_expression" type="expression_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="when_then_clause_type">
+        <xs:sequence>
+            <xs:element name="search_expression" type="expression_type"/>
+            <xs:element name="result_expression" type="expression_type"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="case_expr_type">
+        <xs:sequence>
+            <xs:element name="input_expression" minOccurs="0"/>
+            <xs:element name="when_then_clause" type="when_then_clause_type" maxOccurs="unbounded"/>
+            <xs:element name="else_expression" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:element name="scalar_subquery_expression">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="query_expression" type="query_expression_type"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+
+
+    <xs:element name="parenthesis_expression">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="expression" type="expression_type"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="column_reference_expression">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="column_type" type="xs:string"/>
+                <xs:element name="identifier" type="xs:string"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="boolean_expression">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="exists_predicate"/>
+                <xs:element ref="like_predicate"/>
+                <xs:element ref="in_predicate"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="in_predicate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="scalar_expression" type="expression_type"/>
+                <xs:element ref="scalar_subquery_expression" minOccurs="0"/>
+                <xs:element name="scalar_expression_list" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="like_predicate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="expression" type="expression_type" minOccurs="2" maxOccurs="3"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="exists_predicate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="scalar_subquery_expression"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="procedure_declare_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="procedure_name" type="objectName_type"/>
+                <xs:element ref="parameter_declaration_list" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="procedure_specification_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="procedure_name" type="objectName_type"/>
+                <xs:element name="end_procedure_name" type="objectName_type" minOccurs="0"/>
+                <xs:element ref="parameter_declaration_list" minOccurs="0"/>
+                <xs:element name="declaration_section" type="statement_list_type" minOccurs="0"/>
+                <xs:element name="body_statement_list" type="statement_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="function_declare_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="function_name" type="objectName_type"/>
+                <xs:element name="return_datatype" type="datatype_type"/>
+                <xs:element ref="parameter_declaration_list" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="function_specification_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="function_name" type="objectName_type"/>
+                <xs:element name="end_function_name" type="objectName_type" minOccurs="0"/>
+                <xs:element name="return_datatype" type="datatype_type" minOccurs="0"/>
+                <xs:element ref="parameter_declaration_list" minOccurs="0"/>
+                <xs:element name="declaration_section" type="statement_list_type" minOccurs="0"/>
+                <xs:element name="body_statement_list" type="statement_list_type" minOccurs="0"/>
+                <xs:element ref="exception_clause" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="exception_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="exception_handler" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="exception_handler">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exception_name_list" type="objectName_list_type"/>
+                <xs:element name="statement_list" type="statement_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="execute_immediate_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice>
+                    <xs:element name="dynamic_sql_stmt" type="xs:string"/>
+                    <xs:element name="dynamic_string">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="expression" type="expression_type"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:choice>
+                <xs:element name="statement_list" type="statement_list_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="fetch_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cursor_name" type="objectName_type"/>
+                <xs:element name="into_list" type="expression_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="forall_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="index_name" type="objectName_type"/>
+                <xs:element ref="bounds_clause"/>
+                <xs:element name="sql_statement" type="statement_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="bounds_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="lower_bound" type="expression_type" minOccurs="0"/>
+                <xs:element name="upper_bound" type="expression_type" minOccurs="0"/>
+                <xs:element name="collection_name" type="objectName_type" minOccurs="0"/>
+                <xs:element name="collection_expr" type="expression_type" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required" type="bounds_clause_subscript_type"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="bounds_clause_subscript_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="normal"/>
+            <xs:enumeration value="indeces_of"/>
+            <xs:enumeration value="values_of"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="go_statement"/>
+
+    <xs:element name="goto_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="label_name" type="objectName_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="if_statement">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="condition" type="expression_type"/>
+                <xs:element name="then_statement_list" type="statement_list_type"/>
+                <xs:element ref="elsif_clause_list" minOccurs="0"/>
+                <xs:element name="else_statement_list" type="statement_list_type" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="elsif_clause_list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="elsif_clause" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="elsif_clause">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="condition" type="expression_type"/>
+                <xs:element name="statement_list" type="statement_list_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="plsql_null_statement" type="xs:string"/>
+    
+    <xs:element name="mdx_select" type="mdx_select_type">
+    </xs:element>    
+
+    <xs:complexType name="mdx_select_type">
+        <xs:sequence>
+            <xs:element name="with_clause" type="mdx_with_clause_type"  minOccurs="0"/>
+            <xs:element name="axis_clause" type="mdx_aixs_clause_type" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="cube_clause" type="mdx_cube_type" minOccurs="1"/>
+            <xs:element name="where_clause" type="mdx_where_type" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="mdx_with_clause_type">
+        <xs:choice>
+            <xs:element name="mdx_with_member" type="mdx_with_member_type" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="mdx_with_set" type="mdx_with_set_type" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="mdx_with_measure" type="mdx_with_measure_type" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:choice>
+    </xs:complexType>    
+
+    <xs:complexType name="mdx_with_member_type">
+        <xs:sequence>
+            <xs:element name="member_name" type="xs:string"/>
+            <xs:element name="value_expr" type="mdx_expr_type"/>
+        </xs:sequence>      
+    </xs:complexType>
+
+    <xs:complexType name="mdx_with_set_type">
+        <xs:sequence>
+            <xs:element name="set_name" type="xs:string"/>
+            <xs:element name="value_expr" type="mdx_expr_type"/>
+        </xs:sequence>      
+    </xs:complexType>
+
+    <xs:complexType name="mdx_with_measure_type">
+        <xs:sequence>
+            <xs:element name="measure_body" type="xs:string"/>
+        </xs:sequence>      
+    </xs:complexType>
+    
+    <xs:complexType name="mdx_cube_type">
+        <xs:choice>
+            <xs:element name="cube_name" type="xs:string"/>
+            <xs:element ref="mdx_select"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="mdx_where_type">
+        <xs:sequence>
+            <xs:element name="expr" type="mdx_expr_type"/>
+        </xs:sequence>      
+    </xs:complexType>
+    
+    <xs:complexType name="mdx_aixs_clause_type">
+        <xs:sequence>
+            <xs:element name="expr" type="mdx_expr_type"  minOccurs="1" maxOccurs="1"/>
+            <xs:element name="on_axis" type="mdx_axis_type"  minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>        
+    </xs:complexType>
+    
+    <xs:complexType name="mdx_expr_type">
+        <xs:choice>
+            <xs:element name="mdx_binary_expr" type="mdx_binary_expr_type" />
+            <xs:element name="mdx_unary_expr" type="mdx_unary_expr_type" />
+            <xs:element name="mdx_value_primary_expr" type="mdx_value_primary_expr_type" />
+        </xs:choice>         
+    </xs:complexType>
+    
+    <xs:complexType name="mdx_binary_expr_type">
+        <xs:sequence>
+            <xs:element name="left_expr" type="mdx_expr_type" />
+            <xs:element name="right_expr" type="mdx_expr_type" />
+        </xs:sequence>  
+        <xs:attribute name="operator" type="xs:string"/>
+    </xs:complexType>
+    
+    <xs:complexType name="mdx_unary_expr_type">
+        <xs:sequence>
+            <xs:element name="expr" type="mdx_expr_type" />
+        </xs:sequence>  
+        <xs:attribute name="operator" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="mdx_value_primary_expr_type">
+        <xs:choice>
+            <xs:element name="mdx_identifier" type="mdx_identifier_type" />
+            <xs:element name="mdx_constant" type="mdx_constant_type" />
+            <xs:element name="mdx_function" type="mdx_function_type" />
+            <xs:element name="mdx_tuple" type="mdx_tuple_type" />
+            <xs:element name="mdx_set" type="mdx_set_type" />
+            <xs:element name="mdx_case" type="mdx_case_type" />
+        </xs:choice>         
+    </xs:complexType>
+
+    <xs:complexType name="mdx_case_type">
+        <xs:sequence>
+            <xs:element name="condition_expr" type="mdx_expr_type" />
+            <xs:element name="when_then_list" type="mdx_when_then_list_type" />
+            <xs:element name="else_value" type="mdx_expr_type"  minOccurs="0"/>
+        </xs:sequence>  
+    </xs:complexType>
+    
+    <xs:complexType name="mdx_when_then_type">
+        <xs:sequence>
+            <xs:element name="when_expr" type="mdx_expr_type" />
+            <xs:element name="then_value" type="mdx_expr_type" />
+        </xs:sequence>  
+    </xs:complexType>
+
+    <xs:complexType name="mdx_when_then_list_type">
+        <xs:sequence>
+            <xs:element name="mdx_when_then" type="mdx_when_then_type" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="mdx_set_type">
+        <xs:sequence>
+            <xs:element name="mdx_exprs" type="mdx_expr_list_type" />
+        </xs:sequence>  
+    </xs:complexType>
+   
+    <xs:complexType name="mdx_tuple_type">
+        <xs:sequence>
+            <xs:element name="mdx_members" type="mdx_expr_list_type" />
+        </xs:sequence>  
+    </xs:complexType>
+
+    <xs:complexType name="mdx_constant_type">
+        <xs:sequence>
+            <xs:element name="string_value" type="xs:string" />
+        </xs:sequence>  
+        <xs:attribute name="kind" type="xs:string"/>
+    </xs:complexType>
+    
+    <xs:complexType name="mdx_function_type">
+        <xs:sequence>
+            <xs:element name="function_name" type="xs:string" />
+            <xs:element name="function_args" type="expression_list_type"
+                minOccurs="0"/>            
+        </xs:sequence>  
+    </xs:complexType>
+
+    <xs:complexType name="mdx_expr_list_type">
+        <xs:sequence>
+            <xs:element name="mdx_expr" type="mdx_expr_type" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="mdx_axis_type">
+        <xs:sequence>
+            <xs:element name="string_value" type="xs:string" />
+        </xs:sequence>  
+    </xs:complexType>
+
+    <xs:complexType name="mdx_identifier_type">
+        <xs:sequence>
+            <xs:element name="mdx_identifier_name" type="xs:string" />
+            <xs:element name="mdx_key_parts" type="mdx_key_parts_type" minOccurs="0" />
+        </xs:sequence>  
+        <xs:attribute name="quoting" type="xs:string"/>
+    </xs:complexType>
+    
+    <xs:complexType name="mdx_key_parts_type">
+        <xs:sequence>
+            <xs:element name="mdx_key_part" type="mdx_identifier_type" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>    
+    
+</xs:schema>

@@ -1,14 +1,14 @@
 ## Gudu SQLFlow Documents
 
-Firstly, use [SQLFlow cloud](https://sqlflow.gudusoft.com/) to get the data lineage of your SQL and feel how the data lineage diagram can help you understand the data flow and the data transformation.
+1. Start with [SQLFlow Cloud](https://sqlflow.gudusoft.com/) - A web-based tool that visualizes data lineage diagrams from your SQL queries. This helps you understand how data flows and transforms between different tables and columns in your database.
 
-Secondly, use [Dlineage command line tool](https://github.com/sqlparser/gsp_demo_java/releases) to get the data lineage of your SQL in the XML/JSON format and see how the data lineage is organized in the JSON/XML format and start to know various elements and attributes in the data lineage.
+2. Try the [DLineage Command Line Tool](https://github.com/sqlparser/gsp_demo_java/releases) to generate data lineage in XML/JSON format. This will help you understand the structured representation of data lineage and familiarize yourself with the key elements and attributes used.
 
-Thirdly, check the basic concepts and elements of the data lineage.
+3. Learn the fundamental concepts and components of data lineage by reviewing our basic concepts documentation. This covers important topics like direct/indirect dataflows, transforms, and relationships between database objects.
 
-Fourthly, check the detailed reference of the data lineage model.
+4. Explore the detailed data lineage model reference to gain a deeper technical understanding of how SQLFlow represents and tracks data lineage information.
 
-Finally, integrate the SQLFlow Rest API/Java API/Widget into your project and get the data lineage of your SQL in the Rest API/Java/Python code/JavaScript code.
+5. When you're ready to integrate data lineage into your own applications, use our REST API, Java API, or JavaScript Widget. These integration options let you programmatically generate and visualize data lineage using your preferred development approach.
 
 
 ### Concepts

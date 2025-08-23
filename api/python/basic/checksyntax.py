@@ -36,10 +36,10 @@ def check(server, port, sql, dbvendor, userId, token):
 
 if __name__ == '__main__':
     # the user id of sqlflow web or client, required true
-    userId = ''
+    userId = 'auth0|605f3cfe4e52d60069bcb258'
 
     # the secret key of sqlflow user for webapi request, required true
-    screctKey = ''
+    screctKey = 'd0ecf64e5db0a1e417d69847f7f1e0576cc3adfad15037dcb21e4775892ed057'
 
     # sqlflow server, For the cloud version, the value is https://api.gudusoft.com
     server = 'https://api.gudusoft.com'
