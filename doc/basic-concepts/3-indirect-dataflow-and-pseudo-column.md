@@ -51,15 +51,56 @@ scott.emp.RelationRows -> indirect -> SUM(sal)
 ```
 - v1: relation type = `fdr` (indirect), effectType: select
 
+![image.png](https://images.gitee.com/uploads/images/2021/1206/120353_cfebf6b1_8136809.png)
+
+
 v2 (more precise breakdown):
 - `data_flow` from `emp.sal` to `totalSal`
   - transforms.code: `SUM(sal)`
   - effectType: `AGGREGATION` (aggregation changes granularity)
-- `groups` or `restricts` is not used in this no-GROUP-BY example; the influence comes from the table’s row count and the aggregated input column
 
-If a `GROUP BY` exists, v2 adds a `groups` edge from the group-by columns to the aggregate output, and keeps the `data_flow` + `AGGREGATION` from the aggregated column(s) to the output.
+- `data_flow` from `emp` to `totalNum` and `totalSal`
+  - transforms.code: `COUNT(*)` and `SUM(sal)` respectively 
+  - effectType: `AGGREGATION` (aggregation changes granularity)
 
-![image.png](https://images.gitee.com/uploads/images/2021/1206/120353_cfebf6b1_8136809.png)
+
+### Group BY example (with v1 and v2 relationships)
+
+```sql
+SELECT deptno, COUNT(*) AS totalNum, SUM(sal) AS totalSal
+FROM scott.emp
+GROUP BY deptno;
+```
+
+v1 relationships (using RelationRows and fdr/fdd):
+```
+scott.emp.RelationRows -> indirect -> COUNT(*)    (effectType: select)
+scott.emp.RelationRows -> indirect -> SUM(sal)    (effectType: select)
+scott.emp.deptno       -> indirect -> COUNT(*)    (effectType: select)
+scott.emp.deptno       -> indirect -> SUM(sal)    (effectType: select)
+scott.emp.sal          -> direct   -> SUM(sal)    (effectType: select)
+```
+
+v2 relationships (atomic and explicit):
+```
+// Aggregation edges
+data_flow: scott.emp.sal     -> RS-1.totalSal
+  - transforms.code: "SUM(sal)"
+  - effectType: AGGREGATION
+
+// Grouping influence
+groups:    scott.emp.deptno  -> RS-1.totalSal
+
+// COUNT(*) depends on table rows, grouped by deptno
+data_flow: scott.emp (table) -> RS-1.totalNum
+  - transforms.code: "COUNT(*)"
+  - effectType: AGGREGATION
+groups:    scott.emp.deptno  -> RS-1.totalNum
+
+// Pass-through of grouping key
+data_flow: scott.emp.deptno  -> RS-1.deptno
+  - effectType: EXACT_COPY
+```
 
 ## 3. Table-level dataflow using RelationRows
 
@@ -236,3 +277,17 @@ data_flow: t2 -> t3
 ### Decision
 - Prefer v2 primitives (`restricts`, `groups`, table-level `data_flow`) for clarity, atomicity, and traceability (`observations`, `statementKey`).
 - Ensure `effectType` and `transforms.code` are set consistently so beginners can immediately understand the strength and nature of each relationship.
+
+### Does v2 resolve what RelationRows was designed to solve?
+
+Yes. The v2 model replaces RelationRows with first-class, more explicit relationships while preserving all use cases:
+
+- Row-count impact from predicates (WHERE/HAVING/JOIN): model as `restricts` from predicate columns to each affected output column (atomic 1→1). Optionally add one `restricts` to the temporary resultset for coarse folding. No pseudo-column is needed.
+- Aggregations (COUNT/SUM/etc.):
+  - `COUNT(*)`: use `data_flow` table → aggregate output column with `effectType=AGGREGATION` and `transforms.code="COUNT(*)"`.
+  - `SUM(col)`, `AVG(col)`: use `data_flow` column → aggregate output with `effectType=AGGREGATION` and `transforms.code` (e.g., `"SUM(sal)"`).
+  - With GROUP BY: add `groups` edges from grouping columns to the aggregate outputs.
+- Table-level lineage (RENAME/CTAS/CLONE): use table → table `data_flow` with `operation` (e.g., RENAME/CTAS) and appropriate `effectType` (e.g., `EXACT_COPY` or `PARTIAL_COPY`).
+- Coexistence of table-level and column-level views: achieved by keeping table-level and column-level edges as separate atomic edges, grouped by `statementKey` and evidenced by `observations`.
+
+In short, v2 preserves the intent of RelationRows but expresses it with clearer, auditable primitives (`restricts`, `groups`, table/column `data_flow` + `effectType`/`transforms`). If a coarse “rows” notion is still desired for UI, it can be represented as an optional hidden metric rather than a pseudo-column.
