@@ -1,0 +1,44 @@
+---
+alwaysApply: true
+---
+# Data Lineage Documentation Refinement Guide
+
+When refining or refactoring data lineage documentation, remember that the primary audience is beginners in data governance. The language should be simple, clear, and use analogies to explain complex concepts. The document should be structured into two main parts, following the example set in [1-introduction.md](mdc:sqlflow_public/doc/basic-concepts/1-introduction.md).
+
+## Part 1: Current Data Lineage Model (v1)
+
+This section should explain the foundational concepts of the original SQLFlow data lineage model. Focus on simplicity and core ideas.
+
+-   **Core Concepts**: Explain data objects (`dbobjs`) and relationships (`relations`).
+-   **Relationship Types**: Clearly define `fdd` (direct flow) and `fdr` (indirect/impact flow) with simple SQL examples.
+-   **Effect Type (v1)**: When available in examples, explain `effectType` as the SQL statement/operation kind that produced the relationship (e.g., `select`, `insert`, `update`, `merge_update`, `create_view`). Use short callouts like “effectType: select” near the example so readers connect the edge to its producing statement.
+-   **Source of Truth**: Base this section on the information from the v1 schema and design documents.
+    -   v1 Schema: [data_lineage_schema_v1.json](mdc:gsp_java/docs/AI/cline_sqlflow/data_lineage_schema_v1.json)
+    -   v1 Design Explanation: [data_lineage_design_explanation_v1.md](mdc:gsp_java/docs/AI/cline_sqlflow/data_lineage_design_explanation_v1.md)
+
+## Part 2: Next-Generation Data Lineage Model (v2)
+
+This section should introduce the new, more powerful v2 schema as an evolution of the v1 model. Emphasize that it's an improvement and still under development.
+
+-   **Key Improvements**: Explain the benefits of the new model, such as enhanced precision, traceability, and scalability.
+-   **Concept Mapping**: Provide a clear mapping from v1 concepts to v2 concepts (e.g., `fdr` becomes `restricts` and `groups`).
+-   **New Features**: Introduce new concepts like `lineageObjects` with `qualifiedName`, atomic relationships, `observations` for evidence, and `transforms` for detailing logic.
+-   **Effect Type (v2)**: Use `effectType` on relationships to convey the nature/strength of the mapping. Where possible, add a brief parenthetical after examples, e.g., “effectType: EXACT_COPY”. Recommended guidance:
+    -   Simple alias or field passthrough: `EXACT_COPY` (no change in meaning)
+    -   Expression/function transforms (e.g., `ROUND`, `UPPER`): `WEAK_COPY` (value changed)
+    -   Aggregations (`SUM`, `COUNT`, `AVG`): `AGGREGATION` (or `WEAK_COPY` if `AGGREGATION` isn’t supported)
+    -   Multi-source expressions (e.g., `a + b`): `PARTIAL_COPY`
+    -   Uncertain or heuristic mapping: `AMBIGUOUS`
+    -   For detailed categories, please check ## 15. Lineage Categories（effectType）与 SQL 推导规则 in [data_lineage_design_explanation.md](mdc:gsp_java/docs/AI/cline_sqlflow/data_lineage_design_explanation.md)
+  Add a one-line rationale when helpful (e.g., “aggregation changes granularity”).
+-   **Source of Truth**: Base this section on the information from the v2 schema and design documents.
+    -   v2 Schema: [data_lineage_schema.json](mdc:gsp_java/docs/AI/cline_sqlflow/data_lineage_schema.json)
+    -   v2 Design Explanation: [data_lineage_design_explanation.md](mdc:gsp_java/docs/AI/cline_sqlflow/data_lineage_design_explanation.md)
+
+## Writing Tips (applies to both parts)
+
+-   Prefer short, concrete examples; add a compact effect type note where it clarifies intent.
+-   When showing function-based flows, include the `transforms.code` (e.g., `ROUND(salary)`) and set a plausible `effectType` as above.
+-   For statements producing multiple edges (e.g., `INSERT ... SELECT`), show separate 1→1 edges (v2) and mention a shared `statementKey`; add edge-level `effectType` where appropriate.
+
+The goal is to create a seamless document that first teaches the basics (v1) and then introduces the advanced, more detailed concepts (v2) as a natural progression, with `effectType` annotations to make relationships more precise and intuitive.
