@@ -252,3 +252,29 @@ A complete list of all temporary result sets that can be controlled to remove fr
 在 dlineage demo tool 中加入可以控制以上所有参数的设置。形如：/removeResultSetXXX, /includeTableConstantTable, /removeVariable 等。
 
 目前在 dlineage demo tool 中的 /s , /i, /if 等参数都是这些参数的一种组合。
+
+
+## Temporary table
+
+This section is about how to handle the temporary table in the data lineage analysis.
+
+Some user like to see the temporary table in the data lineage analysis, but some user don't like to see the temporary table in the data lineage analysis.
+
+thus we provide an option `/withTemporaryTable` to let user decide whether to output the temporary table in the data lineage analysis.
+
+Temporary table such as `#temp_table` in SQL Server will not be output in simple output by default.
+
+If you want to output the temporary table, you can use `/withTemporaryTable` option.
+
+```
+/withTemporaryTable
+```
+
+### Temporary table in different database
+
+Different database products have different syntax for temporary table.
+
+For example:
+
+- In SQL Server, the temporary table is like `#temp_table`.
+- In MySQL, The temporary table is like `tmp_table`.
