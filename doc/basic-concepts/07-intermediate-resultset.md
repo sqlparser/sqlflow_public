@@ -1,14 +1,22 @@
-## Intermediate result set
+## Temporary result set
 
 [toc]
 
-### 1. What is intermediate result set?
+A temporary result set is the table-like output produced inside a query (for example, a SELECT list, CTE, subquery, PIVOT/UNPIVOT, or clauses in MERGE/UPDATE). It exists only during query execution and helps explain how data flows step by step.
 
-In the SQLFlow, intermediate result set is the result set of a select statement.
+How it maps to SQLFlow lineage:
+- v1: represented as `<resultset>` elements with specific `type` values (e.g., `select_list`, `with_cte`, `pivot_table`).
+- v2: represented as `lineageObjects` (type `table`) with `properties.isTemporary=true` and a deterministic `qualifiedName` such as `...resultset.{processId}#{sqlHash}#{queryId}` for merge-safe uniqueness.
 
-The intermediate result set is used to show the details of the data flow and let you know exactly what is going on. 
+You can choose to hide temporary result sets in the UI to simplify large graphs while keeping complete lineage available when needed.
 
-The intermediate result set is always built in order to create a complete data flow graph. However, you may choose to hide the intermediate result set in the UI in order to make the data flow graph cleaner in a big data flow scenario.
+### 1. What is a temporary result set?
+
+In the SQLFlow, a temporary result set is the table-like output of a SELECT statement or clause.
+
+The temporary result set is used to show the details of the data flow and let you know exactly what is going on. 
+
+The temporary result set is always built in order to create a complete data flow graph. However, you may choose to hide the temporary result set in the UI in order to make the data flow graph cleaner in a big data flow scenario.
 
 For example:
 
@@ -19,7 +27,7 @@ FROM Employees
 WHERE ManagerID IS NULL
 ```
 
-The intermediate result set is:
+The temporary result set is:
 
 ```
 EmployeeID, FirstName, LastName, ManagerID, EmpLevel
@@ -30,7 +38,7 @@ in the select list and shown in the data flow graph as below:
 
 ### CTE example:
 
-CTE will be treated as a intermediate result set.
+CTE is treated as a temporary result set.
 <a name="cte-example">
 ```sql
 CREATE VIEW V1 AS
@@ -47,7 +55,7 @@ SELECT
 FROM cteReports 
 ```
 </a>
-So, there are there intermediate result sets:
+So, there are three temporary result sets:
 
 1. resultset1: EmployeeID, FirstName, LastName, ManagerID, EmpLevel
 2. cte: cteReports (EmpID, FirstName, LastName, MgrID, EmpLevel) 
@@ -57,9 +65,9 @@ And the data flow graph is like this:
 
 ![intermediate-resultset](../../assets/images/get-started-intermediate-resultset2.png)
 
-### 2. SQL clauses that generate intermediate result set
+### 2. SQL clauses that generate temporary result sets
 
-The definition of intermediate result set type can be found in the [ResultSetType.java](src/main/java/gudusoft/gsqlparser/dlineage/dataflow/model/ResultSetType.java)
+The definition of temporary result set types can be found in the [ResultSetType.java](src/main/java/gudusoft/gsqlparser/dlineage/dataflow/model/ResultSetType.java)
 
 ```java
 array, struct, result_of, cte, insert_select, update_select, merge_update, 
@@ -72,7 +80,7 @@ case_when;
 SELECT EmployeeID, FirstName, LastName, ManagerID, EmpLevel  FROM Employees
 ```
 
-the intermediate result set generated: (a `resultset` XML tag and type attribute value `select_list`)
+the temporary result set generated: (a `resultset` XML tag and type attribute value `select_list`)
 
 ```xml
 <resultset id="11" name="RS-1" type="select_list">
@@ -86,7 +94,7 @@ the intermediate result set generated: (a `resultset` XML tag and type attribute
 
 
 #### 2. cte (cte)
-[CTE example SQL](#cte-example), the intermediate result set generated: (a `resultset` XML tag and type attribute value `with_cte`)
+[CTE example SQL](#cte-example), the temporary result set generated: (a `resultset` XML tag and type attribute value `with_cte`)
 ```xml
 <resultset id="4" name="CTE-CTEREPORTS-1" type="with_cte">
     <column id="5" name="EmpID"/>
@@ -104,7 +112,7 @@ UPDATE table1 t1 JOIN table2 t2 ON t1.field1 = t2.field1
 SET t1.field2=t2.field2 --mysql
 ```
 
-the intermediate result set generated: (a `resultset` XML tag and type attribute value `update-set`)
+the temporary result set generated: (a `resultset` XML tag and type attribute value `update-set`)
 
 ```xml
 <resultset id="11" name="UPDATE-SET-1" type="update-set">
@@ -129,7 +137,7 @@ WHEN NOT MATCHED THEN
 ;
 ```
 
-the intermediate result set generated: (a `resultset` XML tag with type attribute value `merge-insert`)
+the temporary result set generated: (a `resultset` XML tag with type attribute value `merge-insert`)
 
 ```xml
 <resultset id="11" name="MERGE-INSERT-1" type="merge-insert">
@@ -161,7 +169,7 @@ PIVOT
 ) AS PivotTable;
 ```
 
-the intermediate result set generated: (a `resultset` XML tag and type attribute value `pivot_table`)
+the temporary result set generated: (a `resultset` XML tag and type attribute value `pivot_table`)
 
 ```xml
 <resultset id="19" name="PIVOT-TABLE-1" type="pivot_table">
@@ -184,7 +192,7 @@ UNPIVOT
 ) AS UnpivotedData;
 ```
 
-the intermediate result set generated: (a `resultset` XML tag and type attribute value `unpivot_table`)
+the temporary result set generated: (a `resultset` XML tag and type attribute value `unpivot_table`)
 
 ```xml
 <resultset id="4" name="UNPIVOT-TABLE-1" type="unpivot_table">
@@ -205,7 +213,7 @@ FROM quarterly_sales
 ORDER BY empid_renamed;
 ```
 
-the intermediate result set generated: (a `resultset` XML tag and type attribute value `alias`)
+the temporary result set generated: (a `resultset` XML tag and type attribute value `alias`)
 
 ```xml
 <resultset id="13" name="ALIAS-1" type="alias">
@@ -218,58 +226,12 @@ the intermediate result set generated: (a `resultset` XML tag and type attribute
 ```
 
 #### 8. array, struct, result_of, output, rs
-Those definition of intermediate result set types are not used in the SQLFlow.
+Those temporary result set types are not used in the SQLFlow.
 
-### 3. resultset output but not a relation
 
-#### (1) Function
-Due to historical design reasons, some SQL clauses will generate a result set but it is not a relation. The most common example is the SQL function that returns a scalar value.
+### 3. List of all temporary result sets
 
-```sql
-SELECT COUNT(*) FROM Employees
-```
-
-the intermediate result set generated: (a `resultset` XML tag and type attribute value `scalar`)
-
-```xml
-<resultset id="9" name="COUNT" type="function">
-    <column id="10" name="COUNT"/>
-</resultset>
-```
-
-This result is not a true intermediate result set, but rather a scalar value. However, we can distinguish it from other intermediate result sets by examining the `type` attribute. In this case, the `type` attribute has a value of `function`, indicating that it represents the output of a SQL function rather than a traditional result set.
-
-This distinction is important for understanding how different SQL operations are represented in the intermediate result structure. While tables and sub-queries typically produce relational result sets, functions often return single values, which are handled differently in the data lineage analysis.
-
-##### Case expression
-
-case expression is treated as a special function when considered in the context of data lineage analysis.
-
-```sql
--- postgres sample SQL
-SELECT 
-    employee_id,first_name,last_name,salary,
-    CASE 
-        WHEN salary < 30000 THEN 'Low'
-        WHEN salary BETWEEN 30000 AND 60000 THEN 'Medium'
-        WHEN salary > 60000 THEN 'High'
-        ELSE 'Unknown'
-    END AS salary_category
-FROM 
-    employees;
-```
-
-the intermediate result set generated: (a `resultset` XML tag and type attribute value `case_when`)
-
-```xml
-<resultset id="17" name="case-when" type="function">
-    <column id="18" name="case-when"/>
-</resultset>
-```
-
-### 4. List of all intermediate result sets
-
-A complete list of all intermediate result sets that can be controlled to remove from the data flow graph is as follows:
+A complete list of all temporary result sets that can be controlled to remove from the data flow graph is as follows:
 
 
 1. XML tag: `<resultset>`, type attribute value:`select_list`
