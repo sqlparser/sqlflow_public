@@ -146,7 +146,7 @@ Option A — inline in transform (simple and sufficient for most cases):
   "targetId": "RS.price_with_tax",
   "processIds": ["proc_1"],
   "transforms": [ { "type": "expression", "code": "price + 2" } ],
-  "effectType": "WEAK_COPY"
+  "effectType": "MODIFIED_COPY"
 }
 ```
 
@@ -158,7 +158,7 @@ Option B — explicit constant object (when you need literal provenance):
     { "id": "const_2_stmt1", "name": "2", "type": "column", "qualifiedName": "default_server.default_db.resultset.const#h1#stmt1.2" }
   ],
   "relationships": [
-    { "type": "data_flow", "sourceId": "orders.price", "targetId": "RS.price_with_tax", "processIds": ["proc_1"], "transforms": [{ "type": "expression", "code": "price + 2" }], "effectType": "WEAK_COPY", "statementKey": "h1#stmt1" },
+    { "type": "data_flow", "sourceId": "orders.price", "targetId": "RS.price_with_tax", "processIds": ["proc_1"], "transforms": [{ "type": "expression", "code": "price + 2" }], "effectType": "MODIFIED_COPY", "statementKey": "h1#stmt1" },
     { "type": "data_flow", "sourceId": "const_2_stmt1", "targetId": "RS.price_with_tax", "processIds": ["proc_1"], "transforms": [{ "type": "expression", "code": "price + 2" }], "effectType": "PARTIAL_COPY", "statementKey": "h1#stmt1" }
   ]
 }

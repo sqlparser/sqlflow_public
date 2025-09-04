@@ -30,7 +30,7 @@ between a single source and a single target:
 - `relationships[*].transforms[]`: expression/function details that change the
   value (type + code, with optional coordinates)
 - `relationships[*].effectType`: the strength/nature of the mapping
-  (e.g., `EXACT_COPY`, `WEAK_COPY`, `AGGREGATION`, `PARTIAL_COPY`)
+  (e.g., `EXACT_COPY`, `MODIFIED_COPY`, `AGGREGATION`, `PARTIAL_COPY`)
 - `relationships[*].observations[*].transforms[]`: per-process evidence of the
   same, when multiple processes produce the same logical edge
 
@@ -69,7 +69,7 @@ Minimal v2 edge:
   "targetId": "RS.salary_r",
   "processIds": ["proc_1"],
   "transforms": [ { "type": "function", "code": "ROUND(salary)" } ],
-  "effectType": "WEAK_COPY"
+  "effectType": "MODIFIED_COPY"
 }
 ```
 
@@ -134,7 +134,7 @@ In v1, transforms appeared inside the relationship XML. Example:
 Mapping to v2:
 - Relationship becomes a 1→1 `data_flow` edge with `sourceId` and `targetId`
 - Transformation code moves to `relationships.transforms[]`
-- Use `effectType` for strength: `EXACT_COPY` / `WEAK_COPY` / `AGGREGATION` /
+- Use `effectType` for strength: `EXACT_COPY` / `MODIFIED_COPY` / `AGGREGATION` /
   `PARTIAL_COPY`
 - Add `sqlCoordinates` / `observations` when you have statement and evidence
   details
@@ -145,7 +145,7 @@ Mapping to v2:
   `ROUND(salary)`, `a + b`, `order_id AS report_id`)
 - Set a reasonable `effectType`:
   - `EXACT_COPY` for aliases/equivalent casts
-  - `WEAK_COPY` for functions/expressions that change values
+  - `MODIFIED_COPY` for functions/expressions that change values
   - `AGGREGATION` for aggregates (granularity change)
   - `PARTIAL_COPY` for multi-source contributions
 - Record `coordinates` (and `sqlCoordinates`) when possible to enable

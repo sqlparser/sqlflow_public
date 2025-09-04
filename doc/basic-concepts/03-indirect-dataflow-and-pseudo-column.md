@@ -1,18 +1,12 @@
-[toc]
-## Indirect dataflow and RelationRows (pseudo column)
+ [toc]
+## Indirect dataflow
 
 Indirect dataflow captures how certain columns influence the result without directly supplying values to the output columns. This typically happens in `WHERE`, `GROUP BY`, join conditions, and aggregate functions.
 
-To represent these influences precisely, SQLFlow uses a pseudo column named **RelationRows**.
 
-- **RelationRows** represents the number of rows in a relation (table, view, resultset). As its name indicates, it is not a real column in the physical table.
-- We use it to connect a column’s influence to the row count of a relation, or to express table-to-table lineage.
+## WHERE Clause
 
-Effect type notes:
-- v1: `effectType` denotes the statement/operation kind (e.g., `select`, `insert`, `create_view`).
-- v2: `effectType` denotes copy/transform strength for `data_flow` edges (e.g., `EXACT_COPY`, `WEAK_COPY`, `AGGREGATION`, `AMBIGUOUS`). For `restricts` and `groups` (non-copy edges), no copy category is applied.
-
-## 1. RelationRows in the target relation (WHERE filters)
+Filtering predicates affect which rows appear in the output. In v1 this was modeled via a pseudo-column; in v2 it is modeled explicitly as `restricts`.
 
 Take this SQL for example:
 
@@ -22,20 +16,65 @@ FROM scott.emp a
 WHERE sal > 1000
 ```
 
-The total number of rows in the SELECT result is impacted by the value of column `sal` in the `WHERE` clause. We model this as an indirect influence on the resultset’s row count via `RelationRows`:
+The total number of rows in the SELECT result is impacted by the value of column `sal` in the `WHERE` clause.
 
+- v1 (using RelationRows):
 ```
 scott.emp.sal -> indirect -> RS-1.RelationRows
 ```
+  - relation type = `fdr` (indirect), effectType: select
 
-- v1: relation type = `fdr` (indirect), effectType: select
-- v2: relationship type = `restricts` (no copy category); this shows `sal` filters the rows of the resultset
+- v2 (explicit filter influence):
+```
+restricts: scott.emp.sal -> RS-1."eName"
+```
+  - relationship type = `restricts` (no copy category); this shows `sal` filters the rows of the resultset
 
 ![image.png](https://images.gitee.com/uploads/images/2021/1206/120228_c087c542_8136809.png)
 
-## 2. RelationRows in the source relation (aggregates)
+## GROUP BY Clause
 
-Another common case is aggregates:
+Aggregations and grouping change values and granularity. V1 modeled these via `RelationRows` and indirect edges; v2 models them via `data_flow` with `effectType: AGGREGATION` plus `groups` for grouping keys.
+
+### Group BY example (with v1 and v2 relationships):
+
+```sql
+SELECT deptno, COUNT(*) AS totalNum, SUM(sal) AS totalSal
+FROM scott.emp
+GROUP BY deptno;
+```
+
+- v1 relationships (using RelationRows and fdr/fdd):
+```
+scott.emp.deptno       -> indirect -> COUNT(*)    (effectType: select)
+scott.emp.deptno       -> indirect -> SUM(sal)    (effectType: select)
+scott.emp.sal          -> direct   -> SUM(sal)    (effectType: select)
+```
+
+- v2 relationships (atomic and explicit):
+```
+// Grouping influence
+groups:    scott.emp.deptno  -> RS-1.totalSal
+groups:    scott.emp.deptno  -> RS-1.totalNum
+
+
+// Aggregation edges
+data_flow: scott.emp.sal     -> RS-1.totalSal
+  - transforms.code: "SUM(sal)"
+  - effectType: AGGREGATION
+
+
+// COUNT(*) depends on table rows, grouped by deptno
+data_flow: scott.emp (table) -> RS-1.totalNum
+  - transforms.code: "COUNT(*)"
+  - effectType: AGGREGATION
+
+```
+
+
+### Aggregates Without GROUP BY: Table-Level Aggregation
+
+When using aggregate functions like `COUNT(*)` or `SUM()` without a `GROUP BY` clause, the aggregation happens at the table level, producing a single row result. This is different from grouped aggregation because it collapses all rows into one summary value.
 
 ```sql
 SELECT COUNT(*) AS totalNum, SUM(sal) AS totalSal
@@ -44,65 +83,37 @@ FROM scott.emp
 
 The values of `COUNT(*)` and `SUM(sal)` are impacted by the number of rows in table `scott.emp`.
 
-v1 (indirect edges):
+- v1 (indirect edges):
 ```
 scott.emp.RelationRows -> indirect -> COUNT(*)
 scott.emp.RelationRows -> indirect -> SUM(sal)
 ```
-- v1: relation type = `fdr` (indirect), effectType: select
+  - relation type = `fdr` (indirect), effectType: select
 
 ![image.png](https://images.gitee.com/uploads/images/2021/1206/120353_cfebf6b1_8136809.png)
 
-
-v2 (more precise breakdown):
-- `data_flow` from `emp.sal` to `totalSal`
-  - transforms.code: `SUM(sal)`
-  - effectType: `AGGREGATION` (aggregation changes granularity)
-
-- `data_flow` from `emp` to `totalNum` and `totalSal`
-  - transforms.code: `COUNT(*)` and `SUM(sal)` respectively 
-  - effectType: `AGGREGATION` (aggregation changes granularity)
+- v2 (more precise breakdown):
+  - `data_flow` from `emp.sal` to `totalSal`
+    - transforms.code: `SUM(sal)`
+    - effectType: `AGGREGATION` (aggregation changes granularity)
+  - `data_flow` from `emp` to `totalNum`
+    - transforms.code: `COUNT(*)`
+    - effectType: `AGGREGATION`
 
 
-### Group BY example (with v1 and v2 relationships)
+## RelationRows (pseudo column)
 
-```sql
-SELECT deptno, COUNT(*) AS totalNum, SUM(sal) AS totalSal
-FROM scott.emp
-GROUP BY deptno;
-```
+To represent row-count influences and table-level movement in v1, SQLFlow uses a pseudo column named **RelationRows**.
 
-v1 relationships (using RelationRows and fdr/fdd):
-```
-scott.emp.RelationRows -> indirect -> COUNT(*)    (effectType: select)
-scott.emp.RelationRows -> indirect -> SUM(sal)    (effectType: select)
-scott.emp.deptno       -> indirect -> COUNT(*)    (effectType: select)
-scott.emp.deptno       -> indirect -> SUM(sal)    (effectType: select)
-scott.emp.sal          -> direct   -> SUM(sal)    (effectType: select)
-```
+- **RelationRows** represents the number of rows in a relation (table, view, resultset). As its name indicates, it is not a real column in the physical table.
+- It connects a column’s influence to the row count of a relation, or expresses table-to-table lineage in a column-centric model.
+- In v2, `RelationRows` is deprecated in favor of more precise relationship types:
+  - `restricts` for filtering relationships (e.g., WHERE clauses)
+  - `groups` for grouping relationships (e.g., GROUP BY)
+  - `data_flow` with `effectType: AGGREGATION` for aggregation relationships
+  These provide clearer semantics about how each column influences the result.
 
-v2 relationships (atomic and explicit):
-```
-// Aggregation edges
-data_flow: scott.emp.sal     -> RS-1.totalSal
-  - transforms.code: "SUM(sal)"
-  - effectType: AGGREGATION
-
-// Grouping influence
-groups:    scott.emp.deptno  -> RS-1.totalSal
-
-// COUNT(*) depends on table rows, grouped by deptno
-data_flow: scott.emp (table) -> RS-1.totalNum
-  - transforms.code: "COUNT(*)"
-  - effectType: AGGREGATION
-groups:    scott.emp.deptno  -> RS-1.totalNum
-
-// Pass-through of grouping key
-data_flow: scott.emp.deptno  -> RS-1.deptno
-  - effectType: EXACT_COPY
-```
-
-## 3. Table-level dataflow using RelationRows
+### Table-level dataflow using RelationRows
 
 `RelationRows` is also used to represent table-level data movement, such as a rename:
 
@@ -117,11 +128,11 @@ t2.RelationRows -> direct -> t3.RelationRows
 ```
 
 - v1: relation type = `fdd` (direct), effectType: rename_table (or vendor-specific)
-- v2: relationship type = `data_flow` at table level via `RelationRows`; effectType: `EXACT_COPY` (row set preserved, name changed)
+- v2: direct table-level `data_flow`; effectType: `EXACT_COPY` (row set preserved, name changed)
 
 ![image.png](https://images.gitee.com/uploads/images/2021/1206/120446_f7e66732_8136809.png)
 
-Why use `RelationRows` for table-level edges?
+Why use `RelationRows` for table-level edges in v1?
 - It unifies modeling so a single table can participate in both column-level (via real columns) and table-level (via `RelationRows`) relationships without conflicts.
 - It allows later derivation of table-level lineage by folding column-level edges.
 
@@ -187,107 +198,3 @@ Summary:
 - Filters/row-count impacts: use `restricts` edges from predicate columns to affected outputs; optionally a single `restricts` to a temporary resultset for coarse folding.
 - Aggregates: use `data_flow` with `effectType=AGGREGATION` and `transforms.code`; add `groups` from grouping columns.
 - Table→table lineage: use table-level `data_flow` (`operation=RENAME/CTAS/CLONE`, `effectType` set accordingly).
-
-If you choose to retain RelationRows in v2, model it as a hidden metric (e.g., `properties.isPseudo=true`, `properties.metric='rows'`) and hide by default in UI.
-
----
-
-### Example 1: WHERE filter (row-count impact)
-
-```sql
-SELECT a.empName AS "eName"
-FROM scott.emp a
-WHERE sal > 1000;
-```
-
-v1 relationships (using RelationRows):
-```
-scott.emp.sal -> fdr -> RS-1.RelationRows   (effectType: select)
-```
-
-v2 relationships (atomic edges, no pseudo-column):
-```
-restricts: scott.emp.sal -> RS-1."eName"
-```
-- effectType: (none for restricts)
-- Notes: Optionally, also add `restricts: scott.emp.sal -> RS-1` (temporary resultset) for coarse UI.
-
----
-
-### Example 2: Aggregates (COUNT/SUM) with GROUP BY
-
-```sql
-SELECT deptno, COUNT(*) AS totalNum, SUM(sal) AS totalSal
-FROM scott.emp
-GROUP BY deptno;
-```
-
-v1 relationships (typical):
-```
-scott.emp.RelationRows -> fdr -> COUNT(*)    (effectType: select)
-scott.emp.RelationRows -> fdr -> SUM(sal)    (effectType: select)
-scott.emp.deptno       -> fdr -> COUNT(*)    (effectType: select)
-scott.emp.deptno       -> fdr -> SUM(sal)    (effectType: select)
-scott.emp.sal          -> fdd -> SUM(sal)    (effectType: select)
-```
-
-v2 relationships (more precise):
-```
-// Aggregation edges
-data_flow: scott.emp.sal -> RS-1.totalSal
-  - transforms.code: "SUM(sal)"
-  - effectType: AGGREGATION
-
-// Grouping influence
-groups:    scott.emp.deptno -> RS-1.totalSal
-
-// COUNT(*) depends on table rows, grouped by deptno
-data_flow: scott.emp (table) -> RS-1.totalNum
-  - transforms.code: "COUNT(*)"
-  - effectType: AGGREGATION
-groups:    scott.emp.deptno -> RS-1.totalNum
-
-// Pass-through of grouping key
-data_flow: scott.emp.deptno -> RS-1.deptno
-  - effectType: EXACT_COPY
-```
-
----
-
-### Example 3: Table rename (table→table lineage)
-
-```sql
-ALTER TABLE t2 RENAME TO t3;
-```
-
-v1 relationships (via RelationRows):
-```
-t2.RelationRows -> fdd -> t3.RelationRows   (effectType: rename_table)
-```
-
-v2 relationships (direct table-level edge):
-```
-data_flow: t2 -> t3
-  - operation: RENAME
-  - effectType: EXACT_COPY
-```
-
----
-
-### Decision
-- Prefer v2 primitives (`restricts`, `groups`, table-level `data_flow`) for clarity, atomicity, and traceability (`observations`, `statementKey`).
-- Ensure `effectType` and `transforms.code` are set consistently so beginners can immediately understand the strength and nature of each relationship.
-
-### Does v2 resolve what RelationRows was designed to solve?
-
-Yes. The v2 model replaces RelationRows with first-class, more explicit relationships while preserving all use cases:
-
-- Row-count impact from predicates (WHERE/HAVING/JOIN): model as `restricts` from predicate columns to each affected output column (atomic 1→1). Optionally add one `restricts` to the temporary resultset for coarse folding. No pseudo-column is needed.
-- Aggregations (COUNT/SUM/etc.):
-  - `COUNT(*)`: use `data_flow` table → aggregate output column with `effectType=AGGREGATION` and `transforms.code="COUNT(*)"`.
-  - `SUM(col)`, `AVG(col)`: use `data_flow` column → aggregate output with `effectType=AGGREGATION` and `transforms.code` (e.g., `"SUM(sal)"`).
-  - With GROUP BY: add `groups` edges from grouping columns to the aggregate outputs.
-- Table-level lineage (RENAME/CTAS/CLONE): use table → table `data_flow` with `operation` (e.g., RENAME/CTAS) and appropriate `effectType` (e.g., `EXACT_COPY` or `PARTIAL_COPY`).
-- Coexistence of table-level and column-level views: achieved by keeping table-level and column-level edges as separate atomic edges, grouped by `statementKey` and evidenced by `observations`.
-
-In short, v2 preserves the intent of RelationRows but expresses it with clearer, auditable primitives (`restricts`, `groups`, table/column `data_flow` + `effectType`/`transforms`). If a coarse “rows” notion is still desired for UI, it can be represented as an optional hidden metric rather than a pseudo-column.
