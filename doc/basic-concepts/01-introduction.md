@@ -164,10 +164,13 @@ FROM scott.emp
 GROUP BY deptno
 ```
 
-- In the **current model**, we see an indirect `fdr` relationship: `scott.emp.deptno -> fdr -> sal_sum`. This tells us `deptno` impacts `sal_sum`, but not exactly how.
+- In the **current model**, this is captured with two relationships:
+    1.  A direct data flow (`fdd`) relationship from `scott.emp.SAL` to `sal_sum`.
+    2.  An indirect flow (`fdr`) relationship from `scott.emp.deptno` to `sal_sum`.
+    This tells us `sal_sum` is derived from `SAL` and influenced by `deptno`, but the generic `fdr` relationship doesn't specify *how* `deptno` creates the impact.
 
 - In the **new model**, this is broken down into two more precise relationships:
-    1.  A `data_flow` relationship from `scott.emp.SAL` to `sal_sum`, which includes a `transform` showing the `SUM()` function was used.
+    1.  A `data_flow` relationship from `scott.emp.SAL` to `sal_sum`, which includes a `transform` showing the `SUM()` function was used and an `effectType` of `AGGREGATION` to clarify the nature of the transformation.
     2.  A `groups` relationship from `scott.emp.deptno` to `sal_sum`, clearly stating that `deptno` provides the grouping for the aggregation.
 
 This level of detail makes it much easier to understand the exact logic without having to go back to the original SQL.

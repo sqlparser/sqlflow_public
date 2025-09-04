@@ -1,6 +1,5 @@
 ---
-description: "Git commit message style guide"
-alwaysApply: false
+alwaysApply: true
 ---
 # Git Commit Message Style Guide
 
