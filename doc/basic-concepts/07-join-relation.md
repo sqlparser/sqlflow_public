@@ -110,6 +110,64 @@ LEFT JOIN customers c ON o.customer_id = c.customer_id;
   optionally set lower `confidence`.
 - CROSS JOIN: no condition; omit `restricts`. Only `data_flow` edges apply.
 
+#### 2.4 SEMI/ANTI JOIN (IN/EXISTS/NOT EXISTS)
+SEMI/ANTI joins filter rows based on existence tests. Model them as `restricts`
+from the subquery key columns to outer outputs. Keep value mappings as
+`data_flow`.
+
+Example (SEMI: IN/EXISTS):
+```sql
+SELECT o.order_id
+FROM orders o
+WHERE o.customer_id IN (SELECT c.id FROM customers c);
+```
+Minimal v2 edges:
+```json
+{
+  "type": "data_flow",
+  "sourceId": "orders.order_id",
+  "targetId": "RS.order_id",
+  "processIds": ["proc"],
+  "statementKey": "h2#stmt1"
+}
+```
+```json
+{
+  "type": "restricts",
+  "sourceId": "customers.id",
+  "targetId": "RS.order_id",
+  "processIds": ["proc"],
+  "condition": "o.customer_id IN (SELECT c.id ...)",
+  "statementKey": "h2#stmt1",
+  "metadata": { "joinType": "SEMI" }
+}
+```
+
+Example (ANTI: NOT EXISTS/NOT IN):
+```sql
+SELECT o.order_id
+FROM orders o
+WHERE NOT EXISTS (SELECT 1 FROM returns r WHERE r.order_id = o.order_id);
+```
+```json
+{
+  "type": "restricts",
+  "sourceId": "returns.order_id",
+  "targetId": "RS.order_id",
+  "processIds": ["proc"],
+  "condition": "NOT EXISTS (SELECT 1 FROM returns r WHERE r.order_id = o.order_id)",
+  "statementKey": "h3#stmt1",
+  "metadata": { "joinType": "ANTI" }
+}
+```
+
+#### 2.5 Modeling notes
+- Prefer atomic 1→1 edges. Composite keys → one `restricts` per participating column.
+- Populate `condition` with the ON/EXISTS expression and anchor with `sqlCoordinates`.
+- Use `statementKey` to group all edges from the same JOIN/WHERE clause.
+- Do not set `effectType` on `restricts` (reserve it for `data_flow`).
+- If helpful, add `metadata.joinType = INNER|LEFT|RIGHT|FULL|CROSS|SEMI|ANTI` and adjust `confidence` for outer-join null extension.
+
 ### 3. v1 → v2 mapping and tips
 
 - v1 `join` relations become pairs of `restricts` edges in v2 (one per join key

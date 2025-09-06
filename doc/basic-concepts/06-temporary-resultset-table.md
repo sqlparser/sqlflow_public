@@ -34,7 +34,7 @@ EmployeeID, FirstName, LastName, ManagerID, EmpLevel
 ```
 in the select list and shown in the data flow graph as below:
 
-![intermediate-resultset](../../assets/images/get-started-intermediate-resultset1.png)
+![temporary-resultset](/assets/images/get-started-temporary-resultset1.png)
 
 ### CTE example:
 

@@ -58,7 +58,7 @@ v2 refines the chain into smaller, precise parts so it scales better and is easi
   - Stronger traceability via `qualifiedName`, `observations` (evidence), and `transforms` (logic snippets).
   - Clearer meaning using `effectType` on each relationship.
 - **Concept mapping**:
-  - v1 `fdd` becomes explicit copy/transform edges (use `effectType: EXACT_COPY` for pass-through or alias; `WEAK_COPY` if function transforms value).
+  - v1 `fdd` becomes explicit copy/transform edges (use `effectType: EXACT_COPY` for pass-through or alias; `MODIFIED_COPY` if function transforms value).
   - v1 `fdr` is captured as constraints like `restricts` (filters) and `groups` (grouping impact).
 
 Applying v2 to the same example:
@@ -82,7 +82,7 @@ Tips for reading v2:
 - Use `transforms.code` to show the function/expression that produced the target value.
 - Choose an `effectType` that describes the mapping strength:
   - `EXACT_COPY`: simple alias/passthrough
-  - `WEAK_COPY`: function changes value (e.g., `UPPER(name)`)
+  - `MODIFIED_COPY`: function changes value (e.g., `UPPER(name)`)
   - `AGGREGATION`: `COUNT`, `SUM`, `AVG`, etc.
   - `PARTIAL_COPY`: multi-source expression (e.g., `a + b`)
   - `AMBIGUOUS`: uncertain or heuristic mapping
