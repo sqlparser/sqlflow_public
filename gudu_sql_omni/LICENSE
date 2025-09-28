@@ -1,0 +1,43 @@
+Gudu SQL Omni - VS Code Extension
+Copyright (c) 2025 Gudu Software. All Rights Reserved.
+
+===================================================================
+This is a commercial software license. By installing or using this software, you agree to be bound by the terms of this license.
+
+---
+
+This software, Gudu SQL Omni, is provided under a tiered licensing model:
+
+1.  **Basic Edition (Free)**
+    - Grants you a limited, non-exclusive, non-transferable license to use the basic features of the software free of charge.
+    - Usage may be restricted to non-commercial, personal, or evaluation purposes. Please refer to the full Terms of Service for specific limitations.
+
+2.  **Professional Edition & Enterprise Edition (Paid)**
+    - Access to advanced and enterprise-level features requires a valid paid subscription.
+    - Your use of these features is governed by the terms associated with your purchased subscription plan.
+
+---
+
+**General Restrictions**
+
+You may NOT:
+- Reverse engineer, decompile, or disassemble the software.
+- Modify, adapt, or create derivative works based on the software.
+- Rent, lease, sublicense, resell, or distribute the software or any of its components.
+
+**Full Terms and Conditions**
+
+Your use of this software is subject to the complete Gudu Software Terms of Service, which is the legally binding agreement. Please review it carefully.
+
+You can find the full Terms of Service at:
+https://www.gudusoft.com/terms/
+
+---
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
