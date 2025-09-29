@@ -2,12 +2,12 @@
 
 **Comprehensive SQL analysis for Visual Studio Code**
 
-Transform your SQL development experience with intelligent validation, schema extraction, data lineage visualization, and ER diagram generation - all powered by [Gudu SQLFlow](https://sqlflow.gudusoft.com) technology.
+Transform your SQL development with powerful, offline syntax validation for over 20 database dialects, interactive data lineage visualization, smart schema extraction, and instant ER diagram generation—all powered by [Gudu SQLFlow](https://sqlflow.gudusoft.com) technology.
 
 ## 🚀 Why Gudu SQL Omni?
 
-- **30+ Database Support**: Oracle, MySQL, PostgreSQL, SQL Server, BigQuery, Snowflake, and more
-- **Real-time Validation**: Catch syntax errors as you type with precise error locations
+- **20+ Database Support**: Oracle, MySQL, PostgreSQL, SQL Server, BigQuery, Snowflake, and more
+- **Syntax Validation**: Validate any complex SQL without database connection, with precise error locations
 - **Visual Data Lineage**: See how data flows through your queries with interactive diagrams
 - **Smart Schema Analysis**: Automatically extract tables, columns, and relationships
 - **CodeLens Integration**: View SQL metadata inline without cluttering your code
@@ -135,9 +135,14 @@ Gudu SQL Omni offers multiple editions to fit your needs. All advanced features 
 
 -   **Basic Edition (Free)**: Perfect for individuals and students. Includes SQL validation and basic schema extraction.
 -   **Professional Edition (Paid)**: For data professionals. Unlocks all features, including advanced data lineage, ER diagrams, and priority support.
--   **Enterprise Edition (Paid)**: For teams and companies. Includes all Professional features plus team-based license management and dedicated support.
+-   **Enterprise Edition (Paid)**: For teams and companies. Includes all Professional features plus team-based license management and dedicated support. (**NOT AVAILABLE YET**)
 
-**[View Detailed Pricing and Purchase a License](https://www.gudusoft.com/pricing/)**
+<div align="center">
+<a href="https://buy.stripe.com/6oU3cv3cV0VY3R70xv5Rm0L" title="Purchase Professional Edition">
+    <img src="https://img.shields.io/badge/Purchase-Professional%20Edition-green?style=for-the-badge" alt="Purchase Professional Edition">
+</a>
+</div>
+
 
 ## ❓ Frequently Asked Questions (FAQ)
 
@@ -148,7 +153,7 @@ A: The extension has a free Basic Edition with core features like SQL validation
 A: All SQL analysis is performed locally on your machine by the embedded Gudu SQLFlow engine. Your code is never sent to the cloud, ensuring your data remains private and secure.
 
 **Q: What if my specific database dialect isn't listed?**  
-A: Our SQL parser has broad compatibility. Try running the analysis with a similar dialect (e.g., use "PostgreSQL" for Redshift). If you encounter issues, please [report an issue](https://github.com/gudu-software/gudu-sql-omni-vscode/issues) and we'll investigate.
+A: Our SQL parser has broad compatibility. Try running the analysis with a similar dialect (e.g., use "PostgreSQL" for Redshift). If you encounter issues, please [report an issue](https://github.com/sqlparser/sqlflow_public/issues) and we'll investigate.
 
 ## 🌟 What Users Say
 
@@ -158,12 +163,22 @@ A: Our SQL parser has broad compatibility. Try running the analysis with a simil
 
 > "The CodeLens feature is brilliant - I can see table/column counts without running the query. Game changer!" - **SQL Developer**
 
+## TODO
+
+- Connect to database to get metadata for more accurate parsing results.
+- Generate data lineage for an entire database, including stored procedures.
+- Generate ER diagrams for the whole database.
+- Trace upstream and downstream data flows for specific tables and columns.
+- Scan SQL files in a project to analyze data lineage.
+- Store and consolidate data lineage from different stages to provide a comprehensive view.
+- Integrate data lineage from various sources, including SQL scripts, ETL scripts, dbt, etc.
+
 ## 📚 Resources
 
-- [Documentation](https://docs.gudu.software/omnisql)
-- [GitHub Repository](https://github.com/gudu-software/gudu-sql-omni-vscode)
-- [Report Issues](https://github.com/gudu-software/gudu-sql-omni-vscode/issues)
-- [SQLFlow Technology](https://www.sqlflow.cn)
+- [Documentation](https://github.com/sqlparser/sqlflow_public/blob/master/gudu_sql_omni/README.md)
+- [GitHub Repository](https://github.com/sqlparser/sqlflow_public/)
+- [Report Issues](https://github.com/sqlparser/sqlflow_public/issues)
+- [SQLFlow Technology](https://docs.gudusoft.com)
 
 ## 🏢 About Gudu Software
 
