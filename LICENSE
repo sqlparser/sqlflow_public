@@ -1,201 +1,193 @@
-                                 Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+Gudu SQLFlow Commercial License Agreement (EULA)
 
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+Last updated: 2025-10-02
 
-   1. Definitions.
+IMPORTANT – READ CAREFULLY: This Commercial License Agreement (the “Agreement”)
+is a legal agreement between you (an individual or a legal entity) (“You”) and
+Gudu Software (“Licensor”, “Gudu”, “we” or “us”) for the Gudu SQLFlow software
+and services described below. By downloading, installing, accessing or using the
+Software or Cloud Service, or by clicking an “I agree”/“Accept” button, You
+agree to be bound by the terms of this Agreement. If You are entering into this
+Agreement on behalf of an entity, You represent that You have authority to bind
+that entity. If You do not agree to all terms, do not install or use the
+Software or Cloud Service.
 
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
+1. Definitions
+1.1 “Software” means Gudu SQLFlow in any edition or form provided for local use,
+     including (a) the VS Code extension (also “Extension”), (b) Java-based
+     libraries/JARs and command-line tools, and (c) any deliverables, updates,
+     and documentation provided by Gudu for local installation.
+1.2 “Cloud Service” means the hosted offering(s) of Gudu SQLFlow operated by
+     Gudu (for example, at websites under the gudusoft.com domain) that You
+     access remotely as a service.
+1.3 “Order” means an online purchase flow, purchase order, quote, or other
+     ordering document that identifies the products, license metrics (e.g.,
+     seats/servers), subscription term, and pricing.
+1.4 “Seat” means a unique individual user permitted to use the Extension.
+1.5 “Subscription Term” means the period identified on an Order during which You
+     are authorized to access the Cloud Service and/or receive updates/support
+     for the Software.
+1.6 “Evaluation” means time-limited or feature-limited use (e.g., trial limits)
+     solely for internal testing and evaluation, not for production use.
 
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
+2. License Grant – Software
+2.1 Subject to this Agreement and Your timely payment of applicable fees, Gudu
+     grants You a limited, non-exclusive, non-transferable, non-sublicensable
+     license to install and use the Software in object code form during the
+     Subscription Term (or perpetually if expressly stated on the Order) solely
+     for Your internal business purposes, in accordance with the license metric
+     specified on the Order:
+     a) VS Code Extension (Seat-based). You may allow the number of Seat users
+        specified on the Order to install and use the Extension. Each Seat is
+        for a named individual and is not shared concurrently among multiple
+        users. Automated license checks and activation keys may be required.
+     b) Java Libraries/Tools. Unless otherwise stated on the Order, licenses are
+        per Developer (for development/build) and per Server (for production
+        execution). Redistributing runtime components is prohibited unless
+        expressly permitted on the Order or in a separate distribution addendum.
+     c) Updates. During a valid Subscription Term for the relevant product,
+        Gudu may provide updates and fixes at its discretion.
 
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
+2.2 Evaluation License. If the Software is provided as an Evaluation (including
+     feature-limited or time-limited builds), You may use it only for internal
+     testing to assess suitability. Evaluation versions may include functional
+     limitations (for example, limits on analyzed objects/tables) and must not
+     be used in production.
 
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
+3. Access Grant – Cloud Service
+3.1 Subject to this Agreement, an active Subscription, and payment of fees, Gudu
+     grants You a limited, non-exclusive, non-transferable right to access and
+     use the Cloud Service during the Subscription Term solely for Your internal
+     business purposes and in accordance with any usage limits stated on the
+     Order. No rights are granted to obtain a copy of the Cloud Service, other
+     than client libraries or tools designated by Gudu for such purpose.
+3.2 Cloud Service may have separate Terms of Service and/or Acceptable Use
+     Policy referenced during signup. Those terms are incorporated by reference
+     and govern Your use of the Cloud Service. In case of conflict, the Order
+     and this Agreement control with respect to commercial terms and license
+     scope.
 
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
+4. Ownership; Feedback; Open-Source Components
+4.1 Ownership. Gudu and its licensors own all right, title and interest in and
+     to the Software and Cloud Service, including all improvements, derivative
+     works, and intellectual property rights. The Software is licensed, not
+     sold.
+4.2 Feedback. You may provide feedback or suggestions. Gudu may use such
+     feedback without restriction or obligation.
+4.3 Third-Party/Open-Source. The Software may include or link to third-party or
+     open-source components under separate licenses. Such components are
+     governed by their respective licenses; see any included NOTICE or
+     THIRD-PARTY files. Nothing in this Agreement limits Your rights under
+     those third-party licenses.
 
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
+5. Restrictions
+Unless expressly permitted in this Agreement or by applicable law (and then only
+to the extent such rights may not be waived), You shall not: (a) copy (except
+for a reasonable number of backup copies), modify, adapt, translate, or create
+derivative works of the Software; (b) reverse engineer, decompile, or disassemble
+the Software or attempt to derive source code; (c) remove, obscure, or alter any
+notices or branding; (d) lease, rent, sell, sublicense, assign, distribute, or
+otherwise transfer the Software or access to the Cloud Service to any third
+party; (e) use the Software or Cloud Service for timesharing, service bureau, or
+hosting for third parties; (f) circumvent technical restrictions, license metric
+controls, or activation mechanisms; (g) use the Software or Cloud Service to
+develop a competing product or to publish benchmarks without Gudu’s prior
+written consent; or (h) use the Software or Cloud Service in violation of any
+applicable law or third-party rights.
 
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
+6. Data; Privacy; Telemetry
+6.1 Local Processing. Many features of the Software operate locally on Your
+     machine/workspace. For Cloud Service features or optional telemetry, data
+     may be transmitted to Gudu. See the applicable privacy notice.
+6.2 Telemetry & Feedback in Extension. The Extension may offer optional
+     telemetry and/or in-product feedback. You may be able to disable telemetry
+     in settings. Feedback submissions are voluntary and may include
+     attachments You choose to provide.
 
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
+7. Support and Services
+Support, SLAs, or professional services are provided only if and as stated on an
+Order or separate agreement. Community or trial use does not include commercial
+support.
 
-      "Contribution" shall mean any work of authorship, including
-      the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally
-      submitted to Licensor for inclusion in the Work by the copyright owner
-      or by an individual or Legal Entity authorized to submit on behalf of
-      the copyright owner. For the purposes of this definition, "submitted"
-      means any form of electronic, verbal, or written communication sent
-      to the Licensor or its representatives, including but not limited to
-      communication on electronic mailing lists, source code control systems,
-      and issue tracking systems that are managed by, or on behalf of, the
-      Licensor for the purpose of discussing and improving the Work, but
-      excluding communication that is conspicuously marked or otherwise
-      designated in writing by the copyright owner as "Not a Contribution."
+8. Term; Termination; Effect
+8.1 Term. This Agreement is effective from first use and continues until
+     terminated as provided here. Subscription-based rights last for the
+     relevant Subscription Term.
+8.2 Termination. Gudu may terminate this Agreement or any license if You breach
+     any term and fail to cure within ten (10) days after notice. Either party
+     may terminate if the other becomes insolvent or ceases operations.
+8.3 Effect. Upon termination, Your rights to use the Software and/or Cloud
+     Service cease and You must uninstall and destroy copies of the Software
+     and license keys. Sections intended to survive (including Ownership,
+     Restrictions, Disclaimers, Liability, and Governing Law) shall survive.
 
-      "Contributor" shall mean Licensor and any individual or Legal Entity
-      on behalf of whom a Contribution has been received by Licensor and
-      subsequently incorporated within the Work.
+9. Warranties; Disclaimers
+THE SOFTWARE AND CLOUD SERVICE ARE PROVIDED “AS IS” AND “AS AVAILABLE.” TO THE
+MAXIMUM EXTENT PERMITTED BY LAW, GUDU AND ITS LICENSORS DISCLAIM ALL WARRANTIES,
+EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. Gudu does not warrant that the
+Software or Cloud Service will be error-free or uninterrupted.
 
-   2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
+10. Limitation of Liability
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL GUDU OR ITS LICENSORS
+BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE
+DAMAGES, OR FOR LOSS OF PROFITS, REVENUE, DATA, OR BUSINESS, EVEN IF ADVISED OF
+THE POSSIBILITY. GUDU’S TOTAL LIABILITY UNDER THIS AGREEMENT SHALL NOT EXCEED
+THE AMOUNTS ACTUALLY PAID BY YOU TO GUDU FOR THE SOFTWARE OR CLOUD SERVICE IN
+THE TWELVE (12) MONTHS PRECEDING THE CLAIM. THESE LIMITATIONS APPLY NOTWITH-
+STANDING ANY FAILURE OF ESSENTIAL PURPOSE OF ANY REMEDY.
 
-   3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
+11. Export; Compliance
+You shall comply with all applicable export control and sanctions laws and shall
+not export or re-export the Software or Cloud Service to any prohibited country
+or user. You represent that You are not located in, under the control of, or a
+national or resident of any prohibited country or on any denied party list.
 
-   4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
+12. Government Use
+If You are a U.S. Government end user, the Software is “Commercial Computer
+Software” and use is subject to the terms of this Agreement pursuant to FAR
+12.212 and DFARS 227.7202, as applicable.
 
-      (a) You must give any other recipients of the Work or
-          Derivative Works a copy of this License; and
+13. General
+13.1 Entire Agreement; Order of Precedence. This Agreement (together with any
+     referenced terms and the applicable Order) constitutes the entire agreement
+     between the parties and supersedes all prior or contemporaneous agreements
+     regarding the subject matter. In case of conflict, the Order controls over
+     this Agreement.
+13.2 Assignment. You may not assign this Agreement without Gudu’s prior written
+     consent. Any unauthorized assignment is void. Gudu may assign to an
+     affiliate or in connection with a merger, acquisition, or sale of assets.
+13.3 Governing Law; Venue. This Agreement is governed by the laws applicable at
+     the Licensor’s principal place of business, excluding conflict-of-laws
+     principles. The parties submit to the exclusive jurisdiction of courts
+     located there. The U.N. Convention on Contracts for the International Sale
+     of Goods does not apply.
+13.4 Severability; Waiver. If any provision is unenforceable, it will be
+     modified to the minimum extent necessary to make it enforceable, and the
+     remainder will remain in effect. Failure to enforce any provision is not a
+     waiver.
+13.5 Notices. Legal notices to Gudu should be sent to the contact addresses on
+     gudusoft.com (or as otherwise specified in an Order) and are deemed given
+     upon receipt.
 
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
+14. Product-Specific Notes
+14.1 VS Code Extension. Seat-based licensing applies unless otherwise stated on
+     the Order. The Extension may enforce license checks and incorporate
+     optional telemetry/feedback as documented. Platform availability and
+     feature sets may vary by version.
+14.2 Java Libraries. Unless expressly permitted, redistribution of runtime
+     components is not allowed. If a redistributable runtime is licensed, You
+     must (a) distribute only as part of Your application; (b) ensure end users
+     cannot use the runtime separately; and (c) include required notices.
+14.3 Cloud Service. Use is subject to service-specific terms and usage limits.
+     Gudu may modify the Cloud Service, provided core functionality of the
+     purchased plan is not materially reduced during a paid term.
 
-      (c) You must retain, in the Source form of any Derivative Works
-          that You distribute, all copyright, patent, trademark, and
-          attribution notices from the Source form of the Work,
-          excluding those notices that do not pertain to any part of
-          the Derivative Works; and
+Contact
+Gudu Software
+Website: https://sqlflow.gudusoft.com
+Support: See product documentation or Order for support channels.
 
-      (d) If the Work includes a "NOTICE" text file as part of its
-          distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
-          within such NOTICE file, excluding those notices that do not
-          pertain to any part of the Derivative Works, in at least one
-          of the following places: within a NOTICE text file distributed
-          as part of the Derivative Works; within the Source form or
-          documentation, if provided along with the Derivative Works; or,
-          within a display generated by the Derivative Works, if and
-          wherever such third-party notices normally appear. The contents
-          of the NOTICE file are for informational purposes only and
-          do not modify the License. You may add Your own attribution
-          notices within Derivative Works that You distribute, alongside
-          or as an addendum to the NOTICE text from the Work, provided
-          that such additional attribution notices cannot be construed
-          as modifying the License.
+© Gudu Software. All rights reserved.
 
-      You may add Your own copyright statement to Your modifications and
-      may provide additional or different license terms and conditions
-      for use, reproduction, or distribution of Your modifications, or
-      for any such Derivative Works as a whole, provided Your use,
-      reproduction, and distribution of the Work otherwise complies with
-      the conditions stated in this License.
 
-   5. Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.
-
-   6. Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.
-
-   7. Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.
-
-   8. Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.
-
-   9. Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
-
-   END OF TERMS AND CONDITIONS
-
-   APPENDIX: How to apply the Apache License to your work.
-
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
-
-   Copyright [yyyy] [name of copyright owner]
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
