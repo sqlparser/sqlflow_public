@@ -236,6 +236,49 @@ Notes:
 - Keep edges atomic (1→1). A multi‑source expression becomes multiple
   edges, all sharing the same `statementKey`.
 
+
+## 1.4 CASE Expressions
+
+### v1 modeling
+
+- A `CASE` expression is treated like a function. All columns referenced in the `WHEN`, `THEN`, and `ELSE` clauses have a direct data flow (`fdd`) to the result column.
+- Even if a column only appears in a `WHEN` condition (logic) and the result values are constants, it is still considered a direct source because it determines the output.
+- `effectType: select`.
+
+Example:
+```sql
+SELECT
+  CASE
+    WHEN score >= 60 THEN 'Pass'
+    ELSE 'Fail'
+  END AS status
+FROM exams;
+```
+```
+exams.score -> fdd -> RS-1.status   (effectType: select)
+```
+
+### v2 modeling
+
+- Model as `data_flow` edges from all referenced columns to the result.
+- Set `transforms.code` to the `CASE` expression.
+- Set `effectType: MODIFIED_COPY` because the output is a transformation of the input logic.
+
+Example:
+```sql
+SELECT
+  CASE
+    WHEN score >= 60 THEN 'Pass'
+    ELSE 'Fail'
+  END AS status
+FROM exams;
+```
+```
+data_flow: exams.score -> RS-1.status
+  - transforms.code: "CASE WHEN score >= 60 THEN 'Pass' ELSE 'Fail' END"
+  - effectType: MODIFIED_COPY
+```
+
 ## 2.1 Built‑in
 
 - v1:
