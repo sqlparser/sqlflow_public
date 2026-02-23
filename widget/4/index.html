@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <title>demo: visualize a job with setting</title>
+        <script src="/jquery.min.js"></script>
+        <script src="/sqlflow.widget.3.6.2.js?t=1728569340295"></script>
+        <script src="index.js"></script>
+        <style>
+            body {
+                padding: 0 20px 20px;
+            }
+
+            h1 {
+                margin-top: 50px;
+                font-size: 24px;
+            }
+
+            .config {
+                margin: 20px;
+            }
+
+            .config .row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .config .row input {
+                width: 300px;
+            }
+
+            .config .row input[type='checkbox'] {
+                width: 20px;
+                cursor: pointer;
+            }
+
+            .checkbox {
+                cursor: pointer;
+            }
+
+            .checkbox .title {
+                width: 220px;
+            }
+
+            .input .title {
+                width: 80px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="config">
+            <div class="row input">
+                <div class="title">jobid</div>
+                <input id="jobid" value="fb19960353004c79a966549360c0b8eb" />
+            </div>
+            <div class="row input">
+                <div class="title">database</div>
+                <input id="database" value="" />
+            </div>
+            <div class="row input">
+                <div class="title">schema</div>
+                <input id="schema" value="dbsnmp" />
+            </div>
+            <div class="row input">
+                <div class="title">table</div>
+                <input id="table" value="bsln_baselines" />
+            </div>
+            <div class="row input" style="margin-bottom: 40px">
+                <div class="title">column</div>
+                <input id="column" value="DBID" />
+            </div>
+            <div class="row checkbox">
+                <div class="title">show intermediate recordset</div>
+                <input id="recordset" type="checkbox" />
+            </div>
+            <div class="row checkbox">
+                <div class="title">show function</div>
+                <input id="function" type="checkbox" />
+            </div>
+            <button id="visualize">visualize</button>
+        </div>
+        <div id="sqlflow"></div>
+    </body>
+</html>

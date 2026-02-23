@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <title>demo: freestyle</title>
+        <script src="/jquery.min.js"></script>
+        <script src="/sqlflow.widget.3.6.2.js?t=1728569340295"></script>
+        <script src="index.js"></script>
+        <style>
+            body {
+                padding: 0 20px 20px;
+            }
+
+            h1 {
+                margin-top: 50px;
+                font-size: 24px;
+            }
+
+            .config {
+                margin: 20px;
+            }
+
+            .config .row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .config .row input {
+                width: 500px;
+            }
+
+            .input .title {
+                width: 160px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="config">
+            <div class="row input">
+                <div class="title">url</div>
+                <input id="url" value="http://43.142.114.24:7001/lineage/sqlflow/upstreamV2" />
+            </div>
+            <div class="row input">
+                <div class="title">tablename</div>
+                <input id="tablename" value="stg001_apac_sales_forecast_in_process_delta" />
+            </div>
+            <div class="row input">
+                <div class="title">columnname</div>
+                <input id="columnname" />
+            </div>
+            <button id="visualize">visualize</button>
+        </div>
+        <div id="sqlflow"></div>
+    </body>
+</html>

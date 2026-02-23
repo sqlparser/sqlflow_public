@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <title>demo：custom UI component</title>
+        <script src="/sqlflow.widget.3.6.2.js?t=1728569340295"></script>
+        <script>
+            const sqltext = `
+            CREATE VIEW vsal
+            AS
+              SELECT a.deptno                  "Department",
+                     a.num_emp / b.total_count "Employees",
+                     a.sal_sum / b.total_sal   "Salary"
+              FROM   (SELECT deptno,
+                             Count()  num_emp,
+                             SUM(sal) sal_sum
+                      FROM   scott.emp
+                      WHERE  city = 'NYC'
+                      GROUP  BY deptno) a,
+                     (SELECT Count()  total_count,
+                             SUM(sal) total_sal
+                      FROM   scott.emp
+                      WHERE  city = 'NYC') b
+            ;
+
+            INSERT ALL
+            	WHEN ottl < 100000 THEN
+            		INTO small_orders
+            			VALUES(oid, ottl, sid, cid)
+            	WHEN ottl > 100000 and ottl < 200000 THEN
+            		INTO medium_orders
+            			VALUES(oid, ottl, sid, cid)
+            	WHEN ottl > 200000 THEN
+            		into large_orders
+            			VALUES(oid, ottl, sid, cid)
+            	WHEN ottl > 290000 THEN
+            		INTO special_orders
+            SELECT o.order_id oid, o.customer_id cid, o.order_total ottl,
+            o.sales_rep_id sid, c.credit_limit cl, c.cust_email cem
+            FROM orders o, customers c
+            WHERE o.customer_id = c.customer_id;
+
+            create table scott.dept(
+              deptno     number(2,0),
+              dname      varchar2(14),
+              loc        varchar2(13),
+              constraint pk_dept primary key (deptno)
+            );
+
+            create table scott.emp(
+              empno    number(4,0),
+              ename    varchar2(10),
+              job      varchar2(9),
+              mgr      number(4,0),
+              hiredate date,
+              sal      number(7,2),
+              comm     number(7,2),
+              deptno   number(2,0),
+              constraint pk_emp primary key (empno),
+              constraint fk_deptno foreign key (deptno) references dept (deptno)
+            );
+                        ;`;
+
+            let sqlflow_1;
+            const run_sqlflow_1 = async () => {
+                sqlflow_1 = await SQLFlow.init({
+                    container: document.getElementById('sqlflow_1'),
+                    width: '100%',
+                    height: 700,
+                    apiPrefix: 'http://hdp02.sqlflow.cn/api',
+                    component: {
+                        sqlEditor: true,
+                        graphLocate: true,
+                        minimap: true,
+                    },
+                });
+
+                // set dbvendor property
+                sqlflow_1.vendor.set('oracle');
+
+                // set sql text property
+                sqlflow_1.sqltext.set(sqltext);
+
+                // show intermediate recordset
+                sqlflow_1.config.showIntermediateRecordset.set(false);
+
+                sqlflow_1.visualize();
+            };
+
+            const run_sqlflow_2 = async () => {
+                const sqlflow_2 = await SQLFlow.init({
+                    container: document.getElementById('sqlflow_2'),
+                    width: '100%',
+                    height: 500,
+                    apiPrefix: 'http://hdp02.sqlflow.cn/api',
+                    component: {
+                        sqlEditor: true,
+                        graphLocate: true,
+                        minimap: true,
+                    },
+                });
+
+                // set dbvendor property
+                sqlflow_2.vendor.set('oracle');
+
+                // set sql text property
+                sqlflow_2.sqltext.set(sqltext);
+
+                // show intermediate recordset
+                sqlflow_2.config.showIntermediateRecordset.set(true);
+
+                sqlflow_2.visualize();
+            };
+
+            const run_sqlflow_3 = async () => {
+                const sqlflow_3 = await SQLFlow.init({
+                    container: document.getElementById('sqlflow_3'),
+                    width: '100%',
+                    height: 500,
+                    apiPrefix: 'http://hdp02.sqlflow.cn/api',
+                    component: {
+                        sqlEditor: true,
+                        graphLocate: true,
+                        minimap: true,
+                    },
+                });
+
+                // set dbvendor property
+                sqlflow_3.vendor.set('oracle');
+
+                // set sql text property
+                sqlflow_3.sqltext.set(sqltext);
+
+                sqlflow_3.visualizeTableLevel();
+            };
+
+            const run_sqlflow_4 = async () => {
+                const sqltext = `
+create table scott.dept(
+    deptno     number(2,0),
+    dname      varchar2(14),
+    loc        varchar2(13),
+    constraint pk_dept primary key (deptno)
+);
+
+create table scott.emp(
+    empno    number(4,0),
+    ename    varchar2(10),
+    job      varchar2(9),
+    mgr      number(4,0),
+    hiredate date,
+    sal      number(7,2),
+    comm     number(7,2),
+    deptno   number(2,0),
+    constraint pk_emp primary key (empno),
+    constraint fk_deptno foreign key (deptno) references dept (deptno)
+);
+                        `;
+                const sqlflow_4 = await SQLFlow.init({
+                    container: document.getElementById('sqlflow_4'),
+                    width: '100%',
+                    height: 600,
+                    apiPrefix: 'http://hdp02.sqlflow.cn/api',
+                    component: {
+                        sqlEditor: true,
+                        graphLocate: true,
+                        minimap: true,
+                    },
+                });
+
+                // set dbvendor property
+                sqlflow_4.vendor.set('oracle');
+
+                // set sql text property
+                sqlflow_4.sqltext.set(sqltext);
+
+                sqlflow_4.visualizeER();
+            };
+
+            let sqlflow_5;
+            const run_sqlflow_5 = async () => {
+                sqlflow_5 = await SQLFlow.init({
+                    container: document.getElementById('sqlflow_5'),
+                    width: '100%',
+                    height: 600,
+                    apiPrefix: 'http://hdp02.sqlflow.cn/api',
+                });
+
+                const json = await fetch('er.json').then(res => res.json());
+
+                sqlflow_5.visualizeERJSON(json, { layout: true });
+            };
+
+            const run_sqlflow_6 = async () => {
+                const sqlflow_6 = await SQLFlow.init({
+                    container: document.getElementById('sqlflow_6'),
+                    width: '100%',
+                    height: 600,
+                    apiPrefix: 'http://hdp02.sqlflow.cn/api',
+                    component: {
+                        sqlEditor: true,
+                        graphLocate: true,
+                        minimap: true,
+                    },
+                });
+
+                const json = await fetch('sqltext4.json').then(res => res.json());
+                const sqltext = `CREATE VIEW vsal \nAS \n  SELECT a.deptno                  "Department", \n         a.num_emp / b.total_count "Employees", \n         a.sal_sum / b.total_sal   "Salary" \n  FROM   (SELECT deptno, \n                 Count()  num_emp, \n                 SUM(sal) sal_sum \n          FROM   scott.emp \n          WHERE  city = 'NYC' \n          GROUP  BY deptno) a, \n         (SELECT Count()  total_count, \n                 SUM(sal) total_sal \n          FROM   scott.emp \n          WHERE  city = 'NYC') b \n;\n\nINSERT ALL\n	WHEN ottl < 100000 THEN\n		INTO small_orders\n			VALUES(oid, ottl, sid, cid)\n	WHEN ottl > 100000 and ottl < 200000 THEN\n		INTO medium_orders\n			VALUES(oid, ottl, sid, cid)\n	WHEN ottl > 200000 THEN\n		into large_orders\n			VALUES(oid, ottl, sid, cid)\n	WHEN ottl > 290000 THEN\n		INTO special_orders\nSELECT o.order_id oid, o.customer_id cid, o.order_total ottl,\no.sales_rep_id sid, c.credit_limit cl, c.cust_email cem\nFROM orders o, customers c\nWHERE o.customer_id = c.customer_id;\n\ncreate table scott.dept(   \n  deptno     number(2,0),   \n  dname      varchar2(14),   \n  loc        varchar2(13),   \n  constraint pk_dept primary key (deptno)   \n);\n\ncreate table scott.emp(   \n  empno    number(4,0),   \n  ename    varchar2(10),   \n  job      varchar2(9),   \n  mgr      number(4,0),   \n  hiredate date,   \n  sal      number(7,2),   \n  comm     number(7,2),   \n  deptno   number(2,0),   \n  constraint pk_emp primary key (empno),\n  constraint fk_deptno foreign key (deptno) references dept (deptno) \n);`;
+                sqlflow_6.visualizeJSON(json, { layout: true, sqltext });
+            };
+
+            let sqlflow_6;
+            document.addEventListener('DOMContentLoaded', async () => {
+                run_sqlflow_1();
+                run_sqlflow_2();
+                run_sqlflow_3();
+                run_sqlflow_4();
+                run_sqlflow_5();
+                run_sqlflow_6();
+                sqlflow_6 = await SQLFlow.init({
+                    container: document.getElementById('sqlflow_6'),
+                    width: '100%',
+                    height: 600,
+                    apiPrefix: 'http://hdp02.sqlflow.cn/api',
+                    component: {
+                        sqlEditor: false,
+                        graphLocate: true,
+                        minimap: true,
+                    },
+                });
+            });
+
+            console.log(1);
+            const rerun_sqlflow_6 = async () => {
+                const json = await fetch('3.json').then(res => res.json());
+                const sqltext = `CREATE VIEW vsal \nAS \n  SELECT a.deptno                  "Department", \n         a.num_emp / b.total_count "Employees", \n         a.sal_sum / b.total_sal   "Salary" \n  FROM   (SELECT deptno, \n                 Count()  num_emp, \n                 SUM(sal) sal_sum \n          FROM   scott.emp \n          WHERE  city = 'NYC' \n          GROUP  BY deptno) a, \n         (SELECT Count()  total_count, \n                 SUM(sal) total_sal \n          FROM   scott.emp \n          WHERE  city = 'NYC') b \n;\n\nINSERT ALL\n	WHEN ottl < 100000 THEN\n		INTO small_orders\n			VALUES(oid, ottl, sid, cid)\n	WHEN ottl > 100000 and ottl < 200000 THEN\n		INTO medium_orders\n			VALUES(oid, ottl, sid, cid)\n	WHEN ottl > 200000 THEN\n		into large_orders\n			VALUES(oid, ottl, sid, cid)\n	WHEN ottl > 290000 THEN\n		INTO special_orders\nSELECT o.order_id oid, o.customer_id cid, o.order_total ottl,\no.sales_rep_id sid, c.credit_limit cl, c.cust_email cem\nFROM orders o, customers c\nWHERE o.customer_id = c.customer_id;\n\ncreate table scott.dept(   \n  deptno     number(2,0),   \n  dname      varchar2(14),   \n  loc        varchar2(13),   \n  constraint pk_dept primary key (deptno)   \n);\n\ncreate table scott.emp(   \n  empno    number(4,0),   \n  ename    varchar2(10),   \n  job      varchar2(9),   \n  mgr      number(4,0),   \n  hiredate date,   \n  sal      number(7,2),   \n  comm     number(7,2),   \n  deptno   number(2,0),   \n  constraint pk_emp primary key (empno),\n  constraint fk_deptno foreign key (deptno) references dept (deptno) \n);`;
+                sqlflow_6.visualizeJSON({ data: json }, { layout: true, sqltext });
+            };
+            const rerun_sqlflow_61 = async () => {
+                const json = await fetch('sqltext4.json').then(res => res.json());
+                const sqltext = `CREATE VIEW vsal \nAS \n  SELECT a.deptno                  "Department", \n         a.num_emp / b.total_count "Employees", \n         a.sal_sum / b.total_sal   "Salary" \n  FROM   (SELECT deptno, \n                 Count()  num_emp, \n                 SUM(sal) sal_sum \n          FROM   scott.emp \n          WHERE  city = 'NYC' \n          GROUP  BY deptno) a, \n         (SELECT Count()  total_count, \n                 SUM(sal) total_sal \n          FROM   scott.emp \n          WHERE  city = 'NYC') b \n;\n\nINSERT ALL\n	WHEN ottl < 100000 THEN\n		INTO small_orders\n			VALUES(oid, ottl, sid, cid)\n	WHEN ottl > 100000 and ottl < 200000 THEN\n		INTO medium_orders\n			VALUES(oid, ottl, sid, cid)\n	WHEN ottl > 200000 THEN\n		into large_orders\n			VALUES(oid, ottl, sid, cid)\n	WHEN ottl > 290000 THEN\n		INTO special_orders\nSELECT o.order_id oid, o.customer_id cid, o.order_total ottl,\no.sales_rep_id sid, c.credit_limit cl, c.cust_email cem\nFROM orders o, customers c\nWHERE o.customer_id = c.customer_id;\n\ncreate table scott.dept(   \n  deptno     number(2,0),   \n  dname      varchar2(14),   \n  loc        varchar2(13),   \n  constraint pk_dept primary key (deptno)   \n);\n\ncreate table scott.emp(   \n  empno    number(4,0),   \n  ename    varchar2(10),   \n  job      varchar2(9),   \n  mgr      number(4,0),   \n  hiredate date,   \n  sal      number(7,2),   \n  comm     number(7,2),   \n  deptno   number(2,0),   \n  constraint pk_emp primary key (empno),\n  constraint fk_deptno foreign key (deptno) references dept (deptno) \n);`;
+                sqlflow_6.visualizeERJSON(json, { layout: true });
+            };
+        </script>
+        <style>
+            html,
+            body {
+                padding: 0;
+                margin: 0;
+                padding-bottom: 80px;
+            }
+
+            .block {
+                padding: 20px 20px 0 40px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="block">
+            <h1>UI component demo 1: enable all components</h1>
+            <div id="sqlflow_1"></div>
+            <button onclick="sqlflow_1.saveAsPng()">save png</button>
+        </div>
+
+        <div class="block">
+            <h1>UI component demo 2: show intermediate recordset</h1>
+            <div id="sqlflow_2"></div>
+        </div>
+
+        <div class="block">
+            <h1>UI component demo 3: visualize table level lineage</h1>
+            <div id="sqlflow_3"></div>
+        </div>
+
+        <div class="block">
+            <h1>UI component demo 4: visualize ER diagram</h1>
+            <div id="sqlflow_4"></div>
+        </div>
+
+        <div class="block">
+            <h1>UI component demo 5: visualize ER diagram json</h1>
+            <div id="sqlflow_5"></div>
+            <button onclick="sqlflow_5.saveERAsPng()">save png</button>
+        </div>
+
+        <div class="block">
+            <button onclick="rerun_sqlflow_6()">visualize</button>
+            <button onclick="rerun_sqlflow_61()">visualize ER</button>
+            <h1>UI component demo 6: visualize sqltext json</h1>
+            <div id="sqlflow_6"></div>
+        </div>
+    </body>
+</html>

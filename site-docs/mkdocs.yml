@@ -1,0 +1,54 @@
+    # Project information
+    site_name: GSP Documentation
+    site_url: https://sqlparser.github.io/sqlflow_public/
+    site_author: GSP Team
+    site_description: Comprehensive documentation for GSP (Generic SQL Parser)
+
+    # Repository
+    repo_name: sqlparser/sqlflow_public
+    repo_url: https://github.com/sqlparser/sqlflow_public/
+    edit_uri: edit/release_docs/site-docs/docs/
+
+    # Copyright
+    copyright: Copyright &copy; 2023-2025 GSP Team
+
+    # Theme configuration
+    theme:
+      name: material
+      # Optional features - see Material for MkDocs documentation for many more
+      features:
+        - navigation.tabs # Use tabs for top-level sections
+        - navigation.sections # Expand sections in the side nav
+        - toc.integrate # Show table of contents on the left
+        - navigation.top # Back-to-top button
+        - search.suggest # Search autocompletion
+        - content.code.copy # Copy button for code blocks
+      palette:
+        scheme: default
+        primary: indigo
+        accent: indigo
+
+    # Extensions (built-in)
+    markdown_extensions:
+      - pymdownx.highlight: # Code highlighting
+          anchor_linenums: true
+      - pymdownx.inlinehilite
+      - pymdownx.snippets # Include content from other files
+      - pymdownx.superfences # Nicer code blocks
+      - admonition # Admonition blocks (note, warning, etc.)
+      - toc:
+          permalink: true # Add anchor links to headings
+
+    # Navigation structure (optional but recommended)
+    nav:
+      - Home: index.md
+      - Product Introduction:
+        - Overview: features/product-introduction.md
+      - Tutorials:
+        - Getting Started: tutorials/getting-started.md
+      - Reference:
+        - SQL Syntax Support:
+          - Overview: reference/sql-support/index.md
+        - SQL Parsing Analysis:
+          - Overview: reference/sql-analysis/index.md
+        - Java API: reference/javadoc/index.html

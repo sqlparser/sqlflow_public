@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <title>demo: visualize sqltext with setting</title>
+        <script src="/jquery.min.js"></script>
+        <script src="/sqlflow.widget.3.6.2.js?t=1728569340295"></script>
+        <script src="index.js"></script>
+        <style>
+            body {
+                padding: 0 20px 20px;
+            }
+
+            h1 {
+                margin-top: 50px;
+                font-size: 24px;
+            }
+
+            .config {
+                margin: 20px;
+            }
+
+            .config .row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .config .row textarea {
+                width: 500px;
+                height: 300px;
+            }
+
+            .input .title {
+                width: 80px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="config">
+            <div class="row input">
+                <div class="title">sqltext</div>
+                <textarea id="sqltext">
+CREATE VIEW vsal 
+AS 
+    SELECT a.deptno                  "Department", 
+            a.num_emp / b.total_count "Employees", 
+            a.sal_sum / b.total_sal   "Salary" 
+    FROM   (SELECT deptno, 
+                    Count()  num_emp, 
+                    SUM(sal) sal_sum 
+            FROM   scott.emp 
+            WHERE  city = 'NYC' 
+            GROUP  BY deptno) a, 
+            (SELECT Count()  total_count, 
+                    SUM(sal) total_sal 
+            FROM   scott.emp 
+            WHERE  city = 'NYC') b ;
+-- error
+select a from b;123
+                </textarea>
+            </div>
+            <div class="row input">
+                <div class="title">error</div>
+                <textarea id="error"> </textarea>
+            </div>
+            <button id="visualize">visualize</button>
+        </div>
+        <div id="sqlflow"></div>
+    </body>
+</html>

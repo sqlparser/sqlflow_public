@@ -1,0 +1,1252 @@
+{
+    "code": 200,
+    "data": {
+        "mode": "global",
+        "summary": {
+            "schema": 1,
+            "process": 1,
+            "database": 0,
+            "view": 1,
+            "mostRelationTables": [
+                {
+                    "schema": "SALESLT",
+                    "table": "VPRODUCTANDDESCRIPTION"
+                },
+                {
+                    "schema": "SALESLT",
+                    "table": "PRODUCT"
+                },
+                {
+                    "schema": "SALESLT",
+                    "table": "PRODUCTMODEL"
+                }
+            ],
+            "column": 16,
+            "relationship": 10,
+            "table": 4
+        },
+        "sqlflow": {
+            "dbobjs": {
+                "createdBy": "sqlflow v1.0.0",
+                "servers": [
+                    {
+                        "name": "DEFAULT_SERVER",
+                        "dbVendor": "dbvazuresql",
+                        "supportsCatalogs": true,
+                        "supportsSchemas": true,
+                        "databases": [
+                            {
+                                "name": "DEFAULT",
+                                "schemas": [
+                                    {
+                                        "name": "DEFAULT",
+                                        "others": [
+                                            {
+                                                "id": "28",
+                                                "name": "RS-1",
+                                                "displayName": "RS-1",
+                                                "type": "select_list",
+                                                "columns": [
+                                                    {
+                                                        "id": "27",
+                                                        "name": "RelationRows",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 7,
+                                                                "y": 5
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 11,
+                                                                "y": 22
+                                                            }
+                                                        ],
+                                                        "source": "system",
+                                                        "uiVisible": false
+                                                    },
+                                                    {
+                                                        "id": "32",
+                                                        "name": "[Culture]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 10,
+                                                                "y": 6
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 10,
+                                                                "y": 19
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "33",
+                                                        "name": "[Description]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 11,
+                                                                "y": 6
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 11,
+                                                                "y": 22
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "30",
+                                                        "name": "[Name]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 8,
+                                                                "y": 6
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 8,
+                                                                "y": 14
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "29",
+                                                        "name": "[ProductID]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 7,
+                                                                "y": 5
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 7,
+                                                                "y": 18
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "31",
+                                                        "name": "[ProductModel]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 9,
+                                                                "y": 6
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 9,
+                                                                "y": 33
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                "coordinates": [
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 7,
+                                                        "y": 5
+                                                    },
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 11,
+                                                        "y": 22
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "processes": [
+                                            {
+                                                "id": "36",
+                                                "name": "Query Create View-1",
+                                                "procedureName": "batchQueries",
+                                                "queryHashId": "b64afec4380253bfe65404d480e275ee",
+                                                "coordinates": [
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 2,
+                                                        "y": 1
+                                                    },
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 18,
+                                                        "y": 63
+                                                    }
+                                                ],
+                                                "uiVisible": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "[SalesLT]",
+                                        "tables": [
+                                            {
+                                                "id": "24",
+                                                "name": "[ProductDescription]",
+                                                "displayName": "[SalesLT].[ProductDescription]",
+                                                "type": "table",
+                                                "columns": [
+                                                    {
+                                                        "id": "26",
+                                                        "name": "[Description]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 11,
+                                                                "y": 6
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 11,
+                                                                "y": 22
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "25",
+                                                        "name": "[ProductDescriptionID]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 18,
+                                                                "y": 37
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 18,
+                                                                "y": 62
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                "coordinates": [
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 17,
+                                                        "y": 16
+                                                    },
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 17,
+                                                        "y": 49
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "17",
+                                                "name": "[ProductModelProductDescription]",
+                                                "displayName": "[SalesLT].[ProductModelProductDescription]",
+                                                "type": "table",
+                                                "columns": [
+                                                    {
+                                                        "id": "20",
+                                                        "name": "[Culture]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 10,
+                                                                "y": 6
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 10,
+                                                                "y": 19
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "19",
+                                                        "name": "[ProductDescriptionID]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 18,
+                                                                "y": 8
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 18,
+                                                                "y": 34
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "18",
+                                                        "name": "[ProductModelID]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 16,
+                                                                "y": 30
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 16,
+                                                                "y": 50
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                "coordinates": [
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 15,
+                                                        "y": 16
+                                                    },
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 15,
+                                                        "y": 62
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "11",
+                                                "name": "[ProductModel]",
+                                                "displayName": "[SalesLT].[ProductModel]",
+                                                "type": "table",
+                                                "columns": [
+                                                    {
+                                                        "id": "13",
+                                                        "name": "[Name]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 9,
+                                                                "y": 6
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 9,
+                                                                "y": 15
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "12",
+                                                        "name": "[ProductModelID]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 14,
+                                                                "y": 29
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 14,
+                                                                "y": 48
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                "coordinates": [
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 13,
+                                                        "y": 16
+                                                    },
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 13,
+                                                        "y": 43
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "4",
+                                                "name": "[Product]",
+                                                "displayName": "[SalesLT].[Product]",
+                                                "type": "table",
+                                                "columns": [
+                                                    {
+                                                        "id": "7",
+                                                        "name": "[Name]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 8,
+                                                                "y": 6
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 8,
+                                                                "y": 14
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "6",
+                                                        "name": "[ProductID]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 7,
+                                                                "y": 5
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 7,
+                                                                "y": 18
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "5",
+                                                        "name": "[ProductModelID]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 14,
+                                                                "y": 8
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 14,
+                                                                "y": 26
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                "coordinates": [
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 12,
+                                                        "y": 6
+                                                    },
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 12,
+                                                        "y": 27
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "views": [
+                                            {
+                                                "id": "35",
+                                                "name": "[vProductAndDescription]",
+                                                "displayName": "[SalesLT].[vProductAndDescription]",
+                                                "type": "view",
+                                                "columns": [
+                                                    {
+                                                        "id": "34",
+                                                        "name": "RelationRows",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 2,
+                                                                "y": 1
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 18,
+                                                                "y": 63
+                                                            }
+                                                        ],
+                                                        "source": "system",
+                                                        "uiVisible": false
+                                                    },
+                                                    {
+                                                        "id": "40",
+                                                        "name": "[Culture]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 10,
+                                                                "y": 6
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 10,
+                                                                "y": 19
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "41",
+                                                        "name": "[Description]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 11,
+                                                                "y": 6
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 11,
+                                                                "y": 22
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "38",
+                                                        "name": "[Name]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 8,
+                                                                "y": 6
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 8,
+                                                                "y": 14
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "37",
+                                                        "name": "[ProductID]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 7,
+                                                                "y": 5
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 7,
+                                                                "y": 18
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "id": "39",
+                                                        "name": "[ProductModel]",
+                                                        "coordinates": [
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 9,
+                                                                "y": 19
+                                                            },
+                                                            {
+                                                                "hashCode": "0",
+                                                                "x": 9,
+                                                                "y": 33
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                "coordinates": [
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 2,
+                                                        "y": 1
+                                                    },
+                                                    {
+                                                        "hashCode": "0",
+                                                        "x": 18,
+                                                        "y": 63
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "relationships": [
+                {
+                    "id": "1101",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "29",
+                        "column": "PRODUCTID",
+                        "parentId": "28",
+                        "parentName": "RS-1",
+                        "coordinates": [
+                            {
+                                "hashCode": "0",
+                                "x": 7,
+                                "y": 5
+                            },
+                            {
+                                "hashCode": "0",
+                                "x": 7,
+                                "y": 18
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "6",
+                            "column": "PRODUCTID",
+                            "parentId": "4",
+                            "parentName": "SALESLT.PRODUCT",
+                            "coordinates": [
+                                {
+                                    "hashCode": "0",
+                                    "x": 7,
+                                    "y": 5
+                                },
+                                {
+                                    "hashCode": "0",
+                                    "x": 7,
+                                    "y": 18
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "1102",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "40",
+                        "column": "CULTURE",
+                        "parentId": "35",
+                        "parentName": "SALESLT.VPRODUCTANDDESCRIPTION",
+                        "coordinates": [
+                            {
+                                "hashCode": "0",
+                                "x": 10,
+                                "y": 6
+                            },
+                            {
+                                "hashCode": "0",
+                                "x": 10,
+                                "y": 19
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "32",
+                            "column": "CULTURE",
+                            "parentId": "28",
+                            "parentName": "RS-1",
+                            "coordinates": [
+                                {
+                                    "hashCode": "0",
+                                    "x": 10,
+                                    "y": 6
+                                },
+                                {
+                                    "hashCode": "0",
+                                    "x": 10,
+                                    "y": 19
+                                }
+                            ]
+                        }
+                    ],
+                    "processId": "36"
+                },
+                {
+                    "id": "1103",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "30",
+                        "column": "NAME",
+                        "parentId": "28",
+                        "parentName": "RS-1",
+                        "coordinates": [
+                            {
+                                "hashCode": "0",
+                                "x": 8,
+                                "y": 6
+                            },
+                            {
+                                "hashCode": "0",
+                                "x": 8,
+                                "y": 14
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "7",
+                            "column": "NAME",
+                            "parentId": "4",
+                            "parentName": "SALESLT.PRODUCT",
+                            "coordinates": [
+                                {
+                                    "hashCode": "0",
+                                    "x": 8,
+                                    "y": 6
+                                },
+                                {
+                                    "hashCode": "0",
+                                    "x": 8,
+                                    "y": 14
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "1104",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "41",
+                        "column": "DESCRIPTION",
+                        "parentId": "35",
+                        "parentName": "SALESLT.VPRODUCTANDDESCRIPTION",
+                        "coordinates": [
+                            {
+                                "hashCode": "0",
+                                "x": 11,
+                                "y": 6
+                            },
+                            {
+                                "hashCode": "0",
+                                "x": 11,
+                                "y": 22
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "33",
+                            "column": "DESCRIPTION",
+                            "parentId": "28",
+                            "parentName": "RS-1",
+                            "coordinates": [
+                                {
+                                    "hashCode": "0",
+                                    "x": 11,
+                                    "y": 6
+                                },
+                                {
+                                    "hashCode": "0",
+                                    "x": 11,
+                                    "y": 22
+                                }
+                            ]
+                        }
+                    ],
+                    "processId": "36"
+                },
+                {
+                    "id": "1105",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "31",
+                        "column": "PRODUCTMODEL",
+                        "parentId": "28",
+                        "parentName": "RS-1",
+                        "coordinates": [
+                            {
+                                "hashCode": "0",
+                                "x": 9,
+                                "y": 6
+                            },
+                            {
+                                "hashCode": "0",
+                                "x": 9,
+                                "y": 33
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "13",
+                            "column": "NAME",
+                            "parentId": "11",
+                            "parentName": "SALESLT.PRODUCTMODEL",
+                            "coordinates": [
+                                {
+                                    "hashCode": "0",
+                                    "x": 9,
+                                    "y": 6
+                                },
+                                {
+                                    "hashCode": "0",
+                                    "x": 9,
+                                    "y": 15
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "1106",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "32",
+                        "column": "CULTURE",
+                        "parentId": "28",
+                        "parentName": "RS-1",
+                        "coordinates": [
+                            {
+                                "hashCode": "0",
+                                "x": 10,
+                                "y": 6
+                            },
+                            {
+                                "hashCode": "0",
+                                "x": 10,
+                                "y": 19
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "20",
+                            "column": "CULTURE",
+                            "parentId": "17",
+                            "parentName": "SALESLT.PRODUCTMODELPRODUCTDESCRIPTION",
+                            "coordinates": [
+                                {
+                                    "hashCode": "0",
+                                    "x": 10,
+                                    "y": 6
+                                },
+                                {
+                                    "hashCode": "0",
+                                    "x": 10,
+                                    "y": 19
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "1107",
+                    "type": "fdd",
+                    "effectType": "select",
+                    "target": {
+                        "id": "33",
+                        "column": "DESCRIPTION",
+                        "parentId": "28",
+                        "parentName": "RS-1",
+                        "coordinates": [
+                            {
+                                "hashCode": "0",
+                                "x": 11,
+                                "y": 6
+                            },
+                            {
+                                "hashCode": "0",
+                                "x": 11,
+                                "y": 22
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "26",
+                            "column": "DESCRIPTION",
+                            "parentId": "24",
+                            "parentName": "SALESLT.PRODUCTDESCRIPTION",
+                            "coordinates": [
+                                {
+                                    "hashCode": "0",
+                                    "x": 11,
+                                    "y": 6
+                                },
+                                {
+                                    "hashCode": "0",
+                                    "x": 11,
+                                    "y": 22
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "1108",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "37",
+                        "column": "PRODUCTID",
+                        "parentId": "35",
+                        "parentName": "SALESLT.VPRODUCTANDDESCRIPTION",
+                        "coordinates": [
+                            {
+                                "hashCode": "0",
+                                "x": 7,
+                                "y": 5
+                            },
+                            {
+                                "hashCode": "0",
+                                "x": 7,
+                                "y": 18
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "29",
+                            "column": "PRODUCTID",
+                            "parentId": "28",
+                            "parentName": "RS-1",
+                            "coordinates": [
+                                {
+                                    "hashCode": "0",
+                                    "x": 7,
+                                    "y": 5
+                                },
+                                {
+                                    "hashCode": "0",
+                                    "x": 7,
+                                    "y": 18
+                                }
+                            ]
+                        }
+                    ],
+                    "processId": "36"
+                },
+                {
+                    "id": "1109",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "38",
+                        "column": "NAME",
+                        "parentId": "35",
+                        "parentName": "SALESLT.VPRODUCTANDDESCRIPTION",
+                        "coordinates": [
+                            {
+                                "hashCode": "0",
+                                "x": 8,
+                                "y": 6
+                            },
+                            {
+                                "hashCode": "0",
+                                "x": 8,
+                                "y": 14
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "30",
+                            "column": "NAME",
+                            "parentId": "28",
+                            "parentName": "RS-1",
+                            "coordinates": [
+                                {
+                                    "hashCode": "0",
+                                    "x": 8,
+                                    "y": 6
+                                },
+                                {
+                                    "hashCode": "0",
+                                    "x": 8,
+                                    "y": 14
+                                }
+                            ]
+                        }
+                    ],
+                    "processId": "36"
+                },
+                {
+                    "id": "1110",
+                    "type": "fdd",
+                    "effectType": "create_view",
+                    "target": {
+                        "id": "39",
+                        "column": "PRODUCTMODEL",
+                        "parentId": "35",
+                        "parentName": "SALESLT.VPRODUCTANDDESCRIPTION",
+                        "coordinates": [
+                            {
+                                "hashCode": "0",
+                                "x": 9,
+                                "y": 19
+                            },
+                            {
+                                "hashCode": "0",
+                                "x": 9,
+                                "y": 33
+                            }
+                        ]
+                    },
+                    "sources": [
+                        {
+                            "id": "31",
+                            "column": "PRODUCTMODEL",
+                            "parentId": "28",
+                            "parentName": "RS-1",
+                            "coordinates": [
+                                {
+                                    "hashCode": "0",
+                                    "x": 9,
+                                    "y": 6
+                                },
+                                {
+                                    "hashCode": "0",
+                                    "x": 9,
+                                    "y": 33
+                                }
+                            ]
+                        }
+                    ],
+                    "processId": "36"
+                }
+            ],
+            "processes": [
+                {
+                    "id": "36",
+                    "name": "Query Create View-1",
+                    "procedureName": "batchQueries",
+                    "queryHashId": "b64afec4380253bfe65404d480e275ee",
+                    "type": "sstcreateview",
+                    "coordinates": [
+                        {
+                            "hashCode": "0",
+                            "x": 2,
+                            "y": 1
+                        },
+                        {
+                            "hashCode": "0",
+                            "x": 18,
+                            "y": 63
+                        }
+                    ],
+                    "uiVisible": false
+                }
+            ]
+        },
+        "graph": {
+            "relationshipIdMap": {
+                "e0": ["1109", "fdd"],
+                "e1": ["1110", "fdd"],
+                "e2": ["1101", "fdd"],
+                "e3": ["1102", "fdd"],
+                "e4": ["1103", "fdd"],
+                "e5": ["1104", "fdd"],
+                "e6": ["1105", "fdd"],
+                "e7": ["1106", "fdd"],
+                "e8": ["1107", "fdd"],
+                "e9": ["1108", "fdd"]
+            },
+            "elements": {
+                "tables": [
+                    {
+                        "columns": [
+                            {
+                                "id": "n0::n0",
+                                "label": {
+                                    "content": "[Name]"
+                                }
+                            }
+                        ],
+                        "id": "n0",
+                        "label": {
+                            "content": "[SalesLT].[ProductModel]"
+                        }
+                    },
+                    {
+                        "columns": [
+                            {
+                                "id": "n1::n0",
+                                "label": {
+                                    "content": "[Description]"
+                                }
+                            }
+                        ],
+                        "id": "n1",
+                        "label": {
+                            "content": "[SalesLT]....Description]"
+                        }
+                    },
+                    {
+                        "columns": [
+                            {
+                                "id": "n2::n0",
+                                "label": {
+                                    "content": "[ProductID]"
+                                }
+                            },
+                            {
+                                "id": "n2::n1",
+                                "label": {
+                                    "content": "[Name]"
+                                }
+                            },
+                            {
+                                "id": "n2::n2",
+                                "label": {
+                                    "content": "[ProductModel]"
+                                }
+                            },
+                            {
+                                "id": "n2::n3",
+                                "label": {
+                                    "content": "[Culture]"
+                                }
+                            },
+                            {
+                                "id": "n2::n4",
+                                "label": {
+                                    "content": "[Description]"
+                                }
+                            }
+                        ],
+                        "id": "n2",
+                        "label": {
+                            "content": "[SalesLT]....Description]"
+                        }
+                    },
+                    {
+                        "columns": [
+                            {
+                                "id": "n3::n0",
+                                "label": {
+                                    "content": "[ProductID]"
+                                }
+                            },
+                            {
+                                "id": "n3::n1",
+                                "label": {
+                                    "content": "[Name]"
+                                }
+                            }
+                        ],
+                        "id": "n3",
+                        "label": {
+                            "content": "[SalesLT].[Product]"
+                        }
+                    },
+                    {
+                        "columns": [
+                            {
+                                "id": "n4::n0",
+                                "label": {
+                                    "content": "[Culture]"
+                                }
+                            }
+                        ],
+                        "id": "n4",
+                        "label": {
+                            "content": "[SalesLT]....Description]"
+                        }
+                    },
+                    {
+                        "columns": [
+                            {
+                                "id": "n5::n0",
+                                "label": {
+                                    "content": "[ProductID]"
+                                }
+                            },
+                            {
+                                "id": "n5::n1",
+                                "label": {
+                                    "content": "[Name]"
+                                }
+                            },
+                            {
+                                "id": "n5::n2",
+                                "label": {
+                                    "content": "[ProductModel]"
+                                }
+                            },
+                            {
+                                "id": "n5::n3",
+                                "label": {
+                                    "content": "[Culture]"
+                                }
+                            },
+                            {
+                                "id": "n5::n4",
+                                "label": {
+                                    "content": "[Description]"
+                                }
+                            }
+                        ],
+                        "id": "n5",
+                        "label": {
+                            "content": "RS-1"
+                        }
+                    }
+                ],
+                "edges": [
+                    {
+                        "id": "e0",
+                        "sourceId": "n5::n1",
+                        "targetId": "n2::n1"
+                    },
+                    {
+                        "id": "e1",
+                        "sourceId": "n5::n2",
+                        "targetId": "n2::n2"
+                    },
+                    {
+                        "id": "e2",
+                        "sourceId": "n3::n0",
+                        "targetId": "n5::n0"
+                    },
+                    {
+                        "id": "e3",
+                        "sourceId": "n5::n3",
+                        "targetId": "n2::n3"
+                    },
+                    {
+                        "id": "e4",
+                        "sourceId": "n3::n1",
+                        "targetId": "n5::n1"
+                    },
+                    {
+                        "id": "e5",
+                        "sourceId": "n5::n4",
+                        "targetId": "n2::n4"
+                    },
+                    {
+                        "id": "e6",
+                        "sourceId": "n0::n0",
+                        "targetId": "n5::n2"
+                    },
+                    {
+                        "id": "e7",
+                        "sourceId": "n4::n0",
+                        "targetId": "n5::n3"
+                    },
+                    {
+                        "id": "e8",
+                        "sourceId": "n1::n0",
+                        "targetId": "n5::n4"
+                    },
+                    {
+                        "id": "e9",
+                        "sourceId": "n5::n0",
+                        "targetId": "n2::n0"
+                    }
+                ]
+            },
+            "tooltip": {
+                "[SalesLT]....Description]": "[SalesLT].[ProductModelProductDescription]"
+            },
+            "listIdMap": {
+                "n0": ["11"],
+                "n0::n0": ["13"],
+                "n1": ["24"],
+                "n1::n0": ["26"],
+                "n2": ["35"],
+                "n2::n0": ["37"],
+                "n2::n1": ["38"],
+                "n2::n2": ["39"],
+                "n2::n3": ["40"],
+                "n2::n4": ["41"],
+                "n3": ["4"],
+                "n3::n0": ["6"],
+                "n3::n1": ["7"],
+                "n4": ["17"],
+                "n4::n0": ["20"],
+                "n5": ["28"],
+                "n5::n0": ["29"],
+                "n5::n1": ["30"],
+                "n5::n2": ["31"],
+                "n5::n3": ["32"],
+                "n5::n4": ["33"]
+            }
+        }
+    },
+    "sessionId": "3de68b90be888bc8c68443c655b9744c85553b086253369cb61d44bc9b22aca5_1695545452840"
+}
