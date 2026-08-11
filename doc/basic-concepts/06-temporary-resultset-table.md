@@ -6,7 +6,7 @@ A temporary result set is the table-like output produced inside a query (for exa
 
 How it maps to SQLFlow lineage:
 - v1: represented as `<resultset>` elements with specific `type` values (e.g., `select_list`, `with_cte`, `pivot_table`).
-- v2: represented as `lineageObjects` (type `table`) with `properties.isTemporary=true` and a deterministic `qualifiedName` such as `...resultset.{processId}#{sqlHash}#{queryId}` for merge-safe uniqueness.
+- SLPC v0.2: represented as document-local `IntermediateGraph` nodes with explicit kind, local name, containment, evidence, and completeness. They are not promoted to global catalog assets.
 
 You can choose to hide temporary result sets in the UI to simplify large graphs while keeping complete lineage available when needed.
 
@@ -35,6 +35,15 @@ EmployeeID, FirstName, LastName, ManagerID, EmpLevel
 in the select list and shown in the data flow graph as below:
 
 ![temporary-resultset](/assets/images/get-started-temporary-resultset1.png)
+
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> `Employees` and the published view are boundary `Endpoint` records. The select list is an
+> `IntermediateGraph` node with `nodeKind=SELECT_LIST`; its five output fields are contained child nodes.
+> Edges preserve the direct field paths, while `Employees.ManagerID` contributes an independent
+> `ROW + FILTER` path to the result relation. The graph may be hidden by a projector, but it remains
+> available for the clickable SQLFlow explanation.
 
 ### CTE example:
 
@@ -65,6 +74,14 @@ And the data flow graph is like this:
 
 ![intermediate-resultset](../../assets/images/get-started-intermediate-resultset2.png)
 
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> The graph contains a `SELECT_LIST` node for `resultset1`, a `CTE` node with local name `cteReports`, and
+> another `SELECT_LIST` node for `resultset2`, connected in source order and containment order. Canonical
+> facts collapse only proven paths to the final view fields. The filter remains on the ROW axis and COUNT/SUM
+> remain `VALUE + AGGREGATE`. `analysisCompleteness` states whether all relevant nodes and paths were found.
+
 ### 2. SQL clauses that generate temporary result sets
 
 The definition of temporary result set types can be found in the [ResultSetType.java](src/main/java/gudusoft/gsqlparser/dlineage/dataflow/model/ResultSetType.java)
@@ -92,6 +109,13 @@ the temporary result set generated: (a `resultset` XML tag and type attribute va
 </resultset>
 ```
 
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> This `<resultset type="select_list">` becomes a `SELECT_LIST` intermediate node. `RS-1` is a document-local
+> `localName`, not persistent identity. Its child fields, containment, and boundary connections are encoded
+> in `IntermediateGraph`; physical `Employees` fields remain the stable endpoints.
+
 
 #### 2. cte (cte)
 [CTE example SQL](#cte-example), the temporary result set generated: (a `resultset` XML tag and type attribute value `with_cte`)
@@ -105,6 +129,13 @@ the temporary result set generated: (a `resultset` XML tag and type attribute va
     <column id="3" name="RelationRows" source="system"/>
 </resultset>
 ```
+
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> `<resultset type="with_cte">` maps to an intermediate node with `nodeKind=CTE` and
+> `localName=cteReports`. The node is contained by the query-block graph. The legacy `RelationRows` child is
+> not copied as a field endpoint; its proven filter/group meaning is represented by ROW facts.
 
 #### 3. set clause in update statement (update_set)
 ```sql
@@ -122,6 +153,14 @@ the temporary result set generated: (a `resultset` XML tag and type attribute va
 ```
 
 ![update-set](../../assets/images/get-started-intermediate-resultset3.png)
+
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> `UPDATE-SET-1` becomes an `UPDATE_SET` node in a `DML_ASSIGNMENT` graph. The assignment
+> `table2.field2 -> table1.field2` is `VALUE + DIRECT`; both join keys contribute `ROW + JOIN` facts and a
+> `JoinSemantics` key pair. `StatementOperation(UPDATE, MUTATION)` records the write target and read source.
+> No `RelationRows` field is published.
 
 #### 4. merge statement (update_select, merge_update)
 
@@ -152,6 +191,15 @@ the temporary result set generated: (a `resultset` XML tag with type attribute v
     <column id="26" name="supply_constrained"/>
 </resultset>
 ```
+
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> Each legacy `merge-insert` branch becomes a `MERGE_INSERT` node contained by a `MERGE_BRANCH` graph, in
+> lexical branch order. Proven source/literal contributions produce VALUE facts and occurrence literal
+> inputs; `T.product = S.product` produces ROW JOIN facts plus `JoinSemantics`. The enclosing operation is
+> `StatementOperation(MERGE, MUTATION)` with `MERGE_TARGET` and `MERGE_SOURCE` participants.
+
 #### 5. pivot table (pivot_table)
 
 ```sql
@@ -179,6 +227,14 @@ the temporary result set generated: (a `resultset` XML tag and type attribute va
 </resultset>
 ```
 
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> The source derived table and `PIVOT-TABLE-1` become contained `DERIVED_TABLE` and `PIVOT` nodes. VALUE
+> facts connect `sales_amount` to each proven pivot output with `role=AGGREGATE`; `product` supplies pivot
+> condition/group semantics. Ordered pivot values belong to graph/profile evidence. Unknown generated
+> columns remain candidates rather than guessed canonical fields.
+
 #### 6. unpivot table (unpivot_table)
 
 ```sql
@@ -200,6 +256,13 @@ the temporary result set generated: (a `resultset` XML tag and type attribute va
     <column id="6" name="Quarter"/>
 </resultset>
 ```
+
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> `UNPIVOT-TABLE-1` maps to an `UNPIVOT` intermediate node. Each proven input column contributes an atomic
+> VALUE fact/path to `Sales`, and the source column label contributes to `Quarter` as transformed/derived
+> value evidence. Ordered inputs and generated-name details live in the intermediate/profile layer.
 
 #### 7. table alias (alias)
 
@@ -224,6 +287,13 @@ the temporary result set generated: (a `resultset` XML tag and type attribute va
     <column id="36" name="empid_renamed"/>
 </resultset>
 ```
+
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> `ALIAS-1` is an `ALIAS` intermediate node with local name `p`, contained under the PIVOT node or query
+> block. The alias column list is preserved in source order for the detailed graph. Alias names do not form
+> persistent endpoint identity, while the underlying physical-to-output VALUE facts remain stable.
 
 #### 8. array, struct, result_of, output, rs
 Those temporary result set types are not used in the SQLFlow.
@@ -278,3 +348,11 @@ For example:
 
 - In SQL Server, the temporary table is like `#temp_table`.
 - In MySQL, The temporary table is like `tmp_table`.
+
+### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> A real SQL temporary table is different from a document-local result set. It is an `Endpoint` with
+> `objectKind=TEMP_TABLE` or `GLOBAL_TEMP_TABLE` and a required scope (`SESSION`, `PROCEDURE`, or other
+> proven scope). A result set, CTE, alias, function result, or DML assignment remains in
+> `IntermediateGraph`. This boundary prevents local explain nodes from colliding with platform assets.

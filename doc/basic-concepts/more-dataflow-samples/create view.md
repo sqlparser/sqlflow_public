@@ -34,3 +34,12 @@ scott.emp.sal -> fdr -> vEmp.PseudoRows
 #### diagram
 
 ![image.png](https://images.gitee.com/uploads/images/2021/0704/145810_66a232d3_8136809.png)
+
+### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> SLPC collapses the proven value path to `scott.emp.empName -> vEmp.eName` as `VALUE + DIRECT` while
+> retaining `RS-1` as a `SELECT_LIST` node in `IntermediateGraph` for the clickable view. The predicate is
+> a separate `ROW + FILTER` fact from `scott.emp.sal` to the view/result relation; no `PseudoRows` endpoint
+> is created. `StatementOperation(CREATE_VIEW, DEFINITION_ONLY)` records `vEmp` and its read source, and
+> literal `1000` is occurrence evidence.

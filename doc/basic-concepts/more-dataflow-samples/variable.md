@@ -57,6 +57,16 @@ END;
 
 ![image.png](https://images.gitee.com/uploads/images/2021/0705/110307_74539911_8136809.png)
 
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> `acbal_cv` is a scoped `CURSOR` endpoint and `rec_dal_acbal` is represented by scoped variable/field
+> endpoints when identity is proven. SELECT fields flow by VALUE facts into cursor fields, FETCH creates
+> VALUE facts into record fields, and those fields flow to the UPDATE targets. IF/WHERE conditions create
+> ROW facts; assignments, branches, cursor, record, and loop steps remain in a `ROUTINE_BODY`
+> `IntermediateGraph`. The graph reports partial completeness if procedural control flow cannot be fully
+> proven.
+
 ### scalar variable
 
 This is a Teradata stored procedure
@@ -85,3 +95,12 @@ END;
 #### diagram
 
 ![image.png](https://images.gitee.com/uploads/images/2021/0705/110824_924cc303_8136809.png)
+
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> `id`, `pname`, `pid`, and `dname` are scoped `PARAMETER` endpoints with direction metadata; local `dname`
+> may also appear as a VARIABLE node in the routine graph. `AGMT.AGMT_ID -> dname` is `VALUE + DIRECT`,
+> while `pid -> predicate` is a parameter VALUE contribution plus `PROCESS_ID -> result rows` as
+> `ROW + FILTER`. The OUT parameter/return path remains available to callers through proven parameter
+> binding; unresolved call bindings become candidates and diagnostics.

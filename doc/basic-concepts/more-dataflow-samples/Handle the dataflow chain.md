@@ -19,3 +19,14 @@ If we need to convert a fully chained dataflow to an `end to end` dataflow, we m
    A -> fdd -> B3 -> fdd -> C3 -> fdd -> D
    ```
    The final relation should choose the `fdd` chain if any.
+
+### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> The rules above describe legacy end-to-end simplification, not SLPC semantics. SLPC keeps every proven
+> `IntermediateGraph` path and collapses only paths whose semantic composition is valid. VALUE and ROW are
+> independent axes: a VALUE path is not discarded because a ROW path exists, and a direct VALUE path does
+> not erase a filtered/join/group path. Multiple paths, cycles, and collapse failures remain explicit; the
+> graph reports `COMPLETE`, `PARTIAL`, or `UNKNOWN` and emits a diagnostic when safe collapse is impossible.
+> A compact SQLFlow view may hide intermediate nodes, but it is derived from the retained paths rather than
+> from a "pick one strongest edge" rule.

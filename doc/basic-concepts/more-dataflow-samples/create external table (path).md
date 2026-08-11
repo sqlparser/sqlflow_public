@@ -77,6 +77,17 @@ path('s3://load/encrypted_files/') -> process(create stage) -> exttable_part_sta
 
 ![image.png](https://images.gitee.com/uploads/images/2021/0709/114036_31ac2c6c_8136809.png)
 
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> The sanitized S3 locator is a FILE endpoint with `URI_EXACT` identity when normalization can be proven;
+> the stage and external table are `STAGE` and `EXTERNAL_TABLE` endpoints. SLPC emits
+> `StatementOperation(CREATE_STAGE)` and `StatementOperation(CREATE_EXTERNAL_TABLE)`, plus
+> `ObjectRelationship(READS_FROM)` for storage→stage and stage/storage→external table. A relation-level
+> VALUE fact records proven content dependency; `metadata$filename` contributions use field-level
+> `VALUE + TRANSFORM` facts only when binding is proven. Credentials, secret keys, signed tokens, and
+> userinfo must never appear in endpoint display, evidence, diagnostics, or extensions.
+
 ### bigquery create external table
 
 ```sql
@@ -136,6 +147,15 @@ path (uri='gs://bucket/path2.csv')  -> query process(create external table) ->  
 
 ![image.png](https://images.gitee.com/uploads/images/2021/0709/114151_76369339_8136809.png)
 
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> Each GCS URI is a separate FILE endpoint and a `STORAGE_SOURCE` participant of
+> `StatementOperation(CREATE_EXTERNAL_TABLE, DEFINITION_ONLY)`. Each file participates in a
+> `READS_FROM` relationship directed from storage to `dataset.CsvTable`; proven content dependency may
+> also produce a relation-level VALUE fact. The legacy wildcard column is expanded only with authoritative
+> schema evidence. Format and vendor metadata belong in the typed storage extension, not endpoint identity.
+
 ### Hive load data
 
 ```sql
@@ -183,3 +203,12 @@ path (uri='/tmp/pv_2008-06-08_us.txt')  -> query process(load data) -> page_view
 ```
 
 ![image.png](https://images.gitee.com/uploads/images/2021/0709/114422_58785e85_8136809.png)
+
+#### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> The local path is a FILE endpoint and `page_view` is the write target. SLPC emits
+> `StatementOperation(LOAD, CONTENT_WRITE)`, `ObjectRelationship(READS_FROM)`, and a relation-level VALUE
+> fact from the file to the table. The partition values `'2008-06-08'` and `'US'` are literal-derived
+> field facts/occurrence inputs when the parser proves those assignments; they are not values copied from
+> the file path pseudo-column. Unknown file-field mappings remain candidates rather than guessed edges.

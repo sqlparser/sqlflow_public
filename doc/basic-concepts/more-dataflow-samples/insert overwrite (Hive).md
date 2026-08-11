@@ -50,3 +50,13 @@ pv_gender_sum ->  query process (insert overwrite) ->  path ( uri='/tmp/pv_gende
 
 
  ![image.png](https://images.gitee.com/uploads/images/2021/0709/140623_6cb3727f_8136809.png)
+
+### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> The source table and destination path are relation endpoints; the path uses a proven, sanitized
+> `URI_EXACT` identity when possible. SLPC emits
+> `StatementOperation(INSERT_OVERWRITE_DIRECTORY, CONTENT_COPY)` with `READ_SOURCE` and `STORAGE_TARGET`,
+> `ObjectRelationship(WRITES_TO)`, and a relation-level VALUE fact from `pv_gender_sum` to the storage
+> endpoint. `INSERT-SELECT-1` remains an intermediate node for explainability. Star expansion is emitted
+> only when field bindings are proven; otherwise the relation-level fact and a diagnostic remain.

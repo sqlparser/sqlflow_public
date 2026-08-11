@@ -62,3 +62,13 @@ This is the diagram show lineage in table-level mode.
 
 
 ```
+
+### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> The CREATE VIEW statement produces `StatementOperation(CREATE_VIEW, DEFINITION_ONLY)` and the proven
+> `VALUE + DIRECT` fact `t2.f1 -> v1.f1`; its select-list hop remains in `IntermediateGraph`. The ALTER
+> statement produces `StatementOperation(RENAME, IDENTITY_CONTINUITY)` with `BEFORE_OBJECT=t2` and
+> `AFTER_OBJECT=t3`. Rename is not value copying, so SLPC does not retain the legacy pseudo-row `fdd` as a
+> canonical fact. For an actual SWAP, the operation is `SWAP + CONTENT_EXCHANGE`; without versioned
+> pre/post identities, no guessed pair of VALUE facts is allowed.

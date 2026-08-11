@@ -49,50 +49,24 @@ Source of truth:
 - v1 Schema: [data_lineage_schema_v1.json](mdc:gsp_java/docs/AI/cline_sqlflow/data_lineage_schema_v1.json)
 - v1 Design: [data_lineage_design_explanation_v1.md](mdc:gsp_java/docs/AI/cline_sqlflow/data_lineage_design_explanation_v1.md)
 
-### Part 2: Next-Generation Data Lineage Model (v2)
+### <span style="color:#8250df">SLPC v0.2 representation</span>
 
-v2 refines the chain into smaller, precise parts so it scales better and is easier to trace.
-
-- **Key improvements**:
-  - More precise, 1→1 relationships between specific lineage objects (e.g., a column to an output column).
-  - Stronger traceability via `qualifiedName`, `observations` (evidence), and `transforms` (logic snippets).
-  - Clearer meaning using `effectType` on each relationship.
-- **Concept mapping**:
-  - v1 `fdd` becomes explicit copy/transform edges (use `effectType: EXACT_COPY` for pass-through or alias; `MODIFIED_COPY` if function transforms value).
-  - v1 `fdr` is captured as constraints like `restricts` (filters) and `groups` (grouping impact).
-
-Applying v2 to the same example:
-
-```
-Employees.ManagerID  restricts  -> temp.cteReports (table)
-  condition: "ManagerID IS NULL"
-  effectType: AMBIGUOUS  (filter affects presence of rows)
-
-temp.cteReports.EmpID   -> temp.result.count_empid (column)
-  transforms.code: "COUNT(EmpID)"
-  effectType: AGGREGATION  (aggregation changes granularity)
-
-temp.cteReports.EmpLevel -> temp.result.sum_emplevel (column)
-  transforms.code: "SUM(EmpLevel)"
-  effectType: AGGREGATION  (aggregation changes granularity)
-```
-
-Tips for reading v2:
-- Each edge is atomic (1 source → 1 target) and can share a `statementKey` to indicate they come from the same SQL statement.
-- Use `transforms.code` to show the function/expression that produced the target value.
-- Choose an `effectType` that describes the mapping strength:
-  - `EXACT_COPY`: simple alias/passthrough
-  - `MODIFIED_COPY`: function changes value (e.g., `UPPER(name)`)
-  - `AGGREGATION`: `COUNT`, `SUM`, `AVG`, etc.
-  - `PARTIAL_COPY`: multi-source expression (e.g., `a + b`)
-  - `AMBIGUOUS`: uncertain or heuristic mapping
-
-Note:
-- `temp.cteReports` and `temp.result` represent temporary tables (v2 `lineageObjects` of type `table` with `properties.isTemporary = true`), and their fields like `EmpID`, `count_empid`, `sum_emplevel` are `column` lineageObjects. Use a deterministic `qualifiedName` for temporary objects (e.g., `server.database.resultset.{processId}#{sqlHash}#{queryId}`).
-
-Source of truth:
-- v2 Schema: [data_lineage_schema.json](mdc:gsp_java/docs/AI/cline_sqlflow/data_lineage_schema.json)
-- v2 Design: [data_lineage_design_explanation.md](mdc:gsp_java/docs/AI/cline_sqlflow/data_lineage_design_explanation.md)
+> [!IMPORTANT]
+> SLPC stores the canonical end-to-end semantics and the explainable chain at the same time:
+>
+> - `Employees.ManagerID -> CTE/result relation` is a `ROW + FILTER` fact with predicate evidence for
+>   `ManagerID IS NULL`.
+> - `Employees.EmployeeID -> result.COUNT(EmpID)` is a `VALUE + AGGREGATE` path; the relation endpoint may
+>   also be the proven source for `COUNT(*)`-style row aggregation.
+> - `Employees.EmpLevel -> result.SUM(EmpLevel)` is a separate `VALUE + AGGREGATE` fact.
+> - `IntermediateGraph` keeps `SELECT_LIST`, `CTE`, and upper select-list nodes, their local names,
+>   containment, edges, and all proven paths for the clickable diagram.
+> - Each collapsed fact points to occurrence/evidence from the statement. If collapse cannot prove a
+>   single safe semantic path, SLPC keeps the graph paths and reports `PARTIAL` or a diagnostic instead of
+>   deleting the path.
+>
+> VALUE and ROW paths are never ranked against each other. Both survive when both are proven, and multiple
+> chains between the same boundaries remain separately explainable.
 
 #### diagram
 

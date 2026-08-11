@@ -46,6 +46,15 @@ masteTable.masterColumn -> fdd -> foreignTable.foreignColumn2
 </dlineage>
 ```
 
+### <span style="color:#8250df">SLPC v0.2 representation</span>
+
+> [!IMPORTANT]
+> The two legacy `fdd` edges are compatibility encodings, not value movement. SLPC emits
+> `ObjectRelationship(PRIMARY_KEY)` for `masteTable.masterColumn` and two
+> `ObjectRelationship(FOREIGN_KEY_REFERENCE)` records whose ordered key pairs bind `foreignColumn1` and
+> `foreignColumn2` to `masterColumn`. The DDL occurrence is the evidence. A real query join would separately
+> produce ROW JOIN facts and `JoinSemantics`; the FK declaration alone never creates a VALUE fact.
+
 ### diagram
 
 ![image.png](https://images.gitee.com/uploads/images/2021/0705/150530_b497fb6c_8136809.png)

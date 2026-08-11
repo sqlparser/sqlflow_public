@@ -43,48 +43,20 @@ v1 ER extract:
 
 This captures the FK→PK structural link used by tools to render ER diagrams.
 
-### 2. v2 modeling: structure vs. data flow
+### <span style="color:#8250df">SLPC v0.2 representation</span>
 
-In v2, ER is modeled using 1→1 atomic edges with explicit types:
+> [!IMPORTANT]
+> PK and FK declarations are structural facts, not data movement. SLPC emits `Endpoint` records for both
+> tables and fields, `ObjectRelationship(PRIMARY_KEY)` for each primary key, and one
+> `ObjectRelationship(FOREIGN_KEY_REFERENCE)` with participants
+> `FOREIGN_KEY_RELATION=Employees` and `REFERENCED_RELATION=Departments`. Its ordered `keyPairs` binds
+> `Employees.department_id` to `Departments.department_id`. The DDL statement evidence is attached through
+> an occurrence. No `VALUE` or `ROW` fact is emitted merely because the FK exists.
 
-- `has`: table “has” column (table→column) for schema structure
-- `restricts`: FK column restricts the referenced PK during joins or constraints
+### 2. Structure and query-time lineage stay separate
 
-Minimal v2 structural edges:
-```json
-{ "type": "has", "sourceId": "Departments", "targetId": "Departments.department_id" }
-```
-```json
-{ "type": "has", "sourceId": "Employees", "targetId": "Employees.department_id" }
-```
-
-Optional constraint influence (useful for impact analyses and when rendering
-ER overlays on data-flow graphs):
-```json
-{
-  "type": "restricts",
-  "sourceId": "Employees.department_id",
-  "targetId": "Departments.department_id",
-  "processIds": ["ddl_proc"],
-  "condition": "FK Employees.department_id REFERENCES Departments.department_id"
-}
-```
-
-Notes:
-- Keep ER (structure) separate from data movement. Use `has` for schema, and
-  `data_flow` only for queries that actually move data.
-- When a join uses this FK/PK, add join-time `restricts` edges (see Join doc).
-
-### 3. Tips and v1→v2 mapping
-
-- v1 `type="er"` → v2: emit `has` edges for table/column hierarchy; optionally
-  add a `restricts` edge to capture FK enforcement.
-- Use deterministic `qualifiedName` per v2 to merge ER from multiple files.
-- UI: render ER separately or as an overlay; allow toggling constraint
-  influences for clarity.
-
-### 4. Why this matches industry practice
-
-- ER is a structural view; lineage diagrams should not conflate ER with runtime
-  data movement. Separating `has` (structure) from `data_flow`/`restricts`
-  aligns with common tools and improves readability.
+- Table/field containment is part of endpoint structure and display, not a synthetic value edge.
+- A declared FK remains an `ObjectRelationship` even if no query joins the tables.
+- If a SQL statement later joins these fields, that statement independently creates `ROW + JOIN` facts and `JoinSemantics`.
+- Legacy adapters that previously encoded FK as `fdd` must convert it to the structural relationship and report a compatibility correction; retaining the false VALUE fact is forbidden.
+- Projectors may render ER as a separate diagram or overlay. If a target tool cannot represent PK/FK structure, its projection report must account for the loss.
