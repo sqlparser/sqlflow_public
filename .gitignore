@@ -42,3 +42,34 @@ __pycache__/
 *.pyz
 *.pywz
 *.pyzw
+
+# Testing related
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.tox/
+.nox/
+
+# Poetry
+dist/
+*.egg-info/
+.eggs/
+build/
+
+# Claude settings
+.claude/*
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
